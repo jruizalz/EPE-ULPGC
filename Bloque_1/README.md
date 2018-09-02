@@ -17,6 +17,8 @@ Los apartados en los que se estructura el Bloque temático I son los siguientes:
 Estos contenidos se impartirán conforme al siguiente plan de trabajo:
 * Cinco clases teóricas, de dos horas cada una de duración, impartidas las cuatro primeras semanas (dos clases la primera semana y una en cada una de las restantes): 10 horas de clases de teoría.
 * Una clase de tutoría en el aula, de introducción a Python y Jupyter Notebook, de dos horas de duración e impartida la segunda semana: 2 horas de tutoría en el aula.
-*Tres clases pŕacticas en el aula, la primera de dos horas de duración y las dos restantes de una hora cada una, impartidas respectivamente, la tercera, cuarta y quinta semanas: 4 horas de clases prácticas en el aula.
+* Tres clases pŕacticas en el aula, la primera de dos horas de duración y las dos restantes de una hora cada una, impartidas respectivamente, la tercera, cuarta y quinta semanas: 4 horas de clases prácticas en el aula.
 * Dos prácticas de laboratorio, cada una de una hora de duración, impartidas la cuerta y quinta semanas: 2 horas de prácticas de laboratorio.
 * Una sesión de evaluación, en la quinta semana, de dos horas de duración, como parte de la evaluación continua de la asignatura: 2 horas de evaluación.
+
+En total, **el Bloque I de la asignatura supone un esfuerzo de 20 horas presenciales durante las primeras cinco semanas del curso**.
