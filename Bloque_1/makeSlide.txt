@@ -1,0 +1,11 @@
+
+jupyter nbconvert 2.Probabilidad_Sucesos.ipynb --TagRemovePreprocessor.remove_input_tags='{"remove_input"}' --to slides
+
+
+sed -i 's/reveal.js\///' 2.Probabilidad_Sucesos.slides.html 
+
+
+mv 2.Probabilidad_Sucesos.slides.html ../docs/
+
+
+
