@@ -40,6 +40,7 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - Totales trabajo presencial: 20 horas = 10 CLT + 4 CPA + 2 LAB + 2 Tut + 2 Eva
 
 | Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
+|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 1  |  4  |  0  |  0  |  0  |  0  |  4  |
 | Semana 2  |  2  |  0  |  0  |  2  |  0  |  4  |
 | Semana 3  |  2  |  2  |  0  |  0  |  0  |  4  |
@@ -62,6 +63,7 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva
 
 | Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
+|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 6  |  4  |  0  |  0  |  0  |  0  |  4  |
 | Semana 7  |  2  |  2  |  0  |  0  |  0  |  4  |
 | Semana 8  |  2  |  1  |  1  |  0  |  0  |  4  |
@@ -81,6 +83,7 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva
 
 | **Semanas**   | **CLT** | **CPA** | **LAB** | **Tut** | **Eva** | **TOT** |
+|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 11 |  4  |  0  |  0  |  0  |  0  |  4  |
 | Semana 12 |  2  |  2  |  0  |  0  |  0  |  4  |
 | Semana 13 |  2  |  1  |  1  |  0  |  0  |  4  |
