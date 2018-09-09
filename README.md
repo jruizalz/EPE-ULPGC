@@ -40,18 +40,12 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - Totales trabajo presencial: 20 horas = 10 CLT + 4 CPA + 2 LAB + 2 Tut + 2 Eva
 
 | Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 1  |  4  |  0  |  0  |  0  |  0  |  4  |
 | Semana 2  |  2  |  0  |  0  |  2  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 3  |  2  |  2  |  0  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 4  |  2  |  1  |  1  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 5  |  0  |  1  |  1  |  0  |  2  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 |  TOT hrs  | 10  |  4  |  2  |  2  |  2  | 20  |
-
 
 **Bloque temático II: Variable aleatoria** (semanas 6 a diez)
 1. Variable aleatoria discreta. Funciones de masa de probabilidad. Caracterización (1 CLT)
@@ -68,19 +62,12 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva
 
 | Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 6  |  4  |  0  |  0  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 7  |  2  |  2  |  0  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 8  |  2  |  1  |  1  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 9  |  2  |  1  |  1  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 10 |  0  |  1  |  1  |  0  |  2  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 |  TOT hrs  | 10  |  5  |  3  |  0  |  2  | 20  |
-
 
 **Bloque temático III: Secuencias y procesos aleatorios** (semanas 11 a 15)
 1. Secuencias y procesos estocásticos. Caracterización de segundo orden. Secuencias y procesos Gaussianos. (2 CLT, 1 CPA)
@@ -93,19 +80,13 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - La décimo quinta semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua
 - Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva
 
-| Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
-|-----------|-----|-----|-----|-----|-----|-----|
-| Semana 6  |  4  |  0  |  0  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
-| Semana 7  |  2  |  2  |  0  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
-| Semana 8  |  2  |  1  |  1  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
-| Semana 9  |  2  |  1  |  1  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
-| Semana 10 |  0  |  1  |  1  |  0  |  2  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
-|  TOT hrs  | 10  |  5  |  3  |  0  |  2  | 20  |
+| **Semanas**   | **CLT** | **CPA** | **LAB** | **Tut** | **Eva** | **TOT** |
+| Semana 11 |  4  |  0  |  0  |  0  |  0  |  4  |
+| Semana 12 |  2  |  2  |  0  |  0  |  0  |  4  |
+| Semana 13 |  2  |  1  |  1  |  0  |  0  |  4  |
+| Semana 15 |  2  |  1  |  1  |  0  |  0  |  4  |
+| Semana 15 |  0  |  1  |  1  |  0  |  2  |  4  |
+|  **TOT hrs**  | **10**  |  **5**  |  **3**  |  **0**  |  **2**  | **20**  |
 
 
 **Trabajo total presencial: 60 horas = 30 CLT + 14 CPA + 8 LAB + 2 Tut + 6 Eva**
