@@ -39,7 +39,7 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 - La quinta semana finaliza con una evaluaciónde dos horas, dentro de la evaluacion continua
 - Totales trabajo presencial: 20 horas = 10 CLT + 4 CPA + 2 LAB + 2 Tut + 2 Eva
 
-| Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
+**| Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |**
 |-----------|-----|-----|-----|-----|-----|-----|
 | Semana 1  |  4  |  0  |  0  |  0  |  0  |  4  |
 | Semana 2  |  2  |  0  |  0  |  2  |  0  |  4  |
