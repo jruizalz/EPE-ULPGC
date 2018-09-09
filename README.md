@@ -42,7 +42,6 @@ Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas 
 | Semanas   | CLT | CPA | LAB | Tut | Eva | TOT |
 |-----------|-----|-----|-----|-----|-----|-----|
 | Semana 1  |  4  |  0  |  0  |  0  |  0  |  4  |
-|-----------|-----|-----|-----|-----|-----|-----|
 | Semana 2  |  2  |  0  |  0  |  2  |  0  |  4  |
 |-----------|-----|-----|-----|-----|-----|-----|
 | Semana 3  |  2  |  2  |  0  |  0  |  0  |  4  |
