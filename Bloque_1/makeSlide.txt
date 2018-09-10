@@ -1,11 +1,11 @@
 
-jupyter nbconvert 2.Probabilidad_Sucesos.ipynb --TagRemovePreprocessor.remove_input_tags='{"remove_input"}' --to slides
+jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags='{"remove_input"}' --to slides
 
 
-sed -i 's/reveal.js\///' 2.Probabilidad_Sucesos.slides.html 
+sed -i 's/reveal.js\///' 1.AnalisisExploratorioDatos.slides.html 
 
 
-mv 2.Probabilidad_Sucesos.slides.html ../docs/
+mv 1.AnalisisExploratorioDatos.slides.html  ../docs/
 
 
 
