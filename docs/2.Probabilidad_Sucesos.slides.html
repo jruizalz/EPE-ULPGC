@@ -12128,7 +12128,25 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Definiciones-de-probabilidad">Definiciones de probabilidad<a class="anchor-link" href="#Definiciones-de-probabilidad">&#182;</a></h2><p>Dependiendo de la estrategia que se utilice para medición de la incertidu</p>
+<h2 id="Definiciones-de-probabilidad">Definiciones de probabilidad<a class="anchor-link" href="#Definiciones-de-probabilidad">&#182;</a></h2><p>Dependiendo de la estrategia que se utilice para medición de la incertidumbre, tendremos diferentes <strong>interpretaciones de probabilidad</strong> que dan lugar a distintas definiciones:</p>
+<ul>
+<li><strong>Definición frecuencial de probabilidad</strong></li>
+<li><strong>Definición clásica de probabilidad</strong></li>
+<li><strong>Definición axiomática de probabilidad</strong></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Definici&#243;n-frecuencial-de-probabilidad">Definici&#243;n frecuencial de probabilidad<a class="anchor-link" href="#Definici&#243;n-frecuencial-de-probabilidad">&#182;</a></h3><p>La <strong>interpretación frecuencial de la probabilidad</strong> nos da la primera definición, que se fundamenta en conceptos estadísticos. La probabilidad de un suceso se estima experimentalmente, repitiendo muchas veces el mismo experimento y calculando sus <strong>frecuencias relativas</strong>. La definición matemática de <strong>probabilidad muestral</strong> requiere repetir infinitas veces el experimento, asegurándonos de muestrear el espacio muestral sin beneficiar a unos resultados en relación a otros:</p>
+<p>$$P(A) = \lim_{N \to \infty}\frac{N_A}{N}\; ,$$</p>
+<p>donde $N_A$ es el número de veces que acontece el suceso $A$ y $N$ es el número de veces que se repite el experimento.</p>
+<p>En particular, estamos interesados en conocer las frecuencias relativas, y, en el límite, las probabilidades, de todos y cada uno de los sucesos elementales, esto es, de todos y cada uno de los resultados que componen del espacio muestral.</p>
+<p>Las frecuencias relativas y, con ello, las probabilidades de todos sucesos se obtienen inmediatamente a partir de las de los sucesos elementales del espacio muestral.</p>
 
 </div>
 </div>
@@ -12137,59 +12155,11 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p><strong>Definición clásica probabilidad</strong>: la probabilidad de un resultado se calcula analíticamente, considerando el cociente de casos favorables en los que se satisface el resultado en relación a la totalidad de casos posibles. Asume equiprobabilidad de los resultados elementales. Por ejemplo, <u>al lanzar un dado de seis caras hay seis resultados posibles, y la probabilidad de que salga cada una de ellas es de 1/6</u>. Sin embargo, si el dado está trucado y unas caras pesan más que otras esta definición ya no es útil.</p>
-</li>
-<li><p><strong>Definición frecuencial de la probabilidad</strong>: la probabilidad de un resultado se estima experimentalmente, repitiendo muchas veces el mismo experimento y calculando las frecuencias relativas de cada resultado. Aquí si podemos considerar tanto un dado correcto como uno trucado: al repetir el experimento podemos ver si unas caras son más probables que otras o si se mantienen equiprobables.</p>
-</li>
-<li><p><strong>Definición axiomática de probabilidad</strong>: se define un <strong>espacio de probabilidad</strong>, en el que el espacio muestral corresponde a cada uno de los resultados elementales posibles, y se asigna a cada uno de ellos una probabilidad. Por supuesto, las probabilidades no tienen por qué ser ifuales. Los <strong>sucesos</strong> son combinaciones de resultados elementales a los que se asignan probabilidades conforme a unas reglas determinadas.</p>
-</li>
-</ul>
-<p>Experimentemos lanzando un dado para obtener las probabilidades muestrales. Modelamos cada sucesión de lanzamientos mediante una <strong>secuencia discreta</strong>. Lanzaremos un dado bueno y otro trucado.</p>
+<p>Experimentemos lanzando un dado para obtener las probabilidades muestrales. Modelamos cada sucesión de lanzamientos mediante una <strong>secuencia discreta</strong>. Lanzaremos un dado bueno y otro trucado, éste con la característica de que pesan más las caras 5 y 6 y que, por lo tanto, saldrán más veces.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">caras</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">P_dado</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades caras dado bueno:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">P_dado</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Suma de probabilidades:&#39;</span><span class="p">,</span> <span class="n">P_dado</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
-<span class="n">P_dadoTrucado</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">P_dadoTrucado</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">P_dadoTrucado</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades caras dado trucado:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">P_dadoTrucado</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Suma de probabilidades:&#39;</span><span class="p">,</span> <span class="n">P_dadoTrucado</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="n">dadoTrucado</span>      <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">rv_discrete</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">caras</span><span class="p">,</span> <span class="n">P_dadoTrucado</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dadoTrucado&#39;</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Probabilidades caras dado bueno:
- [0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667]
-Suma de probabilidades: 1.0
-Probabilidades caras dado trucado:
- [0.08333333 0.08333333 0.08333333 0.08333333 0.33333333 0.33333333]
-Suma de probabilidades: 1.0
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12200,19 +12170,8 @@ Suma de probabilidades: 1.0
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dado bueno: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dado trucado: &#39;</span><span class="p">,</span> <span class="n">dadoTrucado</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -12220,7 +12179,7 @@ Suma de probabilidades: 1.0
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Dado bueno:  [5]
+<pre>Dado bueno:  [2]
 Dado trucado:  [5]
 </pre>
 </div>
@@ -12229,7 +12188,7 @@ Dado trucado:  [5]
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12240,7 +12199,7 @@ Dado trucado:  [5]
 
 </div>
 </div>
-</div><div class="fragment">
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -12250,13 +12209,13 @@ Dado trucado:  [5]
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Dado bueno (100 lanzamientos):
- [2 5 1 4 3 6 1 4 2 3 6 6 2 2 5 1 3 6 6 5 4 6 6 2 1 6 6 5 5 5 2 5 1 4 3 1 1
- 1 1 3 4 5 5 6 3 5 2 3 3 6 3 2 5 6 1 1 4 3 4 3 4 5 4 6 5 1 5 4 6 2 3 6 4 2
- 5 2 5 6 6 3 5 2 2 2 5 1 5 4 6 6 5 4 4 1 5 3 6 2 6 6]
+ [3 5 2 1 5 4 5 3 2 1 6 2 4 5 1 3 2 5 1 3 3 3 5 3 4 2 3 2 4 4 3 1 4 3 3 3 5
+ 5 4 3 1 3 4 1 5 3 3 3 3 3 4 5 2 1 3 2 2 3 2 2 2 3 5 3 1 1 5 4 2 4 4 6 3 5
+ 4 5 5 4 2 1 1 3 1 2 2 2 5 3 6 5 5 2 6 6 2 6 3 1 5 3]
 Dado trucado (100 lanzamientos):
- [5 2 5 6 4 6 5 6 5 5 6 6 6 4 4 1 6 6 4 6 2 4 4 5 5 2 5 6 6 5 6 3 5 6 6 5 6
- 4 2 4 1 6 6 6 6 6 5 5 1 4 5 2 6 4 5 1 4 5 5 5 5 5 2 5 6 5 5 5 3 5 1 4 5 5
- 3 4 6 3 4 4 6 2 2 6 3 5 6 6 6 2 2 4 6 3 1 6 6 6 5 3]
+ [4 2 4 2 2 6 6 6 6 6 4 1 5 4 2 6 6 2 6 3 5 5 3 5 2 6 6 6 5 5 5 6 6 1 5 4 5
+ 4 6 1 6 5 5 3 6 1 5 5 5 5 6 2 5 6 6 6 5 6 5 3 5 5 3 5 6 6 5 5 6 6 6 4 5 1
+ 3 6 5 6 4 5 5 6 6 5 1 5 1 1 5 3 2 5 5 6 5 6 6 3 2 6]
 </pre>
 </div>
 </div>
@@ -12264,7 +12223,7 @@ Dado trucado (100 lanzamientos):
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -12306,19 +12265,8 @@ Dado trucado (100 lanzamientos):
 </div>
 </div>
 
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades muestrales dado bueno: </span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repet100</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades muestrales dado trucado:</span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repet100Trucado</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -12337,7 +12285,7 @@ Probabilidades muestrales dado trucado:
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12369,19 +12317,8 @@ Probabilidades muestrales dado trucado:
 </div>
 </div>
 
-</div></div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades muestrales dado bueno: </span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repet1000</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades muestrales dado trucado:</span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repet1000Trucado</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -12400,7 +12337,7 @@ Probabilidades muestrales dado trucado:
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12432,19 +12369,8 @@ Probabilidades muestrales dado trucado:
 </div>
 </div>
 
-</div></div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades muestrales dado bueno: </span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repet1000000</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades muestrales dado trucado:</span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repet1000000Trucado</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -12463,6 +12389,25 @@ Probabilidades muestrales dado trucado:
 </div>
 </div>
 
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Definici&#243;n-cl&#225;sica-probabilidad">Definici&#243;n cl&#225;sica probabilidad<a class="anchor-link" href="#Definici&#243;n-cl&#225;sica-probabilidad">&#182;</a></h3><p>la probabilidad de un resultado se calcula analíticamente, considerando el cociente de casos favorables en los que se satisface el resultado en relación a la totalidad de casos posibles. Asume equiprobabilidad de los resultados elementales. Por ejemplo, <u>al lanzar un dado de seis caras hay seis resultados posibles, y la probabilidad de que salga cada una de ellas es de 1/6</u>. Sin embargo, si el dado está trucado y unas caras pesan más que otras esta definición ya no es útil.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Definici&#243;n-axiom&#225;tica-de-probabilidad">Definici&#243;n axiom&#225;tica de probabilidad<a class="anchor-link" href="#Definici&#243;n-axiom&#225;tica-de-probabilidad">&#182;</a></h3><p>se define un <strong>espacio de probabilidad</strong>, en el que el espacio muestral corresponde a cada uno de los resultados elementales posibles, y se asigna a cada uno de ellos una probabilidad. Por supuesto, las probabilidades no tienen por qué ser ifuales. Los <strong>sucesos</strong> son combinaciones de resultados elementales a los que se asignan probabilidades conforme a unas reglas determinadas.</p>
+<p>Experimentemos lanzando un dado para obtener las probabilidades muestrales. Modelamos cada sucesión de lanzamientos mediante una <strong>secuencia discreta</strong>. Lanzaremos un dado bueno y otro trucado.</p>
+
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
