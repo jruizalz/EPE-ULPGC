@@ -12115,6 +12115,21 @@ $$P(x_1&lt; X \leq x_2) = F_X(x_2)-F_X(x_1)=\int_{x_1}^{x_2}f_X(x)dx$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Propiedades-de-la-funci&#243;n-de-masa-de-probabilidad-(fmp)">Propiedades de la funci&#243;n de masa de probabilidad (fmp)<a class="anchor-link" href="#Propiedades-de-la-funci&#243;n-de-masa-de-probabilidad-(fmp)">&#182;</a></h3><p>Como ya se ha visto, cuando la variable aleatoria es discreta, se define la <strong>función de masa de probabilidad</strong>, que se relaciona como sigue con la fdp:</p>
+<p>$$p_X(x_i)=P(\{X=x_i\})\iff f_X(x)=\sum_{i}p_X(x_i)\delta(x-x_i)$$</p>
+<p>Podemos relacionar la función de masa de probabilidad (fmp) con la función de distribución de probabilidad (FDP):</p>
+<p>$$p_X(x_n) = F_X(x_n)-F_X(x_{n-1}) \iff F_x(x_n)=\sum_{i=-\infty}^n p_X(x_i)$$</p>
+<p>Siguen fácilmente las siguientes propiedades:</p>
+<p>$$F_x(\infty)=1 \implies \sum_{i=-\infty}^{+\infty} p_X(x_i)=1$$</p>
+<p>$$P(x_{n_1} \leq X \leq x_{n_2}) = \sum_{i=n_1}^{n_2} p_X(x_i)$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Relaci&#243;n-entre-el-histograma-y-la-fdp">Relaci&#243;n entre el histograma y la fdp<a class="anchor-link" href="#Relaci&#243;n-entre-el-histograma-y-la-fdp">&#182;</a></h4><p>Supongamos que tenemos una muestra estadística con $N$ observaciones de una variable estadística. Podemos considerar que tales observaciones corresponden a realizaciones de un experimento modelado por un espacio de probabilidad sobre el que hemos definido una variable aleatoria correspondiente con la variable estadística.</p>
 <p>El espacio de probabilidad propociona un modelo teórico de los datos, mientras que las muestra estadísitca resulta de la experiencia empírica. ¿Podemos caracterizar probabilísticamente la población a partir de la muetsra estadística?</p>
 <p>Como sabemos podemos construir un histograma de frecuencias relativas, sin más que agrupar los valores de la variable estadística por intervalos. Considerando que todos los intervalos tienen igual anchura $\Delta x$, podemos aproximar la fdp en cada $x_i$ (puntos medios del intervalo, como sigue, siendo $F_i$ la frecuencia absoluta de observaciones que caen dentro del intervalo:</p>
@@ -12157,6 +12172,18 @@ $$E\{a_1g_1(X)+a_2g_2(X)\}=a_1E\{g_1(X)\}+a_2E\{g_2(X)\}$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Esperanza-y-momentos-en-el-caso-discreto">Esperanza y momentos en el caso discreto<a class="anchor-link" href="#Esperanza-y-momentos-en-el-caso-discreto">&#182;</a></h3><p>Si la <strong>variable aleatoria es discreta</strong>, se utilizan las funciones de masa de probabilidad en vez de las fdp, y sumas en vez de integrales:</p>
+<p>$$\eta_{g(X)} = E\{g(X)\}=\sum_{i=-\infty}^{\infty}g(x_i)p_X(x_i)$$</p>
+<p>$$m_n=E\{X^n\}=\sum_{i=-\infty}^{\infty}x^nf_X(x)dx$$</p>
+<p>$$\mu_n=E\{(X-\eta_X)^n\}=\sum_{i=-\infty}^{\infty}(x-\eta_X)^nf_X(x)dx$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Todos estos momentos tienen sus equivalentes muestrales, ya vistos en la parte de introducción a la estadística.</p>
 <p>Por otra parte, es muy habitual <strong>normalizar</strong> una variable aleatoria $X$, construyendo otra $Y=\frac{X-\eta_X}{\sigma_X}$ que tenga media nula y varianza unidad.</p>
 <p>Además, podemos definir:</p>
@@ -12164,8 +12191,97 @@ $$E\{a_1g_1(X)+a_2g_2(X)\}=a_1E\{g_1(X)\}+a_2E\{g_2(X)\}$$</p>
 <li>Coeficiente de asimetría: $\gamma_1=E\{\frac{(X-\eta_X)^3}{\sigma^3}\}=\frac{\mu_3}{\sigma_X^3}$ </li>
 <li>Coeficiente de exceso de curtosis: $\gamma_2=E\{\frac{(X-\eta_X)^4}{\sigma^4}\}-3=\frac{\mu_4}{\sigma_X^4}-3$. La distribución normal tiene un exceso de curtosis de 0, razón por la que se resta 3.</li>
 </ul>
-<p>Si la <strong>variable aleatoria es discreta</strong>, se utilizan las funciones de masa de probabilidad en vez de las fdp, y sumas en vez de integrales:</p>
-<p>$$\eta_{g(X)} = E\{g(X)\}=\sum_{i=-\infty}^{\infty}g(x_i)p_X(x_i)$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Funciones-condicionadas">Funciones condicionadas<a class="anchor-link" href="#Funciones-condicionadas">&#182;</a></h2><p>Consideremos un espacio de probabilidad $\mathscr{E}$ en el que se ha definido una variable aleatoria $X$, su función de distribución $F_X(x)$ y su función de densidad $f_X(x)$. Considérese, además, un suceso $A \in \mathscr{F}$.</p>
+<p>La <strong>función de distribución de $X$ condicionada por $A$</strong> es:</p>
+<p>$$F_X(x\, /\, A) = P(X \leq x \, /\, A) = \frac{P(\{X \leq x \bigcap A )\} }{P(A)}$$</p>
+<p>Y la <strong>función de densidad de $X$ condicionada por $A$</strong> es:</p>
+<p>$$f_X(x \, /\, A)=\frac{dF_X(x \, /\, A)}{dx}=\lim \limits_{\Delta x \to 0} \frac{F_X(x+\Delta x/2 \, /\, A)-F_X(x-\Delta x/2 \, /\, A)}{\Delta x}= \\
+=\lim \limits_{\Delta x \to 0} \frac{P\left(\{(x-\Delta x/2) &lt; x \leq (x+\Delta x/2)\} \, /\, A \right)}{\Delta x} $$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En general el suceso condicionante $A$ podemos definirlo con intervalos de la variable aleatoria. Suponiendo que $A=\{x_1\leq X \leq x_2\}$:</p>
+<p>$$\begin{align*}
+F_X(x\, /\, \{x_1\leq X \leq x_2\}) &amp; = \frac{P(\{X \leq x \bigcap \{x_1\leq X \leq x_2\ )\} }{P(\{x_1\leq X \leq x_2\})}=\\
+ &amp; = \begin{cases}
+    0       &amp; \quad x &lt; x_1\\
+    \frac{F_X(x)-F_X(x_1^-)}{F_X(x_2)-F_X(x_1^-)}  &amp; \quad x_1 \leq x \leq x_2\\
+    1 &amp;\quad x &gt; x_2
+  \end{cases}
+\end{align*}$$</p>
+<p>$$\begin{align*}
+f_X(x\, /\, \{x_1\leq X \leq x_2\}) = \begin{cases}
+    0       &amp; \quad x &lt; x_1\\
+    \frac{f_X(x)}{F_X(x_2)-F_X(x_1^-)}  &amp; \quad x_1 \leq x \leq x_2\\
+    0 &amp;\quad x &gt; x_2
+  \end{cases}
+\end{align*}$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Teorema-de-Bayes">Teorema de Bayes<a class="anchor-link" href="#Teorema-de-Bayes">&#182;</a></h3><p>Recordemos el <strong>Teorema de Bayes</strong> con dos sucesos:</p>
+<p>$$P(A/B) = \frac{P(B/A)P(A)}{P(B)}$$</p>
+<p>Si $B=\{X \leq x\}$:</p>
+<p>$$P(A\, / \, X \leq x) = \frac{F_X(x \, / \, A)P(A)}{F_X(x)} \iff F_X(x \, / \, A) = \frac{P(A\, / \, X \leq x)F_X(x)}{P(A)}$$</p>
+<p>Si $B=\{x_1 &lt; X \leq x_2\}$:</p>
+<p>$$P(A\, / \{x_1 &lt; X \leq x_2\}) = \frac{F_X(x_2 \, / \, A)-F_X(x_1 \, / \, A)}{F_X(x_2)-F_X(x_1)}P(A)$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Si $B=\{X=x\}$ y la variable aleatoria es continua nos encontramos con un problema para condicionar por $B$ pues su probabilidad es nula. En tal caso consideramos que $B=\{x&lt;X-\Delta x/2 \leq x+\Delta x/2\}$ y tomamos un paso al límite:</p>
+<p>$$\begin{align*}
+P(A \, / \, X=x) &amp; = \lim \limits_{\Delta x \to 0} P(A\, / \{x-\Delta x/2 &lt; X \leq x + \Delta x/2\}) \\
+&amp; = \lim \limits_{\Delta x \to 0} \frac{F_X(x +\Delta x/2 \, / \, A)-F_X(x-\Delta x/2 \, / \, A)}{F_X(x+\Delta x/2)-F_X(x-\Delta x/2)}P(A)
+\end{align*}
+$$</p>
+<p>Por tanto,</p>
+<p>$$ P(A \, / \, X=x) = \frac{f_X(x \, / \, A)P(A)}{f_X(x)} \iff f_X(x \, / \, A) = \frac{P(A \, / \, X=x)f_X(x)}{P(A)}$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Teorema-de-la-Probabilidad-Total">Teorema de la Probabilidad Total<a class="anchor-link" href="#Teorema-de-la-Probabilidad-Total">&#182;</a></h3><p>Sea $A_i \in \mathscr{P}(\Omega) \, i=1\ldots K$ es una partición del espacio muestral $\Omega$. Se obtiene inmediatamente el <strong>Teorema de la Probabilidad Total</strong></p>
+<p>$$F_X(x) = F_X(x \, / \, A_1)P(A_1)+\ldots + F_X(x \, / \, A_K)P(A_K)$$</p>
+<p>Derivando:</p>
+<p>$$f_X(x) = f_X(x \, / \, A_1)P(A_1)+\ldots + f_X(x \, / \, A_K)P(A_K)$$</p>
+<p>Podemos obtener una versión continua del teorema integrando $f_X(x \, / \, A) = \frac{P(A \, / \, X=x)f_X(x)}{P(A)}$:</p>
+<p>$$P(A) = \int_{-\infty}^{+\infty} P(A \, / \, X=x)f_X(x) dx$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Esperanza-y-momentos-condicionados">Esperanza y momentos condicionados<a class="anchor-link" href="#Esperanza-y-momentos-condicionados">&#182;</a></h3><p>$$\eta_{X/A} = E\{X \, / \, A\}=\int_{-\infty}^{\infty}xf_X(x\, / \, A)dx$$</p>
 
 </div>
 </div>
