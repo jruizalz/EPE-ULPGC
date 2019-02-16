@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>index slides</title>
+<title>5.Decisores_ML_MAP slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11905,47 +11905,11 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Estad&#237;stica-y-Procesos-Estoc&#225;sticos-(EPE)">Estad&#237;stica y Procesos Estoc&#225;sticos (EPE)<a class="anchor-link" href="#Estad&#237;stica-y-Procesos-Estoc&#225;sticos-(EPE)">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Estadística y Procesos Estocásticos (EPE) es una asignatura de formación matemática básica, que se estudia en el <strong>segundo semestre del primer curso</strong> del <em>Grado de Ingeniera en Tecnologías de la Telecomunicación</em>, en la Escuela de Ingeniería de Telecomunicación y Electrónica (EITE) de la Universidad de Las Palmas de Gran Canaria (ULPGC). Esta asignatura también se cursa en el <strong>primer semestre del segundo curso</strong> del Doble Grado en Dirección y Administración de Empresas y de Ingeniería en Tecnologías de la Telecomunicación, en la misma Escuela. El presente sitio web almacena un repositorio con los contenidos informáticos necesarios para seguir la asignatura.</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>En esta asignatura se explora el concepto de <em>variabilidad aleatoria</em> y la forma en que puede modelarse en los distintos contextos que surgen en el ámbito de las telecomunicaciones.</p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contenidos">Contenidos<a class="anchor-link" href="#Contenidos">&#182;</a></h2><ul>
-<li>Espacios de Probabilidad. </li>
-<li>Variables aleatorias. Simulación de variables aleatorias. </li>
-<li>Vectores aleatorios. Simulación de vectores aleatorios. </li>
-<li>Introducción a los procesos estocásticos. </li>
-<li>Recorridos aleatorios. </li>
-<li>Simulación de procesos. </li>
-<li>Procesos de Markov. </li>
-<li>Cadenas homogéneas de Markov. </li>
-<li>Simulación de cadenas de Markov. </li>
-<li>Sistemas de colas. </li>
-<li>Procesos de nacimiento y muerte. </li>
-<li>Simulaciones de sistemas M/M/m. </li>
-<li>Procesos estacionarios. Simulación de procesos estacionarios. Análisis espectral. Problemas de filtrado. </li>
-<li>Estimación de procesos estacionarios. Ideas sobre la consistencia de la estimación.</li>
+<h1 id="I.5-Decisores-ML-y-MAP">I.5 Decisores ML y MAP<a class="anchor-link" href="#I.5-Decisores-ML-y-MAP">&#182;</a></h1><p>Supongamos ahora que se establece una partición sobre el espacio muestral $\Omega$, $B_i \in \mathscr{P}(\Omega) \, i=1\ldots K$. Consideremos que <strong>acontence la observación</strong> del suceso $A$, para el que conocemos las <strong>probabilidades de transición</strong> $P((A/B_i)$.</p>
+<p>Nos preguntamos qué suceso condicionante ha causado la observación:</p>
+<ul>
+<li><strong>Principio de Máxima Verosimilitud (ML)</strong>: en ausencia de más información, elegimos el suceso $B_i$ maximiza la verosimilitud $L(B_i)=P(A/B_i)$.</li>
+<li><strong>Principio de Máximo <em>a Posteriori</em> (MAP)</strong>: si, además de las probabilidades de transición, se conocen las probabilidades <em>a priori</em>, pueden calcularse las probabilidasdes <em>a posteri</em> con el Teorema de Bayes y el de la Probabilidad Total. En tal caso, elegimos el suceso $B_i$ que maximiza la probabilidad a posteriori.</li>
 </ul>
 
 </div>
@@ -11955,420 +11919,72 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Los contenidos se exponen en clases teóricas y se demuestran en clases prácticas en el aula, y con proyectos de laboratorio. Los estudiantes deben contribuir activamente tanto en las clases prácticas en el aula como en las sesiones de laboratorio. Se hace un uso intensivo de software informático basado en Python, mediante el entorno Anaconda / Jupyter notebooks, que facilita un acceso cómodo e intuitivo al conjunto de paquetes de computación científica SciPy, cuyo conocimiento resultará de suma utilidad al alumnado, no solo en esta asignatura sino también en el futuro por su prestigio en la ciencia de datos actual en todo el mundo. Los estudiantes han de completar tanto mediante su trabajo no presencial como en las clases de laboratorio pequeños proyectos demostrativos sobre tal entorno.</p>
-<p><br/></p>
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC target="_blank">Acceder a los notebooks de la asignatura en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Temario">Temario<a class="anchor-link" href="#Temario">&#182;</a></h2><p>Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas de duración, conforme al siguiente temario y programa. Las claves que se utilizan son las siguientes:</p>
+<p>Consideremos de nuevo el caso del lanzamiento de un dado, y que el suceso observado es el $A=\{1,2,4,5\}$. Si el dado no está trucado, ya hemos visto cuáles son las probabilidades de transición de la observación por que el lanzamiento sea divisible o no por tres, obteniéndose directamente las verosimilitudes de ambas posibilidades:</p>
 <ul>
-<li>CLT: horas Clase Teoría, </li>
-<li>CPA: horas Clase Problemas Aula, </li>
-<li>LAB: horas Laboratorio, </li>
-<li>Tut: horas de clase tutorizada, </li>
-<li>Eva: horas Evaluación Continua</li>
+<li>$L(div3)\equiv P(A/div3)=\frac{1}{2}$</li>
+<li>$L(nodiv3)\equiv P(A/nodiv3)=\frac{3}{4}$</li>
 </ul>
-<p><strong>Trabajo total presencial: 60 horas = 30 CLT + 14 CPA + 8 LAB + 2 Tut + 6 Eva</strong></p>
+<p>Como $L(nodiv3)&gt;L(div3)$, el <strong>principio de máxima verosimilitud (ML)</strong> conduce a seleccionar el suceso $nodiv3$ como <strong>causante más verosímil</strong> de la observación. Adviértase que $L(nodiv3)+L(div3)\neq 1$.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bloque temático I: Espacio de Probabilidad</strong> (semanas 1 a cinco)</p>
-<ol>
-<li><a href=1.AnalisisExploratorioDatos.slides.html target="_blank">Estadística. Introducción al Análisis Exploratorio de Datos</a>. (4 CLT, 1 CPA, 1 LAB)<br/></li>
-<li><a href=2.Probabilidad_Sucesos.slides.html target="_blank">Probabilidad y Álgebra de Sucesos</a>.(2 CLT, 1 CPA)<br/><ul>
-<li><a href=2.Probabilidad_Sucesos_new.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=3.Probabilidad_Condicionada.slides.html target="_blank">Probabilidad condicionada. Independencia de sucesos. Verosimilitud</a>. (1 CLT, 0.5 CPA, 0.25 LAB) <ul>
-<li><a href=3.ProbabilidadCondicionada_Independencia_Verosimilitud.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=4.Probabilidad_Total_Bayes_MAP.slides.html target="_blank">Teorema de la Probabilidad Total. Teorema de Bayes y probabilidad a posteriori</a>. (1 CLT, 0.5 CPA, 0.25 LAB)<ul>
-<li><a href=4.ProbabilidadTotal_Bayes.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=5.Decisores_ML_MAP.slides.html target="_blank">Decisores de máxima verosimilitud (ML). Decisores máximo a posteriori (MAP)</a>. (1 CLT, 0.5 CPA, 0.25 LAB)</li>
-<li><a href=6.Experimentos_Compuestos_Bernoulli.slides.html target="_blank">Experimentos compuestos. Pruebas de Bernoulli</a>. (1 CLT, 0.5 CPA, 0.25 LAB)</li>
-</ol>
+<p>Si conocemos las probabilidades <em>a priori</em>, $P(div3)=\ ^1/_3$ y $P(nodiv3)=\ ^2/_3$, ya hemos visto que el Teorema de la Probabilidad Total permite calcular $P(A)=\ ^2/_3$. Ahora <strong>podemos calcular las probabilidades <em>a posteriori</em> haciendo uso del Teorema de Bayes</strong>:</p>
+<p>$$P(div3/A)=\frac{P(A/div3)P(div3)}{P(A)}= \frac{^1/_2 \ ^1/_3}{^2/_3}=\frac{1}{4}\\
+P(nodiv3/A)=\frac{P(A/nodiv3)P(nodiv3)}{P(A)}= \frac{^3/_4 \ ^2/_3}{^2 /_3}=\frac{3}{4}$$</p>
+<p>Como $P(nodiv3/A)&gt;P(div3/A)$, el <strong>principio de máximo <em>a posteriori</em> (MAP)</strong> conduce a seleccionar el suceso $nodiv3$ como <strong>causante más probable</strong> de la observación. Adviértase que $P(nodiv3/A)+P(div3/A)=1$.</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>En el ejemplo que acabamos de ver, el decisor de máxima verosimilitud (MAP) y el de máximo a posteriori (ML) proporcionan dan lugar a la misma toma de decisión: seleccionar como causa el suceso no divisible por tres.</p>
+<p>Sin embargo, es posible que ambos decisores den resultados diferentes. <strong>El decisor MAP incorpora información <em>a priori</em>, de la que no dispone el decisor ML</strong>, que puede resultar de suma utilidad. Veámoslo con un nuevo ejemplo:</p>
+<p>Consideremos el lanzamiento del dado bueno, pero ahora la observación es el suceso $A=\{3,4,5\}$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Las verosimilitudes ahora resultan:</p>
+<p>$$L(div3)\equiv P(A/div3)=\frac{P(\{3,4,5\}\cap\{3,6\})}{P(\{3,6\})}=\frac{^1/_6}{^1/_3}=\frac{1}{2}\\
+L(nodiv3)\equiv P(A/nodiv3)=\frac{P(\{3,4,5\}\cap\{1,2,4,5\})}{P(\{1,2,4,5\})}=\frac{^1/_3}{^2/_3}=\frac{1}{2}$$</p>
+<p>Dado que $L(div3)=L(nodiv3)$ el decisor ML no nos sirve.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Si conocemos las probabilidades <em>a priori</em>, $P(div3)=\ ^1/_3$ y $P(nodiv3)=\ ^2/_3$, el Teorema de la Probabilidad Total permite calcular $P(A)$:</p>
+<p>$$P(A) = P(A/div3)P(div3)+P(A/nodiv3)P(nodiv3)= \frac{1}{2}\frac{1}{3}+\frac{1}{2}\frac{2}{3}=\frac{1}{2}$$</p>
+<p>Y calculamos las probabilidades <em>a posteriori</em> con el Teorema de Bayes:</p>
+<p>$$P(div3/A)=\frac{P(A/div3)P(div3)}{P(A)}= \frac{^1/_2 \ ^1/_3}{^1/_2}=\frac{1}{3}\\
+P(nodiv3/A)=\frac{P(A/nodiv3)P(nodiv3)}{P(A)}= \frac{^1/_2 \ ^2/_3}{^1 /_2}=\frac{2}{3}$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Resulta que $P(nodiv3/A) &gt; P(div3/A)$, por lo que es más probable que la causa de la observación haya sido el suceso no divisible por tres.</p>
+<p>¿Qué ha pasado?</p>
 <ul>
-<li>La segunda semana habrá una clase tutorizada de introducción a Python.</li>
-<li>La quinta semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua</li>
-<li>Totales trabajo presencial: 20 horas = 10 CLT + 4 CPA + 2 LAB + 2 Tut + 2 Eva</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th><strong>Semanas</strong></th>
-<th><strong>CLT</strong></th>
-<th><strong>CPA</strong></th>
-<th><strong>LAB</strong></th>
-<th><strong>Tut</strong></th>
-<th><strong>Eva</strong></th>
-<th><strong>TOT</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semana 1</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>2</strong></td>
-</tr>
-<tr>
-<td>Semana 2</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>2</td>
-<td>0</td>
-<td><strong>6</strong></td>
-</tr>
-<tr>
-<td>Semana 3</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 4</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 5</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td><strong>TOT hrs</strong></td>
-<td><strong>10</strong></td>
-<td><strong>4</strong></td>
-<td><strong>2</strong></td>
-<td><strong>2</strong></td>
-<td><strong>2</strong></td>
-<td><strong>20</strong></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC/tree/master/Bloque_1 target="_blank">Acceder a los notebooks del Bloque I en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bloque temático II: Variable aleatoria</strong> (semanas 6 a diez)</p>
-<ol>
-<li><a href=0.IntroVariableAleatoria.slides.html target="_blank">Introducción al Concepto de Variable Aleatoria</a>. </li>
-<li><a href=1.VariableAleatoriaDiscreta.slides.html target="_blank">Variable aleatoria discreta. Funciones de masa de probabilidad. Caracterización</a> (1 CLT)</li>
-<li><a href=2.DistribucionesDiscretasHabituales.slides.html target="_blank">Distribuciones de probabilidad habituales</a>.  (1 CLT, 1 LAB)</li>
-<li><a href=3.VariableAleatoriaContinua.slides.html target="_blank">Variable aleatoria continua. Funciones de densidad y distribución de probabilidad. Caracterización</a>.  (1.5 CLT, 1 CPA)</li>
-<li>Variable aleatoria Gaussiana. Otras variables aleatorias continuas habituales. (1.5 CLT, 1 CPA, 1 LAB)</li>
-<li>Transformación de variables aleatorias (1 CLT, 1 CPA)</li>
-<li>Variable aleatoria bidimensional. Caracterización conjunta de vectores aleatorios bidimensionales (1.5 CLT, 1 CPA)</li>
-<li>Distribución Gaussiana bidimensional. Mezcla de Gaussianas. Clasificación y Estimación (1.5 CLT, 1 CPA, 1 LAB)</li>
-<li>Variable aleatoria multidimensional. Caracterización conjunta de vectores aleatorios n-dimensionales (0.5 CLT)</li>
-<li>Distribución Gaussiana multidimensional. Mezcla de Gaussianas. Clasificación y Estimación (0.5 CLT)</li>
-</ol>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>La décima semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua</li>
-<li>Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th><strong>Semanas</strong></th>
-<th><strong>CLT</strong></th>
-<th><strong>CPA</strong></th>
-<th><strong>LAB</strong></th>
-<th><strong>Tut</strong></th>
-<th><strong>Eva</strong></th>
-<th><strong>TOT</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semana 6</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 7</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 8</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 9</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 10</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td><strong>TOT hrs</strong></td>
-<td><strong>10</strong></td>
-<td><strong>5</strong></td>
-<td><strong>3</strong></td>
-<td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>20</strong></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC/tree/master/Bloque_2 target="_blank">Acceder a los notebooks del Bloque II en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bloque temático III: Secuencias y procesos aleatorios</strong> (semanas 11 a 15)</p>
-<ol>
-<li>Secuencias y procesos estocásticos. Caracterización de segundo orden. Secuencias y procesos Gaussianos. (2 CLT, 1 CPA)</li>
-<li>Estacionariedad. Ergodicidad. Estimación de parámetros. (1 CLT)</li>
-<li>Señal en ruido. Filtrado temporal. Regresión y estimación. Clasificación y detección. (3 CLT, 2 CPA, 2 LAB)</li>
-<li>Introducción a la caracterización espectral de secuencias y procesos estocásticos. Filtros frecuenciales. (1 CLT).</li>
-<li>Condición de Markov. Cadenas de Markov. Procesos puntuales. El proceso homogéneo de Poisson. (1 CLT, 1 CPA)</li>
-<li>Procesos de nacimiento y muerte. Sistemas de colas: Sistemas M/M/1 y M/M/m. (2 CLT, 1 CPA, 1 LAB)</li>
-</ol>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>La décimo quinta semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua</li>
-<li>Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th><strong>Semanas</strong></th>
-<th><strong>CLT</strong></th>
-<th><strong>CPA</strong></th>
-<th><strong>LAB</strong></th>
-<th><strong>Tut</strong></th>
-<th><strong>Eva</strong></th>
-<th><strong>TOT</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semana 11</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 12</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 13</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 15</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 15</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td><strong>TOT hrs</strong></td>
-<td><strong>10</strong></td>
-<td><strong>5</strong></td>
-<td><strong>3</strong></td>
-<td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>20</strong></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC/tree/master/Bloque_3 target="_blank">Acceder a los notebooks del Bloque III en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Evaluaci&#243;n">Evaluaci&#243;n<a class="anchor-link" href="#Evaluaci&#243;n">&#182;</a></h2><h3 id="Evaluaci&#243;n-continua">Evaluaci&#243;n continua<a class="anchor-link" href="#Evaluaci&#243;n-continua">&#182;</a></h3><ul>
-<li>Pruebas escritas al final de cada bloque temático (50%): Todas las respuestas tienen que estar motivadas. <strong>No se admitirán respuestas que no estén debidamente razonadas</strong>. Cada Prueba:<ul>
-<li>Preguntas teóricas cortas: 4 puntos</li>
-<li>Dos casos y/o problemas de respuesta larga: 6 puntos<ul>
-<li>Bloque I (15%)</li>
-<li>Bloque II (15%)</li>
-<li>Bloque III (20%)</li>
-</ul>
-</li>
-<li>Debe obtenerse al menos 3 en cada prueba para liberarla y promediar.</li>
-</ul>
-</li>
-<li>Ejercicios de autoevaluación, asistencia y participación en clase (10%). <strong>La asistencia a clase es obligatoria</strong>.</li>
-<li>Entrega de tres trabajos en grupo, uno por cada bloque temático (10% cada uno).<ul>
-<li>Debe obtenerse al menos un 3 en cada trabajo para liberarlo y promediar.</li>
-</ul>
-</li>
-<li>Elaboración de las prácticas de laboratorio con los mismos grupos de trabajo (10%). <strong>La sistencia al laboratorio es obligatoria</strong><ul>
-<li>Debe obtenerse al menos un 3 para liberar el laboratorio y promediar</li>
-</ul>
-</li>
-<li>Las partes no liberadas deben repetirse para la evaluación final.</li>
+<li>Si el suceso condicionante es divisible por tres, la observación $A$ se satisface la mitad de las veces, esto es, siempre que salga 3 (1 caso favorable de 2 posibles). Igualmente, si el suceso condicionante no es divisible por tres, la observación $A$ se satisface la mitad de las veces, esto es, siempre que salga 4 ó 5 (2 casos favorables de 4 posibles). Por tanto, <strong>las verosimilitudes son idénticas</strong>.</li>
 </ul>
 
 </div>
@@ -12378,33 +11994,10 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convocatoria-ordinaria-y-extraordinaria">Convocatoria ordinaria y extraordinaria<a class="anchor-link" href="#Convocatoria-ordinaria-y-extraordinaria">&#182;</a></h3><ul>
-<li>Se guardan las partes liberadas de la evaluación continua (siempre que se haya llegado a 3) para promediar</li>
-<li>Los estudiantes habrán de hacer el examen escrito, solo de las partes no liberadas. En conjunto, habrán de llegar al menos a un 3 (en total, no de cada parte) para poder promediar. </li>
-<li>En la convocatoria ordinaria: <ul>
-<li>los grupos pueden rehacer y presentar los trabajos no liberados</li>
-<li>igualmente, pueden hacer con el laboratorio, acordando con el profesorado el régimen de elaboración de las prácticas no liberadas</li>
+<ul>
+<li>Sin embargo, es más probable que resultado sea no divisible por tres (4 casos favorables de 6 posibles) a que sea divisible por tres (2 casos favorables de 6 posibles). <strong>El decisor MAP considera las diferentes probabilidades <em>a priori</em>, ponderando aquellos resultados en que éstas son mayores. Ello lo realiza a través del Teorema de Bayes al multiplicar las verosimilitudes por las probabilidades <em>a priori</em></strong>. La división por $P(A)$ es una normalización, para que resulte una probabilidad válida.</li>
 </ul>
-</li>
-<li>En la convocatoria extraordinaria<ul>
-<li>Los trabajos y el laboratorio no liberados deberán rehacerse <strong>de forma individual</strong>.</li>
-<li>Se acordará en cada caso con el profesorado el contenido de los trabajos y del laboratorio que no se hayan liberado.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convocatoria-especial">Convocatoria especial<a class="anchor-link" href="#Convocatoria-especial">&#182;</a></h3><ul>
-<li>Se hará un único examen escrito, con un formato semejante al de las convocatorias ordinaria y extraordinaria.</li>
-<li>Podrán preguntarse elementos propios de las prácticas en el aula y en el laboratorio, dentro de los bloques temáticos correspondientes.</li>
-<li>No se tendrán en consideración partes que pudieran haberse superado con anterioridad, debiendo examinarse de la asignatura completa</li>
-</ul>
+<p>Por ello, si las probabilidades <em>a priori</em> son iguales, el decisor MAP no puede mejorar el resultado del ML. Pero si son distintas, aprovecha la información disponible <em>a priori</em>. Podemos por ello considerar que el decisor ML es un decisor MAP en el que no tenemos información <em>a priori</em>, situación que se modela asignando idénticas probabilidades <em>a priori</em> a todos los sucesos condicionantes.</p>
 
 </div>
 </div>
