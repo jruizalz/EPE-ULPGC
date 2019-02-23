@@ -1,0 +1,1204 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{2. Probabilidad y Álgebra de Sucesos}
+    
+    
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section*{I.2 Probabilidad y Álgebra de
+Sucesos}\label{i.2-probabilidad-y-uxe1lgebra-de-sucesos}
+
+\subsection*{Reflexiones sobre el concepto de
+probabilidad}\label{reflexiones-sobre-el-concepto-de-probabilidad}
+
+Llamamos \textbf{experimento aleatorio} a \emph{todo fenómeno del que
+tenemos una incertidumbre en su resultado}, aun cuando conozcamos las
+condiciones bajo las que acontece. Por el contrario, en un
+\textbf{experimento determinista} podemos conocer el resultado de
+antemano, si tenemos suficiente información sobre tales condiciones.
+
+El fenómeno en cuestión puede ser \textbf{natural, sin posibilidad} de
+ser realizado experimentalmente, por ejemplo, el lugar de impacto en la
+superficie de la Tierra del próximo meteorito que no se desintegre en la
+atmósfera (aleatorio) o la hora de nacimiento del sol en Las Palmas de
+Gran Canaria el próximo 1 de enero (determinista), o un \textbf{ensayo
+que podemos repetir}, por ejemplo la cara ganadora en el lanzamiento de
+un dado (aleatorio) o el tiempo de caida de un peso en un tubo vacío
+vertical de diez metros de altura (determinista).
+
+    La Historia de la Ciencia ha mostrado una controversia en relación a la
+existencia de experimentos aleatorios. Con suficiente información de las
+condiciones experimentales y computadores potentes, ¿podríamos
+determinar de forma determinista el resultado de cualquier experimento?
+La \emph{Mecánica Cuántica} nos dice que hay una aleatoriedad
+consustancial a la Naturaleza.
+
+Sin embargo, para nuestros propósitos, añadiremos también experimentos
+cuya completa determinación no resulta práctica tales como, por ejemplo,
+el lanzamiento de un dado. Por tanto, también admitimos como causa de la
+aleatoriedad un insuficiente conocimiento de las condiciones del
+fenómeno.
+
+    Cada vez que realizamos un experimento aleatorio obtenemos una
+\textbf{observación} de la \textbf{variable estadística} o
+\textbf{muestral} de interés. Como ya sabemos, denominamos
+\textbf{espacio muestral} al \emph{conjunto de resultados posibles de un
+experimento aleatorio}.
+
+Que el resultado de un experimento aleatorio sea incierto, no quiere
+decir que todos los resultados posibles del espacio muestral sean total
+e igualmente inciertos. Por ejemplo, es más verosímil esperar lluvia en
+Gran Canaria en un día de invierno que en uno de verano.
+
+Aunque no podamos determinar por adelantado los resultados de un
+experimento aleatorio, podemos saber mucho de ellos. Por ejemplo, si un
+dado de seis caras no está trucado, sabemos que los resultados posibles
+al lanzarlo son sus seis caras y que no tenemos razón para pensar que
+saldrá una más que otra.
+
+    \textbf{¿Cómo podemos obtener información de los resultados de un
+experimento aleatorio?} Básicamente tenemos dos posibilidades para ello:
+
+\begin{itemize}
+\tightlist
+\item
+  La primera posibilidad es \textbf{aprender de la experiencia}: en
+  verano nunca nieva en las playas canarias, como vemos año tras año.
+  Sin embargo, vemos que en invierno nieva varias veces en las cumbres
+  más elevadas de las islas, y, aunque no es frecuente, a veces lo hace
+  incluso en otoño y en primavera.
+\item
+  Una posibilidad relacionada con la anterior es crear artificalmente la
+  experiencia mediante la \textbf{experimentación}. Por ejemplo, podemos
+  lanzar nosotros un dado para observar qué recurrrencias tenemos.
+\item
+  La segunda posibilidad es disponer de un \textbf{modelo teórico} que
+  nos indique qué resultados son posibles y con qué frecuencia sucede
+  cada uno. Ciertamente, si un dado no está trucado, podemos esperar que
+  cada cara salga una sexta parte de las veces.
+\end{itemize}
+
+En la práctica, ambas posibilidades están relacionadas. El aprendizaje a
+partir de la experiencia es la fase inductiva a partir de la cual
+establecemos una hipótesis. Una vez contrastada mediante la
+experimentación, tendremos una teoría que podremos utilizar de forma
+deductiva.
+
+    La \textbf{probabilidad} cuantifica el grado de certidumbre de cada
+resultado posible del experimento. Se trata, por tanto, de una medida
+asociada a cada resultado del espacio muestral: 
+\begin{itemize}
+\item Cuando un
+\textbf{resultado es imposible}, esto es, se tiene certidumbre absoluta
+de que no sucederá, se le asigna la \textbf{probabilidad 0}. 
+\item Cuando un
+\textbf{resultado es seguro}, esto es, se tiene certidumbre absoluta de
+que sucederá, se le asigna la \textbf{probabilidad 1}. 
+\item Entre estos dos
+situaciones extremas, se asignan \textbf{probabilidades entre 0 y 1} a
+todos los resultados del espacio muestral, dependiendo de la menor o
+mayor certidumbre que se tenga sobre los mismos.
+\end{itemize}
+
+\textbf{La medida de la certidumbre que proporciona la probabilidad
+corresponde al modelo teórico a partir del cual podemos hacer
+deducciones relativas a cómo se comportarán los resultados de un
+experimento aleatorio. La construcción de tal modelo mediante la
+observación corresponde a la estadística}.
+
+    \paragraph{Relación entre población estadística y
+probabilidad}\label{relaciuxf3n-entre-poblaciuxf3n-estaduxedstica-y-probabilidad}
+
+En la fase inductiva, de aprendizaje mediante la experiencia de un
+modelo, contamos con observaciones consistentes en una
+\textbf{subpoblación muestral} de la población estadística que estamos
+interesados en conocer: los resultados que obtendríamos si repitiéramos
+infinitas veces el experimento, recorriendo al hacerlo todas las
+posibilidades experimentales sin favorecer unas en relación a otras.
+Lógicamente, esperamos que la subpoblación estadística sea
+representativa del conjunto de la población.
+
+Realmente tal población estadística es una abstracción y proporciona el
+vínculo entre la estadística y la probabilidad. Aprender las
+características de la población estadística significa inducir una
+hipótesis sobre un modelo matemático (probabilístico) que representa el
+comportamiento de las observaciones si se repitiera infinitamente el
+experimento.
+
+Una vez disponemos un modelo probabilístico adecuadamente contrastado, es
+decir, que representa el comportamiento de los experimentos aleatorios,
+no necesitamos continuar realizando experimentos para hacer predicciones
+sobre nuevos resultados experimentales. Tan solo es necesario realizar
+deducciones a partir de la teoría que hemos construido.
+
+    \subsection*{Álgebra de sucesos}\label{uxe1lgebra-de-sucesos}
+
+Un \textbf{conjunto} \(A\) es una reunión de objetos distintos
+\(\{a_i\}\) llamados \textbf{elementos}. El número de elementos puede
+ser infinito. 
+\begin{itemize}
+\item El conjunto sin elementos se llama \textbf{vacío}:
+\(\emptyset\) 
+\item El conjunto de todos los elementos de interés, sin dejar
+ninguno fuera se llama \textbf{universal}: \(\Omega\). 
+\item Si \(a\) es un
+elemento de \(A\) decimos que \(a\) \textbf{pertenece} a \(A\):
+\(a \in A\). En caso contrario diremos que \textbf{no pertenece}:
+\(a \notin A\). 
+\item \(B\) es un \textbf{subconjunto} de \(A\), o \(B\)
+está \textbf{incluido} en \(A\), si todos los elementos de \(B\) también
+lo son de \(A\): \(A\subset B\). En caso contrario, diremos que
+\textbf{no está incluido}. 
+\item Dos conjuntos \(A\) y \(B\) son iguales,
+\(A = B\), si \(A\subset B\) y \(B \subset A\).
+\end{itemize}
+
+    \textbf{El espacio muestral \(\Omega\) es el conjunto cuyos elementos
+son todos los resultados posibles de un experimento aleatorio}. Por
+tanto, si \(x\) es un resultado posible del experimento aleatorio:
+\(x \in S\).
+
+Llamamos \textbf{suceso} a cualquier conjunto \(A\) de resultados
+posibles de un experimento aleatorio. 
+\begin{itemize}
+\item \textbf{Un suceso acontece
+siempre que se satisfaga uno de sus elementos}. 
+\item Todo suceso está
+incluido en el espacio muestral: \(A\subset \Omega\). 
+\item Un suceso con un
+único resultado se llama \textbf{suceso elemental}. 
+\item El espacio
+muestral se llama \textbf{suceso seguro} pues acontece siempre. 
+\item El
+suceso vacío \(\emptyset\) no acontece nunca y se llama, por ello,
+\textbf{suceso imposible}.
+\end{itemize}
+
+    Consideremos el experimento aleatorio \emph{lanzar un dado de seis
+caras} identificadas por las letras 'a' hasta 'f': 
+\begin{itemize}
+\item El espacio muestral
+es \(\Omega = \{a, b, c, d, e, f\}\). Es el \textbf{suceso seguro}, pues
+siempre saldrá uno de sus elementos. 
+\item El suceso \(A = \{b, c, e\}\)
+corresponde a que salga 'b', 'c' o 'e': \(b, c, e \in A\),
+\(A \subset \Omega\) 
+\item El suceso \(B = \{c, d\}\) corresponde a que
+salga 'c' o 'd': \(c, d \in B\), \(B \subset \Omega\)
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Operaciones} entre los subconjuntos del conjunto universal (o
+entre los sucesos del espacio muestral): 
+\begin{itemize}
+\item \textbf{Complemento},
+\(\overline A\): subconjunto de \(\Omega\) que no tiene elementos en
+\(A\). Se cumple: 
+\begin{itemize}
+\item \(\overline \emptyset = \Omega\), 
+\item
+\(\overline \Omega = \emptyset\). 
+\item \textbf{Diferencia}, \(A-B\):
+conjunto formado por los elementos de \(A\) que no pertenecen a \(B\). 
+\item
+Adviértase que \(\overline A = \Omega - A\).
+\end{itemize}
+
+\tightlist
+\item
+  \textbf{Unión}, \(A \cup B\): conjunto formado por elementos que
+  pertenecen a \(A\) \textbf{o} a \(B\). Se cumple:
+ \begin{itemize}
+\item
+  Propiedad conmutativa, \(A \cup B = B \cup A\)
+\item
+  Propiedad asociativa, \((A \cup B) \cup C = A \cup (B\cup C)\)
+\item
+  \(A\cup\emptyset = A\)
+\item
+  \(A\cup\Omega=\Omega\)
+\end{itemize}
+
+\item
+  \textbf{Intersección}, \(A \cap B\): conjunto formado por elementos
+  que simultáneamente pertenecen a \(A\) \textbf{y} a \(B\). Se cumple:
+\begin{itemize}
+\item
+  Propiedad conmutativa, \(A \cap B = B \cap A\)
+\item
+  Propiedad asociativa, \((A \cap B) \cap C = A \cap (B\cap C)\)
+\item
+  \(A\cap\emptyset = \emptyset\)
+\item
+  \(A\cap\Omega=A\)
+\item
+  Si \(A\cap B = \emptyset\) los \textbf{sucesos son incompatibles}.
+\end{itemize}
+\end{itemize}
+    
+    Otras propiedades de las operaciones conjuntistas:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Propiedades distributivas}
+\begin{itemize}
+\item
+  \(A\cup(B\cap C) = (A\cup B)\cap(A\cup C)\)
+\item
+  \(A\cap(B\cup C) = (A\cap B)\cup(A\cap C)\)
+\end{itemize}
+\item
+  \textbf{Leyes de Morgan}
+\begin{itemize}
+\item
+  \(\overline{A\cup B} = \overline{A}\cap \overline{B}\)
+\item
+  \(\overline{A\cap B} = \overline{A}\cup \overline{B}\)
+\end{itemize}
+\item
+  \textbf{Principio de dualidad}: si en una igualdad conjuntista se
+  reemplazan la uniones por intersecciones, las intersecciones por
+  uniones, \(\Omega\) por \(\emptyset\) y \(\emptyset\) por \(\Omega\),
+  la igualdad se mantiene.
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_14_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Una \textbf{partición} \(\mathscr{P}\) del conjunto universal (en
+nuestro caso, el suceso seguro) lo reparte en varios subconjuntos
+disjuntos (sucesos incompatibles) que, al unirse, reconstruye el
+conjunto universal.
+
+\[A_i \in \mathscr{P}(\Omega) \, i=1\ldots K \iff  \begin{matrix}
+  \bigcup_{i=1}^K A_i = \Omega &  \\
+  A_i \cap A_j = \emptyset & i\neq j  
+ \end{matrix}\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_17_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{Definiciones de
+probabilidad}\label{definiciones-de-probabilidad}
+
+Dependiendo de la estrategia que se utilice para medición de la
+incertidumbre, tendremos diferentes \textbf{interpretaciones de
+probabilidad} que dan lugar a distintas definiciones:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definición frecuencial de probabilidad}
+\item
+  \textbf{Definición clásica de probabilidad}
+\item
+  \textbf{Definición axiomática de probabilidad}
+\end{itemize}
+
+    \subsubsection*{Definición frecuencial de
+probabilidad}\label{definiciuxf3n-frecuencial-de-probabilidad}
+
+La \textbf{interpretación frecuencial de la probabilidad} nos da la
+primera definición, que se fundamenta en conceptos estadísticos. La
+probabilidad de un suceso se estima experimentalmente, repitiendo muchas
+veces el mismo experimento y calculando sus \textbf{frecuencias
+relativas}. La definición matemática de \textbf{probabilidad muestral}
+requiere repetir infinitas veces el experimento, asegurándonos de
+muestrear el espacio muestral sin beneficiar a unos resultados en
+relación a otros:
+
+\[P(A) = \lim_{N \to \infty}\frac{N_A}{N}\; ,\]
+
+donde \(N_A\) es el número de veces que acontece el suceso \(A\) y \(N\)
+es el número de veces que se repite el experimento.
+
+    En la práctica no podemos pasar al límite, y nos debemos conformar con
+una \textbf{estimación de la probabilidad muestral} de cada resultado
+posible, esto es, de cada elemento del espacio muestral. Tal estimación
+será mejor cuanto mayor sea el número de veces que repetimos el
+experimento.
+
+En particular, estamos interesados en conocer las frecuencias relativas,
+y, en el límite, las probabilidades, de todos y cada uno de los sucesos
+elementales, esto es, de todos y cada uno de los resultados que componen
+del espacio muestral. Las frecuencias relativas y, con ello, las
+probabilidades de todos sucesos se obtienen inmediatamente a partir de
+las de los sucesos elementales del espacio muestral.
+
+    Algunas \textbf{propiedades} obtenidas de la definición y del álgebra de
+sucesos:
+\begin{itemize}
+ \item Dado que \(0\leq N_A \leq N\), siempre se cumple que
+\(0\leq P(A)\leq 1\). 
+\item El suceso imposible \(\emptyset\) nunca
+acontece, por lo que \(N_\emptyset = 0\) y \(P(\emptyset)=0\). 
+\item El
+suceso seguro \(\Omega\) siempre acontece, por lo que \(N_\Omega =N\) y
+\(P(\Omega)=1\). 
+\item Si \(A\) acontece \(N_A\) veces su complementario,
+\(\overline A\) acontece \(N_{\overline A}=N-N_A\) veces, por lo que
+\(P(\overline A)=1-P(A)\).
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  Si dos sucesos, \(A\) y \(B\), no tienen resultados en común,
+  \(A\cap B =\emptyset\), son \textbf{incompatibles} y no pueden
+  verificarse al mismo tiempo, por lo que \(P(A\cap B)=0\). En este
+  caso, el suceso \(A\cup B\) acontece cuando lo hace uno sólo de los
+  dos, por lo que \(N_{A\cup B}=N_A + N_B\) y \(P(A\cup B)=P(A)+P(B)\).
+  Esto es:
+  \[P(A\cap B)=0 \implies P(A\cup B) = \lim_{N\to \infty}\frac{N_A+N_B}{N}=P(A)+P(B)\]
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  Si dos sucesos, \(A\) y \(B\), tienen resultados en común,
+  \(A\cap B \neq\emptyset\), pueden verificarse al mismo tiempo, por lo
+  que \(N_{A\cup B}=N_A + N_B - N_{A\cap B}\), pues debemos evitar
+  contar dos veces los resultados de la intersección, y
+  \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\). Esto es:
+  \[P(A\cap B)\neq 0 \implies P(A\cup B) = \lim_{N\to \infty}\frac{N_A+N_B-N_{A\cap B}}{N}=P(A)+P(B)-P(A\cap B)\]
+\end{itemize}
+
+    \paragraph{Experimento: estimación de probabilidades a partir de
+probabilidades
+muestrales}\label{experimento-estimaciuxf3n-de-probabilidades-a-partir-de-probabilidades-muestrales}
+
+Lanzamos un \textbf{dado bueno} y otro \textbf{trucado}, éste con la
+característica de que pesan más las caras 5 y 6 y que, por lo tanto,
+saldrán más veces. ¿Cuáles serán las probabilidades de cada cara para
+cada dado? 
+\begin{itemize}
+\item Dado bueno: \(P(1)=P(2)=P(3)=P(4)=P(5)=P(6)=\frac{1}{6}\) 
+\item Dado trucado: 
+\begin{itemize}
+\item \(P(1)=P(2)=P(3)=P(4)=\frac{1}{12}\) 
+\item \(P(5)=P(6)=\frac{1}{3}\)
+\end{itemize} 
+\item En ambos casos:
+\(P(1)+P(2)+P(3)+P(4)+P(5)+P(6)=1\)
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidades caras dado bueno:
+ [0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667]
+Suma de probabilidades: 1.0
+Probabilidades caras dado trucado:
+ [0.08333333 0.08333333 0.08333333 0.08333333 0.33333333 0.33333333]
+Suma de probabilidades: 1.0
+
+    \end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Un lanzamiento}:
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dado bueno (1 lanzamiento):
+ [3]
+Dado trucado (1 lanzamiento):
+ [6]
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Un único lanzamiento no nos permite extraer ninguna conclusión ya que la
+probabilidad muestral resulta 1 para el resultado obtenido, y cero para
+todos los demás. Debemos repetir el ensayo varias veces...
+
+    Veamos qué pasa con \(100\), \(1000\) y \(1000000\) de repeticiones,
+\textbf{reflexionando sobre los resultados y cómo las probabilidades
+muestrales obtenidas estiman las probabilidades teóricas}. Cada sucesión
+de lanzamientos se modela mediante una \textbf{secuencia discreta}. Como
+veremos, \textbf{según aumente el número de repeticiones del ensayo
+mejora la estimación las probabilidades muestrales obtenidas}.
+Teóricamente, necesitamos infinitas repeticiones para tener certeza en
+la estimación de las probabilidades.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Cien lanzamientos}:
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dado bueno (100 lanzamientos):
+ [1 6 4 4 6 1 5 3 5 2 1 6 2 3 4 2 6 3 6 2 3 4 2 6 1 3 4 4 5 5 2 2 4 2 2 3 4
+ 1 1 4 3 6 3 2 3 6 1 2 2 1 6 2 5 2 6 4 2 5 4 3 2 3 1 3 5 4 4 5 6 2 4 3 4 6
+ 5 2 1 6 3 1 2 5 1 2 2 2 5 6 6 6 2 1 2 6 6 3 1 5 6 1]
+Dado trucado (100 lanzamientos):
+ [5 6 5 2 5 6 5 6 5 1 5 3 2 3 6 6 5 5 5 4 6 6 4 2 2 5 2 6 5 4 1 4 5 5 5 5 5
+ 1 4 6 4 6 6 5 5 5 5 6 5 6 5 1 5 6 4 6 6 5 5 2 1 2 5 5 5 6 3 5 6 3 1 4 3 6
+ 5 5 5 5 3 5 5 5 4 1 5 2 3 5 5 1 4 5 4 6 6 6 6 5 6 6]
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_33_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_34_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidades muestrales dado bueno: 
+	 [0.15 0.24 0.15 0.15 0.12 0.19]
+Probabilidades muestrales dado trucado:
+	 [0.08 0.08 0.07 0.11 0.41 0.25]
+
+    \end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{\emph{Mil lanzamientos}}
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_37_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidades muestrales dado bueno: 
+	 [0.167 0.178 0.179 0.152 0.175 0.149]
+Probabilidades muestrales dado trucado:
+	 [0.08  0.086 0.086 0.077 0.352 0.319]
+
+    \end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Un millón de lanzamientos}
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{2.Probabilidad_Sucesos_new_files/2.Probabilidad_Sucesos_new_40_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidades muestrales dado bueno: 
+	 [0.16663  0.166231 0.167139 0.166776 0.166667 0.166557]
+Probabilidades muestrales dado trucado:
+	 [0.083198 0.083626 0.08349  0.083316 0.333425 0.332945]
+
+    \end{Verbatim}
+
+    \subsubsection*{Definición clásica de
+probabilidad}\label{definiciuxf3n-cluxe1sica-probabilidad}
+
+La definición frecuencial de probabilidad se ajusta a nuestra
+experiencia, y proporciona un vínculo entre la estadística y la
+probabilidad mediante las frecuencias relativas de los resultados
+experimentales. Sin embargo, no siempre podemos repetir los experimentos
+suficientes veces para poder hacer una estimación aceptable de las
+probabilidades muestrales. Además, si el número de resultados posibles
+es infinito, no podremos recorrer todo el espacio muestral en nuestros
+experimentos repetidos y tendremos que conformarnos con estimaciones de
+probabilidad muestral a partir de intervalos.
+
+Sin embargo, nuestro conocimiento del problema, en algunos casos, puede
+permitirnos establecer un modelo teórico para las probabilidades, sin
+necesidad de experimentación.
+
+Por ejemplo, al lanzar un dado bueno de seis caras hay seis resultados
+posibles, y la probabilidad de que salga cada una de ellas es de 1/6. No
+es necesario recurrir a la experimentación para saberlo.
+
+    La definición clásica de probabilidad aborda parcialmente los problemas
+mencionados, calculando analíticamente (sin experimentación) las
+probabilidades de cada resultado. En particular presupone 
+\begin{itemize}
+\item Un número
+finito de resultados experimentales en el espacio muestral \(N\). 
+\item Equiprobabilidad de todos los sucesos elementales:
+\(P_1 = P_2 \ldots = P_N = \frac{1}{N}\).
+\end{itemize}
+
+La probabilidad de un suceso es el cociente de las posibilidades
+teóricas de que acontezca, \(N_A\) y de todos los resultados posibles
+\(N\):
+
+\[P(A) = \frac{N_A}{N}\]
+
+    Por ejemplo, la probabilidad de que resulte par el lanzamiento de un
+dado es 1/2, pues de seis resultados posibles (1 a 6) tan sólo tres (2,
+4, 6) nos valen: \(P(par) = \frac{3}{6}=\frac{1}{2}\). \textbf{Esta
+definición de probabilidad satisface las propiedades derivadas del
+álgebra de sucesos, ya vistas para la probabilidad muestral}.
+
+Las \emph{limitaciones de la definición clásica} son muchas, pues los
+resultados elementales no suelen ser equiprobables y el espacio muestral
+puede ser infinito. No obstante, la idea de modelar teóricamente la
+probabilidad a partir del conocimiento del problema se extiende a
+situaciones muy complejas, más allá de la definición clásica.
+
+    \subsubsection*{Definición axiomática de
+probabilidad}\label{definiciuxf3n-axiomuxe1tica-de-probabilidad}
+
+En este caso se introduce una estructura matemática, el \textbf{espacio
+de probabilidad}, que formaliza teóricamente el experimento aleatorio en
+el que estamos interesados. Llamamos \textbf{espacio de probabilidad} a
+la terna \((\Omega, \mathscr{F}, P)\) donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Omega\) es el \textbf{espacio muestral} o conjunto de todos los
+  resultados posibles del experimento aleatorio.
+\item
+  \(\mathscr{F}\) es el \textbf{conjunto de todos los sucesos} de
+  interés. Es un \emph{conjunto de conjuntos}, pues todo suceso es un
+  conjunto de resultados contenidos en \(\Omega\).
+\item
+  \(\mathscr{F}\) debe contener a \(\emptyset\) y \(\Omega\).
+\item
+  \(\mathscr{F}\) debe contener el resultado de cualquier operación
+  conjuntista de sus elementos. Por ejemplo, si
+  \(A, B \subset \mathscr{F} \implies A \cup B \subset \mathscr{F}\)
+\item
+  \textbf{P es una ley que asigna probabilidades a los sucesos} de
+  \(\mathscr{F}\). Si \(A, B \subset \mathscr{F}\), \(P(A), P(B)\) son
+  las probabilidades de \(A\) y de \(B\).
+\end{itemize}
+
+    Se establecen unos \textbf{axiomas} tales que el cálculo de
+probabilidades sobre sucesos que se combinan mediante operaciones
+conjuntistas satisface las mismas propiedades que con la definición
+frecuencial y clásica: 
+\begin{enumerate}
+\item \(P(A), P(B)\geq 0\) 
+\item \(P(\Omega)=1\) 
+\item \(P(A \cup B) = P(A)+P(B)\) si \(A \cap B = \emptyset\)
+\end{enumerate}
+
+De los axiomas podemos derivar otras \textbf{propiedades} de la
+probabilidad utilizando operaciones conjuntistas: 
+\begin{itemize}
+\item
+\(P(\overline A) = 1 - P(A)\). 
+\item \(P(\emptyset) = 0\). 
+\item Si
+\(A\cap B \neq 0\implies P(A\cup B) =P(A)+P(B)-P(A\cap B)\). 
+\item Si
+\(A\subset B \implies P(A) \leq P(B)\).
+\end{itemize}
+
+    \subsection*{Experimento aleatorio: lanzar un
+dado}\label{experimento-aleatorio-lanzar-un-dado}
+
+Aplicaremos ahora algunos de los conceptos vistos a dos casos sencillos
+pero muy ilustrativos: los lanzamientos de un dado normal y el de un
+dado trucado. El dado trucado es el que ya hemos visto anteriormente
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Espacio muestral}: 1, 2, 3, 4, 5, 6
+\item
+  \textbf{Probabilidades elementales}:
+\item
+  Normal: P(1) = P(2) = P(3) = P(4) = P(5) = P(6) = 1/6
+\item
+  Trucado: P(1) = P(2) = P(3) = P(4) = 1/12 ; P(5) = P(6) = 1/3
+\item
+  \textbf{Sucesos}: son todos los subconjuntos que se puedan formar con
+  los elementos del espacio muestral. A partir de la probabilidades
+  elementales se asignan probabilidades a cada suceso conforme a las
+  leyes conjuntistas de la probabilidad. El suceso acontece si se
+  verifica cualquiera de sus elementos.
+\end{itemize}
+
+Siendo el espacio muestral finito de dimensión N=6, hay 2N = 26 = 64
+sucesos posibles, que codificamos con palabras binarias de 6 bits. El
+bit más significativo corresponde al 1 y el menos al 6. Por ejemplo, el
+suceso "ha salido un número par, esto es, 2, 4 ó 6, se codifica como
+{[}0, 1, 0, 1, 0, 1{]}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidades elementales del espacio muestral:
+
+Probabilidad dado bueno( [1 0 0 0 0 0] uno ) -> 0.16666666666666666
+Probabilidad dado trucado( [1 0 0 0 0 0] uno ) -> 0.0833333333 
+
+Probabilidad dado bueno( [0 1 0 0 0 0] dos ) -> 0.16666666666666666
+Probabilidad dado trucado( [0 1 0 0 0 0] dos ) -> 0.0833333333 
+
+Probabilidad dado bueno( [0 0 1 0 0 0] tres ) -> 0.16666666666666666
+Probabilidad dado trucado( [0 0 1 0 0 0] tres ) -> 0.0833333333 
+
+Probabilidad dado bueno( [0 0 0 1 0 0] cuatro ) -> 0.16666666666666666
+Probabilidad dado trucado( [0 0 0 1 0 0] cuatro ) -> 0.0833333333 
+
+Probabilidad dado bueno( [0 0 0 0 1 0] cinco ) -> 0.16666666666666666
+Probabilidad dado trucado( [0 0 0 0 1 0] cinco ) -> 0.3333333333 
+
+Probabilidad dado bueno( [0 0 0 0 0 1] seis ) -> 0.16666666666666666
+Probabilidad dado trucado( [0 0 0 0 0 1] seis ) -> 0.33333333349999994 
+
+
+    \end{Verbatim}
+
+    \subsubsection{Aplicación de leyes conjuntistas de la
+probabilidad}\label{aplicaciuxf3n-de-leyes-conjuntistas-de-la-probabilidad}
+
+    Veamos algunos ejemplos sencillos:
+
+\begin{itemize}
+\tightlist
+\item
+  Probabilidad suceso nulo: \(P(\emptyset)=0\)
+\item
+  Probailidad seceso seguro: \(P(\Omega)=1\)
+\item
+  Probabilidad de que no salga 1:
+\end{itemize}
+
+\[P(\overline{\{1\}})=
+\begin{cases}
+    P\left(\{2,3,4,5,6\}\right)=P(\{2\})+P(\{3\})+P(\{4\})+P(\{5\})+P(\{6\})\\
+    1-P(\{1\})
+  \end{cases}
+\]
+
+    \begin{itemize}
+\tightlist
+\item
+  Probabilidad de que salga par:
+  \(P(par)=P\left(\{2,4,6\}\right)=P(\{2\})+P(\{4\})+P(\{6\})\)
+\item
+  Probabilidad de que salga impar:
+  \(P(impar)=P\left(\{1,3,5\}\right)=P(\{1\})+P(\{3\})+P(\{5\})\)
+\item
+  \(par \cap impar = \emptyset \qquad par \cup impar = \Omega \implies par = \overline{impar} \iff P(par) = 1 - P(impar)\)
+\item
+  Probabilidad de que salga divisible por 3:
+  \(P(div3)=P\left(\{,3,6\}\right)=P(\{3\})+P(\{6\})\)
+\item
+  Probabilidad de que salga no divisible por 3:
+  \(P(nodiv3)=P\left(\{1,2,4,5\}\right)=P(\{1\})+P(\{2\})+P(\{4\})+P(\{5\})\)
+\item
+  \(div3 \cap nodiv3 = \emptyset \qquad div3 \cup nodiv3 = \Omega \implies div3 = \overline{nodiv3} \iff P(div3) = 1 - P(nodiv3)\)
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dado bueno:
+Probabilidad de que NO salga uno: 0.8333333333333334
+Probabilidad de que salga dos, tres, cuatro, cinco o seis 0.8333333333333333
+
+Dado trucado:
+Probabilidad de que NO salga uno: 0.9166666667
+Probabilidad de que salga dos, tres, cuatro, cinco o seis 0.9166666667
+
+    \end{Verbatim}
+
+    Comparemos con probabilidades muestrales, obtenidas con lanzamientos
+repetidos:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dado bueno:
+Probabilidad de que NO salga uno (100 repeticiones): 0.85
+suceso -> 1,2,3,4,5,6 =  [False  True  True  True  True  True]
+Probabilidad de que salga dos, tres, cuatro, cinco o seis (100 repeticiones) 0.85
+
+Dado trucado:
+Probabilidad de que NO salga uno (100 repeticiones): 0.92
+suceso -> 1,2,3,4,5,6 =  [False  True  True  True  True  True]
+Probabilidad de que salga dos, tres, cuatro, cinco o seis (100 repeticiones) 0.92
+
+    \end{Verbatim}
+
+    \textbf{Sucesos complementarios y particiones}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidades sucesos singulares:
+
+Probabilidad dado bueno( [0 0 0 0 0 0] nulo ) -> 0.0
+Probabilidad dado trucado( [0 0 0 0 0 0] nulo ) -> 0.0 
+
+Probabilidad dado bueno( [0 1 0 1 0 1] par ) -> 0.5
+Probabilidad dado trucado( [0 1 0 1 0 1] par ) -> 0.5000000001 
+
+Probabilidad dado bueno( [1 0 1 0 1 0] impar ) -> 0.5
+Probabilidad dado trucado( [1 0 1 0 1 0] impar ) -> 0.4999999999 
+
+Probabilidad dado bueno( [0 0 1 0 0 1] div3 ) -> 0.333333333333333
+Probabilidad dado trucado( [0 0 1 0 0 1] div3 ) -> 0.4166666668 
+
+Probabilidad dado bueno( [1 1 0 1 1 0] nodiv3 ) -> 0.666666666666667
+Probabilidad dado trucado( [1 1 0 1 1 0] nodiv3 ) -> 0.5833333332 
+
+Probabilidad dado bueno( [1 1 1 1 1 1] seguro ) -> 1.0
+Probabilidad dado trucado( [1 1 1 1 1 1] seguro ) -> 1.0 
+
+
+    \end{Verbatim}
+
+    \textbf{Probabilidades muestrales (sólo dado bueno)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso par -> ['dos' 'cuatro' 'seis'] -> Prob. muestral (100 repeticiones): 0.58
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso impar -> ['uno' 'tres' 'cinco'] 
+	 Prob. muestral (100 repeticiones): 0.42
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso divisible por tres -> ['tres' 'seis'] 
+	 Prob. muestral (100 repeticiones): 0.34
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso no divisible por tres -> ['uno' 'dos' 'cuatro' 'cinco'] 
+	 Prob. muestral (100 repeticiones): 0.66
+
+    \end{Verbatim}
+
+    \textbf{Sucesos seguro y nulo}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+suceso nulo INTERSECCIÓN suceso seguro: 	 [0 0 0 0 0 0]
+COMPLEMENTARIO suceso nulo == suceso seguro: 	 True
+suceso nulo UNIÓN suceso seguro: 		 [1 1 1 1 1 1]
+
+    \end{Verbatim}
+
+    \textbf{Partición resultado par y resultado impar}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+suceso par INTERSECCIÓN suceso impar: 		 [0 0 0 0 0 0]
+COMPLEMENTARIO suceso par == suceso impar: 	 True
+suceso par UNIÓN suceso impar: 			 [1 1 1 1 1 1]
+
+    \end{Verbatim}
+
+    \textbf{Partición resultado divisible por tres y resultado no divisible
+por tres}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+suceso divisible por tres INTERSECCIÓN suceso no divisible por tres:	 [0 0 0 0 0 0]
+COMPLEMENTARIO suceso divisible por tres == suceso no divisible por tres: 	 True
+suceso divisible por tres UNIÓN suceso no divisible por tres: 		 [1 1 1 1 1 1]
+
+    \end{Verbatim}
+
+    \textbf{Unión e intersección de sucesos}
+
+Sea el suceso \(A=\{3,4,5\}\). El suceso complementario es
+\(\overline A=\{1.2.6\}\). Por tanto \(P(\overline A) = 1-P(A)\).
+
+\begin{itemize}
+\tightlist
+\item
+  \(P(A\cup par)=P(\{2,3,4,5,6\})=1-P(\{1\})\)
+\item
+  \(P(A\cap par)=P(\{4\})\)
+\item
+  \(P(A\cup impar)=P(\{1,3,4,5\})=P(\{1\})+P(\{3\})+P(\{4\})+P(\{5\})\)
+\item
+  \(P(A\cap impar)=P(\{3,5\})=P(\{3\})+P(\{5\})\)
+\item
+  \(P(A\cup div3)=P(\{3,4,5,6\})=P(\{3\})+P(\{4\})+P(\{5\})+P(\{6\})\)
+\item
+  \(P(A\cap div3)=P(\{3\})\)
+\item
+  \(P(A\cup nodiv3)=P(\{1,2,3,4,5\})=P(\{1\})+P(\{2\})+P(\{3\})+P(\{4\})+P(\{5\})\)
+\item
+  \(P(A\cap nodiv3)=P(\{4,5\})=P(\{4\})+P(\{5\})\)
+\end{itemize}
+
+    En lo que sigue se trabaja \textbf{solo} con el \textbf{dado bueno}...
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidad de que salga tres o cuatro o cinco:	 0.5
+Probabilidad de que NO salga tres o cuatro o cinco:	 0.5
+Probabilidad de que salga uno, dos o seis:		 0.5
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso tres, cuatro o cinco -> ['tres' 'cuatro' 'cinco'] 
+	 Prob. muestral (100 repeticiones): 0.42
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso que salga par UNIÓN que salga tres o cuatro o cinco [0 1 1 1 1 1] 
+	Probabilidad: 0.833333333333333
+
+Suceso que salga par INTERSECCIÓN que salga tres o cuatro o cinco [0 0 0 1 0 0] 
+	Probabilidad: 0.166666666666667
+
+Probabilidad de que salga par ( 0.5 ) + 
+Probabilidad de que salga tres o cuatro o cinco ( 0.5 ) - 
+Probabilidad intersección ( 0.166666666666667 ) = 
+	= 0.833333333333333
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso que salga impar UNIÓN que salga tres o cuatro o cinco [1 0 1 1 1 0] 
+	Probabilidad: 0.6666666666666666
+
+Suceso que salga impar INTERSECCIÓN que salga tres o cuatro o cinco [0 0 1 0 1 0] 
+	Probabilidad: 0.3333333333333333
+
+Probabilidad de que salga impar ( 0.5 ) + 
+Probabilidad de que salga tres o cuatro o cinco ( 0.5 ) - 
+Probabilidad intersección ( 0.3333333333333333 ) = 
+	= 0.6666666666666667
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso que salga divisible por tres UNIÓN que salga tres o cuatro o cinco [0 0 1 1 1 1] 
+	Probabilidad: 0.666666666666667
+
+Suceso que salga divisible por 3 INTERSECCIÓN que salga tres o cuatro o cinco [0 0 1 0 0 0] 
+	Probabilidad: 0.166666666666667
+
+Probabilidad de que salga divisible por tres ( 0.333333333333333 ) + 
+Probabilidad de que salga tres o cuatro o cinco ( 0.5 ) - 
+Probabilidad intersección ( 0.166666666666667 ) = 
+	= 0.6666666666666661
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Suceso que salga no divisible por tres UNIÓN que salga tres o cuatro o cinco [1 1 1 1 1 0] 
+	Probabilidad: 0.8333333333333333
+
+Suceso que salga no divisible por 3 INTERSECCIÓN que salga tres o cuatro o cinco [0 0 0 1 1 0] 
+	Probabilidad: 0.3333333333333333
+
+Probabilidad de que salga no divisible por tres ( 0.666666666666667 ) + 
+Probabilidad de que salga tres o cuatro o cinco ( 0.5 ) - 
+Probabilidad intersección ( 0.3333333333333333 ) = 
+	= 0.8333333333333337
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

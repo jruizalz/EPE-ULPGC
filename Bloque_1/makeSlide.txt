@@ -1,11 +1,37 @@
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Para hacer transparencias 
+
+en LINUX
 jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags='{"remove_input"}' --TemplateExporter.exclude_output_prompt=True --to slides
+
+
+en WINDOWS (se intercambia ' y ")
+jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags="{'remove_input'}" --TemplateExporter.exclude_output_prompt=True --to slides
 
 
 sed -i 's/reveal.js\///' 1.AnalisisExploratorioDatos.slides.html 
 
-
 mv 1.AnalisisExploratorioDatos.slides.html  ../docs/
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Para exportar a Latex
 
+en LINUX
+jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags='{"remove_input"}' --TemplateExporter.exclude_output_prompt=True --to latex
+
+
+en WINDOWS (se intercambia ' y ")
+jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags="{'remove_input'}" --TemplateExporter.exclude_output_prompt=True --to latex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Para exportar a PDF
+
+en LINUX
+jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags='{"remove_input"}' --TemplateExporter.exclude_output_prompt=True --to pdf
+
+
+en WINDOWS (se intercambia ' y ")
+jupyter nbconvert 1.AnalisisExploratorioDatos.ipynb --TagRemovePreprocessor.remove_input_tags="{'remove_input'}" --TemplateExporter.exclude_output_prompt=True --to pdf
