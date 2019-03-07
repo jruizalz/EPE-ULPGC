@@ -11949,7 +11949,7 @@ a.anchor-link {
   \hline
   c &amp; (c,1) &amp; (c,2) &amp; (c,3) &amp; (c,4) &amp; (c,5) &amp; (c,6) &amp;  \\
   \hline
-  x &amp; (c,1) &amp; (c,2) &amp; (c,3) &amp; (c,4) &amp; (c,5) &amp; (c,6) &amp; 
+  x &amp; (x,1) &amp; (x,2) &amp; (x,3) &amp; (x,4) &amp; (x,5) &amp; (x,6) &amp; 
  \end{array}
 $$</p>
 
@@ -11960,8 +11960,8 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Sobre el espacio muestral conjunto puede definirse un álgebra de sucesos, consistente en todos los subconjuntos que puedan formarse a partir del mismo (en general, con ciertas restricciones que ahora no nos preocupan). Este álgebra de sucesos puede obtenerse con el producto cartesiano de las álgebras de sucesos de los espacios de probabilidad marginales, $\mathscr{F_1}\times \mathscr{F_2}$.</p>
-<p>En nuestro caso, tenemos $2⁶= 64$ sucesos en cada espacio muestral, por lo que habrá $2^12=1024$ sucesos en el espacio de probabilidad conjunto. Algunos sucesos relevantes son:</p>
+<p>Sobre el espacio muestral conjunto $\Omega_1 \times \Omega_2$ puede definirse un álgebra de sucesos, consistente en todos los subconjuntos que puedan formarse a partir del mismo (en general, con ciertas restricciones que ahora no nos preocupan). Representaremos el álgebra conjunta con el abuso de notación $\mathscr{F} = \mathscr{F_1}\times \mathscr{F_2}$, si bien solo los sucesos de tal álgebra conjunta que tienen estructura rectangular sobre el espacio muestral conjunto pueden obtenerse con el producto cartesiano de las álgebras de sucesos de los espacios de probabilidad marginales $\mathscr{F_1}$ y $\mathscr{F_2}$.</p>
+<p>En nuestro caso, tenemos 12 sucesos en el espacio muestral conjunto, por lo que habrá $2^{12}$ sucesos en el álgebra espacio de probabilidad conjunto (adviértase que, por lo dicho, solo hay $2^{10}$ en el producto de $\mathscr{F_1}$ y $\mathscr{F_2}$). Algunos sucesos relevantes son:</p>
 <ul>
 <li>Suceso imposible: $\emptyset = \{(A_1,\emptyset),(\emptyset,A_2),(\emptyset,\emptyset)\}$</li>
 <li>Suceso seguro: $\Omega_1 \times \Omega_2$</li>
@@ -11984,7 +11984,7 @@ $$</p>
   \hline
   c &amp; P(c,1) &amp; P(c,2) &amp; P(c,3) &amp; P(c,4) &amp; P(c,5) &amp; P(c,6) &amp;  \\
   \hline
-  x &amp; P(c,1) &amp; P(c,2) &amp; P(c,3) &amp; P(c,4) &amp; P(c,5) &amp; P(c,6) &amp; 
+  x &amp; P(x,1) &amp; P(x,2) &amp; P(x,3) &amp; P(x,4) &amp; P(x,5) &amp; P(x,6) &amp; 
  \end{array}
 $$</p>
 <p>Y, con ello, es posible asignar probabilidades a los sucesos de $\mathscr{F_1}\times \mathscr{F_2}$:</p>
@@ -12037,14 +12037,14 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Reptiendo el cálculo visto para todos los eleemntos del espacio muestral conjunto, podemos hacer la asignación de probabilidades:</p>
+<p>Reptiendo el cálculo visto para todos los elementos del espacio muestral conjunto, podemos hacer la asignación de probabilidades:</p>
 <p>$$
 \begin{array}{c|cccccccc|c}
   P &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; \\ 
   \hline
   c &amp; P(c,1) = \ ^1/_{12} &amp; P(c,2) = \ ^1/_{12} &amp; P(c,3) = \ ^1/_{12} &amp; P(c,4) = \ ^1/_{12} &amp; P(c,5) = \ ^1/_{12} &amp; P(c,6) = \ ^1/_{12} &amp;  \\
   \hline
-  x &amp; P(c,1) = \ ^1/_{12} &amp; P(c,2) = \ ^1/_{12} &amp; P(c,3) = \ ^1/_{12} &amp; P(c,4) = \ ^1/_{12} &amp; P(c,5) = \ ^1/_{12} &amp; P(c,6) = \ ^1/_{12} &amp; 
+  x &amp; P(x,1) = \ ^1/_{12} &amp; P(x,2) = \ ^1/_{12} &amp; P(x,3) = \ ^1/_{12} &amp; P(x,4) = \ ^1/_{12} &amp; P(x,5) = \ ^1/_{12} &amp; P(x,6) = \ ^1/_{12} &amp; 
  \end{array}
 $$</p>
 <p>Puede advertirse fácilmente que la suma de todas las probabilidades es $1$, como corresponde al suceso seguro.</p>
@@ -12158,7 +12158,7 @@ $$P(A)=p^6(1-p)^4$$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Un caso de especial interés es aquel en el que solo hay <strong>dos causas posibles</strong> que identificamos como <strong>hipótesis</strong> a determinar a partir de las <strong>observaciones</strong>. Algunos ejemplos sencillos son</p>
 <ul>
-<li>El test de enfermedad, en el que tenemos dos posibles causas, $S_E$ (hay enfermedad) y $N_E$ (no hay enfermedad), y dos posibles efectos, $T⁺$ (test positivo) y $T^-$ (test negativo). Otros equivalentes son:</li>
+<li>El test de enfermedad, en el que tenemos dos posibles causas, $S_E$ (hay enfermedad) y $N_E$ (no hay enfermedad), y dos posibles efectos, $T^+$ (test positivo) y $T^-$ (test negativo). Otros equivalentes son:</li>
 <li>La detección RADAR, donde las causas son "hay blanco" y "no hay blanco" y los efectos "blanco detectado" y "blanco no detectado".</li>
 <li>Un sistema de comunicación digital, en el que las causas son $0_T$ (se transmite $0$) y $1_T$ (se transmite $1$) y los efectos son $0_D$ (se detecta $0$ en el receptor) y $1_D$ (se detecta $1$ en el receptor)
 <img src="attachment:diagrama_canal_binario.jpg" alt="diagrama_canal_binario.jpg"></li>
@@ -12189,7 +12189,7 @@ $$P(A)=p^6(1-p)^4$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En el <strong>esquema clásico</strong>, la elección de la hipótesis se hace dependiendo de qué verosimilitud sea mayor para una observación dada:</p>
+<h3 id="Estrategia-Cl&#225;sica">Estrategia Cl&#225;sica<a class="anchor-link" href="#Estrategia-Cl&#225;sica">&#182;</a></h3><p>En el <strong>esquema clásico</strong>, la elección de la hipótesis se hace dependiendo de qué verosimilitud sea mayor para una observación dada:</p>
 <ul>
 <li>Se observa $\mathbf{O_0}$<ul>
 <li>$L(H_0) = P(O_0;H_0) &gt; L(H_1) = P(O_0;H_1) \implies H_0$. Lógicamente el test se diseña para que así sea.</li>
@@ -12243,7 +12243,7 @@ $$P(A)=p^6(1-p)^4$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Veamos un primer ejemplo práctico. Supongamos que un sistema RADAR se diseña con las siguientes características:</p>
+<h3 id="Ejemplo-1">Ejemplo 1<a class="anchor-link" href="#Ejemplo-1">&#182;</a></h3><p>Veamos un primer ejemplo práctico. Supongamos que un sistema RADAR se diseña con las siguientes características:</p>
 <ul>
 <li>Probabilidad de detección: $P_D=0.99$</li>
 <li>Probabilidad de falsa alarma: $P_{FA}\equiv\alpha=0.15$</li>
@@ -12264,7 +12264,7 @@ $$P(A)=p^6(1-p)^4$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A modo de segundo ejemplo, consideremos un test clínico con las siguientes características:</p>
+<h3 id="Ejemplo-2">Ejemplo 2<a class="anchor-link" href="#Ejemplo-2">&#182;</a></h3><p>A modo de segundo ejemplo, consideremos un test clínico con las siguientes características:</p>
 <ul>
 <li>$\mathbf{H_0}$: no hay enfermedad</li>
 <li>$\mathbf{H_1}$: hay enfermedad</li>
@@ -12286,7 +12286,7 @@ $$P(A)=p^6(1-p)^4$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En el <strong>esquema bayesiano</strong>, se dispone de las probabilidades <em>a priori</em> de las hipótesis, $P(H_0)$ y $P(H_1)$ y de las probabilidades de transición condionadas, o verosimilitudes:</p>
+<h3 id="Estrategia-Bayesiana">Estrategia Bayesiana<a class="anchor-link" href="#Estrategia-Bayesiana">&#182;</a></h3><p>En el <strong>esquema bayesiano</strong>, se dispone de las probabilidades <em>a priori</em> de las hipótesis, $P(H_0)$ y $P(H_1)$ y de las probabilidades de transición condionadas, o verosimilitudes:</p>
 <ul>
 <li>$L(H_0) = P(O_0/H_0) = 1-P(O_1/H_0)$, </li>
 <li>$L(H_1) = P(O_1/H_1) = 1-P(O_0/H_1)$</li>
@@ -12350,6 +12350,78 @@ $$P(E)=P(H_1/O_0)P(O_0)+P(H_0/O_1)P(O_1)$$</li>
 <li>$P(O_i/H_i), i=0\ldots K-1$ representan probabilidades de clasificación correcta.</li>
 <li>$P(O_i/H_j), i\neq j$ representan probabilidades de error.</li>
 </ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ejemplo-3">Ejemplo 3<a class="anchor-link" href="#Ejemplo-3">&#182;</a></h3><p>Considérense tres cajas con resistencias, una de ella con resistencias de buena calidad (B), otra con resistencias de calidad regular (R), y otra con resistencias de mala calidad (M). Al sacar al azar una resistencia de cada una de las tres cajas resultan las siguientes probabilidades de fallo (F), de las que inmediatamente pueden obtenerse las probabilidades e que no fallen (NF):</p>
+<ul>
+<li>$P(F;M) = 0.1 \implies P(NF) = 1 - P(F;M) = 0.9$</li>
+<li>$P(F;R) = 0.01 \implies P(NF) = 1 - P(F;R) = 0.09$</li>
+<li>$P(F;B) = 0.001 \implies P(NF) = 1 - P(F;B) = 0.009$</li>
+</ul>
+<p>Cada una de las cajas configura una <strong>subpoblación</strong> de resistencias. A la vista de una resistencia obtenida al azar (<strong>observación</strong>), nos interesa determinar de qué subpoblación (o caja) proviene. Tenemos para ello tres <strong>hipótesis</strong>, cada una correspondiente a una subpoblación (M, R, M), y debemos hacer inferencias relativas a las hipótesis a partir de la observación.</p>
+<p>El experimento de extracción de la resistencia tiene dos componentes:</p>
+<ul>
+<li>Selección de la subpoblación, o caja.</li>
+<li>Una vez seleccionada la subpoblación, o caja, extraer la resistencia de la misma</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En ausencia de más información, simplemente consideramos que tenemos tres subploblaciones que se distinguen por medio de un parámetro (M, R, B). Al extraer una resistencia al azar, las <strong>verosimilitudes</strong>, expresadas por las probabilidades parametrizadas anteriores, nos permiten hacer inferencias sobre cada una de las hipótesis. Por ejemplo, si la resistencia extraída falla (F), tenemos las verosimilitudes de que provenga de cada una de las cajas. Igualmente si la resistencia no falla. Podemos, por tanto, aplicar el <strong>criterio de máxima verosimilitud</strong> para inferir de qué subpoblación o caja es más verosímil que se haya extraído la resistencia.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sin embargo, podemos también considerar que estamos ante un experimento compuesto, en el que un experimento aleatorio, $\epsilon_1$, es la selección de una subpoblación o caja y otro, $\epsilon_2$ la extracción de la resistencia de la misma. En tal caso, podemos considerar que <strong>las probabilidades parametrizadas anteriores corresponden a probabilidades condicionadas</strong>. Si, además, disponemos de las <strong>probabilidades <em>a priori</em></strong> de seleccionar cada una de las subpoblaciones, $P(M)$, $P(R)$, $P(B)$, tenemos una caracterización completa del experimento compuesto $\epsilon_1 \times \epsilon_2$:</p>
+<ul>
+<li>$P(F/M) \equiv P(F;M) \implies P(F \bigcap M) = P(F/M)P(M)$</li>
+<li>$P(F/R) \equiv P(F;R) \implies P(F \bigcap R) = P(F/R)P(R)$</li>
+<li>$P(F/B) \equiv P(F;B) \implies P(F \bigcap B) = P(F/B)P(B)$</li>
+</ul>
+<p>Donde se considera que los espacios muestrales son $\Omega_1 = \{M, R, B\}$ y $\Omega_2 = \{F, NF\}$. También se comete un habitual abuso de notación (para simplificarla) en los sucesos del espacio muestral conjunto $\Omega_1 \times \Omega_2$ donde, por ejemplo, $\Omega_1 \times F \equiv F$ ó $M \times \Omega_2 \equiv M$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ahora podemos utilizar el <strong>Teorema de la Probabilidad Total</strong> para obtener</p>
+<p>$$P(F) = P(F/M)P(M) + P(F/R)P(R) + P(F/B)P(B)$$</p>
+<p>Y el <strong>Teorema de Bayes</strong> para obtener las probabilidades a posteriori de cada subpoblación, o caja, en el caso de que extraigamos una resistencia que falle:</p>
+<p>$$P(M/F) = \frac{P(F/M)P(M)}{P(F)} \quad P(R/F) = \frac{P(F/R)P(R)}{P(F)} \quad P(B/F) = \frac{P(F/B)P(B)}{P(F)}$$</p>
+<p>Calcular cómo resultarían las probabilidades si $P(M) =\ ^3/_6$, $P(R) =\ ^2/_6$ y $P(B) =\ ^1/_6$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ejemplo-4">Ejemplo 4<a class="anchor-link" href="#Ejemplo-4">&#182;</a></h3><p>Consideremos un test diagnóstico en el que:</p>
+<ul>
+<li>$P(T^-; E) = 0.95$</li>
+<li>$P(T^+; S) = 0.95$</li>
+</ul>
+<p>donde $S$ se refiere a "sano" o <strong>hipótesis nula</strong> y $E$ a enfermo o <strong>hipótesis alternativa</strong>. Calcular el <strong>nivel de significación</strong> o <strong>probabilidad de error de Tipo I</strong> y la <strong>probabilidad de error de Tipo II</strong>. Discutir estadísitcamente el significado de que un test resulte positivo.</p>
+<p>COnsidérese ahora que en una población de $10000$ personas, en promedio la enfermedad la tengan $10$ de ellas. ¿Cuál será la probabilidad de que una persona a la que el test le dé positivo esté realmente enferma?</p>
 
 </div>
 </div>
