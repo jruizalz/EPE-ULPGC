@@ -1,0 +1,793 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+
+    % AÑADIDO POR JUAN
+    \usepackage{mathrsfs}   
+
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{II.1. Variable Aleatoria Discreta}
+    
+    
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{ii.1-variable-aleatoria-discreta}{%
+\section*{Variable Aleatoria
+Discreta}\label{ii.1-variable-aleatoria-discreta}}
+
+Consideremos que la variable aleatoria \(X\) sólo toma valores sobre un
+conjunto (finito o infinito) numerable de números. Los números
+Naturales, \(\mathbb{N}\), los números Enteros, \(\mathbb{Z}\), y los
+números Racionales, \(\mathbb{Q}\), son ejemplos de conjuntos infinitos
+numerables. Por su parte, los seis números de las caras de un dado
+constituyen un ejemplo de conjunto numerable finito.
+
+Consideremos que \(x_i\) son los valores que puede tomar la variable
+aleatoria, donde \(i\in I\) se refiere a un índice numerable que recorre
+\(I\) para poder indexar todos los valores. Por tanto \(\{X=x_i\}\) se
+refiere a un suceso elemental cualquiera.
+
+    Los sucesos correspondientes a cada valor de una variable discreta
+pueden tener probabilidades arbitrarias, que interpretaremos con el
+símil mecánico de \emph{masa}. Podemos entonces definir una
+\textbf{función de masa de probabilidad (fmp)} que asigna una masa de
+probabilidad a cada suceso elemental representado por un valor posible
+de la variable aleatoria discreta
+
+\[p_X(x_i)=P(\{X=x_i\})\qquad i \in I\]
+
+Considerando las propiedades de la probabilidad, se cumple:
+
+\[0\leq p_X(x_i)\leq 1 \qquad \forall i \in I\]
+
+\[\sum_{i \in I} p_X(x_i)=1\]
+
+Por coherencia con la definición de variable aleatoria podemos
+considerar que \(p_X(x)\) está definida en todo el eje real, tomando
+\textbf{valor cero} fuera de los puntos \(x_i\) en los que hay masa de
+probabilidad.
+
+    Supongamos un dado trucado, cuya función de masa de probabilidad se
+representa en la siguiente tabla:
+
+\[
+\begin{array}{c|cccccc|c}
+  X & 1 & 2 & 3 & 4 & 5 & 6 &  \\ 
+  \hline
+  p_X(x_i) & \frac{1}{24} & \frac{5}{24} & \frac{5}{24} & \frac{3}{24} & \frac{4}{24} & \frac{6}{24} & \sum_i p_X(x_i)=1
+ \end{array}
+\]
+
+Podemos fácilmente obtener las probabilidades de sucesos arbitrarios.
+Por ejemplo, la probabilidad de que salga \(3\) ó \(5\) es:
+
+\[
+P(X=\{3,5\})=P(\{X=3\}\bigcup \{X=5\}) = p_X(3)+p_X(5)=\frac{9}{24}
+\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.1.VariableAleatoriaDiscreta_files/II.1.VariableAleatoriaDiscreta_4_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Supongamos ahora, sin pérdida de generalidad, que el índice que numera
+los posibles valores de la variable aleatoria \(X\) es el conjunto de
+todos los números enteros \(\mathbb{Z}\), y que la ordenación es tal que
+\(i<j \iff x_i < x_j\).
+
+Definimos la \textbf{función de probabilidad acumuada (FPA)},
+\(F_X(x_i)\), como sigue:
+
+\[F_X(x_i)=\sum_{j=-\infty}^{i}p_X(x_j)\]
+
+Adviértase que \(F_X(-\infty)=0\), \(F_X(\infty)=1\) y que \(F_X(x_i)\)
+es una función \emph{no decreciente} en toda subsucesión de puntos
+\(x_i\).
+
+Por su parte, es fácil ver que \(p_X(x_i)=F_X(x_i)-F_X(x_{i-1})\)
+
+    Calculemos la FPA para nuestro dado trucado, representándola en una
+tabla junto con la fmp:
+
+\[
+\begin{array}{c|cccccccc|c}
+  X & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & \\ 
+  \hline
+  p_X(x_i) & 0 & \frac{1}{24} & \frac{5}{24} & \frac{5}{24} & \frac{3}{24} & \frac{4}{24} & \frac{6}{24} & 0 & \sum_i p_X(x_i)=1 \\
+  \hline
+  F_X(x_i) & 0 & \frac{1}{24} & \frac{6}{24} & \frac{11}{24} & \frac{14}{24} & \frac{18}{24} & \frac{24}{24} & \frac{24}{24} & \begin{matrix}  
+  F_X(x_i\leq 0)=0\\
+  F_X(x_i\geq 6)=1 
+ \end{matrix}
+ \end{array}
+\]
+
+Donde, para completar la repesentación hemos añadido los valores \(0\) y
+\(7\) que, lógicamente, corresponden a sucesos imposibles (como
+cualquier otro valor distinto de los primeros seis números naturales).
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.1.VariableAleatoriaDiscreta_files/II.1.VariableAleatoriaDiscreta_7_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{probabilidad-condicionada}{%
+\subsection*{Probabilidad condicionada}\label{probabilidad-condicionada}}
+
+Considérese un suceso \(M\), de probabilidad \(P(M)\), del espacio
+muestral sobre el que se ha definido la variable aleatoria discreta
+\(X\). Definimos la función de masa de probabilidad de \(X\)
+condicionada por \(M\) como sigue:
+
+\[p_X(x_i/M) = \frac{P(\{X=x_i\}\bigcap M)}{P(M)} \]
+
+Adviértase que \(\sum_i p_X(x_i/M) =1\)
+
+Frecuentemente \(M\) podrá expresarse por medio de la variable aleatoria
+\(X\), lo que simplifica el cálculo.
+
+    Consideremos los sucesos \emph{Par} e \emph{Impar} en el dado trucado
+que ya hemos visto y calculemos las funciones de masa de probabilidad
+condicionadas \(p_X(x_i/Par)\) y \(p_X(x_i/Impar)\)
+
+\[
+\begin{array}{c|cccccc|c}
+  X & 1 & 2 & 3 & 4 & 5 & 6 &  \\ 
+  \hline
+  p_X(x_i) & \frac{1}{24} & \frac{5}{24} & \frac{5}{24} & \frac{3}{24} & \frac{4}{24} & \frac{6}{24} & \sum_i p_X(x_i)=1 \\
+  \hline
+  P(Impar) & \frac{1}{24} & + & \frac{5}{24} & + & \frac{4}{24} &  & P(Impar) = \frac{10}{24} \\
+  P(Par)  &  & \frac{5}{24} & + & \frac{3}{24} & + & \frac{6}{24} & P(Par) = \frac{14}{24}\\
+  \hline
+  p_X(x_i/Impar) & \frac{1}{10} & 0 & \frac{5}{10} & 0 & \frac{4}{10} & 0 & \sum_i p_X(x_i/Impar)=1 \\
+  p_X(x_i/Par) & 0 & \frac{5}{14} & 0 & \frac{3}{14} & 0 & \frac{6}{14} & \sum_i p_X(x_i/Par)=1
+ \end{array}
+\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.1.VariableAleatoriaDiscreta_files/II.1.VariableAleatoriaDiscreta_11_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Podemos también definir la probabilidad de un suceso \(M\) condicionada
+por un valor arbitrario \(x_i\) de la variable aleatoria \(X\). Para
+ello no hay más que advertir que \(\{X=x_i\}\) es un suceso del espacio
+muestral:
+
+\[P(M/X=x_i)= \frac{P(M \bigcap \{X=x_i\})}{P(\{X=x_i\})}=\frac{P(M \bigcap \{X=x_i\})}{p_X(x_i)}\]
+
+Haremos uso frecuente del abuso de notación
+\(P(M/x_i)\equiv P(M/X=x_i)\).
+
+Adviértase que \(P(M/x_i) \neq p_X(x_i/M)\), estando ambas expresiones
+relacionadas mediante el Teorema de Bayes, como se verá más adelante.
+
+    \hypertarget{teorema-de-la-probabilidad-total}{%
+\subsection*{Teorema de la Probabilidad
+Total}\label{teorema-de-la-probabilidad-total}}
+
+Consideremos una partición del espacio muestral \[
+M_j \in \mathscr{P}(\Omega) \, j=1\ldots N\iff  \begin{matrix}
+  \bigcup_{j=1}^N M_j = \Omega &  \\
+  M_j \cap M_k = \emptyset & j\neq k  
+ \end{matrix}
+\]
+
+y que conocemos las funciones de masa de probabilidad de una variable
+aleatoria \(X\) definida en el mismo condicionadas por todos los sucesos
+de dicha partición \(p_X(x_i/M_j)\), así como las probabilidades de
+todos los sucesos condicionantes.
+
+La función de masa de probabilidad total (sin condicionar) de la
+variable aleatoria \(X\) es
+
+\[p_X(x_i) = \sum_{j=1}^N p_X(x_i/M_j)P(M_j)\]
+
+    Adviértase que el teorema permite descomponer una función de masa de
+probabilidad en \emph{mezcla} (\emph{mixture}) de funciones de masa de
+probabilidad condicionadas, algo que resulta con frecuencia útil.
+
+En el caso de tener un único suceso \(M\), consideramos que el espacio
+muestral se particiona con él y con su suceso complementario
+\(\overline M\), y que \(P(\overline M)=1-P(M)\), resultando:
+
+\[p_X(x_i)=p_X(x_i/M)P(M)+p_X(x_i/\overline M)(1-P(M))\]
+
+En el ejemplo del dado trucado podemos advertir fácilmente que
+
+\[p_X(x_i) = p_X(x_i/Impar)P(Impar) + p_X(x_i/Par)P(Par)\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.1.VariableAleatoriaDiscreta_files/II.1.VariableAleatoriaDiscreta_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    La probabilidad total también puede aplicarse de forma alternativa, si
+lo que se conocen son las probabilidades un suceso arbitrario \(M\)
+condicionadas por cada uno de los valores posibles de la variable
+aleatoria \(X\), esto es, si se conocen \(P(M/x_i)\equiv P(M/X=x_i)\).
+
+En tal caso, la probabilidad total del suceso \(M\) (sin condicionar) es
+
+\[P(M) = \sum_{i=-\infty}^\infty P(M/x_i) p_X(x_i)\]
+
+    \hypertarget{teorema-de-bayes}{%
+\subsection*{Teorema de Bayes}\label{teorema-de-bayes}}
+
+Partiendo de la definición de función de masa de probabilidad
+condicionada es inmediato obtener el \textbf{Teorema de Bayes} (recordar
+que \(P(M/x_i)\equiv P(M/X=x_i)\)):
+
+\[p_X(x_i/M) = \frac{P(M/x_i)p_X(x_i)}{P(M)} \iff P(M/x_i) = \frac{p_X(x_i/M)P(M)}{p(x_i)}\]
+
+Con frecuencia, los denominadores de las expresiones anteriores se
+obtienen mediante el \emph{Teorema de la Probabilidad Total}, pues tan
+sólo se conocen las probabilidades condicionadas:
+
+\begin{align*}
+p_X(x_i/M) &= \frac{P(M/x_i)p_X(x_i)}{\sum_{i=-\infty}^\infty P(M/x_i) p_X(x_i)} \\ 
+P(M/x_i) &= \frac{p_X(x_i/M)P(M)}{p_X(x_i/M)P(M)+p_X(x_i/\overline M)(1-P(M))}
+\end{align*}
+
+    Apliquemos el Teorema de Bayes al ejemplo del dado trucado para obtener,
+trivialmente, las probabilidades de los sucesos \emph{Par} e
+\emph{Impar} condicionadas por los valores de la variable aleatoria:
+
+\[
+\begin{array}{c|cccccc|c}
+  X & 1 & 2 & 3 & 4 & 5 & 6 &  \\ 
+  \hline
+  p_X(x_i) & \frac{1}{24} & \frac{5}{24} & \frac{5}{24} & \frac{3}{24} & \frac{4}{24} & \frac{6}{24} & \sum_i p_X(x_i)=1 \\
+  \hline
+  P(Impar) & \frac{1}{24} & + & \frac{5}{24} & + & \frac{4}{24} &  & P(Impar) = \frac{10}{24} \\
+  P(Par)  &  & \frac{5}{24} & + & \frac{3}{24} & + & \frac{6}{24} & P(Par) = \frac{14}{24}\\
+  \hline
+  p_X(x_i/Impar) & \frac{1}{10} & 0 & \frac{5}{10} & 0 & \frac{4}{10} & 0 & \sum_i p_X(x_i/Impar)=1 \\
+  p_X(x_i/Par) & 0 & \frac{5}{14} & 0 & \frac{3}{14} & 0 & \frac{6}{14} & \sum_i p_X(x_i/Par)=1\\
+  \hline
+  P(Impar/x_i) & 1 & 0 & 1 & 0 & 1 & 0 & \sum_i p_X(Impar/x_i)\neq 1\\
+  P(Par/x_i) & 0 & 1 & 0 & 1 & 0 & 1 & \sum_i p_X(Par/x_i)\neq 1
+ \end{array}
+\]
+
+    Podemos extender fácilmente el \textbf{Teorema de la Probabilidad Total}
+y el \textbf{Teorema de Bayes} considerando que los sucesos
+condicionantes \(M_j\) pueden modelarse con una variable aleatoria \(M\)
+cuya función de masa de probabilidad \(p_M(m_i)\) conocemos. Las
+funciones de masa de probabilidad condicionadas son \(p_{X/M}(x_i/m_j)\)
+y \(p_{M/X}(m_i/x_j)\). En tal caso:
+
+\begin{align*}
+p_X(x_i) &= \sum_j p_{X/M}(x_i/m_j)p_M(m_j)\\
+p_{M/X}(m_i/x_j) &= \frac{p_{X/M}(x_j/m_i)p_M(m_i)}{\sum_i p_{X/M}(x_j/m_i)p_M(m_i)}
+\end{align*}
+
+    \hypertarget{funciuxf3n-de-variable-aleatoria}{%
+\subsection*{Función de variable
+aleatoria}\label{funciuxf3n-de-variable-aleatoria}}
+
+Consideremos una variable aleatoria discreta \(X\). Podemos aplicar
+sobre la misma una función \(g\) que devolverá valores aleatorios, al
+serlo también su variable independiente. Lo representamos como sigue:
+
+\[Y = g(X)\]
+
+Cada valor \(x_i\) de \(X\) se transformará por la función en un nuevo
+valor \(y_i\) de \(Y\). Adviértase que valores distintos
+\(x_i \neq x_j\) pueden dar lugar a valores iguales \(y_i = y_j\) con
+tal que \(g(x_i)=g(x_j)\). Por tanto, definimos la función de masa de
+probabilidad de \(Y\) como sigue:
+
+\[p_Y(y_i) = \sum_j p_X(g^{-1}(y_i))
+= \sum_{\substack{j \\ g(x_j) = y_i}}p_X(x_j)\]
+
+Donde \(j\) indexa las raíces de la ecuación \(y_i=g(x_j)\).
+
+    Consideremos, por ejemplo, la variable aleatoria \(X\) con la siguiente
+fmp:
+
+\[
+\begin{array}{c|cccc|c}
+X & -2 & -1 & 0 & 1\\
+\hline
+p_X(x_i) & \frac{1}{8} & \frac{1}{8} & \frac{1}{2} & \frac{1}{4} & \sum_i p_X(x_i) = 1
+\end{array}
+\]
+
+Veamos cuál es la fmp de la variable aleatoria \(Y = X^2\):
+
+\[
+\begin{array}{c|ccc|c}
+Y & 0 & 1 & 4\\
+\hline
+p_Y(y_i) & \frac{1}{2} & \frac{1}{4}+\frac{1}{8} & \frac{1}{8} & \sum_i p_Y(y_i) = 1
+\end{array}
+\]
+
+Si se desean incluir otros valores de \(Y\) en la representación, por
+ejemplo el \(2\) ó el \(3\), tendrán masa de probabilidad nulas.
+
+    \hypertarget{esperanza-matemuxe1tica-y-valor-medio.-momentos}{%
+\subsection*{Esperanza Matemática y Valor Medio.
+Momentos}\label{esperanza-matemuxe1tica-y-valor-medio.-momentos}}
+
+Se define la esperanza matemática de una función \(g(X)\) de una
+variable aleatoria como sigue:
+
+\[E(g(X))=\sum_i g(x_i)p_X(x_i)\]
+
+Es fácil advertir que el operador \(E(·)\) es lineal, esto es que
+
+\[E(a_1g_1(X)+a_2g_2(X))=a_1E(g_1(X)) + a_2E(g_2(X))\]
+
+donde \(a_1\) y \(a_2\) son coeficiente constantes arbitrarios y \(g_1\)
+y \(g_2\) son dos funciones. También es evidente que, si \(k\) es una
+constante arbitraria
+
+\[E(k) = k\]
+
+    Si \(g\) es la función identidad obtenemos el \textbf{valor medio} de la
+variable aleatoria \(X\): \[\eta_X=E(X)=\sum_i x_ip_X(x_i)\]
+
+Es conveniente \textbf{reflexionar sobre la relación con la media
+muestral}, advirtiendo que ambas son medidas de tendencia central.
+
+Adviértase que, como una función de variable aleatoria define una nueva
+variable aleatoria, \(Y=g(X)\), con su propia función de masa de
+probabilidad, tenemos dos maneras de calcular la esperanza de una
+función de variable aleatoria:
+
+\[\eta_Y = E(Y)=\sum_i y_ip_Y(y_i) = \sum_i g(x_i)p_X(x_i)\]
+
+    Consideremos que la variable aleatoria \(X\) tiene valor medio
+\(\eta_X\). Calculemos cuál sera el valor medio de la variable aleatoria
+\(Y = aX+b\), donde \(a\) y \(b\) son coeficientes constantes.
+
+Aplicando linealidad:
+
+\[E(aX+b) = aE(X)+b = a\eta_X + b\]
+
+Son interesantes los casos particulares:
+
+\begin{itemize}
+\tightlist
+\item
+  Sumar constante, \(a=1\): \(E(X+b) = \eta_X + b\)
+\item
+  Multiplicar por constante \(a\), \(b=0\): \(E(aX) = a\eta_X\)
+\end{itemize}
+
+    \hypertarget{momentos-de-segundo-orden-valor-cuadruxe1tico-medio-y-varianza}{%
+\subsubsection*{Momentos de Segundo Orden: Valor Cuadrático Medio y
+Varianza}\label{momentos-de-segundo-orden-valor-cuadruxe1tico-medio-y-varianza}}
+
+El \textbf{valor cuadrático medio}, o momento no centrado de segundo
+orden, de la variable aleatoria \(X\) se define:
+
+\[E(X^2)=\sum_i x_i^2p_X(x_i) \geq 0\]
+
+El valor cuadrático medio es una medida de dispersión respecto del
+origen, a la que no afecta el signo positivo o negativo de las
+excursiones (al estar elevada al cuadrado) sino solo la amplitud de las
+mismas. Por ello siempre es una magnitud positiva, salvo en el caso
+trivial de que toda la masa de probabilidad se localice en el origen (el
+valor es determinista e igual a cero).
+
+Es conveniente reflexionar sobre su relación con el estadístico muestral
+correspondiente.
+
+    Consideremos que la variable aleatoria \(X\) tiene valor medio
+\(\eta_X\) y valor cuadrático medio \(E(X^2)\). Calculemos cuál sera el
+valor cuadrático medio de la variable aleatoria \(Y = aX+b\), donde
+\(a\) y \(b\) son coeficientes constantes.
+
+Desarrollando el cuadrado y aplicando linealidad:
+
+\[E((aX+b)^2) = a^2E(X^2)+(2ab\eta_X+b^2)\]
+
+Es interesante el caso de multiplicar por una constante \(a\), \(b=0\):
+
+\[E((aX)^2) = a^2E(X^2)\]
+
+    La \textbf{varianza} o momento centrado de segundo orden, se define:
+
+\[\sigma_X^2 \equiv Var(X) = E((X-\eta_X)^2) \geq 0\]
+
+La varianza es una medida de dispersión de los valores de la variable
+aleatoria en relación a su valor medio. De nuevo, al estar elevada al
+cuadrado, no importa el signo de las excursiones, sino sólo su amplitud
+y, por ello, siempre es una magnitud positiva, o trivialmente nula si
+toda la masa de probabilidad está localizada en el mismo punto (valor
+determinista).
+
+La raíz cuadrada de la varianza se denomina \textbf{desviación típica},
+\(\sigma_X\).
+
+Desarrollando la definición y aplicando la propiedad de linealidad, se
+obtiene:
+
+\[\sigma_X^2 = E(X^2) - \eta_X^2 \implies E(X^2) \geq \sigma_X^2\]
+
+Si la variable aleatoria tiene \textbf{media nula}:
+\(E(X^2) = \sigma_X^2\)
+
+    Consideremos ahora que la variable aleatoria \(X\) tiene valor medio
+\(\eta_X\), valor cuadrático medio \(E(X^2)\) y varianza
+\(\sigma_X^2\equiv Var(X)\). Calculemos cuál sera la varianza de la
+variable aleatoria \(Y = aX+b\), donde \(a\) y \(b\) son coeficientes
+constantes.
+
+Aplicando la relación entre valor cuadrático medio, varianza y cuadrado
+de la media:
+
+\[Var(aX+b) = E((aX+b)^2)-E^2(aX+b)\]
+
+Utilizando las expresiones que ya tenemos:
+
+\begin{align*}
+E((aX+b)^2) &= a^2E(X^2)+2ab\eta_X+b^2\\
+E^2(aX+b) &= (a\eta_X+b)^2 = a^2\eta_X^2+2ab\eta_X+b^2
+\end{align*}
+
+Resultando la varianza:
+
+\begin{align*}
+Var(aX+b) &= a^2E(X^2)-a^2\eta_X^2=a^2(E(X^2)-\eta_X^2)\\
+&=a^2Var(X)
+\end{align*}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dado trucado:
+	 Media: 3.916666666666667
+	 Varianza: 2.576388888888884
+	 Valor Cuadrático Medio: 17.916666666666664
+
+    \end{Verbatim}
+
+    \hypertarget{tipificaciuxf3n-de-una-variable-aleatoria}{%
+\subsubsection*{Tipificación de una Variable
+Aleatoria}\label{tipificaciuxf3n-de-una-variable-aleatoria}}
+
+Consideremos que una variable aleatoria \(X\) tiene valor medio
+\(\eta_X\) y varianza \(\sigma_X\). \textbf{Tipificar} la variable
+quiere decir buscar otra equivalente, pero con \textbf{media nula} y
+\textbf{varianza unidad}.
+
+La variable tipificada \(\hat X\) la obtenemos aplicando la siguiente
+función:
+
+\[\hat X = \frac{X-\eta_X}{\sigma_X}\]
+
+De lo visto anteriormente, es inmediato advertir que:
+
+\begin{align*}
+\eta_{\hat X}= E(\hat X) &= \frac{1}{\sigma_X}\eta_X-\frac{\eta_X}{\sigma_X}&=0 \\
+\sigma_{\hat X}^2 = Var(\hat X) &=\frac{1}{\sigma_X^2}\sigma_X^2 &= 1 
+\end{align*}
+
+    \hypertarget{momentos-de-orden-superior}{%
+\subsubsection*{Momentos de orden
+superior}\label{momentos-de-orden-superior}}
+
+El momento no centrado de orden \(n\) se define como:
+
+\[m_n =E(X^n)=\sum_i x_i^np_X(x_i)\]
+
+El momento centrado de orden \(n\):
+
+\[\mu_n =E((X-\eta_X)^n)=\sum_i (x_i-\eta_X)^np_X(x_i)\]
+
+Y el momento tipificado de orden \(n\):
+
+\[\gamma_n =E(\left(\frac{X-\eta_X}{\sigma_X}\right)^n)=\sum_i \left(\frac{x_i-\eta_X}{\sigma_X}\right)^np_X(x_i)\]
+
+El momento tipificado de orden 3 corresponde al coeficiente de
+asimetría, y el de orden 4 al coeficiente de curtosis. Es conveniente
+reflexionar sobre su relación con sus equivalentes muestrales.
+
+    \hypertarget{esperanza-matemuxe1tica-condicionada}{%
+\subsubsection*{Esperanza Matemática
+Condicionada}\label{esperanza-matemuxe1tica-condicionada}}
+
+Podemos definir la esperanza matemática de una función \(g\) de la
+variable aleatoria \(X\) condicionada por el suceso \(M\) como sigue:
+
+\[E(g(X)/M)=\sum_i g(x_i)p_X(x_i/M)\]
+
+Podemos extender con la esperanza condicionada las propiedades y
+definiciones vistas anteriormente. Por ejemplo:
+
+\begin{align*}
+\eta_{X/M}=E(X/M)&=\sum_i x_ip_X(x_i/M)\\
+E(X^2/M)&=\sum_i x_i^2p_X(x_i/M)\\
+\sigma_{X/M}^2 = Var(X/M) &= \sum_i (x_i-\eta_{X/M})^2p_X(x_i/M) = E(X^2/M)-\eta_{X/M}^2
+\end{align*}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dado trucado - Estadísticos condicionados por ser Impar:
+	 Media condicionada por Impar: 3.6000000000000005
+	 Varianza condicionada por Impar: 1.639999999999997
+	 Valor Cuadrático Medio condicionado por Impar: 14.600000000000001
+
+
+
+Dado trucado - Estadísticos condicionados por ser Par:
+	 Media condicionada por Par: 4.142857142857142
+	 Varianza condicionada por Par: 3.122448979591841
+	 Valor Cuadrático Medio condicionado por Par: 20.285714285714285
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

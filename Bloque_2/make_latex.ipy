@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""make_slides
+
+Script de conversión de Jupyter Notebooks a Latex
+
+Uso:
+
+    ipython make_latex.ipy notebook.ipynb
+	
+	El fichero del script debe estar en el directorio del notebook
+	
+	Se crea un fichero ./notebook.tex y una carpeta con ficeros auxiliares
+	
+	
+	Correcciones en el fichero .tex:
+	
+	    \\usepackage{mathrsfs}  
+		
+		El conversor crea la anidación 
+		\\[\\begin{align} ... \\end{align}\\]
+		que no se admite. Simplemente quitar \\[ \\]
+   
+@author: Juan Ruiz Alzola
+"""
+
+import sys
+#import os
+#import shutil
+
+if sys.platform=="win32":
+    Tags = "{'remove_input'}"
+elif sys.platform.startswith('linux'):
+    Tags = '{"remove_input"}'
+else:
+    print("Plataforma diferente de Windows o Linux.\n",
+	      "Probando con configuración de Linux...")
+    Tags = '{"remove_input"}'
+
+!jupyter nbconvert {sys.argv[1]} --TagRemovePreprocessor.remove_input_tags=$Tags --TemplateExporter.exclude_output_prompt=True --to latex
+
+#FName  = sys.argv[1][:-5]+"tex"
+#DstDir = os.path.normpath("../docs/latex")
+#DstFName = os.path.join(DstDir, FName)
+
+#if os.path.exists(DstDir):
+#    shutil.move(FName, DstFName)
+#else:
+#    print("El directorio docs/latex no existe.\n", 
+#	      "El fichero creado se mantiene en el directorio de trabajo")
+

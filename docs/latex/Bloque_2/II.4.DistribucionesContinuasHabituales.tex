@@ -1,0 +1,829 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+    % AÑADIDO POR JUAN
+    \usepackage{mathrsfs}   
+      
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{II.4 Distribuciones Continuas Habituales}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{ii.4-variable-aleatoria-gaussiana-y-otras-habituales}{%
+\section*{Variable Aleatoria Gaussiana y otras
+habituales}\label{ii.4-variable-aleatoria-gaussiana-y-otras-habituales}}
+
+\hypertarget{variable-aleatoria-uniforme}{%
+\subsection*{Variable Aleatoria
+Uniforme}\label{variable-aleatoria-uniforme}}
+
+Denominamos \textbf{soporte de la variable aleatoria} a los valores de
+la misma en los que la función de densidad de probabilidad toma valores
+finitos distintos de cero. Considerando un intervalo de soporte
+\(I = [a, b]\), se llama \textbf{variable aleatoria uniforme} a aquella
+en que todos los intervalos de igual longitud y totalmente contenidos en
+el intervalo de soporte sean \textbf{equiprobables}. La variable
+aleatoria uniforme tiene una función de densidad de probabilidad:
+
+\[
+U(a,b) \equiv f_X(x;a,b) =
+\begin{cases}
+    \frac{1}{b-a} & \quad \text{si } a\leq x \leq b\\
+    0             & \quad \text{resto }
+\end{cases}
+\]
+
+Y función de distribución de probabilidad:
+
+\[
+F_X(x;a,b) =
+\begin{cases}
+    0                   & \quad \text{si } x < a \\
+    \frac{1}{b-a} (x-a) & \quad \text{si } a\leq x \leq b\\
+    1                   & \quad \text{si } x > b
+\end{cases}
+\]
+
+    Calculando las integrales se obtienen fácilmente la media y la varianza:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\eta_X = E(X) = \int_{-\infty}^{\infty} xf_X(x;a,b)= \frac{1}{b-a}\int_a^bxdx=\frac{a+b}{2}\)
+\item
+  \(E(X^2)= \int_{-\infty}^{\infty} x^2f_X(x;a,b)= \frac{1}{b-a}\int_a^bx^2dx=\frac{b^3-a^3}{3(b-a)}= \frac{a^2+ab+b^2}{3}\)
+\item
+  \(\sigma_X^2 = Var(X) = E((X-\eta_X)^2) = E(X^2)-\eta_X^2=\frac{(b-a)^2}{12}\)
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_3_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{funciones-condicionadas}{%
+\subsubsection*{Funciones Condicionadas}\label{funciones-condicionadas}}
+
+Consideremos el caso ya visto en que el suceso condicionante \(A\)
+podemos definirlo con intervalos de la variable aleatoria. Suponiendo
+que \(A=\{a \leq x_1\leq X \leq x_2 \leq b\}\). Adviértase que si
+\(x_1 < a\) ó si \(x_2>b\), al extenderse el suceso condicionante fuera
+del soporte de la distribución, \(A\) podría escribirse de forma
+equivalente con \(x_1=a\) ó \(x_2=b\), respectivamente.
+
+\begin{align*}
+F_X(x\, /\, \{x_1\leq X \leq x_2\}) & = \frac{P(\{X \leq x \bigcap \{x_1\leq X \leq x_2\ )\} }{P(\{x_1\leq X \leq x_2\})}=\\
+ & = \begin{cases}
+    0       & \quad x < x_1\\
+    \frac{F_X(x)-F_X(x_1^-)}{F_X(x_2)-F_X(x_1^-)}  & \quad x_1 \leq x \leq x_2\\
+    1 &\quad x > x_2
+  \end{cases}
+\end{align*}
+
+\begin{align*}
+f_X(x\, /\, \{x_1\leq X \leq x_2\}) = \begin{cases}
+    0       & \quad x < x_1\\
+    \frac{f_X(x)}{F_X(x_2)-F_X(x_1^-)}  & \quad x_1 \leq x \leq x_2\\
+    0 &\quad x > x_2
+  \end{cases}
+\end{align*}
+
+    Sustituyendo para el caso concreto de la distribución uniforme, es fácil
+obtener:
+
+\[
+f_X(x/A) =
+\begin{cases}
+    \frac{1}{x_2-x_1} & \quad \text{si } x_1\leq x \leq x_2\\
+    0             & \quad \text{resto }
+\end{cases}
+\]
+
+\[
+F_X(x/A) =
+\begin{cases}
+    0                   & \quad \text{si } x < x_1 \\
+    \frac{1}{x_2-x_1} (x-x_1) & \quad \text{si } x_1\leq x \leq x_2\\
+    1                   & \quad \text{si } x > x_2
+\end{cases}
+\]
+
+    \hypertarget{ejemplo}{%
+\subsubsection*{Ejemplo}\label{ejemplo}}
+
+Considérese que un suceso acontece con certeza en un intervalo, pero de
+forma totalmente aleatoria dentro del mismo. Piénsese, por ejemplo, en
+la llamada de una persona concreta que siempre se recibe diariamente
+entre 22h y 23h.
+
+Se pide:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Modelar la VA \(X\) que representa el momento de recibir la llamada,
+  obteniendo tanto la fdp como la FDP
+\item
+  Calcular la media y la varianza
+\item
+  Calcular la probabilidad de recibir la llamada entre las 22h y las
+  22h:15m
+\item
+  Calcular la probabilidad de recibir la llamada justo a las 22h:15m
+\item
+  Si hasta las 22h:15m no se ha recibido la llamada, ¿cuál será la
+  probabilidad de recibirla entre las 22hh:45m y las 23h?
+\end{enumerate}
+
+    \hypertarget{variable-aleatoria-exponencial}{%
+\subsection*{Variable Aleatoria
+Exponencial}\label{variable-aleatoria-exponencial}}
+
+\textbf{La variable aleatoria exponencial modela el tiempo o espacio
+entre el acontecimiento de dos sucesos sucesivos en un Proceso Puntual
+de Poisson}. Tiene la siguiente función de densidad de probabilidad:
+
+\[
+exp(\lambda) \equiv f_X(x;\lambda) = \lambda e^{-\lambda x} u(x) =
+\begin{cases}
+    0             & \quad x<0\\
+    \lambda e^{-\lambda x} & \quad x \geq 0
+\end{cases} 
+\]
+
+Donde \(u(x)\) es la \textbf{función escalón}. La función de
+distribución de probabilidad es:
+
+\[
+F_X(x;\lambda) = (1-e^{-\lambda x})u(x) = 
+\begin{cases}
+    0                   & \quad \text{si } x < 0 \\
+    1-e^{-\lambda x} & \quad \text{si } x \geq 0
+\end{cases}
+\]
+
+\(\lambda > 0\) se denomina \textbf{tasa}, si bien a veces se utiliza la
+\textbf{escala} \(\beta = \lambda^{-1}\).
+
+    Calculando las integrales por partes se obtienen la media y la varianza:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\eta_X = E(X) = \int_{-\infty}^{\infty} xf_X(x;\lambda)= \lambda \int_0^\infty xe^{-\lambda u}du=\frac{1}{\lambda}=\beta\)
+\item
+  \(E(X^2)= \int_{-\infty}^{\infty} x^2f_X(x;\lambda)= \lambda \int_0^\infty x^2e^{-\lambda u}du=\frac{2}{\lambda^2}=2\beta^2\)
+\item
+  \(\sigma_X^2 = Var(X) = E((X-\eta_X)^2) = E(X^2)-\eta_X^2=\frac{1}{\lambda^2}=\beta^2\)
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_9_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{funciones-condicionadas-y-propiedad-sin-memoria}{%
+\subsubsection*{Funciones condicionadas y propiedad sin
+memoria}\label{funciones-condicionadas-y-propiedad-sin-memoria}}
+
+Considérese el suceso condicionante \(A=\{X>x_1\}\). Las probabilidades
+condicionadas se obtienen haciendo \(x_2=\infty\) en las ecuaciones ya
+vistas:
+
+\[
+F_X(x/X>x_1) = \frac{F_X(x)-F_X(x_1)}{1-F_X(x_1)}u(x-x_1)
+\]
+
+\[
+f_X(x/X>x_1) = \frac{f_X(x)}{1-F_X(x_1)}
+\]
+
+    Sustituyendo las expresiones correspondientes a la distribución
+exponencial, resulta:
+
+\[
+F_X(x/X>x_1) = \left( 1-e^{-\lambda (x-x_1)}\right)u(x-x_1) = F_X(x-x_1)
+\]
+
+\[
+f_X(x/X>x_1) = e^{-\lambda (x-x_1)}u(x-x_1) = f_X(x-x_1)
+\]
+
+Como puede verse, \textbf{la distribución exponencial no tiene memoria},
+esto es, transcurrido un lapso \(x_1\) desde el último suceso la
+distribución se comporta como si acabara de ocurrir, desplazándose hasta
+\(x_1\).
+
+    \hypertarget{ejemplo}{%
+\subsubsection*{Ejemplo}\label{ejemplo}}
+
+Considérese que un servidor informático recibe peticiones independientes
+de clientes con una tasa de llegada \(\lambda = 2\) cada segundo. La
+llegada de peticiones a lo largo del tiempo puede modelarse como un
+Proceso Puntual de Poisson por ser las llegadas independientes.
+
+\begin{itemize}
+\tightlist
+\item
+  Si acaba de recibirse una petición, ¿cuál será la probabilidad de
+  recibir otra en el próximo medio segundo?
+\item
+  ¿Y cuál será la probabilidad de no recibir otra hasta dentro de un
+  segundo?
+\item
+  Tras la última llegada de una petición, extrañamente no ha entrado
+  ninguna durante diez segundos. ¿Cuál será la probabilidad de que lo
+  haga en el medio segundo siguiente?
+\end{itemize}
+
+    \hypertarget{la-variable-aleatoria-gaussiana}{%
+\subsection*{La Variable Aleatoria
+Gaussiana}\label{la-variable-aleatoria-gaussiana}}
+
+\hypertarget{distribuciuxf3n-normal-estuxe1ndar}{%
+\subsubsection*{Distribución Normal
+Estándar}\label{distribuciuxf3n-normal-estuxe1ndar}}
+
+Consideremos la función \(\varphi(x)\), definida como sigue:
+
+\[\varphi_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}\]
+
+Puede advertirse que se trata de una función de densidad de
+probabilidad, pues:
+
+\[\varphi(x) >0 \quad \forall x \in \mathbb{R}\\
+\int_{-\infty}^\infty \varphi(x)dx = 1\]
+
+    Analicemos la función \(\varphi_X(x)\), que denominamos \textbf{Normal
+Estándar}:
+
+\begin{itemize}
+\tightlist
+\item
+  Es una función par pues \(\varphi_X(x) = \varphi_X(-x)\)
+\item
+  \(\varphi'_X(x) = -x\varphi_X(x) \implies \varphi'_X(0) = 0\)
+\item
+  \(\varphi''_X(x) = (x^2-1)\varphi_X(x) \implies \varphi''_X(-1) = \varphi''_X(1) = 0\)
+\item
+  Máximo: \(\varphi_X(0) = \frac{1}{\sqrt{2\pi}}\approx 0.399\). Puntos
+  de inflexión:
+  \(\varphi_X(-1) = \varphi_X(1) =\frac{1}{\sqrt{2\pi e}}\approx 0.242\)
+\end{itemize}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    La \textbf{función de distribución normal estándar} es:
+
+\[\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x  e^{-\frac{u^2}{2}} du = 
+\frac{1}{2} + \frac{1}{\sqrt{2\pi}} \int_{0}^x  e^{-\frac{u^2}{2}} du
+\]
+
+En \emph{Teoría de la Comunicación} suele utilizarse la función
+\(Q(x)\), que es el complemento a 1 de \(\Phi(x)\):
+
+\[Q(x) = 1-\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_x^{\infty}  e^{-\frac{u^2}{2}} du\]
+
+    En ingeniería y ciencias es habitual utilizar la \textbf{función error},
+\(erf(x)\):
+
+\[erf(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-u^2}du = \frac{1}{\sqrt{\pi}}\int_{-x}^x e^{-u^2}du= \frac{1}{\sqrt{2\pi}}\int_{-\sqrt{2}x}^{\sqrt{2}x} e^{-\frac{u^2}{2}}du\]
+
+que satisface:
+
+\begin{itemize}
+\tightlist
+\item
+  Función impar: \(erf(x)=-erf(-x)\)
+\item
+  \(erf(\infty)=1\)
+\item
+  \(erf(1) \approx 0.8427\)
+\end{itemize}
+
+Su complemento a 1 es la \textbf{función error complementaria}:
+
+\[erfc(x) = 1-erf(x) = \frac{2}{\sqrt{\pi}}\int_x^\infty e^{-u^2} du = \frac{2}{\sqrt{2\pi}}\int_{\sqrt{2}x}^\infty e^{-\frac{u^2}{2}}du\]
+
+    Pueden encontrarse fácilmente relaciones entre las funciones anteriores:
+
+\[\Phi(x) = \frac{1}{2}\left[1 + \frac{2}{\sqrt{2\pi}} \int_{0}^x  e^{-\frac{u^2}{2}}du \right] = \frac{1}{2}\left[1 + erf(\frac{x}{\sqrt{2}}) \right]\]
+
+\[Q(x) = 1 - \Phi(x) = \frac{1}{2}\left[1 - erf(\frac{x}{\sqrt{2}}) \right] = \frac{1}{2}erfc(\frac{x}{\sqrt{2}})\]
+
+Y puede calcularse la probabilidad de los intervalos:
+
+\[P(x_1<X\leq x_2) = \Phi(x_2)-\Phi(x_1) = \frac{1}{2}erf(\frac{x_2}{\sqrt{2}}) - \frac{1}{2}erf(\frac{x_1}{\sqrt{2}})\]
+
+En el caso que el intervalo esté centrado en el origen \(x_1 = -x_2\):
+
+\[P(-x_2<X\leq x_2) = \Phi(x_2)-\Phi(x_1) = erf(\frac{x_2}{\sqrt{2}})\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Puede calcularse fácilmente la concentración de masa de probabilidad en
+torno al origen:
+
+\begin{itemize}
+\tightlist
+\item
+  \(P(|X|\leq 1) = erf(\frac{1}{\sqrt2}) \approx 0.682689492137086\)
+\item
+  \(P(|X|\leq 2) = erf(\frac{2}{\sqrt2}) \approx 0.954499736103642\)
+\item
+  \(P(|X|\leq 3) = erf(\frac{3}{\sqrt2}) \approx 0.997300203936740\)
+\end{itemize}
+
+Adviértase, que al ser la fdp normal estándar una función par,
+\(\varphi(x) = \varphi(-x)\), la esperanza matemática resulta nula. El
+cálculo de la varianza requiere calcular la integral, y es igual a 1:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\eta_X=E(X) = \int_\infty^\infty x\varphi(x) dx = 0\)
+\item
+  \(E(X^2) = \int_\infty^\infty x^2\varphi(x) dx = 1\)
+\item
+  \(\sigma_X^2=Var(X) = E(X^2) - E^2(X) = 1 \implies \sigma_X = 1\)
+\end{itemize}
+
+Por tanto, las concentraciones de masa de probabilidad anteriores están
+calculadas a una, dos y tres \(\sigma\) de la media, respectivamente.
+
+    \hypertarget{distribuciuxf3n-gaussiana-o-normal}{%
+\subsubsection*{Distribución Gaussiana o
+Normal}\label{distribuciuxf3n-gaussiana-o-normal}}
+
+Si la variable aleatoria \(X\) tiene una distribución Normal Estándar
+\(\varphi(x)\) (media nula y varianza unidad), podemos generar una nueva
+variable aleatoria con media \(\eta_Y\) y varianza \(\sigma_Y^2\) sin
+más que aplicar la transformación lineal:
+
+\[Y = \sigma_Y X + \eta_Y\]
+
+Puede demostrarse que la variable aleatoria \(Y\) tiene la siguiente
+distribución:
+
+\[F_Y(y)= \Phi(\frac{y-\eta_Y}{\sigma_Y})\]
+
+\[f_Y(y) =\frac{dF_Y(y)}{dy} = \frac{1}{\sigma_Y}\varphi(\frac{y}{\sigma_Y})\]
+
+    Intentemos ganar cierta intuición trabajando con estas transformaciones
+de la función de densidad Normal Estándar. Adviértase que, en lo
+sucesivo, tras los cambios de variable volvemos a llamar a la variable
+\(X\). Aunque al principio puede resultar confuso, es habitual trabajar
+así para tener las funciones de interés con \(x\) de variable
+independiente.
+
+La función \(\varphi(x)\) puede desplazarse en el eje real, y seguirá
+siendo una función de densidad de probabilidad:
+
+\[\varphi(x-\eta_X)=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-\eta_X)^2}\]
+
+Sin embargo, si le aplicamos un cambio de escala
+\(\varphi(\frac{x}{\sigma_X})\) puede advertirse que el área bajo la
+curva es \(\sigma_X\). Por ello, es necesario normalizar por el área
+resultante tras el cambio de escala, para seguir teniendo una función de
+densidad de probabilidad:
+\[\frac{1}{\sigma_X}\varphi(\frac{x}{\sigma_X})\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_23_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Se define la distribución normal de parámetros \(\eta_X\) y \(\sigma_X\)
+a la distribución de probabilidad con la siguiente función de densidad:
+
+\[N(\eta_X, \sigma_X)\equiv f_X(x;\eta_X, \sigma_X) = \frac{1}{\sigma_X}\varphi(\frac{x-\eta_X}{\sigma_X})= \frac{1}{\sqrt{2\pi}\sigma_X}e^{-\frac{(x-\eta_X)^2}{2\sigma_X^2}}\]
+
+Como se ha visto, \(E(X)=\eta_X\) y \(Var(X)=\sigma_X^2\).
+
+La función de distribución de probabilidad es:
+
+\begin{align*}
+G(\eta_X, \sigma_X)&\equiv F_X(x; \eta_X, \sigma_X) = \Phi(\frac{x-\eta_X}{\sigma_X}) = \frac{1}{\sqrt{2\pi}\sigma_X}\int_{-\infty}^x  e^{-\frac{(u-\eta_X)^2}{2\sigma_X^2}} du=\\
+&= \frac{1}{\sqrt{2\pi}\sigma_X}\int_{-\infty}^{\frac{x-\eta_X}{\sigma_X}}  e^{\frac{u^2}{2}} du= \frac{1}{2}\left[1 + erf(\frac{x-\eta_X}{\sigma_X\sqrt{2}}) \right]
+\end{align*}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.4.DistribucionesContinuasHabituales_files/II.4.DistribucionesContinuasHabituales_26_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{propiedades-asintuxf3ticas}{%
+\subsubsection*{Propiedades
+asintóticas}\label{propiedades-asintuxf3ticas}}
+
+\hypertarget{aproximaciuxf3n-de-la-distribuciuxf3n-binomial}{%
+\paragraph{Aproximación de la Distribución
+Binomial}\label{aproximaciuxf3n-de-la-distribuciuxf3n-binomial}}
+
+Conforme al \textbf{Teorema de Moivre-Laplace} la distribución Binomial
+\(B(n,p)\) puede aproximarse por la distribución Normal
+\(N(np, \sqrt(np(1-p)))\) cuando \(n\) es grande y \(p\) no está cerca
+de \(0\) ni de \(1\). El Teorema prueba la convergencia en el límite. En
+la práctica, se adopta la aproximación cuando \(n >20\) y
+\(p \approx 0.5\). Cuanto mayor sea \(n\) más puede apartarse \(p\) del
+valor \(0.5\), aunque nunca debe aproximarse a \(0\) ni \(1\).
+
+\[B(n,p) \approx N(np, \sqrt(np(1-p)))\]
+
+\hypertarget{aproximaciuxf3n-de-la-distribuciuxf3n-de-poisson}{%
+\paragraph{Aproximación de la Distribución de
+Poisson}\label{aproximaciuxf3n-de-la-distribuciuxf3n-de-poisson}}
+
+La distribución de Poisson \(Pois(\lambda)\) puede aproximarse por la
+distribución Normal \(N(\lambda, \lambda)\) cuando \(\lambda\) es grande
+
+\[Pois(\lambda) \approx N(\lambda, \lambda)\]
+
+    \hypertarget{funciuxf3n-de-densidad-condicionada}{%
+\subsubsection*{Función de densidad
+condicionada}\label{funciuxf3n-de-densidad-condicionada}}
+
+Consideremos ahora el suceso condicionante \(A=\{x_1<X\leq x_2\}\).
+
+\begin{align*}
+F_X(x\, /\, \{x_1 < X \leq x_2\}) & = 
+\begin{cases}
+    0       & \quad x \leq x_1\\
+    \frac{F_X(x)-F_X(x_1)}{F_X(x_2)-F_X(x_1)}  & \quad x_1 < x \leq x_2\\
+    1 &\quad x > x_2
+  \end{cases}
+\end{align*}
+
+\begin{align*}
+f_X(x\, /\, \{x_1 < X \leq x_2\}) = \begin{cases}
+    0       & \quad x \leq x_1\\
+    \frac{f_X(x)}{F_X(x_2)-F_X(x_1)}  & \quad x_1 < x \leq x_2\\
+    0 &\quad x > x_2
+  \end{cases}
+\end{align*}
+
+    Sustituyendo para la variable aleatoria Gaussiana:
+
+\[F_X(x_2)-F_X(x_1)=
+\frac{1}{2}erf(\frac{x_2-\eta_X}{\sigma_X\sqrt{2}}) - \frac{1}{2}erf(\frac{x_1-\eta_X}{\sigma_X\sqrt{2}})
+\]
+
+Si \(x_1\) y \(x_2\) son simétricos respectos de \(\eta_X\):
+
+\[F_X(x_2)-F_X(x_1)= erf(\frac{x_2-\eta_X}{\sigma_X\sqrt{2}})\]
+
+Adviértase que, considerando este factor normalizante, podemos
+reutilizar las expresiones de la distribución total (no condicionada)
+para el cálculo de probabilidades en los subintervalos incluidos en el
+suceso condicionante \(A\).
+
+    \hypertarget{mezcla-de-gaussianas}{%
+\subsubsection*{Mezcla de Gaussianas}\label{mezcla-de-gaussianas}}
+
+Es habitual en la práctica confrontar distribuciones multimodales. Con
+frecuencia se considera que estamos ante una superposición de
+distribuciones Gaussianas, una por cada una de las modas existentes, con
+sus respectivos valores medios y varianzas.
+
+A veces conviene considerar que cada una de tales distribuciones
+representa una subpoblación, y que cada observación de la variable
+aleatoria proviene de una de ellas. Asociemos a cada subpoblación con
+una hipótesis \(H_i\) de la que conocemos su probabilidad \emph{a
+priori}, \(P(H_i)\). Consideremos que también conocemos las
+verosimilitudes de las observaciones en relación a las subpoblaciones,
+que podemos modelar mediante las probabilidades condicionadas:
+
+\[f_{X_i}(x/H_i) \equiv N(\eta_{X_i}, \sigma_{X_i})\]
+
+Podemos utilizar el Teorema de la Probabilidad Total para obtener la fdp
+de la \textbf{mezcla de Gaussianas}:
+
+\[f_X(x) = f_{X_1}(x/H_1)P(H_1)+ \ldots + f_{X_1}(x/H_1)P(H_1)\]
+
+    \hypertarget{ejemplo}{%
+\subsubsection*{Ejemplo}\label{ejemplo}}
+
+En una población, el \(48\%\) de las personas son hombres y el resto
+mujeres. Las estaturas de cada subpoblación se modela con una
+distribución Gaussiana, de la siguiente manera. La estatura media de las
+mujeres es de 165 cm y su desviación típica de 8 cm, mientras que la
+estatura media de los hombres es de 175 cm y su desviación típica es de
+10 cm.
+
+\begin{itemize}
+\tightlist
+\item
+  Calcule cuál es la probabilidad de que un hombre mida más de 2 m.
+  Igualmente con una mujer
+\item
+  Considere ahora subpoblaciones de baloncestistas. En la femenina todas
+  las estaturas son superiores a 170 cm, mientras que en las masculinas
+  son todas superiores a 180 cm. ¿Cuál es la probabilidad de que una
+  jugadora mida más de 2 m? ¿Y un jugador?
+\item
+  Suponga que tenemos una persona cuyo género desconocemos y que mide
+  170 cm. ¿Qué es más verosímil, que sea un hombre o una mujer?
+\item
+  Obtenga utilizando el Teorema de la Probabilidad Total la mezcla de
+  Gaussianas que modela la distribución total de hombres y mujeres
+\item
+  Utilice el Teorema de Bayes para ver qué es más probable, que la
+  persona de 170 cm sea un hombre o una mujer.
+\item
+  ¿Cuál es la probabilidad de error si decide que es un hombre? ¿Y si
+  decide que es una mujer?
+\item
+  Elabore una regla de decisión que permita seleccionar el género por
+  estatura minimizando el error. ¿Cuál será la probabilidad de error de
+  esta regla?
+\end{itemize}
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

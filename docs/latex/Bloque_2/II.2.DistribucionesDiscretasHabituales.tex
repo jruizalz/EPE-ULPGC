@@ -1,0 +1,562 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+  
+    % AÑADIDO POR JUAN
+    \usepackage{mathrsfs}   
+  
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{II.2 Distribuciones Discretas Habituales}
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    \hypertarget{ii.-2-distribuciones-de-masa-de-probabilidad-habituales}{%
+\section*{Distribuciones de Masa de Probabilidad
+Habituales}\label{ii.-2-distribuciones-de-masa-de-probabilidad-habituales}}
+
+\hypertarget{la-distribuciuxf3n-de-bernoulli}{%
+\subsection*{La Distribución de
+Bernoulli}\label{la-distribuciuxf3n-de-bernoulli}}
+
+Está asociada a la ocurrencia de un evento \(A\) con probabilidad
+\(p=P(A)\), construyéndose la variable aleatoria \(X\) asignando el
+valor \(1\) cuando \(A\) acontece y \(0\) cuando no lo hace. Modela la
+probabilidad de acierto de un suceso. Por tanto, la función de masa de
+probailidad es:
+
+\[
+\begin{array}{c|cc|c}
+X & 0 & 1\\
+\hline
+p_X(x_i) & q=1-p & p=P(A) & \sum_i p_X(x_i) = 1
+\end{array}
+\]
+
+Podemos dar una forma funcional, haciendo además explícita en la
+definición la dependencia con el parámetro \(p\):
+
+\[Bernoulli(p) \equiv p_X(x_i;p)=p^{x_i}(1-p)^{1-x_i} \qquad x_i \in \{0,1\}\]
+
+    Podemos calcular fácilmente los principales estadísticos de la
+distribución:
+
+\begin{align*}
+\eta_X = E(X) &= 0(1-p)+1p &= p\\
+E(X^2) &= 0^2(1-p)+1^2p &= p\\
+\sigma_X^2=Var(X) &= E(X^2)-\eta_X^2 = p-p^2 &= p(1-p)
+\end{align*}
+
+En el lanzamiento de una moneda, tal vez trucada, el suceso ``sacar
+cara'' (igualmente sería ``cruz'') se modela con una distribución de
+Bernoulli, siendo \(P(cara)=p\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Probabilidad de acertar: p =  0.70 
+Probabilidad de fallar:  q = 1-p =  0.30
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.2.DistribucionesDiscretasHabituales_files/II.2.DistribucionesDiscretasHabituales_3_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bernoulli(0.7):
+	 Media: 0.7
+	 Varianza: 0.21000000000000002
+	 Valor Cuadrático Medio: 0.7
+
+Ejemplo de realización (100 repeticiones):
+[0 1 1 0 0 1 0 1 1 1 1 0 1 0 1 1 0 1 0 1 1 0 1 0 1 1 1 1 0 0 0 0 0 1 1 0 0
+ 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1
+ 1 0 1 1 0 1 1 1 1 1 1 1 0 1 1 0 1 1 1 1 0 1 0 1 1 0]
+
+Estimaciones:
+Probabilidades:  [0.35 0.65]
+Media:  0.65 
+Varianza:  0.2275
+
+    \end{Verbatim}
+
+    \hypertarget{la-distribuciuxf3n-binomial}{%
+\subsection*{La Distribución
+Binomial}\label{la-distribuciuxf3n-binomial}}
+
+Consideremos la repetición de \(n\) experimentos de Bernoulli
+independientes. La distribución binomial modela la probabilidad de que
+el suceso \(A\) acontezca \(x_i\) veces en los \(n\) intentos:
+
+\[B(n,p)\equiv p_X(x_i; n,p) = \binom{n}{x_i}p^{x_i}(1-p)^{n-x_i} \qquad n \in \mathbb{N} \quad x_i \in \{0,1 \ldots n\}\]
+
+Considerando que una variable aleatoria binomial puede considerarse suma
+de \(n\) variables de Bernoulli independientes, se demuestra (se verá
+cuando se vean varias variables aleatorias conjuntas) que la media y la
+varianza son:
+
+\begin{align*}
+\eta_X = E(X) &= np\\
+\sigma_X^2=Var(X) &= np(1-p)
+\end{align*}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.2.DistribucionesDiscretasHabituales_files/II.2.DistribucionesDiscretasHabituales_6_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.2.DistribucionesDiscretasHabituales_files/II.2.DistribucionesDiscretasHabituales_7_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+B( 5 , 0.5 ):
+ 	Media:  2.5 	Varianza:  1.25
+B( 10 , 0.5 ):
+ 	Media:  5.0 	Varianza:  2.5
+B( 20 , 0.5 ):
+ 	Media:  10.0 	Varianza:  5.0
+B( 5 , 0.1 ):
+ 	Media:  0.5 	Varianza:  0.45
+B( 10 , 0.05 ):
+ 	Media:  0.5 	Varianza:  0.475
+B( 20 , 0.025 ):
+ 	Media:  0.5 	Varianza:  0.4875
+
+    \end{Verbatim}
+
+    \hypertarget{la-distribuciuxf3n-poisson}{%
+\subsection*{La Distribución Poisson}\label{la-distribuciuxf3n-poisson}}
+
+La función de masa de probabilidad de la distribución de Poisson es:
+
+\[Pois(\lambda)\equiv p_X(x_i;\lambda) = e^{-\lambda}\frac{\lambda^k}{k!}\]
+
+Esta distribución surge cuando se hacen crecer el número de repeticiones
+de una distribución Binomial, de modo que la probabilidad de éxito se
+hace muy pequeña pero el producto de tal probabilidad y el número de
+repeticiones se mantiene constante:
+
+\[n \rightarrow \infty \begin{cases}
+    p \rightarrow 0\\
+    np \rightarrow \lambda
+  \end{cases} \implies B(n,p) \rightarrow Pois(\lambda)\]
+
+El valor medio y la varianza resultan ser: \(\eta_X=\sigma_X^2=\lambda\)
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.2.DistribucionesDiscretasHabituales_files/II.2.DistribucionesDiscretasHabituales_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Los \textbf{procesos puntuales de Poisson} son importantes en la
+práctica. Considérese un intervalo de longitud \(\Delta\) en el que se
+resaltan puntos de forma totalmente aleatoria con una densidad o tasa de
+llegada de \(r\). El promedio de puntos que surgirán en el mismo es
+\(\lambda = r\Delta\). El intervalo podría ser también una porción del
+plano o del espacio, con una interpretación semejante para los puntos.
+
+\begin{itemize}
+\tightlist
+\item
+  El número de puntos en dos subintervalos disjuntos es independiente,
+  por la aleatoriedad en su surgimiento o llegada.
+\item
+  El número de puntos del intervalo tiene una distribución
+  \(Pois(r\Delta)\)
+\item
+  Como se verá más adelante, si el intervalo es lineal, el periodo de
+  espera hasta el siguiente punto sigue una distribución exponencial
+\end{itemize}
+
+    \hypertarget{distribuciones-multinoulli-y-uniforme}{%
+\subsection*{Distribuciones Multinoulli y
+Uniforme}\label{distribuciones-multinoulli-y-uniforme}}
+
+Se trata de la distribución genérica de una variable aleatoria discreta
+que puede tomar \(N\) valores posibles. Un ejemplo es el dado trucado
+visto anteriormente, en el que \(N=6\) y cada cara tiene una
+probabilidad \(p_X(x_i)\), con \(x_i \in \{1, \ldots 6\}\).
+
+\begin{itemize}
+\tightlist
+\item
+  Un caso particular es cuando \(N=2\), \(x_i \in \{0,1\}\), que
+  corresponde a la distribución de Bernoulli.
+\item
+  La \textbf{distribución uniforme} es el caso particular en que la
+  variable aleatoria toma valores entre \(a\) y \(b\), todos con igual
+  probabilidad. Esto es:
+\end{itemize}
+
+\[U(a,b)\equiv p_X(x_i;a,b)=1/N \qquad a < b \in \mathbb{Z} \qquad N=b-a+1\]
+
+\[\eta_X = \frac{a+b}{2}\]
+
+\[\sigma_X^2 = \frac{(b-a+1)^2-1}{12}\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.2.DistribucionesDiscretasHabituales_files/II.2.DistribucionesDiscretasHabituales_13_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{verosimilitud-versus-bayes}{%
+\subsection*{Verosimilitud versus
+Bayes}\label{verosimilitud-versus-bayes}}
+
+Hemos visto varias distribuciones que dependen de parámteros. Cada valor
+de tales parámetros determina una distribución diferente. La variación
+de tales distribuciones es continua con tales parámetros:
+
+\begin{itemize}
+\tightlist
+\item
+  Bernoulli(p)
+\item
+  Binom(n, p)
+\item
+  Poisson(\(\lambda\))
+\item
+  U(a,b)
+\end{itemize}
+
+Un parámetro \(k\) discreto también podría indexar distribuciones
+totalmente diferentes. Por ejemplo, \(k \in \{1,2,3\}\) indicaría tres
+distribuciones distintas.
+
+    A la vista de observaciones provenientes de alguna distribución
+parameterizada según se ha indicado, ¿podemos infererir cuál es la
+distribución que las ha generado? En otras palabras, ¿cuáles son los
+parámetros?
+
+Consideremos que la distribución se parametriza como
+\(p_X(x_i; \theta)\).
+
+La \textbf{función de verosimilitud} corresponde a la función de masa de
+probabilidad evaluada en la observación, dejando variar el parámetro que
+consideramos \textbf{determinista y desconocido}:
+
+\[L(\theta) = p_X(x_i; \theta)\]
+
+\textbf{Alternativamente}, puede pensarse que \(\theta\) es una
+\textbf{variable aleatoria}. En tal caso consideraremos las probabilidad
+de masa condicionada de la observación por el parámetro:
+\[p_X(x_i/\theta)\]
+
+    Tenemos dos opciones para determinar el parámetro \(\theta\) y, con
+ello, la distribución que ha generado las observaciones:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{MLE}: Principio de \textbf{máxima verosimilitud}: buscamos el
+  valor de \(\theta\) que maximiza la versomilitud \(L(\theta)\)
+\item
+  \textbf{MAP}: Principio de \textbf{máximo a posteriori}: \emph{si
+  disponemos de la distribución a priori} del parámetro \(\theta\) (de
+  momento sólo consideramos una variable aleaotoria discreta) podemos
+  utilizar el \textbf{Teorema de Bayes} para obtener la probabilidad a
+  posteriori del parámetro dadas las observaciones, que será la función
+  a maximizar:
+\end{itemize}
+
+\[p_X(\theta/x_i) = \frac{p_X(x_i/\theta)p_\theta(\theta)}{\sum p_X(x_i/\theta_j)p_\theta(\theta_j)}\]
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{II.2.DistribucionesDiscretasHabituales_files/II.2.DistribucionesDiscretasHabituales_17_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{ejemplo}{%
+\subsubsection*{Ejemplo}\label{ejemplo}}
+
+Un sensor debe detectar dos tipos de radiaciones, ambas emitiendo
+fotones conforme a una distribución de Poisson. La fuente 1 tiene
+\(\lambda_1 = 5\) y la fuente 2 tiene \(\lambda_2 = 10\). Se miden 7
+fotones.
+
+\begin{itemize}
+\tightlist
+\item
+  ¿Qué fuente debemos elegir?
+\item
+  ¿Y si sabemos que las fuentes tienen una probabilidad priori
+  \(p_F(1)=1/3\) y \(p_F(2)=2/3\)?
+\item
+  ¿Cuáles deben ser las reglas de decisión MLE y MAP?
+\item
+  ¿Cuáles son las probabilidades de error y de acierto en cada caso?
+\end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

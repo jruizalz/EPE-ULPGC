@@ -1,0 +1,669 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+ 
+    % AÑADIDO POR JUAN
+    \usepackage{mathrsfs}   
+        
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{II.3 Variable Aleatoria Continua}
+    
+    
+  
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{ii.3-variable-aleatoria-continua}{%
+\section*{Variable Aleatoria
+Continua}\label{ii.3-variable-aleatoria-continua}}
+
+Recordemos que, dado el \textbf{espacio de probabilidad}
+\(\mathscr{E}(\Omega, \mathscr{F}, P)\), definimos la \textbf{variable
+aleatoria} \(X\)
+
+\begin{align*}
+X:  \mathscr{\Omega} & \longmapsto \mathbb{R}\\
+   \alpha & \longmapsto X(\alpha)
+   \end{align*}
+
+Consideremos ahora (a diferencia del caso discreto) que la variable
+aleatoria \(X\) toma valores sobre el conjunto de los números reales
+\(\mathbb{R}\), \emph{variando de forma continua la asignación de
+probabilidades en intervalos de la recta real}. Esto hace que, en
+general, las probabilidades asignadas a cada valor (pero no a cada
+intervalo) de la variable aleatoria sean nulas:
+\[P(X=x)=0 \quad \forall x \in \mathbb{R}\]
+
+Es posible también que nos encontremos ante una \textbf{variable
+aleatoria mixta}, llamada así por compartir características de las
+discretas y de las continuas, en cuyo caso hay algunos
+\(x_i \in \mathbb{R}\) con masas de probabilidad asignadas y
+\(\sum_i P(x_i) < 1\) y el resto de la probabilidad se distribuye de
+forma continua en intervalos.
+
+    \hypertarget{funciuxf3n-de-distribuciuxf3n-de-probabilidad-fdp}{%
+\subsection*{Función de distribución de probabilidad
+(FDP)}\label{funciuxf3n-de-distribuciuxf3n-de-probabilidad-fdp}}
+
+Puede demostrarse que cualquier suceso de \(\mathscr{F}\) puede
+obtenerse mediante operaciones conjuntistas realizadas con sucesos
+definidos sobre semi-intervalos de la forma \(\{X\leq x\}\), donde
+\(x \in \mathbb{R}\) es un número real arbitrario. Si se tienen las
+probabilidades de tales sucesos se conoce totalmente el espacio de
+probabilidad de la variable aleatoria, lo que justifica la definición de
+\textbf{función de distribución de probabilidad (FDP)} como:
+
+\[F_X(x) = P(\{X\leq x\}) \quad -\infty \leq x \leq \infty\]
+
+El \textbf{cuantil} \(x_q\) corresponde al valor que hace que el \(q\%\)
+de la distribución esté por debajo. Por tanto,
+\(q = F_X(x_q) \implies x_q = F_X^{-1}(q)\) y la \emph{función inversa}
+\(F_X^{-1}\) se llama \textbf{función cuantil}. Por ejemplo,
+
+\begin{itemize}
+\tightlist
+\item
+  El primer cuartil es \(x_{0.25} = F_X^{-1}(0.25)\)
+\item
+  La mediana o segundo cuartil es \(x_{0.5} = F_X^{-1}(0.5)\)
+\item
+  El tercer cuartil es \(x_{0.75} = F_X^{-1}(0.75)\)
+\item
+  El octavo decil es \(x_{0.8} = F_X^{-1}(0.8)\)
+\item
+  El décimoquinto percentil es \(x_{0.15} = F_X^{-1}(0.15)\)
+\end{itemize}
+
+    \hypertarget{propiedades-de-la-funciuxf3n-de-distribuciuxf3n-de-probabilidad}{%
+\subsubsection*{Propiedades de la función de distribución de
+probabilidad}\label{propiedades-de-la-funciuxf3n-de-distribuciuxf3n-de-probabilidad}}
+
+Sean \(F_X(x^-)=\lim \limits_{\epsilon \to 0} F_X(x-\epsilon)\) y
+\(F_X(x^+)=\lim \limits_{\epsilon \to 0} F_X(x+\epsilon)\) los valores
+de la función de distribución en \(x\) al acercarse respectivamente por
+la izquierda y por la derecha. Se cumplen las siguientes propiedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(F_X(-\infty) = 0 \quad F_X(+\infty) = 1\)
+\item
+  \(P(\{X>x\})=1-F_X(x)\)
+\item
+  \(F_X\) es continua por la derecha: \(F_X(x^+)=F_X(x)\)
+\item
+  Si la variable aleatoria es continua, \(F_X\) también lo es y
+  \(F_X(x^-)=F_X(x)\)
+\item
+  \(F_X\) es no decreciente:
+  \(x_1 < x_2 \implies F_X(x_1)\leq F_X(x_2)\)
+\item
+  \(F_X(x_0)=0 \implies F_X(x) = 0 \quad\forall x \leq x_0\)
+\item
+  En los puntos de discontinuidad, \(P(\{X = x\})=F_X(x)-F_X(x^-)\)
+\item
+  \(P(\{x_1<X\leq x_2\})=F_X(x_2)-F_X(x_1)\)
+\item
+  \(P(\{x_1 \leq X\leq x_2\})=F_X(x_2)-F_X(x_1^-)\)
+\item
+  Si la \textbf{variable aleatoria es discreta}, la función de
+  distribución es constante salvo en los puntos de discontinuidad en los
+  que se sitúan los sucesos muestrales elementales.
+\item
+  Si la \textbf{variable aleatoria es mixta}, la función de distribución
+  es continua salvo en los puntos en los que están localizadas las masas
+  de probabilidad discreta, en los que la función presenta
+  discontinuidades de salto igual a tales probabilidades.
+\end{enumerate}
+
+    \hypertarget{funciuxf3n-de-densidad-de-probabilidad-fdp}{%
+\subsection*{Función de densidad de probabilidad
+(fdp)}\label{funciuxf3n-de-densidad-de-probabilidad-fdp}}
+
+Suele ser conveniente hacer un símil entre probabilidad y masa, de modo
+que nuestra distribución de probabilidad podemos interpretarla como una
+masa igualmente distribuida a lo largo del eje real.
+
+Si la \textbf{variable es discreta}, tendremos \textbf{masas puntuales}
+ideales en puntos del eje real, mientras que si la \textbf{variable es
+continua}, la masa se distribuirá concentrándose más o menos a lo largo
+del eje, pero sin llegar a formar masas puntuales. La \textbf{variable
+mixta} combina ambos tipos de masa a lo largo del eje.
+
+Como ya se ha visto, \textbf{la función de distribución describe la masa
+acumulada hasta una posición} y, por diferencias, puede calcularse la
+masa de cualquier intervalo.
+
+La \textbf{función de densidad}, como su nombre indica, describe la
+densidad de masa (masa por unidad de longitud) a lo largo del eje.
+
+    La \textbf{función de densidad de probabilidad} (fdp) se define:
+
+\[f_X(x) =\frac{dF_X(x)}{dx}=\lim \limits_{\Delta x \to 0} \frac{F_X(x+\Delta x/2)-F_X(x-\Delta x/2)}{\Delta x}= 
+\lim \limits_{\Delta x \to 0} \frac{P\left(\{(x-\Delta x/2) < x \leq (x+\Delta x/2)\}\right)}{\Delta x}
+\]
+
+Si \textbf{la variable aleatoria es continua},
+\[P\left(\{(x-\Delta x/2) < x \leq (x+\Delta x/2)\}\right) \approx f_X(x)\Delta x\]
+
+Si \textbf{la variable aleatoria es discreta}, \(F_X(x)\) resulta
+discontinua por la izquierda en los puntos donde se localizan masas de
+probabilidad y no es derivable en los mismos. En tales puntos \({x_i}\)
+puede definirse la \textbf{función de masa de probabilidad}
+\(p_X(x_i)=P(\{X=x_i\})\), ya vista anteriormente.
+
+Matemáticamente, puede usuarse la función \(\delta(x)\), que tiene
+\textbf{área uno} localizada en \(x=0\), anchura nula y altura infinita
+para relacionar las funciones de masa y de densidad de probabilidad. Si
+la variable aleatoria es discreta:
+\[f_X(x)=\sum_{i}p_X(x_i)\delta(x-x_i)\]
+
+    \hypertarget{propiedades-de-la-funciuxf3n-de-densidad-de-probabilidad-fdp}{%
+\subsubsection*{Propiedades de la función de densidad de probabilidad
+(fdp)}\label{propiedades-de-la-funciuxf3n-de-densidad-de-probabilidad-fdp}}
+
+La función de distribución de probabilidad (FDP) se obtiene integrando:
+
+\[f_X(x) = \frac{dF_X(x)}{dx} \iff F_X(x)=\int_{-\infty}^x f_X(u)du\]
+
+Dado que \(F_X(\infty)=1\) se concluye que
+\(\int_{-\infty}^{\infty} f_X(x)dx = 1\).
+
+Por tanto, el área debajo de la función de densidad de probabilidad
+\textbf{siempre} es uno. Esto es lógico, pues el eje real corresponde al
+espacio muestral o suceso seguro.
+
+La probabilidad de un intervalo es
+\[P(x_1< X \leq x_2) = F_X(x_2)-F_X(x_1)=\int_{x_1}^{x_2}f_X(x)dx\]
+
+y corresponde al área debajo de la curva de la fdp en dicho intervalo.
+Adviértase que \(\int_{0^-}^{0^+}\delta(x)dx = 1\), lo que nos permite
+extender el formalismo a variables discretas y mixtas.
+
+    \hypertarget{propiedades-de-la-funciuxf3n-de-masa-de-probabilidad-fmp}{%
+\subsubsection*{Propiedades de la función de masa de probabilidad
+(fmp)}\label{propiedades-de-la-funciuxf3n-de-masa-de-probabilidad-fmp}}
+
+Como ya se ha visto, cuando la variable aleatoria es discreta, se define
+la \textbf{función de masa de probabilidad}, que se relaciona como sigue
+con la fdp:
+
+\[p_X(x_i)=P(\{X=x_i\})\iff f_X(x)=\sum_{i}p_X(x_i)\delta(x-x_i)\]
+
+Podemos relacionar la función de masa de probabilidad (fmp) con la
+función de distribución de probabilidad (FDP), que corresponde a la
+función acumulada de probabilidad vissta anteriormente:
+
+\[p_X(x_n) = F_X(x_n)-F_X(x_{n-1}) \iff F_x(x_n)=\sum_{i=-\infty}^n p_X(x_i)\]
+
+Siguen fácilmente las siguientes propiedades:
+
+\[F_x(\infty)=1 \implies \sum_{i=-\infty}^{+\infty} p_X(x_i)=1\]
+
+\[P(x_{n_1} \leq X \leq x_{n_2}) = \sum_{i=n_1}^{n_2} p_X(x_i)\]
+
+    \hypertarget{relaciuxf3n-entre-el-histograma-y-la-fdp}{%
+\paragraph{Relación entre el histograma y la
+fdp}\label{relaciuxf3n-entre-el-histograma-y-la-fdp}}
+
+Supongamos que tenemos una muestra estadística con \(N\) observaciones
+de una variable estadística. Podemos considerar que tales observaciones
+corresponden a realizaciones de un experimento modelado por un espacio
+de probabilidad sobre el que hemos definido una variable aleatoria
+correspondiente con la variable estadística.
+
+El espacio de probabilidad propociona un modelo teórico de los datos,
+mientras que las muestra estadísitca resulta de la experiencia empírica.
+¿Podemos caracterizar probabilísticamente la población a partir de la
+muetsra estadística?
+
+Como sabemos podemos construir un histograma de frecuencias relativas,
+sin más que agrupar los valores de la variable estadística por
+intervalos. Considerando que todos los intervalos tienen igual anchura
+\(\Delta x\), podemos aproximar la fdp en cada \(x_i\) (puntos medios
+del intervalo, como sigue, siendo \(F_i\) la frecuencia absoluta de
+observaciones que caen dentro del intervalo:
+
+\[f_X(x_i) \approx \frac{F_i}{N\Delta x}\]
+
+    \hypertarget{esperanza-matemuxe1tica-y-momentos}{%
+\subsection*{Esperanza matemática y
+momentos}\label{esperanza-matemuxe1tica-y-momentos}}
+
+La esperanza matemática o media de una variable aleatoria \(X\) es:
+
+\[\eta_X = E\{X\}=\int_{-\infty}^{\infty}xf_X(x)dx\]
+
+Si consideramos la aproximación anterior del histograma a la fdp,
+podemos ver que la media muestral aproxima la esperanza matemática:
+\(\hat x = \sum_{i=1}^Nx_i\frac{F_i}{\Delta x} \approx \eta_X\).
+
+La esperanza matemática puede definirse sobre cualquier función \(g(X)\)
+de la variable aleatoria:
+
+\[\eta_{g(X)} = E\{g(X)\}=\int_{-\infty}^{\infty}g(x)f_X(x)dx\]
+
+La \textbf{esperanza matemática es un operador lineal}, esto es, sean
+\(g_1(X)\) y \(g_2(X)\):
+
+\[E\{a_1g_1(X)+a_2g_2(X)\}=a_1E\{g_1(X)\}+a_2E\{g_2(X)\}\]
+
+    Podemos así definir los \textbf{momentos}:
+
+\[m_n=E\{X^n\}=\int_{-\infty}^{\infty}x^nf_X(x)dx\]
+
+En particular, la \textbf{media} es \(m_1\equiv\eta_X=E\{X^1\}\) y el
+\textbf{valor cuadrático medio} es \(m_2=E\{X^2\}\)
+
+Y los \textbf{momentos centrales}:
+
+\[\mu_n=E\{(X-\eta_X)^n\}=\int_{-\infty}^{\infty}(x-\eta_X)^nf_X(x)dx\]
+
+En particular, la \textbf{varianza} es
+\(m_2\equiv \sigma_X^2 =E\{(X-\eta_X)^2\}\). Aplicando la linealidad:
+
+\[\sigma_X^2=E\{(X-\eta_X)^2\}=E\{X^2\}-\eta_X^2\]
+
+    \hypertarget{esperanza-y-momentos-en-el-caso-discreto}{%
+\subsubsection*{Esperanza y momentos en el caso
+discreto}\label{esperanza-y-momentos-en-el-caso-discreto}}
+
+Como ya sabemos, si la \textbf{variable aleatoria es discreta}, se
+utilizan las funciones de masa de probabilidad en vez de las fdp, y
+sumas en vez de integrales, repitiéndose aquí las esperanzas y momentos
+para el caso discreto vistos anteriormente:
+
+\[\eta_{g(X)} = E\{g(X)\}=\sum_{i=-\infty}^{\infty}g(x_i)p_X(x_i)\]
+
+\[m_n=E\{X^n\}=\sum_{i=-\infty}^{\infty}x^nf_X(x)dx\]
+
+\[\mu_n=E\{(X-\eta_X)^n\}=\sum_{i=-\infty}^{\infty}(x-\eta_X)^nf_X(x)dx\]
+
+    Todos estos momentos tienen sus equivalentes muestrales, ya vistos en la
+parte de introducción a la estadística.
+
+Por otra parte, es muy habitual \textbf{normalizar} una variable
+aleatoria \(X\), construyendo otra \(Y=\frac{X-\eta_X}{\sigma_X}\) que
+tenga media nula y varianza unidad, tal y como ya se ha visto para el
+caso discreto.
+
+Además, podemos definir:
+
+\begin{itemize}
+\tightlist
+\item
+  Coeficiente de asimetría:
+  \(\gamma_1=E\{\frac{(X-\eta_X)^3}{\sigma^3}\}=\frac{\mu_3}{\sigma_X^3}\)
+\item
+  Coeficiente de exceso de curtosis:
+  \(\gamma_2=E\{\frac{(X-\eta_X)^4}{\sigma^4}\}-3=\frac{\mu_4}{\sigma_X^4}-3\).
+  La distribución normal tiene un exceso de curtosis de 0, razón por la
+  que se resta 3.
+\end{itemize}
+
+    \hypertarget{funciones-condicionadas}{%
+\subsection*{Funciones condicionadas}\label{funciones-condicionadas}}
+
+Consideremos un espacio de probabilidad \(\mathscr{E}\) en el que se ha
+definido una variable aleatoria \(X\), su función de distribución
+\(F_X(x)\) y su función de densidad \(f_X(x)\). Considérese, además, un
+suceso \(A \in \mathscr{F}\).
+
+La \textbf{función de distribución de \(X\) condicionada por \(A\)} es:
+
+\[F_X(x\, /\, A) = P(X \leq x \, /\, A) = \frac{P(\{X \leq x \bigcap A )\} }{P(A)}\]
+
+Y la \textbf{función de densidad de \(X\) condicionada por \(A\)} es:
+
+\[f_X(x \, /\, A)=\frac{dF_X(x \, /\, A)}{dx}=\lim \limits_{\Delta x \to 0} \frac{F_X(x+\Delta x/2 \, /\, A)-F_X(x-\Delta x/2 \, /\, A)}{\Delta x}= \\
+=\lim \limits_{\Delta x \to 0} \frac{P\left(\{(x-\Delta x/2) < x \leq (x+\Delta x/2)\} \, /\, A \right)}{\Delta x} \]
+
+    En general el suceso condicionante \(A\) podemos definirlo con
+intervalos de la variable aleatoria. Suponiendo que
+\(A=\{x_1\leq X \leq x_2\}\):
+
+\begin{align*}
+F_X(x\, /\, \{x_1\leq X \leq x_2\}) & = \frac{P(\{X \leq x \bigcap \{x_1\leq X \leq x_2\ )\} }{P(\{x_1\leq X \leq x_2\})}=\\
+ & = \begin{cases}
+    0       & \quad x < x_1\\
+    \frac{F_X(x)-F_X(x_1^-)}{F_X(x_2)-F_X(x_1^-)}  & \quad x_1 \leq x \leq x_2\\
+    1 &\quad x > x_2
+  \end{cases}
+\end{align*}
+
+\begin{align*}
+f_X(x\, /\, \{x_1\leq X \leq x_2\}) = \begin{cases}
+    0       & \quad x < x_1\\
+    \frac{f_X(x)}{F_X(x_2)-F_X(x_1^-)}  & \quad x_1 \leq x \leq x_2\\
+    0 &\quad x > x_2
+  \end{cases}
+\end{align*}
+
+    \hypertarget{teorema-de-bayes}{%
+\subsubsection*{Teorema de Bayes}\label{teorema-de-bayes}}
+
+Recordemos el \textbf{Teorema de Bayes} con dos sucesos:
+
+\[P(A/B) = \frac{P(B/A)P(A)}{P(B)}\]
+
+Si \(B=\{X \leq x\}\):
+
+\[P(A\, / \, X \leq x) = \frac{F_X(x \, / \, A)P(A)}{F_X(x)} \iff F_X(x \, / \, A) = \frac{P(A\, / \, X \leq x)F_X(x)}{P(A)}\]
+
+Si \(B=\{x_1 < X \leq x_2\}\):
+
+\[P(A\, / \{x_1 < X \leq x_2\}) = \frac{F_X(x_2 \, / \, A)-F_X(x_1 \, / \, A)}{F_X(x_2)-F_X(x_1)}P(A)\]
+
+    Si \(B=\{X=x\}\) y la variable aleatoria es continua nos encontramos con
+un problema para condicionar por \(B\) pues su probabilidad es nula. En
+tal caso consideramos que \(B=\{x<X-\Delta x/2 \leq x+\Delta x/2\}\) y
+tomamos un paso al límite:
+
+\begin{align*}
+P(A \, / \, X=x) & = \lim \limits_{\Delta x \to 0} P(A\, / \{x-\Delta x/2 < X \leq x + \Delta x/2\}) \\
+& = \lim \limits_{\Delta x \to 0} \frac{F_X(x +\Delta x/2 \, / \, A)-F_X(x-\Delta x/2 \, / \, A)}{F_X(x+\Delta x/2)-F_X(x-\Delta x/2)}P(A)
+\end{align*}
+
+Por tanto,
+
+\[ P(A \, / \, X=x) = \frac{f_X(x \, / \, A)P(A)}{f_X(x)} \iff f_X(x \, / \, A) = \frac{P(A \, / \, X=x)f_X(x)}{P(A)}\]
+
+    \hypertarget{teorema-de-la-probabilidad-total}{%
+\subsubsection*{Teorema de la Probabilidad
+Total}\label{teorema-de-la-probabilidad-total}}
+
+Sea \(A_i \in \mathscr{P}(\Omega) \, i=1\ldots K\) es una partición del
+espacio muestral \(\Omega\). Se obtiene inmediatamente el
+\textbf{Teorema de la Probabilidad Total}:
+
+\[F_X(x) = F_X(x \, / \, A_1)P(A_1)+\ldots + F_X(x \, / \, A_K)P(A_K)\]
+
+Derivando:
+
+\[f_X(x) = f_X(x \, / \, A_1)P(A_1)+\ldots + f_X(x \, / \, A_K)P(A_K)\]
+
+Podemos obtener una versión continua del teorema integrando
+\(f_X(x \, / \, A) = \frac{P(A \, / \, X=x)f_X(x)}{P(A)}\):
+
+\[P(A) = \int_{-\infty}^{+\infty} P(A \, / \, X=x)f_X(x) dx\]
+
+    \hypertarget{esperanza-y-momentos-condicionados}{%
+\subsubsection*{Esperanza y momentos
+condicionados}\label{esperanza-y-momentos-condicionados}}
+
+\[\eta_{X/A} = E\{X \, / \, A\}=\int_{-\infty}^{\infty}xf_X(x\, / \, A)dx\]
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
