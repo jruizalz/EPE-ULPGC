@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""make_slides
+
+Script de conversión de Jupyter Notebooks a Reveal.js Slides
+
+Uso:
+
+    ipython make_slides.ipy notebook.ipynb
+	
+	El fichero del script debe estar en el directorio del notebook
+	
+	Se crea un fichero ../docs/notebook.slides.html
+	
+	Debe existir el fichero ../docs
+   
+@author: Juan Ruiz Alzola
+"""
+
+import sys
+import os
+import shutil
+
+if sys.platform=="win32":
+    Tags = "{'remove_input'}"
+elif sys.platform.startswith('linux'):
+    Tags = '{"remove_input"}'
+else:
+    print("Plataforma diferente de Windows o Linux.\n",
+	      "Probando con configuración de Linux...")
+    Tags = '{"remove_input"}'
+
+!jupyter nbconvert {sys.argv[1]} --TagRemovePreprocessor.remove_input_tags=$Tags --TemplateExporter.exclude_output_prompt=True --to slides
+
+FName  = sys.argv[1][:-5]+"slides.html"
+DstDir = os.path.normpath("../docs/")
+DstFName = os.path.join(DstDir, FName)
+
+if os.path.exists(DstDir):
+    shutil.move(FName, DstFName)
+else:
+    print("El directorio docs no existe.\n", 
+	      "El fichero creado se mantiene en el directorio de trabajo")
+
