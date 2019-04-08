@@ -12791,6 +12791,241 @@ $$</p>
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">Esperanza Matem&#225;tica y Valor Medio. Momentos<a class="anchor-link" href="#Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">&#182;</a></h3><p>Se define la esperanza matemática de una función $g(X, Y)$ de dos variables aleatorias como sigue:</p>
+<p>$$E\left(g(X, Y)\right)=\sum_i\sum_j g(x_i,y_j)p_{XY}(x_i,y_j)$$</p>
+<p>Como ya se vio en el caso unidimensional, es fácil advertir que el operador $E(·)$ es lineal</p>
+<p>$$E(a_1g_1(X,Y)+a_2g_2(X,Y))=a_1E(g_1(X,Y)) + a_2E(g_2(X,Y))$$</p>
+<p>donde $a_1$ y $a_2$ son coeficiente constantes arbitrarios y $g_1$ y $g_2$ son dos funciones. También es evidente que, si $k$ es una constante arbitraria</p>
+<p>$$E(k) = k$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Si $g(X,Y)=X$ se obtiene el valor medio de $X$:</p>
+<p>$$\eta_X=E(X)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_i x_i \sum_j p_{XY}(x_i,y_j) = \sum_i x_i p_X(x_i)$$</p>
+<p>Y si $g(X,Y)=Y$ se obtiene el valor medio de $Y$:</p>
+<p>$$\eta_Y=E(Y)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_j y_j \sum_i p_{XY}(x_i,y_j) = \sum_j y_j p_Y(y_j)$$</p>
+<p>Es habitual trabajar vectorialmente, $\mathbf{\eta_{XY}}=E((X,Y))=(\eta_X, \eta_Y)$. El vector de medias $(\eta_X, \eta_Y)$ corresponde al centro de masa de la distribución de masa de probabilidad en el plano $(X,Y)$. Por su parte, si $g(X,Y) = X+Y$:</p>
+<p>$$\eta_{X+Y}=E(X+Y)=\sum_i\sum_j (X+Y) p_{XY}(x_i,y_j)=E(X)+E(Y)$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Valor-Cuadr&#225;tico-Medio-y-Correlaci&#243;n">Valor Cuadr&#225;tico Medio y Correlaci&#243;n<a class="anchor-link" href="#Valor-Cuadr&#225;tico-Medio-y-Correlaci&#243;n">&#182;</a></h4><p>Considérese ahora que $g(X,Y)=(X+Y)^2$, esto es, calculamos el valor cuadrático medio de la suma de $X$ e $Y$. Desarrollando el cuadrado y aplicando linealidad:</p>
+<p>$$E((X+Y)^2)= E(X^2)+E(Y^2)+2E(XY)$$</p>
+<p>El término $R_{XY}=E(XY)$ se denomina <strong>correlación</strong>, y es un indicador de la dependencia probabilística de ambas variales aleatorias, $X$ e $Y$.</p>
+<ul>
+<li>$X$ e $Y$ son <strong>ortogonales</strong> si $R_{XY}=E(XY)=0$. Ello indica que no podemos pensar que ambas variables guarden una relación de proporcionalidad $Y \not \approx kX$ pues ello supondría que $E(X^2) \approx 0$.</li>
+<li>En general, $E(XY) \neq E(X)E(Y)$. Como veremos, si $E(XY)=E(X)E(Y)$ ambas variables aleatorias están <strong>incorreladas</strong>.</li>
+<li>Si $X$ e $Y$ son independientes es fácil advertir que $E(XY)=E(X)E(Y)$, de modo que <u>la independencia implica incorrelación</u>, si bien el contrario no es cierto en general.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Es habitual utilizar una formulación matricial, haciendo uso de la <strong>matriz de correlación</strong>:</p>
+<p>$$\mathbf R_{XY} = E(\begin{pmatrix} X\\Y\end{pmatrix} (X, Y))= 
+\begin{pmatrix}
+E(X^2) &amp; E(XY)\\
+E(XY) &amp; E(Y^2)
+\end{pmatrix}$$</p>
+<p>Como se ve, la matriz de correlación es una matriz simétrica, cuyos elementos sobre la diagonal corresponden a los valores cuadrático medio, $E(X^2)$ y $E(Y^2)$ y fuera de la misma está la correlación entre $X$ e $Y$, $E(XY)$.</p>
+<p>Si ambas variables fueran ortogonales, la matriz de correlación sería diagonal.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Covarianza">Covarianza<a class="anchor-link" href="#Covarianza">&#182;</a></h4><p>Considérese ahora que centramos el vector aleatorio $(X,Y)$ en el centro de masa probabilístico $(\eta_X, \eta_Y)$ y que $g(X,Y)=\left( (X-\eta_X)+(Y-\eta_Y) \right)^2$</p>
+<p>$$E\left(((X-\eta_X)+(Y-\eta_Y))^2\right)= \sigma_X^2+\sigma_Y^2+2E((X-\eta_X)(Y-\eta_Y)$$</p>
+<p>El término $C_{XY}=E((X-\eta_X)(Y-\eta_Y))$ se denomina <strong>covarianza</strong>, y es también un indicador de la dependencia probabilística de ambas variales aleatorias, $X$ e $Y$.</p>
+<ul>
+<li>La covarianza se relaciona con la correlación sin más que operar y aplicar linealidad: $C_{XY}=R_{XY}-\eta_X\eta_Y$</li>
+<li>$X$ e $Y$ son incorreladas si $C_{XY}=0$. Decir que $X$ e $Y$ están incorreladas es equivalente a afirmar que $X-\eta_X$ e $Y-\eta_Y$ son ortogonales.</li>
+<li>Es fácil demostrar que $C_{XY}= 0 \iff R_{XY}=\eta_X\eta_Y$.</li>
+<li>La <u>incorrelación supone ausencia de relación lineal</u> entre $X$ e $Y$, esto es, $Y \not \approx aX + b$.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Es habitual utilizar una formulación matricial, haciendo uso de la <strong>matriz de covarianza</strong>:</p>
+<p>$$\mathbf{C_{XY}} = E(\begin{pmatrix} X-\eta_X\\Y-\eta_Y\end{pmatrix} (X-\eta_X, Y-\eta_Y))=\\
+\begin{pmatrix}
+E((X-\eta_X)^2) &amp; E((X-\eta_X)(Y-\eta_Y))\\
+E((X-\eta_X)(Y-\eta_Y)) &amp; E((Y-\eta_Y)^2)
+\end{pmatrix}=
+\begin{pmatrix}
+\sigma_X^2 &amp; C_{XY}\\
+C_{XY} &amp; \sigma_Y^2
+\end{pmatrix}
+$$</p>
+<p>Como se ve, la matriz de covarianza es una matriz simétrica, cuyos elementos sobre la diagonal corresponden a las varianzas, $\sigma_X^2$ y $\sigma_Y^2$ y fuera de la misma está la covarianza entre $X$ e $Y$, $C_{XY}$.</p>
+<p>Si ambas variables fueran incorreladas, la matriz de covarianza sería diagonal.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Coeficiente-de-correlaci&#243;n">Coeficiente de correlaci&#243;n<a class="anchor-link" href="#Coeficiente-de-correlaci&#243;n">&#182;</a></h4><p>Si ahora trabajamos con las variables aletorias tipificadas, $\hat X = \frac{X-\eta_X}{\sigma_X}$ e $\hat Y = \frac{Y-\eta_Y}{\sigma_Y}$ podemos definir el <strong>coeficiente de correlación</strong> (recuérdese que las variables tipificadas tienen, por construcción, valor medio nulo y desviación típica unidad):</p>
+<p>$$r_{XY}=E(\frac{X-\eta_X}{\sigma_X} \frac{Y-\eta_Y}{\sigma_Y})=\frac{1}{\sigma_X\sigma_Y}C_{XY}  \qquad -1 \leq r_{XY} \leq 1$$</p>
+<p>El coeficiente de correlación $r_{XY}$:</p>
+<ul>
+<li>Tiene valor nulo si hay ausencia de relación lineal entre $X$ e $Y$</li>
+<li>Tiene valor 1 si $Y = aX +b$ con $a&gt;0$</li>
+<li>Tiene valor -1 si  $Y = aX +b$ con $a&lt;0$</li>
+<li>Si $0&lt;|r_{XY}|&lt;1$ el grado de dependencia lineal (positiva o negativa) será tanto mayor cuanto más cerca de 1. </li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Esperanza-matem&#225;tica-condicionada">Esperanza matem&#225;tica condicionada<a class="anchor-link" href="#Esperanza-matem&#225;tica-condicionada">&#182;</a></h4><p>Podemos definir la esperanza matemática de una función $g$ de las variables aleatorias $(X,Y)$ condicionada por el suceso $M$ como sigue:</p>
+<p>$$E(g(X,Y)/M)=\sum_i g(x_i,y_j)p_{XY}(x_i,y_j/M)$$</p>
+<p>Podemos extender con la esperanza condicionada las propiedades y definiciones vistas anteriormente. Por ejemplo:</p>
+<p>$$\begin{align*}
+\eta_{X/M}=E(X/M)&amp;=\sum_i \sum_j x_ip_{XY}(x_i,y_j/M)= \sum_i x_i p_X(x_i/M)\\
+E(X^2/M)&amp;=\sum_i \sum_j x_i^2p_{XY}(x_i,y_j/M)=\sum_i x_i^2 p_X(x_i/M)\\
+\sigma_{X/M}^2 = Var(X/M) &amp;= E(X^2/M)-\eta_{X/M}^2
+\end{align*}$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En particular, podemos considerar los momentos de $X$ condicionados por $Y=y_j$, donde utilizamos el abuso de notación $E(\bullet / Y=y_j) \equiv E(\bullet / y_j)$:</p>
+<p>$$\begin{align*}
+\eta_{X/y_j}=E(X/y_j)&amp;= \sum_i x_i p_{X/Y}(x_i/y_j)\\
+E(X^2/y_j)&amp;=\sum_i x_i^2 p_X(x_i/y_j)\\
+\sigma_{X/y_j}^2 = Var(X/y_j) &amp;= E(X^2/y_j)-\eta_{X/y_j}^2
+\end{align*}$$</p>
+<p>Adviértase que $E(X) = \sum_j E(X/y_j) p_Y(y_j)$, sin más que sustituir $E(X/y_j)$ por su definición y utilizar el Teorema de la Probabilidad Total.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Consideramos el ejemplo ya visto de lanzamiento mutuamente dependiente de un dado y una moneda trucados, cuya función de masa de probabilidad se indica de nuevo:
+$$
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 &amp; \frac{1}{24} &amp; 0 &amp; \frac{1}{24}\\
+\hline
+2 &amp; \frac{2}{24} &amp; \frac{3}{24} &amp; \frac{5}{24}\\
+\hline
+3 &amp; \frac{1}{24} &amp; \frac{4}{24} &amp; \frac{5}{24}\\
+\hline
+4 &amp; \frac{2}{24} &amp; \frac{1}{24} &amp; \frac{3}{24}\\
+\hline
+5 &amp; \frac{1}{24} &amp; \frac{3}{24} &amp; \frac{4}{24}\\
+\hline
+6 &amp; \frac{4}{24} &amp; \frac{2}{24} &amp; \frac{6}{24}\\
+\hline
+p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) &amp; \frac{11}{24} &amp; \frac{13}{24} &amp; 1
+\end{array}
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Variable aleatoria $X_1$ (dado)<ul>
+<li>$\eta_{X_1}=E(X_1)=1\frac{1}{24}+2\frac{5}{24}+3\frac{5}{24}+4\frac{3}{24}+5\frac{4}{24}+6\frac{6}{24}=\frac{94}{24}\approx3.917$</li>
+<li>$E(X_1^2)=1^2\frac{1}{24}+2^2\frac{5}{24}+3^2\frac{5}{24}+4^2\frac{3}{24}+5^2\frac{4}{24}+6^2\frac{6}{24}=\frac{430}{24}\approx 17.917$</li>
+<li>$Var(X_1)=E(X_1^2) -\eta_X^2= \frac{430}{24}-(\frac{94}{24})^2 \approx 2.576$</li>
+<li>$\sigma_{X_1} \approx 1.605$</li>
+</ul>
+</li>
+<li>Variable aleatoria $X_2$ (moneda)<ul>
+<li>$\eta_{X_2}=E(X_2)= 0\frac{11}{24}+1\frac{13}{24}=\frac{13}{24}\approx 0.542$</li>
+<li>$E(X_2^2)= 0^2\frac{11}{24}+1^2\frac{13}{24}=\frac{13}{24}\approx 0.542$</li>
+<li>$Var(X_2)=E(X_2^2) -\eta_{X_2}^2= \frac{13}{24}-(\frac{13}{24})^2=\frac{13}{24}\frac{11}{24} \approx 0.248$</li>
+<li>$\sigma_{X_2} \approx 0.498$</li>
+<li>Momentos conjuntos <ul>
+<li>Correlación: $R_{XY} = 2\frac{3}{24}+3\frac{4}{24}+4\frac{1}{24}+5\frac{3}{24}+6\frac{2}{24}=\frac{49}{24} \approx 2.042$</li>
+<li>Covarianza: $C_{XY}=R_{XY}-\eta_X\eta_Y= \frac{49}{24}-\frac{94}{24}\frac{13}{24}\approx -0.80$</li>
+<li>Coeficiente de correlación: $r_{XY} = \frac{1}{\sigma_X\sigma_Y}C_{XY} \approx -0.1 $ </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Con $p_{X_1/X_2}$ pueden calcularse los momentos de los resultados del dado para cada resultado del lanzamiento de la moneda. Por ejemplo, la media:</p>
+<p>$$
+X_2 \\X_1 \begin{array}{c|c|c}
+p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
+\hline
+1 &amp; \frac{1}{11} &amp; 0\\
+\hline
+2 &amp; \frac{2}{11} &amp; \frac{3}{13}\\
+\hline
+3 &amp; \frac{1}{11} &amp; \frac{4}{13}\\
+\hline
+4 &amp; \frac{2}{11} &amp; \frac{1}{13}\\
+\hline
+5 &amp; \frac{1}{11} &amp; \frac{3}{13}\\
+\hline
+6 &amp; \frac{4}{11} &amp; \frac{2}{13}\\
+\hline
+E(X_1/x_{2_j}) &amp; 
+1\frac{1}{11}+2\frac{2}{11}+3\frac{1}{11}+4\frac{2}{11}+5\frac{1}{11}+6\frac{4}{11}=\frac{45}{11}
+&amp; 0+2\frac{3}{13}+3\frac{4}{13}+4\frac{1}{13}+5\frac{3}{13}+6\frac{2}{13}=\frac{49}{13}
+\end{array}
+$$</p>
+<p>Por supuesto, $E(X_1)=E(X_1/0)p_{X_2}(0)+E(X_1/1)p_{X_2}(1) = \frac{45}{11}\frac{11}{24}+\frac{49}{13}\frac{13}{24}=\frac{94}{24}$.</p>
+
+</div>
+</div>
 </div></section></section>
 </div>
 </div>
