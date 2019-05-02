@@ -11911,7 +11911,7 @@ X_n:  \mathscr{\Omega} &amp; \longmapsto \mathbb{R}\\
    \alpha &amp; \longmapsto X_i(\alpha)
    \end{align*}
    $$</p>
-<p>Cada una de estas variables aleatorias puede ser discreta, continua o mixta. Al estar definidas sobre el mismo espacio de probabilidad, los distintos sucesos descritos por cada una de las variables aleatorias tendrán, en general una dependencia probabilítica entre sí. En tal caso decimos que las variables aleatorias muestran <strong>dependencia probabilística</strong>, de modo que los valores de una y otra muestran una relación no determinista. Caben dos casos extremos:</p>
+<p>Cada una de estas variables aleatorias puede ser discreta, continua o mixta. Al estar definidas sobre el mismo espacio de probabilidad, los distintos sucesos descritos por cada una de las variables aleatorias tendrán, en general una dependencia probabilística entre sí, y los valores de estas variables tendrán entre sí relaciones no deterministas. Caben dos casos extremos:</p>
 <ul>
 <li><strong>Dependencia funcional</strong>: en cuyo caso las variables aleatorias satisfacen una ecuación sin componente aleatoria alguna</li>
 <li><strong>Independencia</strong>: si por cómo están construidas las variables aleatorias los sucesos que se representan con cada una de ellas son independientes dos a dos con los de todas las demás. En tal caso, <strong>los valores de unas variables aleatorias no ofrecen información alguna sobre las restantes</strong>.</li>
@@ -12352,13 +12352,14 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Funci&#243;n-de-masa-de-probabilidad-condicionada">Funci&#243;n de masa de probabilidad condicionada<a class="anchor-link" href="#Funci&#243;n-de-masa-de-probabilidad-condicionada">&#182;</a></h3><p>La distribución conjunta puede resultar condicionada por un suceso $M$, sin más que extender las expresiones ya vistas para una variable aleatoria:</p>
-<p>$$p_{XY}(x_i,y_j/M) = \frac{P(\{X=x_i,Y=y_j\}\bigcap M)}{P(M)} $$</p>
-<p>Adviértase que $\sum_i\sum_j p_{XY}(x_i,y_j/M) =1$</p>
-<p>Podemos también definir la probabilidad de un suceso $M$ condicionada por un valor arbitrario $(x_i,y_j)$ del vector aleatorio $(X,Y)$. Para ello no hay más que advertir que $\{(X=x_i, Y=y_j)\}$ es un suceso del espacio muestral:</p>
-<p>$$P(M/X=x_i,Y=y_j)= \frac{P(M \bigcap \{X=x_i, Y=y_j\})}{P(\{X=x_i, Y=y_j\})}=\frac{P(M \bigcap \{X=x_i,Y=y_j\})}{p_{XY}(x_i,y_j)}$$</p>
-<p>Mantendremos el habitual abuso de notación $P(M/x_i,y_j)\equiv P(M/X=x_i,Y=y_j)$.</p>
-<p>Adviértase que $P(M/x_i,y_j) \neq p_{XY}(x_i,y_j/M)$, como resulta del Teorema de Bayes.</p>
+<h3 id="Funci&#243;n-de-densidad-de-probabilidad-conjunta">Funci&#243;n de densidad de probabilidad conjunta<a class="anchor-link" href="#Funci&#243;n-de-densidad-de-probabilidad-conjunta">&#182;</a></h3><p>Consideremos ahora que las variables aleatorias $X$ e $Y$ son continuas.Por igual razón que en el caso de una única variable aleatoria, en general, la masa de probabilidad en un punto es nula, $P(X=x, Y=y)=0$. Ello hace necesario recurrir a densidades de probabilidad, generalizanzdo lo visto en el caso de una variable aleatoria. La función de densidad de probabilidad conjunta del vector aleatorio $(X, Y)$, o de ambas variables aleatorias $X$ e $Y$, se define como sigue a partir de la función de distribución de probabilidad conjunta $F_{XY}(x,y)$:</p>
+<p>$$
+f_{XY}(x, y)=\frac{\partial^{2} F_{XY}(x, y)}{\partial x \partial y }\geq 0
+$$</p>
+<p>que es positiva o nula por ser $F_{XY}(x,y)$ no decreciente. Además:</p>
+<p>$$
+F_{XY}(x, y)=\int_{-\infty}^{x} \int_{-\infty}^{y} f_{XY}(u, v) du dv
+$$</p>
 
 </div>
 </div>
@@ -12367,15 +12368,38 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En particular, es posible obtener las masas de probabilidad de una variable aleatoria condicionada por la otra:</p>
-<p>$$p_{X/Y}(x_i/y_j)=\frac{p_{XY}(x_i,y_j)}{p_Y(y_j)}$$</p>
-<p>$$p_{Y/X}(y_j/x_j)=\frac{p_{XY}(x_i,y_j)}{p_X(x_i)}$$</p>
-<p>Adviértase que las probabilidades condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
-<ul>
-<li>Si la variable cuyos valores se observan es $X$ la verosimiltud de los valores de $Y$ es $L(y_j)=p_{X/Y}(x_i/y_j)$</li>
-<li>Si la variable cuyos valores se observan es $Y$ la verosimiltud de los valores de $X$ es $L(x_i)=p_{Y/X}(y_j/x_i)$</li>
-</ul>
-<p>Por supuesto, en general $p_{X/Y}(x_i/y_j) \neq p_{Y/X}(y_j/x_j)$, estando relacionados por el Teorema de Bayes.</p>
+<p>Si se ponen la derivadas parciales como límites, de forma semejante a como se hizo con una sola variable aleatoria:</p>
+<p>$$
+f_{XY}(x, y)=\frac{\partial^{2} F_{XY}(x, y)}{\partial x \partial y } = \lim \limits_{\Delta x \Delta y \to 0} \frac{F_{XY}(x+\Delta x/2, y+\Delta y/2)-F_{XY}(x-\Delta x/2, y+\Delta y/2)-F_{XY}(x+\Delta x/2, y-\Delta y/2)+F_{XY}(x-\Delta x/2, y-\Delta y/2)}{\Delta x \Delta y}= \\ 
+\lim \limits_{\Delta x \Delta y \to 0} \frac{P\left(\{(x-\Delta x/2) &lt; x \leq (x+\Delta x/2)\} \bigcap \{(y-\Delta y/2) &lt; y \leq (y+\Delta y/2)\} \right)}{\Delta x \Delta y} 
+$$</p>
+<p>Donde se hace uso de un suceso rectangular infinitesimal centrado en $X=x$, $Y=y$. Por tanto:</p>
+<p>$$
+P\left(\{(x-\Delta x/2) &lt; x \leq (x+\Delta x/2)\} \bigcap \{(y-\Delta y/2) &lt; y \leq (y+\Delta y/2)\} \right) \approx f_{XY}(x, y) \Delta x \Delta y
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Puede asimismo calcularse la masa de probabilidad continua en un dominio $D$ arbitrario:</p>
+<p>$$
+P\{(x, y) \in D\}=\int \int_{D} f_{XY}(x, y) dx dy
+$$</p>
+<p>De la definición, se obtienen fácilmente las <strong>funciones de densidad marginales</strong>:</p>
+<p>$$
+f_{X}(x)=\frac{\partial F_{XY}(x, \infty)}{\partial x} = \int_{-\infty}^{\infty} f_{XY}(x, y) dy
+$$</p>
+<p>$$
+f_{Y}(y)=\frac{\partial F_{XY}(\infty , y)}{\partial y} = \int_{-\infty}^{\infty} f_{XY}(x, y) dx
+$$</p>
+<p>Además, como siempre, la masa total de probabilidad es la unidad:</p>
+<p>$$
+ F_{XY}(\infty , \infty) = 1 \implies \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{XY}(x, y) d x d y=1
+$$</p>
 
 </div>
 </div>
@@ -12384,10 +12408,75 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Tomando las $p_{X_1X_2}(x_i,y_j)$ y $p_{X_1}(x_{1_i})$ del ejemplo anterior obtenemos $p_{X_2/X_1}(x_{2_j}/ x_{1_i})$:</p>
+<h3 id="Distribuciones-condicionadas">Distribuciones condicionadas<a class="anchor-link" href="#Distribuciones-condicionadas">&#182;</a></h3><p>La función de distribución conjunta puede resultar condicionada por un suceso $M$, sin más que extender lo visto para una variable aleatoria:</p>
+<p>$$
+F_{XY}(x, y | M)=P(\{X \leq x, Y \leq y\} \ | \ M)= \frac{P(\{X \leq x, Y \leq y\} \bigcap M)}{P(M)}
+$$</p>
+<p>Si las variables aleatorias $X$ e $Y$ son discretas, la función de masa de probabilidad conjunta condicionada por $M$ es:</p>
+<p>$$p_{XY}(x_i,y_j | M) = \frac{P(\{X=x_i,Y=y_j\}\bigcap M)}{P(M)} $$</p>
+<p>Adviértase que $\sum_i\sum_j p_{XY}(x_i,y_j | M) =1$</p>
+<p>Y en caso de que las variables aleatorias fueran continuas, la función de densidad de probabilidad conjunta condicionada es:</p>
+<p>$$
+f_{XY}(x, y | M)=\frac{\partial^{2} F_{XY}(x, y | M)}{\partial x \partial y }
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Podemos también definir la probabilidad de un suceso $M$ condicionada por un valor arbitrario $(x_i,y_j)$ del vector aleatorio $(X,Y)$. Para ello no hay más que advertir que $\{(X=x_i, Y=y_j)\}$ es un suceso del espacio muestral:</p>
+<p>$$P(M \ | \ \{X=x_i,Y=y_j\})= \frac{P(M \bigcap \{X=x_i, Y=y_j\})}{P(\{X=x_i, Y=y_j\})}=\frac{P(M \bigcap \{X=x_i,Y=y_j\})}{p_{XY}(x_i,y_j)}$$</p>
+<p>Mantendremos el habitual abuso de notación $P(M | x_i,y_j)\equiv P(M | X=x_i,Y=y_j)$. Adviértase que $P(M | x_i,y_j) \neq p_{XY}(x_i,y_j | M)$, como resulta del Teorema de Bayes.</p>
+<p>En el caso de variables aleatorias continuas, cuando el suceso condicionante es del tipo $\{X=x, Y=y\}$ es necesario considerar un suceso rectangular infinitesimal centrado en dicho punto, pues la masa de probabilidad puntual es nula. Las expresiones resultan semejantes a las del caso discreto, pero utilizando funciones de densidad en vez de funciones de masa de probabilidad.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En particular, es posible obtener las masas de probabilidad de una variable aleatoria discreta condicionada por la otra:</p>
+<p>$$p_{X | Y}(x_i | y_j)=\frac{p_{XY}(x_i,y_j)}{p_Y(y_j)}$$</p>
+<p>$$p_{Y|X}(y_j | x_j)=\frac{p_{XY}(x_i,y_j)}{p_X(x_i)}$$</p>
+<p>Adviértase que las probabilidades condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
+<ul>
+<li>Si la variable cuyos valores se observan es $X$ la verosimiltud de los valores de $Y$ es $L(y_j)=p_{X | Y}(x_i | y_j)$</li>
+<li>Si la variable cuyos valores se observan es $Y$ la verosimiltud de los valores de $X$ es $L(x_i)=p_{Y | X}(y_j | x_i)$</li>
+</ul>
+<p>Por supuesto, en general $p_{X | Y}(x_i | y_j) \neq p_{Y | X}(y_j | x_j)$, estando relacionados por el Teorema de Bayes.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>De forma semejante, si las variables aleatorias son continuas, las funciones de densidad de probabilidad condcionadas resultan:</p>
+<p>$$f_{X | Y}(x | y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$</p>
+<p>$$f_{Y | X}(y | x)=\frac{f_{XY}(x,y)}{f_X(x)}$$</p>
+<p>Igual que antes, las funciones de probabilidad condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
+<ul>
+<li>Si la variable cuyos valores se observan es $X$ la verosimiltud de los valores de $Y$ es $L(y)=p_{X | Y}(x | y)$</li>
+<li>Si la variable cuyos valores se observan es $Y$ la verosimiltud de los valores de $X$ es $L(x)=p_{Y | X}(y | x)$</li>
+</ul>
+<p>De nuevo, en general $f_{X | Y}(x/y) \neq f_{Y | X}(y | x)$, estando ambas relacionadas por el Teorema de Bayes.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Tomando las $p_{X_1X_2}(x_i,y_j)$ y $p_{X_1}(x_{1_i})$ del ejemplo anterior obtenemos $p_{X_2 | X_1}(x_{2_j} | x_{1_i})$:</p>
 <p>$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
-p_{X_2/X_1}(x_{2_j}/ x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
 \hline
 1 &amp; \frac{\frac{1}{24}}{\frac{1}{24}}=1 &amp; \frac{0}{\frac{1}{24}}=0 &amp; 1\\
 \hline
@@ -12410,10 +12499,10 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Igualmente obtenemos $p_{X_1/X_2}(x_{1_i}/ x_{2_j})$ a partir de $p_{X_1X_2}(x_i,y_j)$ y $p_{X_2}(x_{2_j})$:</p>
+<p>Igualmente obtenemos $p_{X_1 | X_2}(x_{1_i} | x_{2_j})$ a partir de $p_{X_1X_2}(x_i,y_j)$ y $p_{X_2}(x_{2_j})$:</p>
 <p>$$
 X_2 \\X_1 \begin{array}{c|c|c}
-p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
+p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 1 &amp; \frac{\frac{1}{24}}{\frac{11}{24}}=\frac{1}{11} &amp; \frac{0}{\frac{13}{24}}=0\\
 \hline
@@ -12427,7 +12516,7 @@ p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 6 &amp; \frac{\frac{4}{24}}{\frac{11}{24}}=\frac{4}{11} &amp; \frac{\frac{2}{24}}{\frac{13}{24}}=\frac{2}{13}\\
 \hline
-\sum_i p_{X_1/X_2}(x_{1_i}/x_{2_j}) &amp; 1 &amp; 1 
+\sum_i p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 1 &amp; 1 
 \end{array}
 $$</p>
 
@@ -12438,31 +12527,15 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Teorema-de-la-Probabilidad-Total">Teorema de la Probabilidad Total<a class="anchor-link" href="#Teorema-de-la-Probabilidad-Total">&#182;</a></h3><p>Es una extensión inmediata del visto para una variable aleatoria discreta. Igual que hicimos entonces, consideremos una partición del espacio muestral 
-$$
+<h3 id="Teorema-de-la-Probabilidad-Total">Teorema de la Probabilidad Total<a class="anchor-link" href="#Teorema-de-la-Probabilidad-Total">&#182;</a></h3><p>Es una extensión inmediata del visto para una única variable aleatoria. Consideremos una partición del espacio muestral y que conocemos las probabilidades <em>a priori</em> de los sucesos de la misma, $P(M_p)$:</p>
+<p>$$
 M_p \in \mathscr{P}(\Omega) \, p=1\ldots N\iff  \begin{matrix}
   \bigcup_{p=1}^N M_p = \Omega &amp;  \\
   M_p \cap M_q = \emptyset &amp; p\neq q  
  \end{matrix}
 $$</p>
-<p>y que conocemos las funciones de masa de probabilidad conjunta de un vector aleatorio $(X,Y)$ definida en el mismo condicionadas por todos los sucesos de dicha partición $p_{XY}(x_i,y_j/M_j)$, así como las probabilidades de todos los sucesos condicionantes.</p>
-<p>La función de masa de probabilidad total (sin condicionar) conjunta del vector aleatorio $(X,Y)$ es</p>
-<p>$$p_{XY}(x_i,y_j) = \sum_{p=1}^N p_{XY}(x_i,y_j/M_p)P(M_p)$$</p>
-<p>Que puede interpretarse como una <strong>mezcla (mixture) de distribuciones</strong>.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>La probabilidad total también puede aplicarse de forma alternativa, si lo que se conocen son las probabilidades un suceso arbitrario $M$ condicionadas por cada uno de los valores posibles del vector aleatorio $(X,Y)$, esto es, si se conocen $P(M/x_i,y_j)\equiv P(M/X=x_i,Y=y_j)$.</p>
-<p>En tal caso, la probabilidad total del suceso $M$ (sin condicionar) es</p>
-<p>$$P(M) = \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty P(M/x_i,y_j) p_{XY}(x_i,y_j)$$</p>
-<p>En el caso del vector aleatorio, si disponemos de la verosimilitud o función de masa de probabilidad condicionada de una variable (observación) respecto de la otra (condicionante) y de la función de masa de probabilidad marginal <em>apriori</em> de la variable condicionante, resulta la función de masa de probabilidad total marginal de las observaciones:</p>
-<p>$$p_{X}(x_i) = \sum_j p_{X/Y}(x_i/y_j)p_{Y}(y_j)$$</p>
-<p>$$p_{Y}(y_i) = \sum_i p_{Y/X}(y_j/x_i)p_{X}(x_i)$$</p>
+<p>Si conocemos las funciones de de distribución de probabilidad condicionada conjunta de un vector aleatorio $(X,Y)$  condicionadas por todos los sucesos de dicha partición $F_{XY}(x,y/M_p)$, es fácil obtener la función de distribución total (sin condicionar):</p>
+<p>$$F_{XY}(x,y) = \sum_{p=1}^N F_{XY}(x,y | M_p)P(M_p)$$</p>
 
 </div>
 </div>
@@ -12471,13 +12544,65 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Teorema-de-Bayes">Teorema de Bayes<a class="anchor-link" href="#Teorema-de-Bayes">&#182;</a></h3><p>Como ya se hiciera en el caso de una variable aleatoria, es inmediato obtener el <strong>Teorema de Bayes</strong> a partir de la definición de función de masa de probablidad conjunta condicionada (recordar que $P(M/x_i,y_j)\equiv P(M/X=x_i,Y=y_j)$):</p>
-<p>$$p_X(x_i,y_j/M) = \frac{P(M/x_i,y_j)p_{XY}(x_i,y_j)}{P(M)} \iff P(M/x_i,y_j) = \frac{p_{XY}(x_i,y_j/M)P(M)}{p_{XY}(x_i,y_j)}$$</p>
+<p>Para el <strong>caso discreto</strong>, el Teorema de la Probabilidad Total puede expresarse a partir de las funciones de masa de probabilidad $p_{XY}(x_i,y_j | M_p)$, de modo que la función de masa de probabilidad total (sin condicionar) conjunta del vector aleatorio $(X,Y)$ resulta:</p>
+<p>$$p_{XY}(x_i,y_j) = \sum_{p=1}^N p_{XY}(x_i,y_j | M_p)P(M_p)$$</p>
+<p>En el <strong>caso continuo</strong>, si conocemos las funciones de densidad de probabilidad condicionadas, $f_{XY}(x,y | M_p)$, la función de densidad de probabilidad total (sin condicionar) conjunta del vector aleatorio $(X,Y)$ es</p>
+<p>$$f_{XY}(x,y) = \sum_{p=1}^N f_{XY}(x,y | M_p)P(M_p)$$.</p>
+<p>El Teorema de la Probabilidad Total permite obtener <strong>mezclas (mixture) de distribuciones</strong>. consistentes en la superposición ponderada de varias distribuciones, algo muy útil en la práctica.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La probabilidad total también puede aplicarse de forma alternativa, si lo que se conocen son las probabilidades un suceso arbitrario $M$ condicionadas por cada uno de los valores posibles del vector aleatorio $(X,Y)$, esto es, si se conocen $P(M | x_i,y_j)\equiv P(M | \ \{X=x_i,Y=y_j\})$, en el caso discreto, y $P(M | x,y)\equiv P(M | \ \{X=x,Y=y\})$, en el caso continuo.</p>
+<p>En tal caso, la probabilidad total del suceso $M$ (sin condicionar) es, para el caso discreto,</p>
+<p>$$P(M) = \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)$$</p>
+<p>Y, para el caso continuo,</p>
+<p>$$P(M) = \int_{-\infty}^\infty\int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y) dx dy$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En el caso del vector aleatorio discreto, si disponemos de la verosimilitud o función de masa de probabilidad condicionada de una variable (observación) respecto de la otra (condicionante) y de la función de masa de probabilidad marginal <em>apriori</em> de la variable condicionante, resulta la función de masa de probabilidad total marginal de las observaciones:</p>
+<p>$$p_{X}(x_i) = \sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)$$</p>
+<p>$$p_{Y}(y_i) = \sum_i p_{Y | X}(y_j | x_i)p_{X}(x_i)$$</p>
+<p>Y si el vector aleatorio es continuo:</p>
+<p>$$f_{X}(x) = \int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y) dy$$</p>
+<p>$$f_{Y}(y) = \int_{-\infty}^\infty f_{Y | X}(y | x)f_{X}(x) dx$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Teorema-de-Bayes">Teorema de Bayes<a class="anchor-link" href="#Teorema-de-Bayes">&#182;</a></h3><p>El Teorema de Bayes puede obtenerse en distinta formas, para lo cual es necesario recordar su definición y, si el suceso condicionante es un valor de una variable aleatoria continua y, por ello, tiene una masa de probabilidad infinitesimal, hay que considerar un rectángulo infinitesimal.</p>
+<p>Veamos una primera forma, que hace uso de la función e distribución conjunta y de un suceso arbitario $M$:</p>
+<p>$$P(M | \ \{X \leq x, Y \leq y\}) = \frac{F_{XY}(x,y | M)P(M)}{F_{XY}(x,y)}$$</p>
+<p>$$F_{XY}(x,y | M) = \frac{P(M | \ \{X \leq x, Y \leq y\} )F_{XY}(x,y)}{P(M)}$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En el <strong>caso discreto</strong>, es inmediato obtener el <strong>Teorema de Bayes</strong> a partir de la definición de función de masa de probablidad conjunta condicionada (recordar que $P(M | x_i,y_j)\equiv P(M \ \ \{X=x_i,Y=y_j\})$):</p>
+<p>$$p_{XY}(x_i,y_j | M) = \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{P(M)} \iff P(M |x_i,y_j) = \frac{p_{XY}(x_i,y_j/M)P(M)}{p_{XY}(x_i,y_j)}$$</p>
 <p>Con frecuencia, los denominadores de las expresiones anteriores se obtienen mediante el <em>Teorema de la Probabilidad Total</em>, pues tan sólo se conocen las probabilidades condicionadas:</p>
 <p>$$
 \begin{align*}
-p_{XY}(x_i,y_j/M) &amp;= \frac{P(M/x_i,y_j)p_{XY}(x_i,y_j)}{\sum_{i=-\infty}^\infty \sum_{j=-\infty}^\infty P(M/x_i,y_j) p_{XY}(x_i,y_j)} \\ 
-P(M/x_i,y_j) &amp;= \frac{p_{XY}(x_i,y_j/M)P(M)}{p_{XY}(x_i,y_j/M)P(M)+p_{XY}(x_i,y_j/\overline M)(1-P(M))}
+p_{XY}(x_i,y_j | M) &amp;= \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{\sum_{i=-\infty}^\infty \sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)} \\ 
+P(M | x_i,y_j) &amp;= \frac{p_{XY}(x_i,y_j | M)P(M)}{p_{XY}(x_i,y_j | M)P(M)+p_{XY}(x_i,y_j | \overline M)(1-P(M))}
 \end{align*}
 $$</p>
 
@@ -12489,8 +12614,26 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En el caso del vector aleatorio, si disponemos de la verosimilitud o función de masa de probabilidad condicionada de una variable (observación) respecto de la otra (condicionante) y de la función de masa de probabilidad marginal <em>a priori</em> de la variable condicionante, el Teorema de Bayes permite obtener la probabilidad <em>a posteriori</em> de la variable condicionante, dadas las observaciones:</p>
-<p>$$p_{X/Y}(x_i/y_j) = \frac{p_{Y/X}(y_j/x_i)p_X(x_i)}{p_Y(y_j)}=\frac{p_{Y/X}(y_j/x_i)p_X(x_i)}{\sum_i p_{Y/X}(y_j/x_i)p_{X}(x_i)}$$</p>
-<p>$$p_{Y/X}(y_j/x_i) = \frac{p_{X/Y}(x_i/y_j)p_Y(y_j)}{p_X(x_i)}=\frac{p_{X/Y}(x_i/y_j)p_Y(y_j)}{\sum_j p_{X/Y}(x_i/y_j)p_{Y}(y_j)}$$</p>
+<p>$$p_{X | Y}(x_i | y_j) = \frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{p_Y(y_j)}=\frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{\sum_i p_{Y | X}(y_j |x_i)p_{X}(x_i)}$$</p>
+<p>$$p_{Y | X}(y_j | x_i) = \frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{p_X(x_i)}=\frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{\sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)}$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para el <strong>caso continuo</strong> las expresiones anteriores se adaptan sustituyendo funciones de masa de probabilidad por funciones de densidad y sumatorios por integrales:</p>
+<p>$$f_{XY}(x,y | M) = \frac{P(M | x,y)p_{XY}(x,y)}{P(M)} \iff P(M |x,y) = \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y)}$$</p>
+<p>$$
+\begin{align*}
+f_{XY}(x,y | M) &amp;= \frac{P(M | x,y)f_{XY}(x,y)}{\int_{-\infty}^\infty \int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y)dxdy} \\ 
+P(M | x,y) &amp;= \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y | M)P(M)+f_{XY}(x,y | \overline M)(1-P(M))}
+\end{align*}
+$$</p>
+<p>$$f_{X | Y}(x | y) = \frac{f_{Y | X}(y | x)f_X(x)}{f_Y(y)}=\frac{f_{Y | X}(y | x)f_X(x)}{\int_{-\infty}^\infty f_{Y |f X}(y |x)f_{X}(x)dx}$$</p>
+<p>$$f_{Y | X}(y | x) = \frac{f_{X | Y}(x | y)f_Y(y)}{f_X(x)}=\frac{f_{X | Y}(x | y)f_Y(y)}{\int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y)dy}$$</p>
 
 </div>
 </div>
@@ -12501,8 +12644,8 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Consideremos en el ejemplo del lanzamiento del dado y moneda trucados y dependientes entre sí que las observaciones son las caras del dado $X_1$ y queremos hacer inferencia sobre el lado de la moneda $X_2$</p>
 <ul>
-<li>Si sólo tenemos las probabilidades de las caras condicionadas por el lado de la moneda, $p_{X_1/X_2}(x_{1_i}/x_{2_j})$ la inferencia se basa en el principio de máxima verosimilitud</li>
-<li>Si se cuenta con las probabilidades <em>a priori</em> de los lados de la moneda, $p_{X_2}(x_{2_j}$, es posible obtener las probabilidades <em>a posteri</em> de  las mismas dadas las observaciones $p_{X_2/X_1}(x_{2_j/x_{1_i}})$. En este caso utilizamos el <strong>principio de Máximo a Posteriori (MAP)</strong> y podemos obtener las probabilidades de acierto y de error de cada elección. Adviértase que la búsqueda del <strong>MAP</strong> suele conllevar la división por la probabilidad total, que es la misma en todas las posibilidades y, por tanto, puede evitarse</li>
+<li>Si sólo tenemos las probabilidades de las caras condicionadas por el lado de la moneda, $p_{X_1 | X_2}(x_{1_i} | x_{2_j})$ la inferencia se basa en el principio de máxima verosimilitud</li>
+<li>Si se cuenta con las probabilidades <em>a priori</em> de los lados de la moneda, $p_{X_2}(x_{2_j})$, es posible obtener las probabilidades <em>a posteri</em> de  las mismas dadas las observaciones $p_{X_2/X_1}(x_{2_j} | x_{1_i})$. En este caso utilizamos el <strong>principio de Máximo a Posteriori (MAP)</strong> y podemos obtener las probabilidades de acierto y de error de cada elección. Adviértase que la búsqueda del <strong>MAP</strong> suele conllevar la división por la probabilidad total, que es la misma en todas las posibilidades y, por tanto, puede evitarse</li>
 <li>Si se dispone de la probabilidad conjunta, se dispone de la máxima información probabilística para realizar inferenncias</li>
 </ul>
 
@@ -12516,7 +12659,7 @@ $$</p>
 <p><strong>Verosimilitudes</strong>: si sale 1, 4 ó 6 seleccionamos cara (0), y cruz (1) en los restantes casos:</p>
 <p>$$
 X_2 \\X_1 \begin{array}{c|c|c}
-L(x_{2_j}) = p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
+L(x_{2_j}) = p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 1 &amp; \frac{1}{11} &amp; 0\\
 \hline
@@ -12530,7 +12673,7 @@ L(x_{2_j}) = p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 6 &amp; \frac{4}{11} &amp; \frac{2}{13}\\
 \hline
-\sum_i p_{X_1/X_2}(x_{1_i}/x_{2_j}) &amp; 1 &amp; 1 
+\sum_i p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 1 &amp; 1 
 \end{array}
 $$</p>
 
@@ -12542,7 +12685,7 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Probabilidades <em>a priori</em> de los lados de la moneda</strong>: $p_{X_2}(0)= \frac{11}{24} \quad p_{X_2}(1)= \frac{13}{24}$.</p>
-<p><strong>Probabilidades totales de las observaciones del dado</strong>: $p_{X_1}(x_{1_i}) = \sum_j p_{X_1/X_2}(x_{1_i}/x_{2_j})p_{X_2}(x_{2_j})$</p>
+<p><strong>Probabilidades totales de las observaciones del dado</strong>: $p_{X_1}(x_{1_i}) = \sum_j p_{X_1 | X_2}(x_{1_i} | x_{2_j})p_{X_2}(x_{2_j})$</p>
 <p>$$
 \begin{array}{c|c}
 x_{1_i}&amp; p_{X_1}(x_{1_i}) \\
@@ -12573,7 +12716,7 @@ $$</p>
 <p><strong>Probabilidades <em>a posteriori</em> de los lados de la moneda, dadas las observaciones del dado</strong>: De nuevo seleccionamos cara (0) si sale 1, 4 ó 6 y cruz (1) en los restantes casos. Aunque en este ejemplo coinciden las elecciones utilizando los criterios <strong>ML</strong> (máxima verosimilitud) y <strong>MAP</strong> (máximo a posteriori), en general no tiene por qué ser así:</p>
 <p>$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
-p_{X_2/X_1}(x_{2_j}/ x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
 \hline
 1 &amp; 1 &amp; 0 &amp; 1\\
 \hline
@@ -12601,11 +12744,11 @@ $$</p>
 Acierto \begin{array}{c|cccccc|c}
   x_{1_i} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp;  \\ 
   \hline
-    P(A/x_{1_i}) &amp; 1 &amp; \frac{3}{5} &amp; \frac{4}{5} &amp; \frac{2}{3} &amp; \frac{3}{4} &amp; \frac{4}{6} &amp; \sum_i p_X(x_i)=1
+    P(A | x_{1_i}) &amp; 1 &amp; \frac{3}{5} &amp; \frac{4}{5} &amp; \frac{2}{3} &amp; \frac{3}{4} &amp; \frac{4}{6} &amp; \sum_i p_X(x_i)=1
  \end{array}
 $$</p>
 <p>La probabilidad total de acierto es:</p>
-<p>$$P(A) = \sum_i P(A/x_{1_i}) p_{x_{1_i}} =  
+<p>$$P(A) = \sum_i P(A | x_{1_i}) p_{x_{1_i}} =  
 1\frac{1}{24} + \frac{3}{5}\frac{5}{24} + \frac{4}{5}\frac{5}{24} + \frac{2}{3}\frac{3}{24} + \frac{3}{4}\frac{4}{24} + \frac{4}{6}\frac{6}{24} =\frac{17}{24}$$</p>
 
 </div>
@@ -12619,11 +12762,11 @@ $$</p>
 Error \begin{array}{c|cccccc|c}
   x_{1_i} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp;  \\ 
   \hline
-    P(E/x_{1_i}) &amp; 0 &amp; \frac{2}{5} &amp; \frac{1}{5} &amp; \frac{1}{3} &amp; \frac{1}{4} &amp; \frac{2}{6} &amp; \sum_i p_X(x_i)=1
+    P(E | x_{1_i}) &amp; 0 &amp; \frac{2}{5} &amp; \frac{1}{5} &amp; \frac{1}{3} &amp; \frac{1}{4} &amp; \frac{2}{6} &amp; \sum_i p_X(x_i)=1
  \end{array}
 $$</p>
 <p>La probabilidad total de error es:</p>
-<p>$$P(E) = \sum_i P(E/x_{1_i}) p_{x_{1_i}} =  
+<p>$$P(E) = \sum_i P(E | x_{1_i}) p_{x_{1_i}} =  
 0\frac{1}{24} + \frac{2}{5}\frac{5}{24} + \frac{1}{5}\frac{5}{24} + \frac{1}{3}\frac{3}{24} + \frac{1}{4}\frac{4}{24} + \frac{2}{6}\frac{6}{24} =\frac{7}{24}$$</p>
 
 </div>
@@ -12673,15 +12816,15 @@ $$</p>
 </ul>
 </li>
 <li>Matrices de probabilidades condicionadas. Cada fila corresponde a un valor de la variable condicionante y, por tanto, todas y cada una de las filas suman 1:<ul>
-<li>$ \Pi_{X/Y} = \begin{bmatrix}
-p_{X/Y}(x_1/y_1) &amp; \ldots &amp; p_{X/Y}(x_M/y_1)\\
+<li>$ \Pi_{X | Y} = \begin{bmatrix}
+p_{X | Y}(x_1 | y_1) &amp; \ldots &amp; p_{X | Y}(x_M | y_1)\\
 \vdots &amp; \ddots &amp; \vdots\\
-p_{X/Y}(x_1/y_N) &amp; \ldots &amp; p_{X/Y}(x_M/y_N) &amp; 
+p_{X | Y}(x_1 | y_N) &amp; \ldots &amp; p_{X | Y}(x_M | y_N) &amp; 
 \end{bmatrix}$</li>
-<li>$ \Pi_{Y/X} = \begin{bmatrix}
-p_{Y/X}(y_1/x_1) &amp; \ldots &amp; p_{Y/X}(y_M/x_1)\\
+<li>$ \Pi_{Y | X} = \begin{bmatrix}
+p_{Y | X}(y_1 | x_1) &amp; \ldots &amp; p_{Y | X}(y_M | x_1)\\
 \vdots &amp; \ddots &amp; \vdots\\
-p_{Y/X}(y_1/x_N) &amp; \ldots &amp; p_{Y/X}(y_M/x_N) &amp; 
+p_{Y | X}(y_1 | x_N) &amp; \ldots &amp; p_{Y | X}(y_M | x_N) &amp; 
 \end{bmatrix}$</li>
 </ul>
 </li>
@@ -12696,8 +12839,8 @@ p_{Y/X}(y_1/x_N) &amp; \ldots &amp; p_{Y/X}(y_M/x_N) &amp;
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Teorema de la Probabilidad Total: se hace uso del producto de matrices para multiplicar un vector fila por una matriz de probabilidades condicionadas y obtener otro vector fila:<ul>
-<li>$\pi_Y = \pi_X\Pi_{Y/X}$</li>
-<li>$\pi_X = \pi_Y\Pi_{X/Y}$</li>
+<li>$\pi_Y = \pi_X\Pi_{Y | X}$</li>
+<li>$\pi_X = \pi_Y\Pi_{X | Y}$</li>
 </ul>
 </li>
 <li>Matriz de probabilidades conjuntas. Sus elementos suman 1<ul>
@@ -12796,12 +12939,10 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">Esperanza Matem&#225;tica y Valor Medio. Momentos<a class="anchor-link" href="#Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">&#182;</a></h3><p>Se define la esperanza matemática de una función $g(X, Y)$ de dos variables aleatorias como sigue:</p>
+<h3 id="Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">Esperanza Matem&#225;tica y Valor Medio. Momentos<a class="anchor-link" href="#Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">&#182;</a></h3><p>Se define la esperanza matemática de una función $g(X, Y)$ de dos variables aleatorias discretas como sigue:</p>
 <p>$$E\left(g(X, Y)\right)=\sum_i\sum_j g(x_i,y_j)p_{XY}(x_i,y_j)$$</p>
-<p>Como ya se vio en el caso unidimensional, es fácil advertir que el operador $E(·)$ es lineal</p>
-<p>$$E(a_1g_1(X,Y)+a_2g_2(X,Y))=a_1E(g_1(X,Y)) + a_2E(g_2(X,Y))$$</p>
-<p>donde $a_1$ y $a_2$ son coeficiente constantes arbitrarios y $g_1$ y $g_2$ son dos funciones. También es evidente que, si $k$ es una constante arbitraria</p>
-<p>$$E(k) = k$$</p>
+<p>Si las variables aleatorias son continuas:</p>
+<p>$$E\left(g(X, Y)\right)=\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f_{XY}(x,y)dxdy$$</p>
 
 </div>
 </div>
@@ -12810,12 +12951,26 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Como ya se vio en el caso unidimensional, es fácil advertir que el operador $E(·)$ es <strong>lineal</strong>:</p>
+<p>$$E(a_1g_1(X,Y)+a_2g_2(X,Y))=a_1E(g_1(X,Y)) + a_2E(g_2(X,Y))$$</p>
+<p>donde $a_1$ y $a_2$ son coeficiente constantes arbitrarios y $g_1$ y $g_2$ son dos funciones. También es evidente que, si $k$ es una constante arbitraria</p>
+<p>$$E(k) = k$$</p>
+<p>De la linealidad se concluye inmediatamente:</p>
+<p>$$E(X+Y) = E(X) + E(Y)$$</p>
+<p>$$E(kX) = kE(X)$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Veamos como obtener las esperanzas marginales en el caso discreto. En el caso continuo sería igual, sin más que cambiar funciones de masa de probabilidad por densidades y sumas por integrales.</p>
 <p>Si $g(X,Y)=X$ se obtiene el valor medio de $X$:</p>
 <p>$$\eta_X=E(X)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_i x_i \sum_j p_{XY}(x_i,y_j) = \sum_i x_i p_X(x_i)$$</p>
 <p>Y si $g(X,Y)=Y$ se obtiene el valor medio de $Y$:</p>
 <p>$$\eta_Y=E(Y)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_j y_j \sum_i p_{XY}(x_i,y_j) = \sum_j y_j p_Y(y_j)$$</p>
-<p>Es habitual trabajar vectorialmente, $\mathbf{\eta_{XY}}=E((X,Y))=(\eta_X, \eta_Y)$. El vector de medias $(\eta_X, \eta_Y)$ corresponde al centro de masa de la distribución de masa de probabilidad en el plano $(X,Y)$. Por su parte, si $g(X,Y) = X+Y$:</p>
-<p>$$\eta_{X+Y}=E(X+Y)=\sum_i\sum_j (X+Y) p_{XY}(x_i,y_j)=E(X)+E(Y)$$</p>
 
 </div>
 </div>
@@ -12874,7 +13029,7 @@ E(XY) &amp; E(Y^2)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Es habitual utilizar una formulación matricial, haciendo uso de la <strong>matriz de covarianza</strong>:</p>
-<p>$$\mathbf{C_{XY}} = E(\begin{pmatrix} X-\eta_X\\Y-\eta_Y\end{pmatrix} (X-\eta_X, Y-\eta_Y))=\\
+<p>$$\mathbf{C_{XY}} = E\left(\begin{pmatrix} X-\eta_X\\Y-\eta_Y\end{pmatrix} (X-\eta_X, Y-\eta_Y)\right)=\\
 \begin{pmatrix}
 E((X-\eta_X)^2) &amp; E((X-\eta_X)(Y-\eta_Y))\\
 E((X-\eta_X)(Y-\eta_Y)) &amp; E((Y-\eta_Y)^2)
@@ -12911,13 +13066,23 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Esperanza-matem&#225;tica-condicionada">Esperanza matem&#225;tica condicionada<a class="anchor-link" href="#Esperanza-matem&#225;tica-condicionada">&#182;</a></h4><p>Podemos definir la esperanza matemática de una función $g$ de las variables aleatorias $(X,Y)$ condicionada por el suceso $M$ como sigue:</p>
-<p>$$E(g(X,Y)/M)=\sum_i g(x_i,y_j)p_{XY}(x_i,y_j/M)$$</p>
-<p>Podemos extender con la esperanza condicionada las propiedades y definiciones vistas anteriormente. Por ejemplo:</p>
+<h4 id="Esperanza-matem&#225;tica-condicionada">Esperanza matem&#225;tica condicionada<a class="anchor-link" href="#Esperanza-matem&#225;tica-condicionada">&#182;</a></h4><p>Podemos definir la esperanza matemática de una función $g$ de las variables aleatorias $(X,Y)$ condicionada por el suceso $M$ como sigue, si son discretas:</p>
+<p>$$E(g(X,Y) | M)=\sum_i g(x_i,y_j)p_{XY}(x_i,y_j | M)$$</p>
+<p>Si las variables aleatorias son continuas:</p>
+<p>$$E(g(X,Y) | M)=\int_{-\infty}^\infty g(x,y)f_{XY}(x,y | M)$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Podemos extender con la esperanza condicionada las propiedades y definiciones vistas anteriormente. Lo ilustraremos para el caso de variables aleatorias discretas, si bien es igual para continuas, sin más que utilizar funciones de densidad e integrales en vez de funciones de masa de probabilidad y sumatorios. Por ejemplo:</p>
 <p>$$\begin{align*}
-\eta_{X/M}=E(X/M)&amp;=\sum_i \sum_j x_ip_{XY}(x_i,y_j/M)= \sum_i x_i p_X(x_i/M)\\
-E(X^2/M)&amp;=\sum_i \sum_j x_i^2p_{XY}(x_i,y_j/M)=\sum_i x_i^2 p_X(x_i/M)\\
-\sigma_{X/M}^2 = Var(X/M) &amp;= E(X^2/M)-\eta_{X/M}^2
+\eta_{X | M}=E(X | M)&amp;=\sum_i \sum_j x_ip_{XY}(x_i,y_j | M)= \sum_i x_i p_X(x_i | M)\\
+E(X^2 | M)&amp;=\sum_i \sum_j x_i^2p_{XY}(x_i,y_j | M)=\sum_i x_i^2 p_X(x_i | M)\\
+\sigma_{X | M}^2 = Var(X | M) &amp;= E(X^2 | M)-\eta_{X | M}^2
 \end{align*}$$</p>
 
 </div>
@@ -12927,13 +13092,13 @@ E(X^2/M)&amp;=\sum_i \sum_j x_i^2p_{XY}(x_i,y_j/M)=\sum_i x_i^2 p_X(x_i/M)\\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En particular, podemos considerar los momentos de $X$ condicionados por $Y=y_j$, donde utilizamos el abuso de notación $E(\bullet / Y=y_j) \equiv E(\bullet / y_j)$:</p>
+<p>En particular, podemos considerar los momentos de $X$ condicionados por $Y=y_j$, donde utilizamos el abuso de notación $E(\bullet \ | \ \{Y=y_j\}) \equiv E(\bullet \ | y_j)$:</p>
 <p>$$\begin{align*}
-\eta_{X/y_j}=E(X/y_j)&amp;= \sum_i x_i p_{X/Y}(x_i/y_j)\\
-E(X^2/y_j)&amp;=\sum_i x_i^2 p_X(x_i/y_j)\\
-\sigma_{X/y_j}^2 = Var(X/y_j) &amp;= E(X^2/y_j)-\eta_{X/y_j}^2
+\eta_{X/+ | y_j}=E(X | y_j)&amp;= \sum_i x_i p_{X | Y}(x_i | y_j)\\
+E(X^2 | y_j)&amp;=\sum_i x_i^2 p_X(x_i | y_j)\\
+\sigma_{X | y_j}^2 = Var(X | y_j) &amp;= E(X^2 | y_j)-\eta_{X | y_j}^2
 \end{align*}$$</p>
-<p>Adviértase que $E(X) = \sum_j E(X/y_j) p_Y(y_j)$, sin más que sustituir $E(X/y_j)$ por su definición y utilizar el Teorema de la Probabilidad Total.</p>
+<p>Adviértase que $E(X) = \sum_j E(X | y_j) p_Y(y_j)$, sin más que sustituir $E(X | y_j)$ por su definición y utilizar el Teorema de la Probabilidad Total.</p>
 
 </div>
 </div>
@@ -13000,10 +13165,10 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Con $p_{X_1/X_2}$ pueden calcularse los momentos de los resultados del dado para cada resultado del lanzamiento de la moneda. Por ejemplo, la media:</p>
+<p>Con $p_{X_1 | X_2}(x_1, x_2)$ pueden calcularse los momentos de los resultados del dado para cada resultado del lanzamiento de la moneda. Por ejemplo, la media:</p>
 <p>$$
 X_2 \\X_1 \begin{array}{c|c|c}
-p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
+p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 1 &amp; \frac{1}{11} &amp; 0\\
 \hline
@@ -13017,7 +13182,7 @@ p_{X_1/X_2}(x_{1_i}/ x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 6 &amp; \frac{4}{11} &amp; \frac{2}{13}\\
 \hline
-E(X_1/x_{2_j}) &amp; 
+E(X_1 | x_{2_j}) &amp; 
 1\frac{1}{11}+2\frac{2}{11}+3\frac{1}{11}+4\frac{2}{11}+5\frac{1}{11}+6\frac{4}{11}=\frac{45}{11}
 &amp; 0+2\frac{3}{13}+3\frac{4}{13}+4\frac{1}{13}+5\frac{3}{13}+6\frac{2}{13}=\frac{49}{13}
 \end{array}
