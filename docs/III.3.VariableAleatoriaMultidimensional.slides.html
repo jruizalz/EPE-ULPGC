@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>index slides</title>
+<title>III.3.VariableAleatoriaMultidimensional slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11905,533 +11905,412 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Estad&#237;stica-y-Procesos-Estoc&#225;sticos-(EPE)">Estad&#237;stica y Procesos Estoc&#225;sticos (EPE)<a class="anchor-link" href="#Estad&#237;stica-y-Procesos-Estoc&#225;sticos-(EPE)">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Estadística y Procesos Estocásticos (EPE) es una asignatura de formación matemática básica, que se estudia en el <strong>segundo semestre del primer curso</strong> del <em>Grado de Ingeniera en Tecnologías de la Telecomunicación</em>, en la Escuela de Ingeniería de Telecomunicación y Electrónica (EITE) de la Universidad de Las Palmas de Gran Canaria (ULPGC). Esta asignatura también se cursa en el <strong>primer semestre del segundo curso</strong> del Doble Grado en Dirección y Administración de Empresas y de Ingeniería en Tecnologías de la Telecomunicación, en la misma Escuela. El presente sitio web almacena un repositorio con los contenidos informáticos necesarios para seguir la asignatura.</p>
+<h1 id="Variables-Aleatorias-N-Dimensionales">Variables Aleatorias N-Dimensionales<a class="anchor-link" href="#Variables-Aleatorias-N-Dimensionales">&#182;</a></h1><p>Al introducir el concepto de variable aleatoria conjunta, ya se mencionó que los vectores aleatorios pueden tener un número arbitrario $M$ de componentes:</p>
+<p>$$\mathbf X = (X_1, \ldots X_M)^\mathrm{T}$$</p>
+<p>Ya hemos visto en profundidad la caracterización conjunta y marginal para el caso de dos variables aleatorias (vector aleatorio de dimesión $2$). La extensión a $M$ componentes es inmediata:</p>
+<p>La <strong>Función de Distribución Conjunta</strong> $F_\mathbf{X}(\mathbf{x}) \equiv F_{X_1\ldots X_M}(x_1,\ldots x_M)$ es</p>
+<p>$$
+F_\mathbf{X}(\mathbf{x}) \equiv F_{X_1\ldots X_M}(x_1,\ldots x_M) = 
+P(X_1 \leq x_1, \ldots X_M \leq x_M)
+$$</p>
+<p>Las <strong>funciones de distribución marginales</strong> se obtienen sin más que evaluar en $\infty$ las variables que se desean descartar. Por ejemplo:</p>
+<p>$$
+F_{X_1X_3}(x_1, x_3) = F_{X_1\ldots X_N}(x_1,\infty, x_3, \infty , \ldots \infty)
+$$</p>
+<p>$$
+F_{X_3}(x_3) = F_{X_1 \ldots X_N}(\infty,\infty, x_3, \infty , \ldots \infty)
+$$</p>
+<p>Por supuesto, $F_\mathbf{X}(\boldsymbol{\infty}) \equiv F_{X_1\ldots X_M}(\infty,\ldots \infty) = 1$</p>
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En esta asignatura se explora el concepto de <em>variabilidad aleatoria</em> y la forma en que puede modelarse en los distintos contextos que surgen en el ámbito de las telecomunicaciones.</p>
+<p>Suele resultar oportuno definir el vector aleatorio $\mathbf{V}$ con dos componentes que son, a su vez, vectores aleatorios, $\mathbf X = (X_1, \ldots X_M)^\mathrm{T}$ e $\mathbf X = (X_1, \ldots X_M)^\mathrm{T}$:</p>
+<p>$$\mathbf V = (\mathbf{X}^\mathrm{T} , \mathbf{Y}^\mathrm{T})^\mathrm{T} = 
+(X_1, \ldots X_M , Y_1 \ldots Y_M)^\mathrm{T}$$</p>
+<p>Ello permite aplicar de forma prácticamente directa las expresiones vistas para la caracterización del vector bidimensional $(X,Y)$ al vector $M+N$-dimensional $\mathbf V = (\mathbf{X}^\mathrm{T} , \mathbf{Y}^\mathrm{T})^\mathrm{T}$, recurriendo a ciertos <em>abusos de notación</em> muy sencillos de entender. Por ejemplo:</p>
+<p>$$
+F_\mathbf{V}(\mathbf{v}) \equiv F_{\mathbf{X},\mathbf{Y}}(\mathbf{x},\mathbf{y}) = 
+P(X_1 \leq x_1, \ldots X_M \leq x_M, Y_1 \leq y_1 \ldots Y_M \leq y_M) \equiv 
+P(\mathbf{X} \leq \mathbf{x}, \mathbf{Y} \leq \mathbf{y})
+$$</p>
+<p>$$
+F_{\mathbf{X}}(\mathbf{x}) = F_{\mathbf{X}\mathbf{Y}}(\mathbf{x},\boldsymbol{\infty}) \equiv
+F_{X_1\ldots X_M Y_1 \ldots Y_N}(x_1,\ldots x_M , \infty , \ldots \infty) = F_{X_1\ldots X_M}(x_1,\ldots x_M)
+$$</p>
+<p>$$
+F_{\mathbf{Y}}(\mathbf{y}) = F_{\mathbf{X}\mathbf{Y}}(\mathbf{\boldsymbol{\infty}},\mathbf{y}) \equiv
+F_{X_1\ldots X_M Y_1 \ldots Y_N}(\infty,\ldots \infty , y_1 , \ldots y_N) = F_{Y_1\ldots Y_N}(y_1,\ldots y_N)
+$$</p>
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contenidos">Contenidos<a class="anchor-link" href="#Contenidos">&#182;</a></h2><ul>
-<li>Espacios de Probabilidad. </li>
-<li>Variables aleatorias. Simulación de variables aleatorias. </li>
-<li>Vectores aleatorios. Simulación de vectores aleatorios. </li>
-<li>Introducción a los procesos estocásticos. </li>
-<li>Recorridos aleatorios. </li>
-<li>Simulación de procesos. </li>
-<li>Procesos de Markov. </li>
-<li>Cadenas homogéneas de Markov. </li>
-<li>Simulación de cadenas de Markov. </li>
-<li>Sistemas de colas. </li>
-<li>Procesos de nacimiento y muerte. </li>
-<li>Simulaciones de sistemas M/M/m. </li>
-<li>Procesos estacionarios. Simulación de procesos estacionarios. Análisis espectral. Problemas de filtrado. </li>
-<li>Estimación de procesos estacionarios. Ideas sobre la consistencia de la estimación.</li>
-</ul>
+<h3 id="Funci&#243;n-de-densidad-conjunta-multidimensional">Funci&#243;n de densidad conjunta multidimensional<a class="anchor-link" href="#Funci&#243;n-de-densidad-conjunta-multidimensional">&#182;</a></h3><p>La <strong>función de densidad conjunta</strong> del vector aleatorio $\mathbf X$, suponiendo que está compuesto por <strong>variables aleatorias continuas</strong>, es:</p>
+<p>$$
+f_\mathbf{X}(\mathbf{x}) \equiv f_{X_1\ldots X_M}(x_1,\ldots x_M) = \frac{\partial^{M} F_{X_1 \ldots X_M}\left(x_{1}, \ldots, x_{M}\right)}{\partial x_{1}, \ldots, \partial x_{M}} \equiv
+\frac{\boldsymbol{\partial} F_\mathbf{X}(\mathbf{x})}{\boldsymbol{\partial} \mathbf{x}}
+$$</p>
+<p>Por tanto, puede obtenerse la función de distribución a partir de la de densidad conjunta:</p>
+<p>$$
+F_\mathbf{X}(\mathbf{x}) \equiv F_{X_1\ldots X_M}(x_1,\ldots x_M) = \int_{-\infty}^{x_1} \ldots \int_{-\infty}^{x_M} f_{X_1\ldots X_M}(x_1,\ldots x_M) dx_1 \ldots dx_M \equiv 
+\boldsymbol{\int}_{\boldsymbol{-\infty}}^{\mathbf{x}} f_\mathbf{X}(\mathbf{x})\mathbf{dx} 
+$$</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Los contenidos se exponen en clases teóricas y se demuestran en clases prácticas en el aula, y con proyectos de laboratorio. Los estudiantes deben contribuir activamente tanto en las clases prácticas en el aula como en las sesiones de laboratorio. Se hace un uso intensivo de software informático basado en Python, mediante el entorno Anaconda / Jupyter notebooks, que facilita un acceso cómodo e intuitivo al conjunto de paquetes de computación científica SciPy, cuyo conocimiento resultará de suma utilidad al alumnado, no solo en esta asignatura sino también en el futuro por su prestigio en la ciencia de datos actual en todo el mundo. Los estudiantes han de completar tanto mediante su trabajo no presencial como en las clases de laboratorio pequeños proyectos demostrativos sobre tal entorno.</p>
-<p><br/></p>
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC target="_blank">Acceder a los notebooks de la asignatura en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Temario">Temario<a class="anchor-link" href="#Temario">&#182;</a></h2><p>Los contenidos de la asignatura se estructuran en tres bloques de cinco semanas de duración, conforme al siguiente temario y programa. Las claves que se utilizan son las siguientes:</p>
-<ul>
-<li>CLT: horas Clase Teoría, </li>
-<li>CPA: horas Clase Problemas Aula, </li>
-<li>LAB: horas Laboratorio, </li>
-<li>Tut: horas de clase tutorizada, </li>
-<li>Eva: horas Evaluación Continua</li>
-</ul>
-<p><strong>Trabajo total presencial: 60 horas = 30 CLT + 14 CPA + 8 LAB + 2 Tut + 6 Eva</strong></p>
+<p><strong>La masa total de probabilidad es uno</strong>:</p>
+<p>$$
+\int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} f_{X_1\ldots X_M}(x_1,\ldots x_M) dx_1 \ldots dx_M = F_{X_1 \ldots X_M}(\infty,\ldots \infty) = 1 \equiv \\
+\equiv \boldsymbol{\int}_{\boldsymbol{-\infty}}^{\boldsymbol{\infty}} f_\mathbf{X}(\mathbf{x})\mathbf{dx}
+= F_\mathbf{X}(\boldsymbol{\infty}) = 1
+$$</p>
+<p>Las <strong>funciones de densidad marginales</strong> se obtienen sin más que integrar las variables que se desean descartar. Por ejemplo:</p>
+<p>$$
+f_{X_1X_3}(x_1,x_3) = \int_{-\infty}^{\infty}\ldots \int_{-\infty}^{\infty} f_{X_1\ldots X_M} (x_1, \ldots x_M) dx_2 dx_4 \ldots dx_M
+$$</p>
+<p>$$
+f_{X_1}(x_1) = \int_{-\infty}^{\infty}\ldots \int_{-\infty}^{\infty} f_{X_1\ldots X_M} (x_1, \ldots x_M) dx_2 \ldots dx_M
+$$</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bloque temático I: Espacio de Probabilidad</strong> (semanas 1 a cinco)</p>
-<ol>
-<li><a href=1.AnalisisExploratorioDatos.slides.html target="_blank">Estadística. Introducción al Análisis Exploratorio de Datos</a>. (4 CLT, 1 CPA, 1 LAB)<br/></li>
-<li><a href=2.Probabilidad_Sucesos.slides.html target="_blank">Probabilidad y Álgebra de Sucesos</a>.(2 CLT, 1 CPA)<br/><ul>
-<li><a href=2.Probabilidad_Sucesos_new.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=3.Probabilidad_Condicionada.slides.html target="_blank">Probabilidad condicionada. Independencia de sucesos. Verosimilitud</a>. (1 CLT, 0.5 CPA, 0.25 LAB) <ul>
-<li><a href=3.ProbabilidadCondicionada_Independencia_Verosimilitud.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=4.Probabilidad_Total_Bayes_MAP.slides.html target="_blank">Teorema de la Probabilidad Total. Teorema de Bayes y probabilidad a posteriori</a>. (1 CLT, 0.5 CPA, 0.25 LAB)<ul>
-<li><a href=4.ProbabilidadTotal_Bayes.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=5.Decisores_ML_MAP.slides.html target="_blank">Decisores de máxima verosimilitud (ML). Decisores máximo a posteriori (MAP)</a>. (1 CLT, 0.5 CPA, 0.25 LAB)</li>
-<li><a href=6.Experimentos_Compuestos_Bernoulli.slides.html target="_blank">Experimentos compuestos. Pruebas de Bernoulli</a>. (1 CLT, 0.5 CPA, 0.25 LAB)</li>
-</ol>
+<p>Considerando ahora el vector aleatorio $\mathbf{V}$ definido como antes:</p>
+<p>$$
+f_{\mathbf{V}}(\mathbf{v}) \equiv f_\mathbf{XY}(\mathbf{x},\mathbf{y}) = 
+\frac{\boldsymbol{\partial}^2 F_{\mathbf{XY}}(\mathbf{x},\mathbf{y})}{\boldsymbol{\partial} \mathbf{x}\boldsymbol{\partial} \mathbf{y}}
+$$</p>
+<p>$$
+F_\mathbf{V}(\mathbf{v}) \equiv F_{\mathbf{X} \mathbf{Y}}(\mathbf{x},\mathbf{y}) = \int_{-\boldsymbol{\infty}}^{\mathbf{x}}\int_{-\boldsymbol{\infty}}^{\mathbf{y}} f_{\mathbf{X}\mathbf{Y}}(\mathbf{x},\mathbf{y}) \mathbf{dx dy} \equiv 
+\boldsymbol{\int}_{\boldsymbol{-\infty}}^{\mathbf{v}} f_\mathbf{V}(\mathbf{v})\mathbf{dv} 
+$$</p>
+<p>Y las funciones de densidad marginales de ambos vectores componentes son:</p>
+<p>$$
+f_{\mathbf{X}}(\mathbf{x}) = \boldsymbol{\int}_{-\boldsymbol{\infty}}^{\boldsymbol{\infty}} f_{\mathbf{XY}}(\mathbf{x}, \mathbf{y}) \mathbf{dy}
+$$</p>
+<p>$$
+f_{\mathbf{Y}}(\mathbf{y}) = \boldsymbol{\int}_{-\boldsymbol{\infty}}^{\boldsymbol{\infty}} f_{\mathbf{XY}}(\mathbf{x}, \mathbf{y}) \mathbf{dx}
+$$</p>
+<p>Por supuesto, $
+\int_{-\boldsymbol{\infty}}^{\boldsymbol{\infty}}\int_{-\boldsymbol{\infty}}^{\boldsymbol{\infty}} f_{\mathbf{X}\mathbf{Y}}(\mathbf{x},\mathbf{y}) \mathbf{dx dy} = F_{\mathbf{X} \mathbf{Y}}(\infty,\infty) = 1
+$</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>La segunda semana habrá una clase tutorizada de introducción a Python.</li>
-<li>La quinta semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua</li>
-<li>Totales trabajo presencial: 20 horas = 10 CLT + 4 CPA + 2 LAB + 2 Tut + 2 Eva</li>
-</ul>
+<p>Como ya sabemos, las funciones marginales no permiten conocer la conjunta salvo que sean independientes. La <strong>independencia conjunta</strong> requiere que todas las combinaciones posibles de variables aleatorias componentes sean independientes. En tal caso:</p>
+<p>$$
+F_{X_1 \ldots X_M}(x_1 \ldots x_M) = F_{X_1}(x_1) \ldots F_{X_M}(x_M)
+$$</p>
+<p>$$
+f_{X_1 \ldots X_M}(x_1 \ldots x_M) = f_{X_1}(x_1) \ldots f_{X_M}(x_M)
+$$</p>
+<p>En el caso de que tengamos dos vectores aleatorios $\mathbf{X}$, $\mathbf{Y}$ independientes entre sí (pero no necesariamente las componentes de cada uno de ellos por separado):</p>
+<p>$$
+F_{\mathbf{XY}}(\mathbf{x},\mathbf{y}) = F_{\mathbf{X}}(\mathbf{x}) F_{\mathbf{Y}}(\mathbf{y})
+$$</p>
+<p>$$
+f_{\mathbf{XY}}(\mathbf{x},\mathbf{y}) = f_{\mathbf{X}}(\mathbf{x}) f_{\mathbf{Y}}(\mathbf{y})
+$$</p>
 
 </div>
 </div>
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th><strong>Semanas</strong></th>
-<th><strong>CLT</strong></th>
-<th><strong>CPA</strong></th>
-<th><strong>LAB</strong></th>
-<th><strong>Tut</strong></th>
-<th><strong>Eva</strong></th>
-<th><strong>TOT</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semana 1</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>2</strong></td>
-</tr>
-<tr>
-<td>Semana 2</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>2</td>
-<td>0</td>
-<td><strong>6</strong></td>
-</tr>
-<tr>
-<td>Semana 3</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 4</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 5</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td><strong>TOT hrs</strong></td>
-<td><strong>10</strong></td>
-<td><strong>4</strong></td>
-<td><strong>2</strong></td>
-<td><strong>2</strong></td>
-<td><strong>2</strong></td>
-<td><strong>20</strong></td>
-</tr>
-</tbody>
-</table>
+<h3 id="Funci&#243;n-de-masa-de-probabilidad-conjunta">Funci&#243;n de masa de probabilidad conjunta<a class="anchor-link" href="#Funci&#243;n-de-masa-de-probabilidad-conjunta">&#182;</a></h3><p>Si las componentes del vector aleatorio son <strong>variables aleatorias discretas</strong>, la función de distribución resulta discontinua y no es derivable. Como ya hemos visto, en tal caso recurrimos a la <strong>función de masa de probabilidad conjunta</strong></p>
+<p>$$
+p_{\mathbf{X}}(\mathbf{x_i}) \equiv p_{X_1 \ldots X_M}(x_{i_1}, \ldots x_{i_M}) = P(X_1 = x_{i_1} , \ldots X_M = x_{i_M})
+$$</p>
+<p>$$
+p_{\mathbf{V}}(\mathbf{v_{k}}) \equiv p_{\mathbf{X} \mathbf{Y}}(\mathbf{x_{i}}, \mathbf{y_{j}}) = P(\mathbf{X} = \mathbf{x_{i}} , \mathbf{Y} = \mathbf{y_{j}})
+$$</p>
+<p>donde $\mathbf{i} =(i_1 \ldots i_M)$, $\mathbf{j} =(j_1 \ldots j_N)$ y $\mathbf{k}$ es la concatenación de ambos. La <strong>función de distribución conjunta</strong> se obtiene acumulando la función de masa de probabilidad conjunta:</p>
+<p>$$
+F_\mathbf{X}(\mathbf{x_i}) \equiv F_{X_1\ldots X_M}(x_{i_1},\ldots x_{i_M}) = \sum_{p_1=-\infty}^{i_1} \ldots \sum_{p_M=-\infty}^{i_M} f_{X_1\ldots X_M}(x_{p_1},\ldots x_{p_M}) \equiv 
+\boldsymbol{\sum}_{\mathbf{p}=\boldsymbol{-\infty}}^{\mathbf{i}} f_\mathbf{X}(\mathbf{x_p}) 
+$$</p>
+<p>$$
+F_\mathbf{V}(\mathbf{v_k}) \equiv F_{\mathbf{X} \mathbf{Y}}(\mathbf{x_i},\mathbf{y_j}) = \sum_{\mathbf{p}=-\boldsymbol{\infty}}^{\mathbf{i}}\sum_{\mathbf{q}=-\boldsymbol{\infty}}^{\mathbf{j}} p_{\mathbf{X}\mathbf{Y}}(\mathbf{x_p},\mathbf{y_q}) \equiv 
+\boldsymbol{\sum}_{\mathbf{r}=\boldsymbol{-\infty}}^{\mathbf{k}} f_\mathbf{V}(\mathbf{v_r}) 
+$$</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC/tree/master/Bloque_1 target="_blank">Acceder a los notebooks del Bloque I en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bloque temático II: Variable aleatoria</strong> (semanas 6 a diez)</p>
-<ol>
-<li><a href=0.IntroVariableAleatoria.slides.html target="_blank">Introducción al Concepto de Variable Aleatoria</a>. <ul>
-<li><a href=II.0.IntroVariableAleatoria.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=1.VariableAleatoriaDiscreta.slides.html target="_blank">Variable aleatoria discreta. Funciones de masa de probabilidad. Caracterización</a> (1 CLT)<ul>
-<li><a href=II.1.VariableAleatoriaDiscreta.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=2.DistribucionesDiscretasHabituales.slides.html target="_blank">Distribuciones de probabilidad habituales</a>.  (1 CLT, 1 LAB)<ul>
-<li><a href=II.2.DistribucionesDiscretasHabituales.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=3.VariableAleatoriaContinua.slides.html target="_blank">Variable aleatoria continua. Funciones de densidad y distribución de probabilidad. Caracterización</a>.  (1.5 CLT, 1 CPA)<ul>
-<li><a href=II.3.VariableAleatoriaContinua.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li><a href=4.DistribucionesContinuasHabituales.slides.html target="_blank">Variable aleatoria Gaussiana. Otras variables aleatorias continuas habituales</a>. (1.5 CLT, 1 CPA, 1 LAB)<ul>
-<li><a href=II.4.DistribucionesContinuasHabituales.slides.html target="_blank">Nueva versión revisada</a></li>
-</ul>
-</li>
-<li>Transformación de variables aleatorias (1 CLT, 1 CPA): se incluye en los temas II.1 y II.3</li>
-</ol>
+<h3 id="Momentos-conjuntos:-Vector-de-medias-y-matrices-de-covarianza">Momentos conjuntos: Vector de medias y matrices de covarianza<a class="anchor-link" href="#Momentos-conjuntos:-Vector-de-medias-y-matrices-de-covarianza">&#182;</a></h3><p>El <strong>vector de medias</strong> se obtiene a partir de la esperanza matemática de las funciones marginales de cada una de las variables aleatorias, como ya se vio en el caso bidimensional:</p>
+<p>$$
+E(\mathbf{X})\equiv \boldsymbol{\mu}_{\mathbf{X}} = \left(E(X_1), \ldots E(X_M) \right)^\mathrm{T}
+$$</p>
+<p>$$
+E(\mathbf{V})\equiv \boldsymbol{\mu}_{\mathbf{V}} 
+= \left(\boldsymbol{\mu}_\mathbf{X}^\mathrm{T} , \boldsymbol{\mu}_\mathbf{Y}^\mathrm{T} \right)^\mathrm{T}
+= \left(E(\mathbf{X})^\mathrm{T}, E(\mathbf{Y})^\mathrm{T} \right)^\mathrm{T} =
+\left(E(X_1), \ldots E(X_M), E(Y_1), \ldots E(Y_N)\right)^\mathrm{T}
+$$</p>
+<p>La <strong>matriz de autocorrelación</strong> del vector aleatorio $\mathbf{X}$ es:</p>
+<p>$$
+\mathbf{R_{XX}} = E(\mathbf{XX}^\mathrm{T}) = 
+\begin{pmatrix}
+E(X_1^2) &amp; \ldots &amp; R_{X_1X_M}\\
+\vdots &amp; \ddots &amp; \vdots\\
+R_{X_MX_1} &amp; \ldots &amp; E(X_M^2)
+\end{pmatrix}
+$$</p>
+<p>que resulta <strong>simétrica y semidefinida positiva</strong>. Si todas las componentes son ortogonales entre sí, la matriz resulta diagonal.</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>La décima semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua</li>
-<li>Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva</li>
-</ul>
+<p>La <strong>matriz de correlación cruzada</strong> de los vectores aleatorios $X$ e $Y$ es:</p>
+<p>$$
+\mathbf{R_{XY}} = E(\mathbf{XY}^\mathrm{T}) = 
+\begin{pmatrix}
+R_{X_1Y_1} &amp; \ldots &amp; R_{X_1Y_N}\\
+\vdots &amp; \ddots &amp; \vdots\\
+R_{X_MY_1} &amp; \ldots &amp; R_{X_MY_N}
+\end{pmatrix}
+$$</p>
+<p>y se cumple que $\mathbf{R_{YX}} = \mathbf{R_{XY}}^\mathrm{T}$. Por tanto, la matriz de autocorrelación del vector $\mathbf V = (\mathbf{X}^\mathrm{T} , \mathbf{Y}^\mathrm{T})^\mathrm{T}$ es</p>
+<p>$$
+\mathbf{R_{V}} = E(\mathbf{VV}^\mathrm{T}) = 
+\begin{pmatrix}
+\mathbf{R_{XX}} &amp; \mathbf{R_{XY}}\\
+\mathbf{R_{YX}} &amp; \mathbf{R_{YY}}
+\end{pmatrix}
+$$</p>
+<p>que también resulta simétrica y semidefinida positiva.</p>
 
 </div>
 </div>
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th><strong>Semanas</strong></th>
-<th><strong>CLT</strong></th>
-<th><strong>CPA</strong></th>
-<th><strong>LAB</strong></th>
-<th><strong>Tut</strong></th>
-<th><strong>Eva</strong></th>
-<th><strong>TOT</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semana 6</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 7</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 8</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 9</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 10</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td><strong>TOT hrs</strong></td>
-<td><strong>10</strong></td>
-<td><strong>5</strong></td>
-<td><strong>3</strong></td>
-<td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>20</strong></td>
-</tr>
-</tbody>
-</table>
+<p>La <strong>matriz de autocovarianza</strong> del vector aleatorio $\mathbf{X}$ es:</p>
+<p>$$
+\mathbf{C_{XX}} = E((\mathbf{X}-\mathbf{\mu_X})(\mathbf{X}-\mathbf{\mu_X})^\mathrm{T}) = 
+\begin{pmatrix}
+\sigma_{X_1}^2 &amp; \ldots &amp; C_{X_1X_M}\\
+\vdots &amp; \ddots &amp; \vdots\\
+C_{X_MX_1} &amp; \ldots &amp; \sigma_{X_M}^2
+\end{pmatrix} =
+\mathbf{R_{XX}}-\boldsymbol{\mu}_{\mathbf X}\boldsymbol{\mu}_{\mathbf X}^\mathrm{T}
+$$</p>
+<p>que resulta <strong>simétrica y semidefinida positiva</strong>. Si todas las componentes son <strong>incorreladas</strong> entre sí, la matriz resulta <strong>diagonal</strong>: $\mathbf{C_{XX}} = \mathrm{\mathbf{diag}}[\sigma_{X_1}^2\ldots \sigma_{X_M}^2]$</p>
+<p>Las covarianzas de las componentes (elementos fuera de la diagonal) pueden ponerse en función de los coeficientes de correlación:</p>
+<p>$$
+C_{X_iX_j} = \rho_{X_iX_j}\sigma_{X_i}\sigma_{X_j}
+$$</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC/tree/master/Bloque_2 target="_blank">Acceder a los notebooks del Bloque II en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ol>
-<li><a href=III.1.VariableAleatoriaConjunta.slides.html target="_blank">Variable aleatoria bidimensional. Caracterización conjunta de vectores aleatorios bidimensionales</a> (1.5 CLT, 1 CPA)</li>
-<li><a href=III.2.GaussianaBidimensional.slides.html target="_blank">Distribución Gaussiana bidimensional. Mezcla de Gaussianas. Clasificación y Estimación</a> (1.5 CLT, 1 CPA, 1 LAB)</li>
-<li><a href=III.3.VariableAleatoriaMultidimensional.slides.html target="_blank">Variable aleatoria multidimensional. Caracterización conjunta de vectores aleatorios n-dimensionales</a> (0.5 CLT)</li>
-<li>Distribución Gaussiana multidimensional. Mezcla de Gaussianas. Clasificación y Estimación (0.5 CLT)</li>
-</ol>
-<p><strong>Bloque temático III: Secuencias y procesos aleatorios</strong> (semanas 11 a 15)</p>
-<ol>
-<li>Secuencias y procesos estocásticos. Caracterización de segundo orden. Secuencias y procesos Gaussianos. (2 CLT, 1 CPA)<ul>
-<li>Ver contenidos introducidos al principio de variable aleatoria conjunta</li>
-</ul>
-</li>
-<li>Estacionariedad. Ergodicidad. Estimación de parámetros. (1 CLT)<ul>
-<li>Ver contenidos introducidos al principio de variable aleatoria conjunta</li>
-</ul>
-</li>
-<li>Señal en ruido. Filtrado temporal. Regresión y estimación. Clasificación y detección. (3 CLT, 2 CPA, 2 LAB)</li>
-<li>Introducción a la caracterización espectral de secuencias y procesos estocásticos. Filtros frecuenciales. (1 CLT).</li>
-<li><a href=III.4.CadenasDeMarkov.slides.html target="_blank">Condición de Markov. Cadenas de Markov. Procesos puntuales. El proceso homogéneo de Poisson.</a> (1 CLT, 1 CPA)</li>
-<li><a href= III.5.TeoriaDeColas.slides.html target="_blank">Procesos de nacimiento y muerte. Sistemas de colas: Sistemas M/M/1 y M/M/m.</a> (2 CLT, 1 CPA, 1 LAB)</li>
-</ol>
+<p>La <strong>matriz de covarianza cruzada</strong> de los vectores aleatorios $X$ e $Y$ es:</p>
+<p>$$
+\mathbf{C_{XY}} = E((\mathbf{X}-\mathbf{\mu_X})(\mathbf{Y}-\mathbf{\mu_Y})^\mathrm{T}) = 
+\begin{pmatrix}
+C_{X_1Y_1} &amp; \ldots &amp; C_{X_1Y_N}\\
+\vdots &amp; \ddots &amp; \vdots\\
+C_{X_MY_1} &amp; \ldots &amp;  C_{X_MY_N}
+\end{pmatrix} =
+\mathbf{R_{XX}}-\boldsymbol{\mu}_{\mathbf X}\boldsymbol{\mu}_{\mathbf Y}^\mathrm{T}
+$$</p>
+<p>y se cumple que $\mathbf{C_{YX}} = \mathbf{C_{XY}}^\mathrm{T}$. Por tanto, la matriz de autocovarianza del vector $\mathbf V = (\mathbf{X}^\mathrm{T} , \mathbf{Y}^\mathrm{T})^\mathrm{T}$ es</p>
+<p>$$
+\mathbf{C_{V}} = E((\mathbf{V}-\mathbf{\mu_V})(\mathbf{V}-\mathbf{\mu_V})^\mathrm{T}) =
+\begin{pmatrix}
+\mathbf{C_{XX}} &amp; \mathbf{C_{XY}}\\
+\mathbf{C_{YX}} &amp; \mathbf{C_{YY}}
+\end{pmatrix}
+$$</p>
+<p>que también resulta simétrica y semidefinida positiva.</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>La décimo quinta semana finaliza con una evaluación de dos horas, dentro de la evaluacion continua</li>
-<li>Totales trabajo presencial: 20 horas = 10 CLT + 5 CPA + 3 LAB + 2 Eva</li>
-</ul>
+<h3 id="Distribuciones-condicionadas.-Teoremas-de-Bayes-y-de-la-Probabilidad-Total">Distribuciones condicionadas. Teoremas de Bayes y de la Probabilidad Total<a class="anchor-link" href="#Distribuciones-condicionadas.-Teoremas-de-Bayes-y-de-la-Probabilidad-Total">&#182;</a></h3><p>Consideremos el vector aleatorio $\mathbf{X} = (X_1, \ldots X_{p-1}, X_{p}, X_{p+1} \ldots X_M)^\mathrm{T}$. Podemos obtener la <strong>función de distribución condicionada</strong> de unas componentes por otras:</p>
+<p>$$
+F_{X_1 \ldots X_{p-1} | X_p \ldots X_M} (x_1 , \ldots x_{p-1} | x_p , \ldots x_M) = \frac{F_{X_1 \ldots X_M}(x_1 , \ldots x_M)}{F_{X_p \ldots X_M}(x_p, \ldots x_M)}
+$$</p>
+<p>Considerando que las variables aleatorias son continuas, la  <strong>función de densidad condicionada</strong> es:</p>
+<p>$$
+f_{X_1 \ldots X_{p-1} | X_p \ldots X_M} (x_1 , \ldots x_{p-1} | x_p , \ldots x_M) = \frac{f_{X_1 \ldots X_M}(x_1 , \ldots x_M)}{f_{X_p \ldots X_M}(x_p, \ldots x_M)}
+$$</p>
+<p>Si las variables aleatorias son discretas, la <strong>función de masa de probabilidad</strong> resulta:</p>
+<p>$$
+p_{X_1 \ldots X_{p-1} | X_p \ldots X_M} (x_{i_1} , \ldots x_{i_{p-1}} | x_{i_p} , \ldots x_{i_M}) = \frac{p_{X_1 \ldots X_M}(x_{i_1} , \ldots x_{i_M})}{p_{X_{p} \ldots X_M}(x_{i_p}, \ldots x_{i_M})}
+$$</p>
 
 </div>
 </div>
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th><strong>Semanas</strong></th>
-<th><strong>CLT</strong></th>
-<th><strong>CPA</strong></th>
-<th><strong>LAB</strong></th>
-<th><strong>Tut</strong></th>
-<th><strong>Eva</strong></th>
-<th><strong>TOT</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semana 11</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 12</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 13</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 15</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Semana 15</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td><strong>TOT hrs</strong></td>
-<td><strong>10</strong></td>
-<td><strong>5</strong></td>
-<td><strong>3</strong></td>
-<td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>20</strong></td>
-</tr>
-</tbody>
-</table>
+<h4 id="Regla-de-la-cadena">Regla de la cadena<a class="anchor-link" href="#Regla-de-la-cadena">&#182;</a></h4><p>Aplicando sucesiva y ordenadamente la definición de función de densidad condicionada:</p>
+<p>$$
+\begin{align}
+f_{X_1 \ldots X_M}(x_1 \ldots x_M) 
+&amp;= 
+f_{X_1 | X_2 \ldots X_M} (x_1 | x_2 \ldots x_{M}) \ldots f_{X_{M-1} | X_M} (x_{M-1} | x_M) f_{X_M} (x_M)\\
+&amp;= 
+f_{X_M | X_{M-1} \ldots X_1} (x_M | x_{M-1} \ldots x_{1}) \ldots f_{X_2 | X_1} (x_2 | x_1) f_{X_1} (x_1)
+\end{align}
+$$</p>
+<p>Adviértase que no hay un orden establecido por el cual haya que condicionar las funciones de densidad. Además de estas dos formas de construir la cadena de productos, podrían haberse elaborado otras extrayendo en distinto orden las variables condicionantes. Cuando veamos secuencias o procesos temporales, la causalidad establecerá un ordenamiento que sí habrá que respetar.</p>
+<p>Si las variables son discretas, puede obtenerse una descomposición idéntica utilizando funciones de masa de probabilidad.</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<footer>
-    <a href=https://github.com/jruizalz/EPE-ULPGC/tree/master/Bloque_3 target="_blank">Acceder a los notebooks del Bloque III en GitHub</a><br/>
-    <a href="#/">Volver al principio</a>
-</footer>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Evaluaci&#243;n">Evaluaci&#243;n<a class="anchor-link" href="#Evaluaci&#243;n">&#182;</a></h2><h3 id="Evaluaci&#243;n-continua">Evaluaci&#243;n continua<a class="anchor-link" href="#Evaluaci&#243;n-continua">&#182;</a></h3><ul>
-<li>Pruebas escritas al final de cada bloque temático (50%): Todas las respuestas tienen que estar motivadas. <strong>No se admitirán respuestas que no estén debidamente razonadas</strong>. Cada Prueba:<ul>
-<li>Preguntas teóricas cortas: 4 puntos</li>
-<li>Dos casos y/o problemas de respuesta larga: 6 puntos<ul>
-<li>Bloque I (15%)</li>
-<li>Bloque II (15%)</li>
-<li>Bloque III (20%)</li>
-</ul>
-</li>
-<li>Debe obtenerse al menos 3 en cada prueba para liberarla y promediar.</li>
-</ul>
-</li>
-<li>Ejercicios de autoevaluación, asistencia y participación en clase (10%). <strong>La asistencia a clase es obligatoria</strong>.</li>
-<li>Entrega de tres trabajos en grupo, uno por cada bloque temático (10% cada uno).<ul>
-<li>Debe obtenerse al menos un 3 en cada trabajo para liberarlo y promediar.</li>
-</ul>
-</li>
-<li>Elaboración de las prácticas de laboratorio con los mismos grupos de trabajo (10%). <strong>La sistencia al laboratorio es obligatoria</strong><ul>
-<li>Debe obtenerse al menos un 3 para liberar el laboratorio y promediar</li>
-</ul>
-</li>
-<li>Las partes no liberadas deben repetirse para la evaluación final.</li>
-</ul>
+<h4 id="Ecuaci&#243;n-de-Chapman-Kolmogorov">Ecuaci&#243;n de Chapman-Kolmogorov<a class="anchor-link" href="#Ecuaci&#243;n-de-Chapman-Kolmogorov">&#182;</a></h4><p>Se obtiene combinando la definición de función de densidad o de masa de probbailidad con la obtención de funciones marginales. Supone una <em>extensión del Teorema de la Probabilidad Total</em>. Veámoslo con unos ejemplos:</p>
+<p>$$
+f_{X_3 | X_1}(x_3 | x_1) = \int_{-\infty}^{\infty} f_{X_3X_2 | X_1}(x_3, x_2 | x_1) dx_2 =
+\int_{-\infty}^{\infty} f_{X_3 | X_2 X_1}(x_3 | x_2 , x_1) f_{X_2}(x_2 | x_1) dx_2
+$$</p>
+<p>$$
+f_{X_1 | X_4}(x_1 | x_4) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f_{X_1 X_2 X_3 | X_4}(x_1 , x_2 , x_3| x_4) dx_2dx_3=\\
+= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f_{X_1 | X_2 X_3 X_4}(x_1 | x_2 , x_3 , x_4) f_{X_2X_3 | X_4}(x_2, x_3 | x_4) dx_2dx_3
+$$</p>
+<p>La ecuación puede aplicarse al caso discreto sin más que sustituir las funciones de densidad por funciones de masa de probabilidad y las integrales por sumatorios</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convocatoria-ordinaria-y-extraordinaria">Convocatoria ordinaria y extraordinaria<a class="anchor-link" href="#Convocatoria-ordinaria-y-extraordinaria">&#182;</a></h3><ul>
-<li>Se guardan las partes liberadas de la evaluación continua (siempre que se haya llegado a 3) para promediar</li>
-<li>Los estudiantes habrán de hacer el examen escrito, solo de las partes no liberadas. En conjunto, habrán de llegar al menos a un 3 (en total, no de cada parte) para poder promediar. </li>
-<li>En la convocatoria ordinaria: <ul>
-<li>los grupos pueden rehacer y presentar los trabajos no liberados</li>
-<li>igualmente, pueden hacer con el laboratorio, acordando con el profesorado el régimen de elaboración de las prácticas no liberadas</li>
-</ul>
-</li>
-<li>En la convocatoria extraordinaria<ul>
-<li>Los trabajos y el laboratorio no liberados deberán rehacerse <strong>de forma individual</strong>.</li>
-<li>Se acordará en cada caso con el profesorado el contenido de los trabajos y del laboratorio que no se hayan liberado.</li>
-</ul>
-</li>
-</ul>
+<p>La <strong>función de distribución de un vector aleatorio, $\mathbf{Y}$, condicionada por otro</strong>, $\mathbf{X}$, o viceversa, se define extendiendo la definición ya vista para dos variables alatorias</p>
+<p>$$
+F_{\mathbf{Y}|\mathbf{X}}(\mathbf{y}|\mathbf{x}) = \frac{F_{\mathbf{XY}}(\mathbf{x},\mathbf{y})}{F_{\mathbf{X}}(\mathbf{x})} \qquad
+F_{\mathbf{X}|\mathbf{Y}}(\mathbf{x}|\mathbf{y}) = \frac{F_{\mathbf{XY}}(\mathbf{x},\mathbf{y})}{F_{\mathbf{Y}}(\mathbf{y})}
+$$</p>
+<p>A partir de tal definición es inmediato obtener, para el <strong>caso continuo</strong>, la <strong>función de densidad condicionada</strong>:</p>
+<p>$$
+f_{\mathbf{Y}|\mathbf{X}}(\mathbf{y}|\mathbf{x}) = \frac{f_{\mathbf{XY}}(\mathbf{x},\mathbf{y})}{f_{\mathbf{X}}(\mathbf{x})} \qquad
+f_{\mathbf{X}|\mathbf{Y}}(\mathbf{x}|\mathbf{y}) = \frac{f_{\mathbf{XY}}(\mathbf{x},\mathbf{y})}{f_{\mathbf{Y}}(\mathbf{y})}
+$$</p>
+<p>Y, para el <strong>caso discreto</strong>, la <strong>función de masa de probabilidad condicionada</strong>:</p>
+<p>$$
+p_{\mathbf{Y}|\mathbf{X}}(\mathbf{y_j}|\mathbf{x_i}) = \frac{p_{\mathbf{XY}}(\mathbf{x_i},\mathbf{y_j})}{p_{\mathbf{X}}(\mathbf{x_i})} \qquad
+p_{\mathbf{X}|\mathbf{Y}}(\mathbf{x_i}|\mathbf{y_j}) = \frac{p_{\mathbf{XY}}(\mathbf{x_i},\mathbf{y_j})}{p_{\mathbf{Y}}(\mathbf{y_j})}
+$$</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convocatoria-especial">Convocatoria especial<a class="anchor-link" href="#Convocatoria-especial">&#182;</a></h3><ul>
-<li>Se hará un único examen escrito, con un formato semejante al de las convocatorias ordinaria y extraordinaria.</li>
-<li>Podrán preguntarse elementos propios de las prácticas en el aula y en el laboratorio, dentro de los bloques temáticos correspondientes.</li>
-<li>No se tendrán en consideración partes que pudieran haberse superado con anterioridad, debiendo examinarse de la asignatura completa</li>
-</ul>
+<h3 id="Transformaciones-Lineales-y-Teorema-del-L&#237;mite-Central">Transformaciones Lineales y Teorema del L&#237;mite Central<a class="anchor-link" href="#Transformaciones-Lineales-y-Teorema-del-L&#237;mite-Central">&#182;</a></h3><p>Es posible definir transformaciones $\mathbf{Y} = \mathbf{g(X)}$ que convierten el vector aleatorio $\mathbf{X}$ en otro $\mathbf{Y}$, cuya caracterización conjunta es posible obtener. Entre todas ellas, vamos a prestarle atención a las <strong>transformaciones lineales</strong>. Por ejemplo:</p>
+<p>$$Y = k_1 X_1 + \ldots k_M X_M = \mathbf{k}^\mathrm{T}\mathbf{X}$$</p>
+<p>La media resulta:</p>
+<p>$$
+\mu_Y \equiv E(Y) = \mathbf{k}^\mathrm{T}\boldsymbol{\mu}_\mathbf{X}
+$$</p>
+<p>Y la varianza:</p>
+<p>$$
+\sigma_{Y}^2 = E\left(\mathbf{k}^\mathrm{T}(\mathbf{X}-\boldsymbol{\mu}_\mathbf{X}) (\mathbf{X}-\boldsymbol{\mu}_\mathbf{X} )^\mathrm{T}\mathbf{k}
+\right)
+= \mathbf{k}^\mathrm{T}\mathbf{C_{XX}}\mathbf{k}
+$$</p>
+<p>Si el vector aleatorio $\mathbf{X}$ tiene sus componentes incorreladas $\mathbf{C_{XX}} = \mathrm{\mathbf{diag}}[\sigma_{X_1}^2\ldots \sigma_{X_M}^2]$ y:</p>
+<p>$$
+\sigma_{Y}^2 = k_1^2\sigma_{X_1}^2 + \ldots + k_M\sigma_{X_M}^2
+$$</p>
 
 </div>
 </div>
-</div></section></section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En el caso que las componentes del vector $\mathbf{X}$ sean independientes, y que los coeficiones de la combinación lineal sean todos la unidad, $\mathbf{k}=(1 \ldots 1)^\mathrm{T}$, puede demostrarse que la función de densidad de probabilidad de $Y$ es la <strong>convolución</strong> de las funciones de densidad de probabilidad (en el caso discreto, se trataría de la <strong>convolución discreta</strong> de las funciones de masa de probabilidad):</p>
+<p>$$
+f_Y(y) = f_{X_1}(y)* \ldots * f_{X_M}(y)
+$$</p>
+<p>En el caso de las variables aleatorias $X_1 \ldots X_M$ sean Gaussianas, su convolución resulta también Gaussiana, con media $\mu_Y = \mu_1 + \ldots + \mu_M$. Como la independencia implica incorrelación, por la varianza es $\sigma_{Y}^2 = \sigma_{X_1}^2 + \ldots + \sigma_{X_M}^2$. Por tanto $f_Y(y) = N(\mu_Y, \sigma_Y^2)$.</p>
+<p>El <strong>Teorema Central del Límite</strong> establece que, cuando $M$ es muy grande, la función de densidad de la superposición de variables aleatorias independientes tiende a una Gaussiana, independientemente de la caracterización de cada una de ellas. Este resultado justifica el abundante uso de Gaussianas en la práctica, pues frecuentemente nos encontraremos con superposiciones aleatorias de muchos elementos independientes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La transformación lineal vista anteriormente puede extenderse como sigue:</p>
+<p>$$
+\mathbf{Y} = \left( \begin{array}{c}{Y_1} \\ \vdots \\ {Y_N}\end{array}\right) = 
+\left[ \begin{array}{cc} {k_{1,1}} &amp; \ldots &amp; {k_{1,M}} \\ \vdots &amp; \ddots &amp; \vdots \\ {k_{N,1}} &amp; \ldots &amp; {k_{N,M}}\end{array}\right]\left( \begin{array}{c}{X_1} \\ \vdots \\ {X_M}\end{array}\right) + \left( \begin{array}{c}{m_1} \\ \vdots \\ {m_N}\end{array}\right) = 
+\mathbf{K}^\mathrm{T}\mathbf{X} + \mathbf{m}
+$$</p>
+<p>Por tanto:</p>
+<p>$$
+\boldsymbol{\mu}_{\mathbf{Y}} \equiv E(\mathbf{Y}) = 
+\mathbf{K}^\mathrm{T}\boldsymbol{\mu}_{\mathbf{X}} + \mathbf{m}
+$$</p>
+<p>$$
+\mathbf{C_{YY}} = \mathbf{K}^\mathrm{T}\mathbf{C_{XX}}\mathbf{K}
+$$</p>
+<p>Podemos también obtener la matriz de covarianza cruzada entre el resultado y los operandos:</p>
+<p>$$
+\mathbf{C_{YX}} = \mathbf{K}^\mathrm{T}\mathbf{C_{XX}}
+$$</p>
+
+</div>
+</div>
+</div>
 </div>
 </div>
 
