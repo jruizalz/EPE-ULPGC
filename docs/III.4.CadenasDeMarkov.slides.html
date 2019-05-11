@@ -12049,12 +12049,124 @@ $$</p>
 <h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Supóngase un modelo meteorológico en el que los días pueden ser sólo soleados o lluviosos. El tiempo del día presente se modela como una cadena de Markov homogénea, considerando sólo el día anterior. Si este fue soleado, la probabilidad de que el día actual también lo sea es de 4/5. Sin embargo, si el día anterior fue lluvioso, la probabilidad de que el actual sea soleado es de ½.</p>
 <ol>
 <li>Modele los estados, probabilidades y matriz de transición de la cadena de Markov</li>
-<li>Si ayer fue soleado, ¿cuál es la probabilidad de que mañana también lo sea? ¿Y si fue lluvioso? Hoy todavía no he abierto la ventana y no sé qué día hace.
-Suponga que un día tiene una probabilidad de ser soleado de 2/3.</li>
-<li>¿Cuál será la probabilidad de que al día siguiente también haga sol? ¿Y de que llueva?</li>
+<li>Si ayer fue soleado, ¿cuál es la probabilidad de que mañana también lo sea? ¿Y si fue lluvioso? Hoy todavía no he abierto la ventana y no sé qué día hace.</li>
+<li>Suponga que un día tiene una probabilidad de ser soleado de 2/3. ¿Cuál será la probabilidad de que al día siguiente también haga sol? ¿Y de que llueva?</li>
 <li>¿Existe la distribución estacionaria para esta cadena de Markov? ¿Por qué?</li>
-<li>Indique la matriz de transición de un clima tal que casi siempre esté soleado, pero que si un día está lluvioso ya será imposible que vuelva a hacer sol.</li>
 </ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="attachment:diagramaEstados.svg" alt="diagramaEstados.svg"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adviértase que:</p>
+<ul>
+<li>La cadena es homogénea. Por tanto, la matriz de transición (de un solo salto) se mantiene constante a lo largo del tiempo</li>
+</ul>
+<p>$$
+\mathbf{P} = 
+\begin{bmatrix}
+p(S\ |\ S) &amp; p(Ll\ |\ S)\\
+p(S\ |\ Ll) &amp; p(Ll\ |\ Ll)
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{4}{5} &amp; \frac{1}{5}\\
+\frac{1}{2} &amp; \frac{1}{2}
+\end{bmatrix}
+$$</p>
+<ul>
+<li>La matriz para $k$ saltos sería, por tanto, $\mathbf{P}(k)=\mathbf{P}^k$</li>
+<li>Las probabilidades de los estados en cada instante $n$ se recogen en el vector $\boldsymbol{\pi}(n)=[P(S; n), P(Ll;n)]$</li>
+<li>La secuencia no tiene por qué ser estacionaria, esto es, las probabilidades de los estados van variando conforme sea la matriz de transición</li>
+</ul>
+<p>$$
+\boldsymbol{\pi}(n+1) = \boldsymbol{\pi}(n+1)\mathbf{P}
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La probabilidad de que un día $n$ sea soleado es $P(S; n) = \frac{2}{3}$. Por tanto, la probabilidad de que sea lluvioso es  $P(Ll; n) = 1-P(S; n) = \frac{1}{3}$, esto es:</p>
+<p>$$
+\boldsymbol{\pi}(n) = [\frac{2}{3}, \frac{1}{3}]
+$$</p>
+<p>Y, por tanto, las probabilidades de los estados al día siguiente es</p>
+<p>$$
+\boldsymbol{\pi}(n+1) = [\frac{2}{3}, \frac{1}{3}] \begin{bmatrix}
+\frac{4}{5} &amp; \frac{1}{5}\\
+\frac{1}{2} &amp; \frac{1}{2}
+\end{bmatrix} = 
+[\frac{21}{30}, \frac{9}{30}]
+$$</p>
+<p>Y a los dos días:</p>
+<p>$$
+\boldsymbol{\pi}(n+2) = [\frac{2}{3}, \frac{1}{3}] \begin{bmatrix}
+\frac{4}{5} &amp; \frac{1}{5}\\
+\frac{1}{2} &amp; \frac{1}{2}
+\end{bmatrix}^2 = 
+[\frac{2}{3}, \frac{1}{3}]
+\begin{bmatrix}
+\frac{37}{50} &amp; \frac{13}{50}\\
+\frac{13}{20} &amp; \frac{7}{20}
+\end{bmatrix} 
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En el apartado (2) del enunciado hay tres instantes de tiempo que considerar: Ayer, Hoy,  Mañana</p>
+<ul>
+<li>La matrices de transición de ayer a hoy y de hoy a mañana son la misma: $\mathbf{P}$</li>
+<li>La matriz de transción de ayer a mañana es $\mathbf{P}^2$</li>
+</ul>
+<p>Por tanto</p>
+<ul>
+<li>La probabilidad de que mañana haga sol si ayer también hizo sol es $\frac{37}{50}$</li>
+<li>La probabilidad de que mañana haga sol si ayer llovió es $\frac{13}{20}$</li>
+</ul>
+<p>En el apartado (3) simplemente nos preguntan las probabilidades totales de sol y de lluvia de un  día, dadas las probabilidades totales del día anterior:</p>
+<ul>
+<li>La probabilidad total de que haga sol es $\frac{21}{30}=\frac{7}{10}$ </li>
+<li>La probabilidad total de que haga sol es $\frac{9}{30}=\frac{3}{10}$ </li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La distribución estacionaria $\boldsymbol{\pi_\infty}=[P(S;\infty), P(Ll;\infty)]$ debe cumplir:</p>
+<p>$$
+\boldsymbol{\pi_\infty} = \boldsymbol{\pi_\infty}\mathbf{P}
+$$</p>
+<p>Sujeto a que $[P(S;\infty), P(Ll;\infty)] = 1$:</p>
+<p>Resolviendo la ecuación resulta que</p>
+<p>$$
+P(S;\infty) = \frac{5}{7}\\
+P(Ll;\infty) = \frac{2}{7}  
+$$</p>
+<p>Y, por tanto, existe la distribución estacionaria $\boldsymbol{\pi_\infty}=[\frac{5}{7}, \frac{2}{7}]$</p>
 
 </div>
 </div>
