@@ -1,0 +1,1998 @@
+     
+\documentclass[11pt]{article}
+
+    
+    \usepackage[breakable]{tcolorbox}
+    \tcbset{nobeforeafter} % prevents tcolorboxes being placing in paragraphs
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{III.1. Variable Aleatoria Conjunta}
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb. 
+    \makeatletter
+        \newbox\Wrappedcontinuationbox 
+        \newbox\Wrappedvisiblespacebox 
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
+        \newcommand*\Wrappedcontinuationindent {3ex } 
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox} 
+        % Take advantage of the already applied Pygments mark-up to insert 
+        % potential linebreaks for TeX processing. 
+        %        {, <, #, %, $, ' and ": go to next line. 
+        %        _, }, ^, &, >, - and ~: stay at end of broken line. 
+        % Use of \textquotesingle for straight quote. 
+        \newcommand*\Wrappedbreaksatspecials {% 
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}% 
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}% 
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}% 
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}% 
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}% 
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}% 
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}% 
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}% 
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}% 
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}% 
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}% 
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}% 
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}% 
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}% 
+        } 
+        % Some characters . , ; ? ! / are not pygmentized. 
+        % This macro makes them "active" and they will insert potential linebreaks 
+        \newcommand*\Wrappedbreaksatpunct {% 
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}% 
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}% 
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}% 
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}% 
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}% 
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}% 
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}% 
+            \catcode`\.\active
+            \catcode`\,\active 
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active 
+            \lccode`\~`\~ 	
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+        
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active 	
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+    
+    % prompt
+    \newcommand{\prompt}[4]{
+        \llap{{\color{#2}[#3]: #4}}\vspace{-1.25em}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{iii.1-variable-aleatoria-conjunta}{%
+\section{Variable Aleatoria
+Conjunta}\label{iii.1-variable-aleatoria-conjunta}}
+
+\hypertarget{introducciuxf3n}{%
+\subsection{Introducción}\label{introducciuxf3n}}
+
+Consideremos el \textbf{espacio de probabilidad}
+\(\mathscr{E}(\Omega, \mathscr{F}, P)\). Sobre él podemos definir no
+solo una, como ya hemos hecho, sino varias \textbf{variables aleatorias}
+\(X_1, X_2, \ldots X_N\):
+
+\begin{align*}
+X_n:  \mathscr{\Omega} & \longmapsto \mathbb{R}\\
+   \alpha & \longmapsto X_i(\alpha)
+   \end{align*}
+
+
+Cada una de estas variables aleatorias puede ser discreta, continua o
+mixta. Al estar definidas sobre el mismo espacio de probabilidad, los
+distintos sucesos descritos por cada una de las variables aleatorias
+tendrán, en general una dependencia probabilística entre sí, y los
+valores de estas variables tendrán entre sí relaciones no deterministas.
+Caben dos casos extremos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Dependencia funcional}: en cuyo caso las variables aleatorias
+  satisfacen una ecuación sin componente aleatoria alguna
+\item
+  \textbf{Independencia}: si por cómo están construidas las variables
+  aleatorias los sucesos que se representan con cada una de ellas son
+  independientes dos a dos con los de todas las demás. En tal caso,
+  \textbf{los valores de unas variables aleatorias no ofrecen
+  información alguna sobre las restantes}.
+\end{itemize}
+
+    El espacio aleatorio sobre el que se definen las variables aleatorias
+puede corresponder a un experimento compuesto (recordar lo visto en el
+Bloque I), de forma que cada una de las variables aleatorias se define
+sobre cada uno de los espacios que lo componen.
+
+\[\mathscr{E}(\Omega, \mathscr{F}, P) = \mathscr{E}_1(\Omega_1, \mathscr{F}_1, P_1) \times \ldots \times \mathscr{E}_N(\Omega_N, \mathscr{F}_N, P_N)\]
+
+\begin{align*}
+X_n:  \mathscr{\Omega_n} & \longmapsto \mathbb{R}\\
+   \alpha & \longmapsto X_n(\alpha)
+   \end{align*}
+ 
+
+Por supuesto, si los experimentos marginales (componentes del
+experimento compuesto) son independientes, también lo serán las
+variables aleatorias definidas sobre cada uno de ellos.
+
+Adviértase, no obstante, que no es necesario definir varias variables
+aleatorias sobre experimentos compuestos.
+
+    Consideremos algunos ejemplos:
+
+\begin{itemize}
+\tightlist
+\item
+  En el lanzamiento de un dado, número de cara (\(X_1\)) y su doble
+  (\(X_2\))
+\item
+  Lanzamiento simultáneo de una moneda \(X_1\) y un dado \(X_2\)
+\item
+  Lanzamiento sucesivo de una moneda cinco veces:
+  \(X_1, X_2, \ldots X_5\)
+\item
+  Lazamiento de un dado (\(X_1\)) e instante de llamada (\(X_2\)) de mis
+  padres entre 22h y 23h (con certeza de que lo harán en esa franja)
+\item
+  Dos muestras sucesivas, espaciadas 1 mseg: \(X_1\) y \(X_2\), de la
+  señal de voz del profesor dando la clase
+\item
+  El valor de cierre del índice Ibex cinco días seguidos:
+  \(X_1, X_2, \ldots X_5\)
+\item
+  Estatura (\(X_1\)), mpeso \(X_2\) y edad en años \(X_3\) de una
+  persona cogida al azar
+\item
+  En el lanzamiento de un dado, cara (\(X_1\)) y acierto si es par
+  (\(X_2\))
+\end{itemize}
+
+Reflexionar sobre los siguientes aspectos:
+
+\begin{itemize}
+\tightlist
+\item
+  Carácter continuo, discreto o mixto de las variables aleatorias
+\item
+  Dependencia probabilística, funcional e independencia
+\end{itemize}
+
+    \hypertarget{vectores-aleatorios}{%
+\subsubsection{Vectores aleatorios}\label{vectores-aleatorios}}
+
+Es habitual reunir todas las variables aleatorias como componentes de un
+vector aleatorio \emph{n-dimensional}.
+
+\[\mathbf X = (X_1, \ldots X_N)^\mathrm{T}\]
+
+Cada una de las variables aleatorias \(X_n\), componentes del vector
+aleatorio \(\mathbf X\), tiene una \textbf{caracterización
+probabilística marginal}, es decir, una a una por separado, descrita
+como se ha visto en los temas de variable aleatoria:
+
+\begin{itemize}
+\tightlist
+\item
+  Funciones de distribución de probabilidad \(F_{X_n}(x)\), que pueden
+  expresarse como tablas con las funciones acumuladaa de probabilidad en
+  el caso discreto, \(F_{X_n}(x_i)\)
+\item
+  Funciones de densidad de probabilidad \(f_{X_n}(x)\), que pueden
+  expresarse mediante funciones de masa de probabilidad \(f_{X_n}(x_i)\)
+  en el caso discreto
+\item
+  Momentos de orden \(k\) no centrados, \(E(X_n^k)\), y centrados en la
+  media, \(E((X_n-\eta_{X_n})^k)\). En particular:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Media: \(\eta_{X_n}=E(X_n)\)
+  \item
+    Valor cuadrático medio: \(E(X_n^2)\)
+  \item
+    Varianza:
+    \(\sigma_{X_n}^2=Var(X_n)=E((X_n-\eta_{X_n})^2)= E(X_n^2) - \eta_{X_n}^2\)
+  \end{itemize}
+\end{itemize}
+
+El objetivo de este tema es, como veremos, considerar la
+\textbf{caracterización probabilística conjunta} del vector aleatorio
+\(\mathbf X\) o, dicho de otro modo, de las variables aleatorias
+\(X_n\).
+
+    \hypertarget{secuencias-aleatorias-y-procesos-estocuxe1sticos}{%
+\subsubsection{Secuencias aleatorias y procesos
+estocásticos}\label{secuencias-aleatorias-y-procesos-estocuxe1sticos}}
+
+Un caso interesante es cuando el número de variables aleatorias crece de
+forma indefinida y ya no es posible representarlo mediante un vector de
+dimensión finito, dando lugar a una \textbf{secuencia aleatoria},
+\(X[n]\). Se trata de una secuencia indefinida, en general sin comienzo
+y sin final, de muestras aleatorias, cada una de ellas representable
+mediante una variable aleatoria.
+
+Si en vez de una secuencia de muestras aleatorias consideramos una
+función que toma valores aleatorios, no sobre un índice discreto sino
+sobre todo el eje real (por ejemplo, un eje de tiempo), estamos ante un
+\textbf{proceso estocástico}, \(X(t)\), en el que el valor que toma la
+función en cada instante es una variable aleatoria. Estrictamente, un
+proceso estocástico asigna a cada resultado de un experimento aleatorio
+una función real de variable real del conjunto
+\(\mathcal{F}(\mathbb{R}, \mathbb{R})\):
+
+\begin{align*}
+X:  \mathscr{\Omega} & \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
+   \alpha & \longmapsto X(t, \alpha)
+   \end{align*}
+ 
+
+Adviértase que, si se fija el resultado \(\alpha\) estamos ante una
+función determinista mientras que, si se fija el instante \(t\) estamos
+ante una variable aleatoria.
+
+    Para cada índice de la muestra o instante de tiempo puede hacerse una
+\textbf{caracterización marginal de la secuencia o proceso}:
+
+\[F_X(x; n) \quad f_X(x; n) \quad\qquad F_X(x; t) \quad f_X(x; t)\]
+
+Igualmente con los \textbf{momentos}. Por ejemplo:
+
+\[\eta_X[n] = E(X[n]) \qquad \sigma_X^2[n]=Var(X[n]) = E(X^2[n]) - \eta_X^2[n]\]
+
+\[\eta_X(t) = E(X(t)) \qquad \sigma_X^2(t)=Var(X(t)) = E(X^2(t)) - \eta_X^2(t)\]
+
+    \hypertarget{secuencias-y-procesos-estacionarios}{%
+\paragraph{Secuencias y procesos
+estacionarios}\label{secuencias-y-procesos-estacionarios}}
+
+Si la caracterización probabilística de la secuencia o proceso es
+\textbf{temporalmente invariante}, esto es, si tal caracterización no
+depende de cuándo se establece el origen de tiempos o, altenativamente,
+de desplazar temporalmente la secuencia o el proceso, estamos ante una
+\textbf{secuencia o proceso estacionario en sentido estricto}. Dicho de
+otra manera, las caracterizaciones probabilísticas de \(X(t)\) y de
+\(X(t+t_0)\) son idénticas para cualquier \(t_0 \in \mathbb{R}\).
+Igualmente pasa con \(X[n]\) y \(X[n+n_0]\) para cualquier
+\(n_0 \in \mathbb{Z}\).
+
+Lógicamente la estacionariedad en sentido estricto conlleva que las
+funciones de distribución de probabilidad, las funciones de densidad de
+probabilidad y, en el caso discreto, las funciones de masa de
+probabilidad, así como todos los momentos, no varían a lo largo del
+tiempo o el índice de la muestra
+
+\[F_X(x; n)\equiv F_X(x) \quad f_X(x; n)\equiv f_X(x) \quad\qquad F_X(x; t)\equiv F_X(x) \quad f_X(x; t)\equiv f_X(x)\]
+
+\[ \eta_X[n] \equiv \eta_X \quad \sigma_X^2[n] \equiv \sigma_X^2 \quad\qquad \eta_X(t) \equiv \eta_X \quad \sigma_X^2(t) \equiv \sigma_X^2\]
+
+    \hypertarget{secuencias-y-procesos-erguxf3dicos}{%
+\paragraph{Secuencias y procesos
+ergódicos}\label{secuencias-y-procesos-erguxf3dicos}}
+
+En principio, la estimación de parámetros estadísticos de secuencias y
+procesos aleatorios requiere promediar en los resultados del espacio
+probabilístico suyacente. Por ejemplo, si \(N\) es el número de
+realizaciones, la media de un proceso \(X(t)\) será:
+
+\[\eta_X(t) = \lim\limits_{N \to \infty} \frac{1}{N}\sum_{\alpha_i \in\Omega} X(t, \alpha_i)\]
+
+Frecuentemente esto no resulta práctico, pues no es posible repetir
+muchas veces el experimento para obtener cada una de las funciones y
+promediarlas.
+
+Sin embargo, \textbf{para muchas secuencias o procesos estacionarios} es
+posible estimar los parámetros estadísticos a partir de una única
+realización. En tal caso la secuencia o proceso es \textbf{ergódica}.
+
+    La idea es que es posible (no siempre) obtener tales estimaciones
+promediando a lo largo del tiempo o índice, en vez de hacerlo a lo largo
+de las distintas realizaciones. La ergodicidad es una propiedad muy útil
+que vincula la estadística con las secuencias y procesos estacionarios.
+Pero es también matemáticamente compleja, y no vamos a profundizar en
+ella.
+
+Por ejemplo, la media de un proceso estacionario y ergódico podría
+calcularse:
+
+\[\eta_X = \lim\limits_{T \to \infty} \frac{1}{2T}\int_{-T}^T X(t) dt \qquad \eta_X = \lim\limits_{N \to \infty} \frac{1}{2N+1}\sum_{-N}^N X[n]\]
+
+En términos prácticos, si la secuencia o proceso es ergódico, podemos
+muestrearlo temporalmente para estimar sus parámetros estadísticos.
+
+    \hypertarget{seuxf1ales-aleatorias-y-ruido}{%
+\paragraph{Señales aleatorias y
+ruido}\label{seuxf1ales-aleatorias-y-ruido}}
+
+Cuando todas las variables aleatorias correspondientes tanto a las
+muestras de la secuencia aleatoria como a los instantes del proceso
+estocástico son \textbf{independientes} entre sí, decimos que la
+secuencia o el proceso es \textbf{blanco}. Una señal o secuencia
+aleatoria e indeseada suele denominarse \textbf{ruido}. El \textbf{ruido
+blanco} es una secuencia aleatoria, \(N[n]\), o proceso estocástico,
+\(N(t)\), en el que todas las variables aleatorias de las muestras o
+instantes son independientes entre sí.
+
+En ingeniería de telecomunicación y electrónica, así como en otras áreas
+de la ciencia y la técnica, es muy habitual considerar procesos
+estocásticos que modelan \textbf{señales en ruido}, donde \(S(t)\) puede
+ser determinista desconocida o aleatoria, según sea el modelo que se
+aplique, respectivamente, clásico (basado en la \emph{verosimilitud}) o
+bayesiano. El ruido es, por definición, siempre aleatorio:
+
+\[X(t) = S(t) + N(t)\]
+
+Al muestrear tales procesos, con \(X[n] = S(n\Delta T_s)\), siendo
+\(T_s\) el periodo de muestreo, obtenemos secuencias aleatorias de señal
+en ruido:
+
+\[X[n] = S[n] + N[n]\]
+
+    Es también habitual trabajar sólo con las muestras correspondientes a un
+intervalo, no con toda la secuencia. En tales casos, se trabaja con un
+número finito y predeterminado de muestras que se ordenan en vectores
+aleatorios de dimensión \(N\) (no confundir con el ruido), resultando el
+siguiente modelo:
+
+\[\mathbf X = \mathbf S + \mathbf N\]
+
+Los problemas más habituales ante los que nos encontramos son los
+siguientes:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Filtrado} consiste en estimar la señal \(S\) a pertir de las
+  medidas ruidosas \(X\).
+\item
+  \textbf{Clasificación} consiste en identificar la señal \(S_i\) entre
+  un conjunto finito de señales posibles a partir de medidas ruidosas.
+\item
+  \textbf{Predicción} consiste en estimar la señal \(S\) en un instante
+  o muestra futuro a partir de medidas ruidosas anteriores.
+\item
+  \textbf{Interpolación} consiste en estimar la señal \(S\) en instantes
+  en los que no disponemos de medida a partir de medidas ruidosas tanto
+  anteriores como posteriores
+\end{itemize}
+
+En todos los casos, la señal \(S\) puede considerarse determinista o
+aleatoria, dando lugar a métodos clásicos o bayesionospara resolver los
+problemas mencionados.
+
+    \hypertarget{dos-variables-aleatorias-o-vector-aleatorio-bidimensional}{%
+\subsection{Dos variables aleatorias o vector aleatorio
+bidimensional}\label{dos-variables-aleatorias-o-vector-aleatorio-bidimensional}}
+
+Ya hemos visto la \textbf{caracterización marginal} de vectores y
+secuencias aleatorias y de procesos estocásticos. Sin embargo esto solo
+muestra vistas parciales de los mismos, una por cada variable aleatoria
+que podemos extraer. Hemos de añadir el conocimiento de la dependencia
+probabilística entre las variables aleatorias que los componen, lo que
+nos lleva a la \textbf{caracterización conjunta de vectores y secuencias
+aleatorias y de procesos estocásticos}. Es ilustrativo para ello
+estudiar en detalle el caso de dos variables aleatoria o vector
+aleatorio bidimensional, \(\mathbf V = (X, Y)^t\), que tiene una fácil
+representación gráfica en el plano mediante un \textbf{diagrama de
+dispersión} de sus realizaciones.
+
+    Ya sabemos que las variables aleatorias, \(X\) e \(Y\) las definimos
+sobre un espacio de probabilidad subyacente
+\(\mathscr{E}(\Omega, \mathscr{F}, P)\). Podemos definir sobre el plano
+\(X \times Y\) conjuntos que serán sucesos de \(\mathscr{F}\). Por
+ejemplo:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\{X \leq x\}\) es el semiplano que se extiende a la izquierda de la
+  línea vertical \(X = x\), y es un suceso de \(\mathscr{F}\).
+\item
+  \(\{Y \leq y\}\) es el semiplano que se extiende por debajo de la
+  línea horizontal \(Y = y\), y también un suceso de \(\mathscr{F}\).
+\item
+  \(\{X\leq x, Y\leq y\} = \{X \leq x\} \bigcap \{Y \leq y\}\) es, por
+  tanto, el cuadrante que queda a la izquierda de la línea vertical
+  \(X = x\) y por debajo de la línea horizontal \(Y = y\), y es también
+  un suceso de \(\mathscr{F}\).
+\end{itemize}
+
+Adviértase que una variable aleatoria proporciona, por lo general, una
+\textbf{descripción parcial del espacio de probabilidad} subyacente,
+que, cuando tenemos definidas varias, llamamos \textbf{caracterización
+marginal}. Esto resulta evidente sin más que pensar, por ejemplo, en un
+experimento compuesto, al que asignamos una variable aleatoria diferente
+a cada experimento componente.
+
+    \hypertarget{funciuxf3n-de-distribuciuxf3n-conjunta-de-probabilidad}{%
+\subsubsection{Función de Distribución Conjunta de
+Probabilidad}\label{funciuxf3n-de-distribuciuxf3n-conjunta-de-probabilidad}}
+
+Considérese un vector aleatorio \((X, Y)\) o, equivalentemente, dos
+variables aleatorias, \(X\) e \(Y\). Sus \textbf{funciones de
+distribución marginales} son:
+
+\begin{itemize}
+\tightlist
+\item
+  \(F_X(x) = P(\{X\leq x\}) \quad -\infty \leq x \leq \infty\)
+\item
+  \(F_Y(y) = P(\{Y\leq y\}) \quad -\infty \leq y \leq \infty\)
+\end{itemize}
+
+El conocimiento de \(F_X\) y \(F_Y\) no es, en general, suficiente para
+poder obtener las probabilidades de sucesos del tipo
+\(\{X\leq x, Y\leq y\}\). Necesitamos para ello conocer una función
+diferente, la \textbf{función de distribución conjunta de probabilidad},
+\(F_{XY}(x,y)\) del vector aleatorio \((X, Y)\) es:
+
+\[F_{XY}(x,y) = P\left(\{X\leq x, Y\leq y\}\right)\]
+
+Podemos considerar que \(F_{XY}(x,y)\) proporciona la \textbf{masa de
+probabilidad acumulada en el cuadrante} que queda a la izquierda de la
+línea vertical \(X = x\) y por debajo de la línea horizontal \(Y = y\)
+
+    Las principales propiedades de \(F_{XY}(x,y)\) son las siguientes, y se
+entienden intuitivamente sin más que considerar cómo se distribuye la
+masa de probabilidad en el plano:
+
+\begin{itemize}
+\tightlist
+\item
+  \(F_{XY}(-\infty, y) = F_{XY}(x, -\infty) = 0 \quad \forall x,y \in \mathbb{R}\),
+  pues no hay masa de probabilidad acumulada
+\item
+  \(F_{XY}(\infty, \infty) = 1\), pues corresponde a la totalidad de la
+  masa de probabilidad
+\item
+  \(F_{XY}(x,y)\) es \textbf{no decreciente} tanto en \(x\) como \(y\).
+  EN los puntos donde se localicen masas discretas de probabilidad
+  \(F_{XY}\) muestra discontinuidades de salto. En el resto, es
+  continua.
+\item
+  El suceso \(\{x_1 < X \leq x_2, Y \leq y\}\) es una franja vertical
+  limitada por \(X=x_1\) (sin incluir) y \(X=x_2\) (incluido) cuya masa
+  de probabilidad es \(F_{XY}(x_2,y)-F_{XY}(x_1,y)\)
+\item
+  El suceso \(\{X \leq x, y_1 < Y \leq y_2\}\) es una franja horizontal
+  limitada por \(Y=y_1\) (sin incluir) e \(Y=y_2\) (incluido) cuya masa
+  de probabilidad es \(F_{XY}(x,y_2)-F_{XY}(x,y_1)\)
+\item
+  El suceso \(\{x_1 <X\leq x_2 , \leq x, y_1 < Y \leq y_2\}\) es un
+  rectángulo limitado por \(X=x_1\) (sin incluir, \(X=x_2\) (incluido),
+  \(Y=y_1\) (sin incluir) e \(Y=y_2\) (incluido), cuya masa de
+  probabilidad es
+  \(F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)+F_{XY}(x_1,y_1)\)
+\end{itemize}
+
+Si \(X\) e \(Y\) son variables aleatorias discretas, puede trabajarse
+con una tabla con la función de probabilidad acumulada:
+\(F_{XY}(x_i, y_j) \quad i,j \in \mathbb{Z}\)
+
+    \hypertarget{relaciuxf3n-entre-las-funciones-de-distribuciuxf3n-marginales-y-la-conjunta}{%
+\paragraph{Relación entre las funciones de distribución marginales y la
+conjunta}\label{relaciuxf3n-entre-las-funciones-de-distribuciuxf3n-marginales-y-la-conjunta}}
+
+\textbf{Es inmediato obtener las funciones de distribución marginales a
+partir de la conjunta}, sin más que entender que la ausencia de una
+variable aleatoria significa que puede darse cualquiera de ellos y, por
+tanto, debe cubrirse por completo el eje correspondiente:
+
+\begin{itemize}
+\tightlist
+\item
+  \(F_X(x) = F_{XY}(x,\infty)\)
+\item
+  \(F_Y(y) = F_{XY}(\infty , y)\)
+\end{itemize}
+
+Sin embargo, como ya se ha dicho, \textbf{no es posible, en general,
+obtener la distribución conjunta a partir de las marginales}. La
+excepción es cuando \textbf{ambas variables aleatorias son
+independientes} pues, en tal caso:
+
+\[F_{XY}(x,y) = P\left(\{X \leq x\} \bigcap \{Y \leq y\}\right)=P(\{X \leq x\})P(\{Y \leq y\})= F_X(x)F_Y(y)\]
+
+Por tanto, si \(X\) e \(Y\) son \textbf{variables aleatorias
+independientes}:
+\(F_{XY}(x,y) = F_X(x)F_Y(y) \quad \forall x,y \in \mathbb{R}\).
+
+    \hypertarget{funciuxf3n-de-masa-de-probabilidad-conjunta}{%
+\subsubsection{Función de masa de probabilidad
+conjunta}\label{funciuxf3n-de-masa-de-probabilidad-conjunta}}
+
+Concentrémonos ahora en el caso en que tanto \(X\) como \(Y\) son
+discretas. Ya hemos visto que la función de distribución conjunta
+podemos expresarla mediante una tabla de probabilidades acumuladas
+indexada por las posiciones donde se localizan las masa de probabilidad.
+Es conveniente repasar la forma de hacerlo con una sola variable
+aleatoria.
+
+\[F_{XY}(x_i,y_j) \quad i,j \in \mathbb{Z}\]
+
+Podemos fácilmente obtener las masa de probabilidad en cada
+localización, e introducir con ello la \textbf{función de masa de
+probabilidad conjunta} del vector aleatorio \((X,Y)\) o de ambas
+variables aleatorias \(X\) e \(Y\):
+
+\[p_{XY}(x_i, y_j) \equiv P(X=x, Y=y) = F_{XY}(x_i, y_j) - F_{XY}(x_{i-1}, y_j) -  F_{XY}(x_i, y_{j-1}) + F_{XY}(x_{i-1}, y_{j-1})\]
+
+    La \textbf{tabla de probabilidades acumuladas} correspondiente a la
+función de distribución conjunta se obtiene a partir de la función de
+masa de probabilidad conjunta:
+
+\[F_{XY}(x_i, y_j) = \sum_{m=-\infty}^i\sum_{n=-\infty}^j p_{XY}(x_m, y_n)\]
+
+Es posible obtener una expresión recursiva para \(F_{XY}(x_i,y_j)\) sin
+más que despejar:
+
+\[F_{XY}(x_i, y_j) = \left( F_{XY}(x_{i-1}, y_j) +  F_{XY}(x_i, y_{j-1}) - F_{XY}(x_{i-1}, y_{j-1})\right) + p_{XY}(x_i, y_j) \]
+
+Adviértase que, por tratarse de probabilidades,
+\(p_{XY}(x_i, y_j) \geq 0\) y, también:
+
+\[F_{XY}(\infty, \infty) = 1 \implies \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty p_{XY}(x_i, y_j) = 1\]
+
+    \hypertarget{relaciuxf3n-entre-las-funciones-de-masa-de-probabilidad-marginales-y-la-conjunta}{%
+\paragraph{Relación entre las funciones de masa de probabilidad
+marginales y la
+conjunta}\label{relaciuxf3n-entre-las-funciones-de-masa-de-probabilidad-marginales-y-la-conjunta}}
+
+Considerando que \(F_X(x_i)=F_{XY}(x_i,\infty)\) y que
+\(p_X(x_i) = F_X(x_i)-F_X(x_{i-1})\), pueden obtenerse las funciones de
+masa de probabilidad marginales a partir de la conjunta:
+
+\[p_X(x_i) = \sum_{m=-\infty}^i\sum_{n=-\infty}^\infty p_{XY}(x_m, y_n) - \sum_{m=-\infty}^{i-1}\sum_{n=-\infty}^\infty p_{XY}(x_m, y_n) = \sum_{j=-\infty}^\infty p_{XY}(x_i, y_j)\]
+
+Igualmente,
+
+\[p_Y(y_j) = \sum_{i=-\infty}^\infty p_{XY}(x_i, y_j)\]
+
+En general, \textbf{la función de masa de probabilidad conjunta no puede
+obtenerse a partir de las funciones marginales}. Sin embargo, \textbf{si
+ambas variables son independientes}:
+
+\[p_{XY}(x_i, y_j) = P(X=x_i, Y=y_j) = p_X(x_i)p_Y(y_j) \]
+
+    \hypertarget{ejemplo-caracterizaciuxf3n-conjunta-de-dos-variables-aleatorias-discretas-independientes}{%
+\paragraph{Ejemplo: caracterización conjunta de dos variables aleatorias
+discretas
+independientes}\label{ejemplo-caracterizaciuxf3n-conjunta-de-dos-variables-aleatorias-discretas-independientes}}
+
+Considérese el lanzamiento simultáneo de un dado trucado y de una moneda
+trucada. Representamos con la variable aleatoria \(X_1\) los resultados
+del dado y con \(X_2\) los de la moneda (\(0\) es cara y \(1\) es cruz).
+Las funciones de masa de probabilidad marginales son como sigue:
+
+\[
+X_1 \begin{array}{c|cccccc|c}
+  x_{1_i} & 1 & 2 & 3 & 4 & 5 & 6 &  \\ 
+  \hline
+    p_{X_1}(x_i) & \frac{1}{24} & \frac{5}{24} & \frac{5}{24} & \frac{3}{24} & \frac{4}{24} & \frac{6}{24} & \sum_i p_X(x_i)=1
+ \end{array}
+\]
+
+\[
+X_2 \begin{array}{c|cc|c}
+x_{2_i} & 0 & 1\\
+\hline
+p_{X_2}(x_{2_i}) & \frac{11}{24} & \frac{13}{24} & \sum_i p_X(x_i) = 1
+\end{array}
+\]
+
+    Considerando que ambos lanzamientos son independientes, resulta la
+siguiente función de masa de probabilidad conjunta. Téngase en cuenta
+que, para cualesquiera otrso valores de las variables aleatorias no
+presentes en la tabla, la masa de probbailidad es cero.
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_1X_2}(x_{1_i}, x_{2_j}) & 0 & 1 & p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 & \frac{1}{24}\frac{11}{24} = \frac{11}{24^2} & \frac{1}{24}\frac{13}{24} = \frac{13}{24^2} & \frac{1}{24}\\
+\hline
+2 & \frac{5}{24}\frac{11}{24} = \frac{55}{24^2} & \frac{5}{24}\frac{13}{24} = \frac{65}{24^2} & \frac{5}{24}\\
+\hline
+3 & \frac{5}{24}\frac{11}{24} = \frac{55}{24^2} & \frac{5}{24}\frac{13}{24}  = \frac{65}{24^2} & \frac{5}{24}\\
+\hline
+4 & \frac{3}{24}\frac{11}{24} = \frac{33}{24^2} & \frac{3}{24}\frac{13}{24}  = \frac{39}{24^2} & \frac{3}{24}\\
+\hline
+5 & \frac{4}{24}\frac{11}{24} = \frac{44}{24^2}  & \frac{4}{24}\frac{13}{24} = \frac{52}{24^2}  & \frac{4}{24}\\
+\hline
+6 & \frac{6}{24}\frac{11}{24} = \frac{66}{24^2} & \frac{6}{24}\frac{13}{24} = \frac{78}{24^2}  & \frac{6}{24}\\
+\hline
+p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) & \frac{11}{24} & \frac{13}{24} & 1
+\end{array}
+\]
+
+    La tabla con la función acumulada de probabilidad se obtiene de forma
+inmediata con la expresión recursiva ya vista:
+
+\[F_{X_1X_2}(x_{1_i}x_{2_j})= \left(F_{X_1X_2}(x_{1_{i-1}}x_{2_{j}})+F_{X_1X_2}(x_{1_{i}}x_{2_{j-1}})- F_{X_1X_2}(x_{1_{i-1}}x_{2_{j-1}})\right) + p_{X_1X_2}(x_{1_i}x_{2_j})\]
+
+Aunque, por supuesto, también podemos simplemente acumular
+probabilidades:
+
+\[F_{X_1X_2}(x_{1_i}, x_{2_j}) = \sum_{m=-\infty}^{i}\sum_{n=-\infty}^{j} p_{X_1X_2}(x_{1_m}, x_{2_n})\]
+
+Adviértase también que las funciones de distribución marginales se
+obtienen también de la tabla:
+
+\begin{itemize}
+\tightlist
+\item
+  \(F_{X_1}(x_{1_i}) = F_{X_1X_2}(x_{1_i}, \infty) = F_{X_1X_2}(x_{1_i}, 1) = F_{X_1X_2}(x_{1_i}, 2)\ldots\)
+\item
+  \(F_{X_2}(x_{2_j}) = F_{X_1X_2}(\infty, x_{2_j}) = F_{X_1X_2}(6, x_{2_j}) = F_{X_1X_2}(7, x_{2_j})\ldots\)
+\end{itemize}
+
+    \[
+X_2 \\X_1 \begin{array}{c|c|c|c|c}
+F_{X_1X_2}(x_{1_i}, x_{2_j}) & -1 & 0 & 1 & 2\\
+\hline
+0 & 0 & 0 & 0 & 0 \\
+\hline
+1 & 0 & \frac{11}{24^2} & \frac{11}{24^2} + \frac{13}{24^2} = \frac{24}{24^2} & \frac{24}{24^2} = \frac{1}{24}\\
+\hline
+2 & 0 &\frac{11}{24^2} + \frac{55}{24^2} = \frac{66}{24^2} & \left(\frac{24}{24^2} + \frac{66}{24^2} - \frac{11}{24^2}\right) + \frac{65}{24^2} = \frac{144}{24^2} & \frac{144}{24^2} = \frac{6}{24}\\
+\hline
+3 & 0 & \frac{66}{24^2} + \frac{55}{24^2} = \frac{121}{24^2} & \left(\frac{144}{24^2} + \frac{121}{24^2}- \frac{66}{24^2}\right) + \frac{65}{24^2} = \frac{264}{24^2} & \frac{264}{24^2} =  \frac{11}{24}\\
+\hline
+4 & 0 & \frac{121}{24^2} + \frac{33}{24^2} = \frac{154}{24^2} & \left(\frac{264}{24^2} + \frac{154}{24^2} - \frac{121}{24^2}\right) + \frac{39}{24^2} = \frac{336}{24^2} & \frac{336}{24^2} = \frac{14}{24}\\
+\hline
+5 & 0 & \frac{154}{24^2} + \frac{44}{24^2} = \frac{198}{24^2} & \left(\frac{336}{24^2} + \frac{198}{24^2} - \frac{154}{24^2}\right) + \frac{52}{24^2} = \frac{432}{24^2} & \frac{432}{24^2} = \frac{18}{24}\\
+\hline
+6 & 0 & \frac{198}{24^2} + \frac{66}{24^2} = \frac{264}{24^2} & \left(\frac{232}{24^2} + \frac{264}{24^2} - \frac{198}{24^2}\right) + \frac{78}{24^2} = \frac{576}{24^2} & \frac{576}{24^2} = \frac{24}{24} =1\\
+\hline
+7 & 0 & \frac{264}{24^2} = \frac{11}{24} & \frac{576}{24^2} = \frac{24}{24}= 1 & 1
+\end{array}
+\]
+
+    \hypertarget{caracterizaciuxf3n-conjunta-de-dos-variables-aleatorias-discretas-caso-general}{%
+\paragraph{Caracterización conjunta de dos variables aleatorias
+discretas (caso
+general)}\label{caracterizaciuxf3n-conjunta-de-dos-variables-aleatorias-discretas-caso-general}}
+
+Consideremos ahora que lanzamos un dado y una moneda, trucados de tal
+manera que hay dependencia entre sus resultados. En este caso nos tienen
+que dar tal dependencia en forma de una tabla con la función de masa de
+probabilidad conjunta, a partir de la cual podemos obtener las
+marginales (pero no al revés):
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_1X_2}(x_{1_i}, x_{2_j}) & 0 & 1 & p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 & \frac{1}{24} & 0 & \frac{1}{24}\\
+\hline
+2 & \frac{2}{24} & \frac{3}{24} & \frac{5}{24}\\
+\hline
+3 & \frac{1}{24} & \frac{4}{24} & \frac{5}{24}\\
+\hline
+4 & \frac{2}{24} & \frac{1}{24} & \frac{3}{24}\\
+\hline
+5 & \frac{1}{24} & \frac{3}{24} & \frac{4}{24}\\
+\hline
+6 & \frac{4}{24} & \frac{2}{24} & \frac{6}{24}\\
+\hline
+p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) & \frac{11}{24} & \frac{13}{24} & 1
+\end{array}
+\]
+
+Adviértase que se ha mantenido para el ejemplo las mismas funciones de
+masa de probabilidad marginales que en el ejemplo anterior, si bien la
+función de masa de probabilidad conjunta es diferente.
+
+    La función de masa de probabilidad acumulada es ahora:
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+F_{X_1X_2}(x_{1_i}, x_{2_j}) & 0 & 1 & F_{X_1}(x_{1_i}) = F_{X_1X_2}(x_{1_i}, \infty)\\
+\hline
+1 & \frac{1}{24} & \frac{1}{24} & \frac{1}{24}\\
+\hline
+2 & \frac{3}{24} & \frac{6}{24} & \frac{6}{24}\\
+\hline
+3 & \frac{4}{24} & \frac{11}{24} & \frac{11}{24}\\
+\hline
+4 & \frac{6}{24} & \frac{14}{24} & \frac{14}{24}\\
+\hline
+5 & \frac{7}{24} & \frac{18}{24} & \frac{18}{24}\\
+\hline
+6 & \frac{11}{24} & \frac{24}{24}=1 & 1\\
+\hline
+F_{X_2}(x_{2_j}) = F_{X_1X_2}(\infty, x_{2_j}) & \frac{11}{24} & 1 & 
+\end{array}
+\]
+
+    \hypertarget{funciuxf3n-de-densidad-de-probabilidad-conjunta}{%
+\subsubsection{Función de densidad de probabilidad
+conjunta}\label{funciuxf3n-de-densidad-de-probabilidad-conjunta}}
+
+Consideremos ahora que las variables aleatorias \(X\) e \(Y\) son
+continuas.Por igual razón que en el caso de una única variable
+aleatoria, en general, la masa de probabilidad en un punto es nula,
+\(P(X=x, Y=y)=0\). Ello hace necesario recurrir a densidades de
+probabilidad, generalizanzdo lo visto en el caso de una variable
+aleatoria. La función de densidad de probabilidad conjunta del vector
+aleatorio \((X, Y)\), o de ambas variables aleatorias \(X\) e \(Y\), se
+define como sigue a partir de la función de distribución de probabilidad
+conjunta \(F_{XY}(x,y)\):
+
+\[
+f_{XY}(x, y)=\frac{\partial^{2} F_{XY}(x, y)}{\partial x \partial y }\geq 0
+\]
+
+que es positiva o nula por ser \(F_{XY}(x,y)\) no decreciente. Además:
+
+\[
+F_{XY}(x, y)=\int_{-\infty}^{x} \int_{-\infty}^{y} f_{XY}(u, v) du dv
+\]
+
+    Si se ponen la derivadas parciales como límites, de forma semejante a
+como se hizo con una sola variable aleatoria:
+
+\begin{align*}
+f_{XY}(x, y) &= \frac{\partial^{2} F_{XY}(x, y)}{\partial x \partial y } = \\
+ &= \lim \limits_{\Delta x \Delta y \to 0} \frac{F_{XY}(x+\Delta x/2, y+\Delta y/2)-F_{XY}(x-\Delta x/2, y+\Delta y/2)-F_{XY}(x+\Delta x/2, y-\Delta y/2)+F_{XY}(x-\Delta x/2, y-\Delta y/2)}{\Delta x \Delta y}= \\ 
+&= \lim \limits_{\Delta x \Delta y \to 0} \frac{P\left(\{(x-\Delta x/2) < x \leq (x+\Delta x/2)\} \bigcap \{(y-\Delta y/2) < y \leq (y+\Delta y/2)\} \right)}{\Delta x \Delta y} 
+\end{align*}
+
+
+Donde se hace uso de un suceso rectangular infinitesimal centrado en
+\(X=x\), \(Y=y\). Por tanto:
+
+\[
+P\left(\{(x-\Delta x/2) < x \leq (x+\Delta x/2)\} \bigcap \{(y-\Delta y/2) < y \leq (y+\Delta y/2)\} \right) \approx f_{XY}(x, y) \Delta x \Delta y
+\]
+
+    Puede asimismo calcularse la masa de probabilidad continua en un dominio
+\(D\) arbitrario:
+
+\[
+P\{(x, y) \in D\}=\int \int_{D} f_{XY}(x, y) dx dy
+\]
+
+De la definición, se obtienen fácilmente las \textbf{funciones de
+densidad marginales}:
+
+\[
+f_{X}(x)=\frac{\partial F_{XY}(x, \infty)}{\partial x} = \int_{-\infty}^{\infty} f_{XY}(x, y) dy
+\]
+
+\[
+f_{Y}(y)=\frac{\partial F_{XY}(\infty , y)}{\partial y} = \int_{-\infty}^{\infty} f_{XY}(x, y) dx
+\]
+
+Además, como siempre, la masa total de probabilidad es la unidad:
+
+\[
+ F_{XY}(\infty , \infty) = 1 \implies \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{XY}(x, y) d x d y=1
+\]
+
+    \hypertarget{distribuciones-condicionadas}{%
+\subsubsection{Distribuciones
+condicionadas}\label{distribuciones-condicionadas}}
+
+La función de distribución conjunta puede resultar condicionada por un
+suceso \(M\), sin más que extender lo visto para una variable aleatoria:
+
+\[
+F_{XY}(x, y | M)=P(\{X \leq x, Y \leq y\} \ | \ M)= \frac{P(\{X \leq x, Y \leq y\} \bigcap M)}{P(M)}
+\]
+
+Si las variables aleatorias \(X\) e \(Y\) son discretas, la función de
+masa de probabilidad conjunta condicionada por \(M\) es:
+
+\[p_{XY}(x_i,y_j | M) = \frac{P(\{X=x_i,Y=y_j\}\bigcap M)}{P(M)} \]
+
+Adviértase que \(\sum_i\sum_j p_{XY}(x_i,y_j | M) =1\)
+
+Y en caso de que las variables aleatorias fueran continuas, la función
+de densidad de probabilidad conjunta condicionada es:
+
+\[
+f_{XY}(x, y | M)=\frac{\partial^{2} F_{XY}(x, y | M)}{\partial x \partial y }
+\]
+
+    Podemos también definir la probabilidad de un suceso \(M\) condicionada
+por un valor arbitrario \((x_i,y_j)\) del vector aleatorio \((X,Y)\).
+Para ello no hay más que advertir que \(\{(X=x_i, Y=y_j)\}\) es un
+suceso del espacio muestral:
+
+\[P(M \ | \ \{X=x_i,Y=y_j\})= \frac{P(M \bigcap \{X=x_i, Y=y_j\})}{P(\{X=x_i, Y=y_j\})}=\frac{P(M \bigcap \{X=x_i,Y=y_j\})}{p_{XY}(x_i,y_j)}\]
+
+Mantendremos el habitual abuso de notación
+\(P(M | x_i,y_j)\equiv P(M | X=x_i,Y=y_j)\). Adviértase que
+\(P(M | x_i,y_j) \neq p_{XY}(x_i,y_j | M)\), como resulta del Teorema de
+Bayes.
+
+En el caso de variables aleatorias continuas, cuando el suceso
+condicionante es del tipo \(\{X=x, Y=y\}\) es necesario considerar un
+suceso rectangular infinitesimal centrado en dicho punto, pues la masa
+de probabilidad puntual es nula. Las expresiones resultan semejantes a
+las del caso discreto, pero utilizando funciones de densidad en vez de
+funciones de masa de probabilidad.
+
+    En particular, es posible obtener las masas de probabilidad de una
+variable aleatoria discreta condicionada por la otra:
+
+\[p_{X | Y}(x_i | y_j)=\frac{p_{XY}(x_i,y_j)}{p_Y(y_j)}\]
+
+\[p_{Y|X}(y_j | x_j)=\frac{p_{XY}(x_i,y_j)}{p_X(x_i)}\]
+
+Adviértase que las probabilidades condicionadas proporcionan
+verosimilitudes dadas las observaciones. En particular:
+
+\begin{itemize}
+\tightlist
+\item
+  Si la variable cuyos valores se observan es \(X\) la verosimiltud de
+  los valores de \(Y\) es \(L(y_j)=p_{X | Y}(x_i | y_j)\)
+\item
+  Si la variable cuyos valores se observan es \(Y\) la verosimiltud de
+  los valores de \(X\) es \(L(x_i)=p_{Y | X}(y_j | x_i)\)
+\end{itemize}
+
+Por supuesto, en general
+\(p_{X | Y}(x_i | y_j) \neq p_{Y | X}(y_j | x_j)\), estando relacionados
+por el Teorema de Bayes.
+
+    De forma semejante, si las variables aleatorias son continuas, las
+funciones de densidad de probabilidad condcionadas resultan:
+
+\[f_{X | Y}(x | y)=\frac{f_{XY}(x,y)}{f_Y(y)}\]
+
+\[f_{Y | X}(y | x)=\frac{f_{XY}(x,y)}{f_X(x)}\]
+
+Igual que antes, las funciones de probabilidad condicionadas
+proporcionan verosimilitudes dadas las observaciones. En particular:
+
+\begin{itemize}
+\tightlist
+\item
+  Si la variable cuyos valores se observan es \(X\) la verosimiltud de
+  los valores de \(Y\) es \(L(y)=p_{X | Y}(x | y)\)
+\item
+  Si la variable cuyos valores se observan es \(Y\) la verosimiltud de
+  los valores de \(X\) es \(L(x)=p_{Y | X}(y | x)\)
+\end{itemize}
+
+De nuevo, en general \(f_{X | Y}(x/y) \neq f_{Y | X}(y | x)\), estando
+ambas relacionadas por el Teorema de Bayes.
+
+    \hypertarget{ejemplo}{%
+\paragraph{Ejemplo}\label{ejemplo}}
+
+Tomando las \(p_{X_1X_2}(x_i,y_j)\) y \(p_{X_1}(x_{1_i})\) del ejemplo
+anterior obtenemos \(p_{X_2 | X_1}(x_{2_j} | x_{1_i})\):
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_2 | X_1}(x_{2_j} | x_{1_i}) & 0 & 1 & \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 & \frac{\frac{1}{24}}{\frac{1}{24}}=1 & \frac{0}{\frac{1}{24}}=0 & 1\\
+\hline
+2 & \frac{\frac{2}{24}}{\frac{5}{24}}=\frac{2}{5} & \frac{\frac{3}{24}}{\frac{5}{24}}=\frac{3}{5} & 1\\
+\hline
+3 & \frac{\frac{1}{24}}{\frac{5}{24}}=\frac{1}{5} & \frac{\frac{4}{24}}{\frac{5}{24}}=\frac{4}{5} & 1\\
+\hline
+4 & \frac{\frac{2}{24}}{\frac{3}{24}}=\frac{2}{3} & \frac{\frac{1}{24}}{\frac{3}{24}}=\frac{1}{3} & 1\\
+\hline
+5 & \frac{\frac{1}{24}}{\frac{4}{24}}=\frac{1}{4} & \frac{\frac{3}{24}}{\frac{4}{24}}=\frac{3}{4} & 1\\
+\hline
+6 & \frac{\frac{4}{24}}{\frac{6}{24}}=\frac{4}{6} & \frac{\frac{2}{24}}{\frac{6}{24}}=\frac{2}{6} & 1\\
+\end{array}
+\]
+
+    Igualmente obtenemos \(p_{X_1 | X_2}(x_{1_i} | x_{2_j})\) a partir de
+\(p_{X_1X_2}(x_i,y_j)\) y \(p_{X_2}(x_{2_j})\):
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c}
+p_{X_1 | X_2}(x_{1_i} | x_{2_j}) & 0 & 1\\
+\hline
+1 & \frac{\frac{1}{24}}{\frac{11}{24}}=\frac{1}{11} & \frac{0}{\frac{13}{24}}=0\\
+\hline
+2 & \frac{\frac{2}{24}}{\frac{11}{24}}=\frac{2}{11} & \frac{\frac{3}{24}}{\frac{13}{24}}=\frac{3}{13}\\
+\hline
+3 & \frac{\frac{1}{24}}{\frac{11}{24}}=\frac{1}{11} & \frac{\frac{4}{24}}{\frac{13}{24}}=\frac{4}{13}\\
+\hline
+4 & \frac{\frac{2}{24}}{\frac{11}{24}}=\frac{2}{11} & \frac{\frac{1}{24}}{\frac{13}{24}}=\frac{1}{13}\\
+\hline
+5 & \frac{\frac{1}{24}}{\frac{11}{24}}=\frac{1}{11} & \frac{\frac{3}{24}}{\frac{13}{24}}=\frac{3}{13}\\
+\hline
+6 & \frac{\frac{4}{24}}{\frac{11}{24}}=\frac{4}{11} & \frac{\frac{2}{24}}{\frac{13}{24}}=\frac{2}{13}\\
+\hline
+\sum_i p_{X_1 | X_2}(x_{1_i} | x_{2_j}) & 1 & 1 
+\end{array}
+\]
+
+    \hypertarget{teorema-de-la-probabilidad-total}{%
+\subsubsection{Teorema de la Probabilidad
+Total}\label{teorema-de-la-probabilidad-total}}
+
+Es una extensión inmediata del visto para una única variable aleatoria.
+Consideremos una partición del espacio muestral y que conocemos las
+probabilidades \emph{a priori} de los sucesos de la misma, \(P(M_p)\):
+
+\[
+M_p \in \mathscr{P}(\Omega) \, p=1\ldots N\iff  \begin{matrix}
+  \bigcup_{p=1}^N M_p = \Omega &  \\
+  M_p \cap M_q = \emptyset & p\neq q  
+ \end{matrix}
+\]
+
+Si conocemos las funciones de de distribución de probabilidad
+condicionada conjunta de un vector aleatorio \((X,Y)\) condicionadas por
+todos los sucesos de dicha partición \(F_{XY}(x,y/M_p)\), es fácil
+obtener la función de distribución total (sin condicionar):
+
+\[F_{XY}(x,y) = \sum_{p=1}^N F_{XY}(x,y | M_p)P(M_p)\]
+
+    Para el \textbf{caso discreto}, el Teorema de la Probabilidad Total
+puede expresarse a partir de las funciones de masa de probabilidad
+\(p_{XY}(x_i,y_j | M_p)\), de modo que la función de masa de
+probabilidad total (sin condicionar) conjunta del vector aleatorio
+\((X,Y)\) resulta:
+
+\[p_{XY}(x_i,y_j) = \sum_{p=1}^N p_{XY}(x_i,y_j | M_p)P(M_p)\]
+
+En el \textbf{caso continuo}, si conocemos las funciones de densidad de
+probabilidad condicionadas, \(f_{XY}(x,y | M_p)\), la función de
+densidad de probabilidad total (sin condicionar) conjunta del vector
+aleatorio \((X,Y)\) es
+
+\[f_{XY}(x,y) = \sum_{p=1}^N f_{XY}(x,y | M_p)P(M_p)\].
+
+El Teorema de la Probabilidad Total permite obtener \textbf{mezclas
+(mixture) de distribuciones}. consistentes en la superposición ponderada
+de varias distribuciones, algo muy útil en la práctica.
+
+    La probabilidad total también puede aplicarse de forma alternativa, si
+lo que se conocen son las probabilidades un suceso arbitrario \(M\)
+condicionadas por cada uno de los valores posibles del vector aleatorio
+\((X,Y)\), esto es, si se conocen
+\(P(M | x_i,y_j)\equiv P(M | \ \{X=x_i,Y=y_j\})\), en el caso discreto,
+y \(P(M | x,y)\equiv P(M | \ \{X=x,Y=y\})\), en el caso continuo.
+
+En tal caso, la probabilidad total del suceso \(M\) (sin condicionar)
+es, para el caso discreto,
+
+\[P(M) = \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)\]
+
+Y, para el caso continuo,
+
+\[P(M) = \int_{-\infty}^\infty\int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y) dx dy\]
+
+    En el caso del vector aleatorio discreto, si disponemos de la
+verosimilitud o función de masa de probabilidad condicionada de una
+variable (observación) respecto de la otra (condicionante) y de la
+función de masa de probabilidad marginal \emph{apriori} de la variable
+condicionante, resulta la función de masa de probabilidad total marginal
+de las observaciones:
+
+\[p_{X}(x_i) = \sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)\]
+
+\[p_{Y}(y_i) = \sum_i p_{Y | X}(y_j | x_i)p_{X}(x_i)\]
+
+Y si el vector aleatorio es continuo:
+
+\[f_{X}(x) = \int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y) dy\]
+
+\[f_{Y}(y) = \int_{-\infty}^\infty f_{Y | X}(y | x)f_{X}(x) dx\]
+
+    \hypertarget{teorema-de-bayes}{%
+\subsubsection{Teorema de Bayes}\label{teorema-de-bayes}}
+
+El Teorema de Bayes puede obtenerse en distinta formas, para lo cual es
+necesario recordar su definición y, si el suceso condicionante es un
+valor de una variable aleatoria continua y, por ello, tiene una masa de
+probabilidad infinitesimal, hay que considerar un rectángulo
+infinitesimal.
+
+Veamos una primera forma, que hace uso de la función e distribución
+conjunta y de un suceso arbitario \(M\):
+
+\[P(M | \ \{X \leq x, Y \leq y\}) = \frac{F_{XY}(x,y | M)P(M)}{F_{XY}(x,y)}\]
+
+\[F_{XY}(x,y | M) = \frac{P(M | \ \{X \leq x, Y \leq y\} )F_{XY}(x,y)}{P(M)}\]
+
+    En el \textbf{caso discreto}, es inmediato obtener el \textbf{Teorema de
+Bayes} a partir de la definición de función de masa de probablidad
+conjunta condicionada (recordar que
+\(P(M | x_i,y_j)\equiv P(M \ \ \{X=x_i,Y=y_j\})\)):
+
+\[p_{XY}(x_i,y_j | M) = \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{P(M)} \iff P(M |x_i,y_j) = \frac{p_{XY}(x_i,y_j/M)P(M)}{p_{XY}(x_i,y_j)}\]
+
+Con frecuencia, los denominadores de las expresiones anteriores se
+obtienen mediante el \emph{Teorema de la Probabilidad Total}, pues tan
+sólo se conocen las probabilidades condicionadas:
+
+\begin{align*}
+p_{XY}(x_i,y_j | M) &= \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{\sum_{i=-\infty}^\infty \sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)} \\ 
+P(M | x_i,y_j) &= \frac{p_{XY}(x_i,y_j | M)P(M)}{p_{XY}(x_i,y_j | M)P(M)+p_{XY}(x_i,y_j | \overline M)(1-P(M))}
+\end{align*}
+
+    En el caso del vector aleatorio, si disponemos de la verosimilitud o
+función de masa de probabilidad condicionada de una variable
+(observación) respecto de la otra (condicionante) y de la función de
+masa de probabilidad marginal \emph{a priori} de la variable
+condicionante, el Teorema de Bayes permite obtener la probabilidad
+\emph{a posteriori} de la variable condicionante, dadas las
+observaciones:
+
+\[p_{X | Y}(x_i | y_j) = \frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{p_Y(y_j)}=\frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{\sum_i p_{Y | X}(y_j |x_i)p_{X}(x_i)}\]
+
+\[p_{Y | X}(y_j | x_i) = \frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{p_X(x_i)}=\frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{\sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)}\]
+
+    Para el \textbf{caso continuo} las expresiones anteriores se adaptan
+sustituyendo funciones de masa de probabilidad por funciones de densidad
+y sumatorios por integrales:
+
+\[f_{XY}(x,y | M) = \frac{P(M | x,y)p_{XY}(x,y)}{P(M)} \iff P(M |x,y) = \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y)}\]
+
+\begin{align*}
+f_{XY}(x,y | M) &= \frac{P(M | x,y)f_{XY}(x,y)}{\int_{-\infty}^\infty \int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y)dxdy} \\ 
+P(M | x,y) &= \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y | M)P(M)+f_{XY}(x,y | \overline M)(1-P(M))}
+\end{align*}
+
+\[f_{X | Y}(x | y) = \frac{f_{Y | X}(y | x)f_X(x)}{f_Y(y)}=\frac{f_{Y | X}(y | x)f_X(x)}{\int_{-\infty}^\infty f_{Y |f X}(y |x)f_{X}(x)dx}\]
+
+\[f_{Y | X}(y | x) = \frac{f_{X | Y}(x | y)f_Y(y)}{f_X(x)}=\frac{f_{X | Y}(x | y)f_Y(y)}{\int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y)dy}\]
+
+    \hypertarget{ejemplo}{%
+\paragraph{Ejemplo}\label{ejemplo}}
+
+Consideremos en el ejemplo del lanzamiento del dado y moneda trucados y
+dependientes entre sí que las observaciones son las caras del dado
+\(X_1\) y queremos hacer inferencia sobre el lado de la moneda \(X_2\)
+
+\begin{itemize}
+\tightlist
+\item
+  Si sólo tenemos las probabilidades de las caras condicionadas por el
+  lado de la moneda, \(p_{X_1 | X_2}(x_{1_i} | x_{2_j})\) la inferencia
+  se basa en el principio de máxima verosimilitud
+\item
+  Si se cuenta con las probabilidades \emph{a priori} de los lados de la
+  moneda, \(p_{X_2}(x_{2_j})\), es posible obtener las probabilidades
+  \emph{a posteri} de las mismas dadas las observaciones
+  \(p_{X_2/X_1}(x_{2_j} | x_{1_i})\). En este caso utilizamos el
+  \textbf{principio de Máximo a Posteriori (MAP)} y podemos obtener las
+  probabilidades de acierto y de error de cada elección. Adviértase que
+  la búsqueda del \textbf{MAP} suele conllevar la división por la
+  probabilidad total, que es la misma en todas las posibilidades y, por
+  tanto, puede evitarse
+\item
+  Si se dispone de la probabilidad conjunta, se dispone de la máxima
+  información probabilística para realizar inferenncias
+\end{itemize}
+
+    \textbf{Verosimilitudes}: si sale 1, 4 ó 6 seleccionamos cara (0), y
+cruz (1) en los restantes casos:
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c}
+L(x_{2_j}) = p_{X_1 | X_2}(x_{1_i} | x_{2_j}) & 0 & 1\\
+\hline
+1 & \frac{1}{11} & 0\\
+\hline
+2 & \frac{2}{11} & \frac{3}{13}\\
+\hline
+3 & \frac{1}{11} & \frac{4}{13}\\
+\hline
+4 & \frac{2}{11} & \frac{1}{13}\\
+\hline
+5 & \frac{1}{11} & \frac{3}{13}\\
+\hline
+6 & \frac{4}{11} & \frac{2}{13}\\
+\hline
+\sum_i p_{X_1 | X_2}(x_{1_i} | x_{2_j}) & 1 & 1 
+\end{array}
+\]
+
+    \textbf{Probabilidades \emph{a priori} de los lados de la moneda}:
+\(p_{X_2}(0)= \frac{11}{24} \quad p_{X_2}(1)= \frac{13}{24}\).
+
+\textbf{Probabilidades totales de las observaciones del dado}:
+\(p_{X_1}(x_{1_i}) = \sum_j p_{X_1 | X_2}(x_{1_i} | x_{2_j})p_{X_2}(x_{2_j})\)
+
+\[
+\begin{array}{c|c}
+x_{1_i}& p_{X_1}(x_{1_i}) \\
+\hline
+1 & \frac{1}{11}\frac{11}{24}+ 0\frac{13}{24}=\frac{1}{24}\\
+\hline
+2 & \frac{2}{11}\frac{11}{24} + \frac{3}{13}\frac{13}{24}=\frac{5}{24}\\
+\hline
+3 & \frac{1}{11}\frac{11}{24} + \frac{4}{13}\frac{13}{24}=\frac{5}{24}\\
+\hline
+4 & \frac{2}{11}\frac{11}{24} + \frac{1}{13}\frac{3}{24}=\frac{3}{24}\\
+\hline
+5 & \frac{1}{11}\frac{11}{24} + \frac{3}{13}\frac{4}{24}=\frac{4}{24}\\
+\hline
+6 & \frac{4}{11}\frac{11}{24} + \frac{2}{13}\frac{6}{24}=\frac{6}{24}\\
+\hline
+\sum_i p_{X_1}(x_{1_i}) & 1 
+\end{array}
+\]
+
+    \textbf{Probabilidades \emph{a posteriori} de los lados de la moneda,
+dadas las observaciones del dado}: De nuevo seleccionamos cara (0) si
+sale 1, 4 ó 6 y cruz (1) en los restantes casos. Aunque en este ejemplo
+coinciden las elecciones utilizando los criterios \textbf{ML} (máxima
+verosimilitud) y \textbf{MAP} (máximo a posteriori), en general no tiene
+por qué ser así:
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_2 | X_1}(x_{2_j} | x_{1_i}) & 0 & 1 & \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 & 1 & 0 & 1\\
+\hline
+2 & \frac{2}{5} & \frac{3}{5} & 1\\
+\hline
+3 & \frac{1}{5} & \frac{4}{5} & 1\\
+\hline
+4 & \frac{2}{3} & \frac{1}{3} & 1\\
+\hline
+5 & \frac{1}{4} & \frac{3}{4} & 1\\
+\hline
+6 & \frac{4}{6} & \frac{2}{6} & 1\\
+\end{array}
+\]
+
+    \textbf{Probabilidades de acierto y de error}: para cada observación, el
+criterio \textbf{MAP} da la probabilidad de acertar, que es máxima. Por
+tanto, su complementario a 1 da la probabilidad de error, que es mínima:
+
+\[
+Acierto \begin{array}{c|cccccc|c}
+  x_{1_i} & 1 & 2 & 3 & 4 & 5 & 6 &  \\ 
+  \hline
+    P(A | x_{1_i}) & 1 & \frac{3}{5} & \frac{4}{5} & \frac{2}{3} & \frac{3}{4} & \frac{4}{6} & \sum_i p_X(x_i)=1
+ \end{array}
+\]
+
+La probabilidad total de acierto es:
+
+\[P(A) = \sum_i P(A | x_{1_i}) p_{x_{1_i}} =  
+1\frac{1}{24} + \frac{3}{5}\frac{5}{24} + \frac{4}{5}\frac{5}{24} + \frac{2}{3}\frac{3}{24} + \frac{3}{4}\frac{4}{24} + \frac{4}{6}\frac{6}{24} =\frac{17}{24}\]
+
+    \[
+Error \begin{array}{c|cccccc|c}
+  x_{1_i} & 1 & 2 & 3 & 4 & 5 & 6 &  \\ 
+  \hline
+    P(E | x_{1_i}) & 0 & \frac{2}{5} & \frac{1}{5} & \frac{1}{3} & \frac{1}{4} & \frac{2}{6} & \sum_i p_X(x_i)=1
+ \end{array}
+\]
+
+La probabilidad total de error es:
+
+\[P(E) = \sum_i P(E | x_{1_i}) p_{x_{1_i}} =  
+0\frac{1}{24} + \frac{2}{5}\frac{5}{24} + \frac{1}{5}\frac{5}{24} + \frac{1}{3}\frac{3}{24} + \frac{1}{4}\frac{4}{24} + \frac{2}{6}\frac{6}{24} =\frac{7}{24}\]
+
+    La probabilidad conjunta nos proporciona toda la información precedente
+muy fácilmente:
+
+\begin{itemize}
+\tightlist
+\item
+  Regla de decisión (ver tabla): (1, cara), (4, cara), (6, cara) (2,
+  cruz), (3, cruz), (5, cruz)
+\item
+  \(P(A) = p_{X_1X_2}(1,0)+p_{X_1X_2}(4,0)+p_{X_1X_2}(6,0)+p_{X_1X_2}(2,1)+p_{X_1X_2}(3,1)+p_{X_1X_2}(5,x)=\frac{17}{24}\):
+\end{itemize}
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_1X_2}(x_{1_i}, x_{2_j}) & 0 & 1 & p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 & \frac{1}{24} & 0 & \frac{1}{24}\\
+\hline
+2 & \frac{2}{24} & \frac{3}{24} & \frac{5}{24}\\
+\hline
+3 & \frac{1}{24} & \frac{4}{24} & \frac{5}{24}\\
+\hline
+4 & \frac{2}{24} & \frac{1}{24} & \frac{3}{24}\\
+\hline
+5 & \frac{1}{24} & \frac{3}{24} & \frac{4}{24}\\
+\hline
+6 & \frac{4}{24} & \frac{2}{24} & \frac{6}{24}\\
+\hline
+p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) & \frac{11}{24} & \frac{13}{24} & 1
+\end{array}
+\]
+
+    \hypertarget{representaciuxf3n-matricial}{%
+\subsubsection{Representación
+matricial}\label{representaciuxf3n-matricial}}
+
+El manejo de las tablas anteriores puede facilitarse haciendo uso de
+vectores y matrices de probabilidades. Considerando que la variable
+aleatoria \(X\) puede tomar \(M\) valores y que la \(Y\) puede tomar
+\(N\):
+
+\begin{itemize}
+\tightlist
+\item
+  Vectores fila de probabilidades:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\pi_X = [p_X(x_1), p_X(x_2) \ldots p_X(x_M)]\)
+  \item
+    \(\pi_Y = [p_Y(y_1), p_Y(y_2) \ldots p_Y(y_N)]\)
+  \end{itemize}
+\item
+  Matrices de probabilidades condicionadas. Cada fila corresponde a un
+  valor de la variable condicionante y, por tanto, todas y cada una de
+  las filas suman 1:
+
+  \begin{itemize}
+  \tightlist
+  \item
+\(\Pi_{X | Y} = \begin{bmatrix}
+  p_{X | Y}(x_1 | y_1) & \ldots & p_{X | Y}(x_M | y_1)\\
+  \vdots & \ddots & \vdots\\
+  p_{X | Y}(x_1 | y_N) & \ldots & p_{X | Y}(x_M | y_N) & 
+ \end{bmatrix}\)
+
+  \item
+    \(  \Pi_{Y | X} = \begin{bmatrix}
+  p_{Y | X}(y_1 | x_1) & \ldots & p_{Y | X}(y_M | x_1)\\
+  \vdots & \ddots & \vdots\\
+  p_{Y | X}(y_1 | x_N) & \ldots & p_{Y | X}(y_M | x_N) & 
+ \end{bmatrix}\)
+  \end{itemize}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  Teorema de la Probabilidad Total: se hace uso del producto de matrices
+  para multiplicar un vector fila por una matriz de probabilidades
+  condicionadas y obtener otro vector fila:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\pi_Y = \pi_X\Pi_{Y | X}\)
+  \item
+    \(\pi_X = \pi_Y\Pi_{X | Y}\)
+  \end{itemize}
+\item
+  Matriz de probabilidades conjuntas. Sus elementos suman 1
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \( \Pi_{XY} = \begin{bmatrix}
+  p_{XY}(x_1,y_1) & \ldots & p_{XY}(x_M,y_1)\\
+  \vdots & \ddots & \vdots\\
+  p_{XY}(x_1,y_N) & \ldots & p_{XY}(x_M,y_N) & 
+ \end{bmatrix}\)
+  \end{itemize}
+\end{itemize}
+
+Recurriendo a operaciones puntuales (elemento a elemento) es posible
+obtener algoritmos sencillos para aplicar el Teorema de Bayes o para
+obtrener las matrices de probabilidades conjuntas a partir de las
+condicionadas y los vectores de probabilidades a priori.
+
+    \hypertarget{funciuxf3n-de-dos-variables-aleatorias}{%
+\subsubsection{Función de dos variables
+aleatorias}\label{funciuxf3n-de-dos-variables-aleatorias}}
+
+Consideremos un vector aleatorio discreto \((X,Y)\). Podemos aplicar
+sobre sus componentes una función \(g\) que devolverá valores
+aleatorios, al serlo también sus variables independientes. Lo
+representamos como sigue:
+
+\[Z = g(X,Y)\]
+
+Cada par \((x_i, y_j)\) de \((X, Y)\) se transformará por la función en
+un nuevo valor \(z_k\) de \(Z\). Adviértase que valores distintos
+\((x_i,y_j) \neq (x_m, y_n)\) pueden dar lugar a valores iguales
+\(z_k = y_j\) con tal que \(g(x_i,y_j)=g(x_m,y_n)\). Por tanto,
+definimos la función de masa de probabilidad de \(Z\) como sigue:
+
+\[p_Z(z_k) = \sum_{\substack{i,j \\ g(x_i.y_j) = z_k}}p_{XY}(x_i, y_j)\]
+
+Adviértase que tal y como está expuesto no podemos invertir la
+trasformación, pues al tratarse de una función de dos variables
+necesitaríamos una segunda función. No vamos a profundizar en la
+formulación matemática, y vamos a desarrollar la intuición con un
+ejemplo.
+
+    \textbf{Ejemplo}
+
+Supongamos el lanzamiento de sucesivo e independiente de dos monedas,
+cutos resultados modelamos con las variables aleatorias \(X\) e \(y\).
+En cada caso, cero significa cara y uno significa cruz. La funciones de
+masa de probabilidad marginales son las siguientes:
+
+\[
+\begin{array}{c|cc|c}
+X & 0 & 1 \\
+\hline
+p_X(x_i) & \frac{1}{3} & \frac{2}{3}  & \sum_i p_X(x_i) = 1
+\end{array}
+\]
+
+\[
+\begin{array}{c|cc|c}
+Y & 0 & 1 \\
+\hline
+p_Y(x_j) & \frac{5}{6} & \frac{1}{6}  & \sum_i p_Y(y_j) = 1
+\end{array}
+\]
+
+    Al ser ambas variaples aleatorias independientes puede obtenerse la
+distribución conjunta a partir de las marginales:
+\(p_{XY}(x_i,y_j)=p_X(x_i)p_Y(y_j)\)
+
+\[
+Y \\X \begin{array}{c|c|c|c}
+p_{XY}(x_{i}, y_{j}) & 0 & 1 & p_{X}(x_{i}) = \sum_j p_{XY}(x_{i}y_{j})\\
+\hline
+0 & \frac{1}{3}\frac{5}{6} = \frac{5}{18} & \frac{1}{3}\frac{1}{6} = \frac{1}{18} & \frac{1}{3}\\
+\hline
+1 & \frac{2}{3}\frac{5}{6} = \frac{10}{18} & \frac{2}{3}\frac{1}{6} = \frac{2}{18} & \frac{2}{3}\\
+\hline
+p_{Y}(y_{j}) = \sum_i p_{XY}(x_{i}y_{j}) & \frac{5}{6} & \frac{1}{6} & 1
+\end{array}
+\]
+
+La función de masa de probabilidad de la suma de ambas variables
+aleatorias es:
+
+\[
+\begin{array}{c|c|c|c|c}
+Z = X+Y & 0 & 1 & 2\\
+\hline
+p_Z(z_k) & \frac{5}{8} & \frac{1}{18} +\frac{10}{18} = \frac{11}{18} &\frac{2}{18}  & \sum_i p_Y(y_j) = 1
+\end{array}
+\]
+
+    Una propiedad muy importante de la \textbf{suma de dos variables
+aleatorias discretas independientes} permite obtener la función de masa
+de probabilidad de la variable aleatoria suma a partir de las de las dos
+sumandos:
+
+\begin{quote}
+La función de masa de probabilidad de la suma de dos variables
+aleatorias discretas \textbf{independientes}, \(Z = X+Y\), se obtiene
+mediante la \textbf{convolución} discreta de las funciones de masa de
+probabilidad de de cada uno de los sumandos:
+\end{quote}
+
+\[p_Z(z_i)= p_X(x_i)*p_Y(y_i)=\sum_{k=-\infty}^\infty p_X(x_k)p_Y(y_{i-k})=\sum_{k=-\infty}^\infty p_Y(y_k)p_X(x_{i-k}) \]
+
+La convolución es una operación matemática que se realiza entre dos
+secuencias o señales y que se verá en la asignatura de Señales y
+Sistemas. No vamos a profundizar aquí en su cálculo.
+
+    \hypertarget{esperanza-matemuxe1tica-y-valor-medio.-momentos}{%
+\subsubsection{Esperanza Matemática y Valor Medio.
+Momentos}\label{esperanza-matemuxe1tica-y-valor-medio.-momentos}}
+
+Se define la esperanza matemática de una función \(g(X, Y)\) de dos
+variables aleatorias discretas como sigue:
+
+\[E\left(g(X, Y)\right)=\sum_i\sum_j g(x_i,y_j)p_{XY}(x_i,y_j)\]
+
+Si las variables aleatorias son continuas:
+
+\[E\left(g(X, Y)\right)=\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f_{XY}(x,y)dxdy\]
+
+    Como ya se vio en el caso unidimensional, es fácil advertir que el
+operador \(E(·)\) es \textbf{lineal}:
+
+\[E(a_1g_1(X,Y)+a_2g_2(X,Y))=a_1E(g_1(X,Y)) + a_2E(g_2(X,Y))\]
+
+donde \(a_1\) y \(a_2\) son coeficiente constantes arbitrarios y \(g_1\)
+y \(g_2\) son dos funciones. También es evidente que, si \(k\) es una
+constante arbitraria
+
+\[E(k) = k\]
+
+De la linealidad se concluye inmediatamente:
+
+\[E(X+Y) = E(X) + E(Y)\]
+
+\[E(kX) = kE(X)\]
+
+    Veamos como obtener las esperanzas marginales en el caso discreto. En el
+caso continuo sería igual, sin más que cambiar funciones de masa de
+probabilidad por densidades y sumas por integrales.
+
+Si \(g(X,Y)=X\) se obtiene el valor medio de \(X\):
+
+\[\eta_X=E(X)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_i x_i \sum_j p_{XY}(x_i,y_j) = \sum_i x_i p_X(x_i)\]
+
+Y si \(g(X,Y)=Y\) se obtiene el valor medio de \(Y\):
+
+\[\eta_Y=E(Y)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_j y_j \sum_i p_{XY}(x_i,y_j) = \sum_j y_j p_Y(y_j)\]
+
+    \hypertarget{valor-cuadruxe1tico-medio-y-correlaciuxf3n}{%
+\paragraph{Valor Cuadrático Medio y
+Correlación}\label{valor-cuadruxe1tico-medio-y-correlaciuxf3n}}
+
+Considérese ahora que \(g(X,Y)=(X+Y)^2\), esto es, calculamos el valor
+cuadrático medio de la suma de \(X\) e \(Y\). Desarrollando el cuadrado
+y aplicando linealidad:
+
+\[E((X+Y)^2)= E(X^2)+E(Y^2)+2E(XY)\]
+
+El término \(R_{XY}=E(XY)\) se denomina \textbf{correlación}, y es un
+indicador de la dependencia probabilística de ambas variales aleatorias,
+\(X\) e \(Y\).
+
+\begin{itemize}
+\tightlist
+\item
+  \(X\) e \(Y\) son \textbf{ortogonales} si \(R_{XY}=E(XY)=0\). Ello
+  indica que no podemos pensar que ambas variables guarden una relación
+  de proporcionalidad \(Y \not \approx kX\) pues ello supondría que
+  \(E(X^2) \approx 0\).
+\item
+  En general, \(E(XY) \neq E(X)E(Y)\). Como veremos, si
+  \(E(XY)=E(X)E(Y)\) ambas variables aleatorias están
+  \textbf{incorreladas}.
+\item
+  Si \(X\) e \(Y\) son independientes es fácil advertir que
+  \(E(XY)=E(X)E(Y)\), de modo que la independencia implica
+  incorrelación, si bien el contrario no es cierto en general.
+\end{itemize}
+
+    Es habitual utilizar una formulación matricial, haciendo uso de la
+\textbf{matriz de correlación}:
+
+\[\mathbf R_{XY} = E(\begin{pmatrix} X\\Y\end{pmatrix} (X, Y))= 
+\begin{pmatrix}
+E(X^2) & E(XY)\\
+E(XY) & E(Y^2)
+\end{pmatrix}\]
+
+Como se ve, la matriz de correlación es una matriz simétrica, cuyos
+elementos sobre la diagonal corresponden a los valores cuadrático medio,
+\(E(X^2)\) y \(E(Y^2)\) y fuera de la misma está la correlación entre
+\(X\) e \(Y\), \(E(XY)\).
+
+Si ambas variables fueran ortogonales, la matriz de correlación sería
+diagonal.
+
+    \hypertarget{covarianza}{%
+\paragraph{Covarianza}\label{covarianza}}
+
+Considérese ahora que centramos el vector aleatorio \((X,Y)\) en el
+centro de masa probabilístico \((\eta_X, \eta_Y)\) y que
+\(g(X,Y)=\left( (X-\eta_X)+(Y-\eta_Y) \right)^2\)
+
+\[E\left(((X-\eta_X)+(Y-\eta_Y))^2\right)= \sigma_X^2+\sigma_Y^2+2E((X-\eta_X)(Y-\eta_Y)\]
+
+El término \(C_{XY}=E((X-\eta_X)(Y-\eta_Y))\) se denomina
+\textbf{covarianza}, y es también un indicador de la dependencia
+probabilística de ambas variales aleatorias, \(X\) e \(Y\).
+
+\begin{itemize}
+\tightlist
+\item
+  La covarianza se relaciona con la correlación sin más que operar y
+  aplicar linealidad: \(C_{XY}=R_{XY}-\eta_X\eta_Y\)
+\item
+  \(X\) e \(Y\) son incorreladas si \(C_{XY}=0\). Decir que \(X\) e
+  \(Y\) están incorreladas es equivalente a afirmar que \(X-\eta_X\) e
+  \(Y-\eta_Y\) son ortogonales.
+\item
+  Es fácil demostrar que \(C_{XY}= 0 \iff R_{XY}=\eta_X\eta_Y\).
+\item
+  La incorrelación supone ausencia de relación lineal entre \(X\) e
+  \(Y\), esto es, \(Y \not \approx aX + b\).
+\end{itemize}
+
+    Es habitual utilizar una formulación matricial, haciendo uso de la
+\textbf{matriz de covarianza}:
+
+\[\mathbf{C_{XY}} = E\left(\begin{pmatrix} X-\eta_X\\Y-\eta_Y\end{pmatrix} (X-\eta_X, Y-\eta_Y)\right)=\\
+\begin{pmatrix}
+E((X-\eta_X)^2) & E((X-\eta_X)(Y-\eta_Y))\\
+E((X-\eta_X)(Y-\eta_Y)) & E((Y-\eta_Y)^2)
+\end{pmatrix}=
+\begin{pmatrix}
+\sigma_X^2 & C_{XY}\\
+C_{XY} & \sigma_Y^2
+\end{pmatrix}
+\]
+
+Como se ve, la matriz de covarianza es una matriz simétrica, cuyos
+elementos sobre la diagonal corresponden a las varianzas, \(\sigma_X^2\)
+y \(\sigma_Y^2\) y fuera de la misma está la covarianza entre \(X\) e
+\(Y\), \(C_{XY}\).
+
+Si ambas variables fueran incorreladas, la matriz de covarianza sería
+diagonal.
+
+    \hypertarget{coeficiente-de-correlaciuxf3n}{%
+\paragraph{Coeficiente de
+correlación}\label{coeficiente-de-correlaciuxf3n}}
+
+Si ahora trabajamos con las variables aletorias tipificadas,
+\(\hat X = \frac{X-\eta_X}{\sigma_X}\) e
+\(\hat Y = \frac{Y-\eta_Y}{\sigma_Y}\) podemos definir el
+\textbf{coeficiente de correlación} (recuérdese que las variables
+tipificadas tienen, por construcción, valor medio nulo y desviación
+típica unidad):
+
+\[r_{XY}=E(\frac{X-\eta_X}{\sigma_X} \frac{Y-\eta_Y}{\sigma_Y})=\frac{1}{\sigma_X\sigma_Y}C_{XY}  \qquad -1 \leq r_{XY} \leq 1\]
+
+El coeficiente de correlación \(r_{XY}\):
+
+\begin{itemize}
+\tightlist
+\item
+  Tiene valor nulo si hay ausencia de relación lineal entre \(X\) e
+  \(Y\)
+\item
+  Tiene valor 1 si \(Y = aX +b\) con \(a>0\)
+\item
+  Tiene valor -1 si \(Y = aX +b\) con \(a<0\)
+\item
+  Si \(0<|r_{XY}|<1\) el grado de dependencia lineal (positiva o
+  negativa) será tanto mayor cuanto más cerca de 1.
+\end{itemize}
+
+    \hypertarget{esperanza-matemuxe1tica-condicionada}{%
+\paragraph{Esperanza matemática
+condicionada}\label{esperanza-matemuxe1tica-condicionada}}
+
+Podemos definir la esperanza matemática de una función \(g\) de las
+variables aleatorias \((X,Y)\) condicionada por el suceso \(M\) como
+sigue, si son discretas:
+
+\[E(g(X,Y) | M)=\sum_i g(x_i,y_j)p_{XY}(x_i,y_j | M)\]
+
+Si las variables aleatorias son continuas:
+
+\[E(g(X,Y) | M)=\int_{-\infty}^\infty g(x,y)f_{XY}(x,y | M)\]
+
+    Podemos extender con la esperanza condicionada las propiedades y
+definiciones vistas anteriormente. Lo ilustraremos para el caso de
+variables aleatorias discretas, si bien es igual para continuas, sin más
+que utilizar funciones de densidad e integrales en vez de funciones de
+masa de probabilidad y sumatorios. Por ejemplo:
+
+\begin{align*}
+\eta_{X | M}=E(X | M)&=\sum_i \sum_j x_ip_{XY}(x_i,y_j | M)= \sum_i x_i p_X(x_i | M)\\
+E(X^2 | M)&=\sum_i \sum_j x_i^2p_{XY}(x_i,y_j | M)=\sum_i x_i^2 p_X(x_i | M)\\
+\sigma_{X | M}^2 = Var(X | M) &= E(X^2 | M)-\eta_{X | M}^2
+\end{align*}
+
+    En particular, podemos considerar los momentos de \(X\) condicionados
+por \(Y=y_j\), donde utilizamos el abuso de notación
+\(E(\bullet \ | \ \{Y=y_j\}) \equiv E(\bullet \ | y_j)\):
+
+\begin{align*}
+\eta_{X/+ | y_j}=E(X | y_j)&= \sum_i x_i p_{X | Y}(x_i | y_j)\\
+E(X^2 | y_j)&=\sum_i x_i^2 p_X(x_i | y_j)\\
+\sigma_{X | y_j}^2 = Var(X | y_j) &= E(X^2 | y_j)-\eta_{X | y_j}^2
+\end{align*}
+
+Adviértase que \(E(X) = \sum_j E(X | y_j) p_Y(y_j)\), sin más que
+sustituir \(E(X | y_j)\) por su definición y utilizar el Teorema de la
+Probabilidad Total.
+
+    \hypertarget{ejemplo}{%
+\paragraph{Ejemplo}\label{ejemplo}}
+
+Consideramos el ejemplo ya visto de lanzamiento mutuamente dependiente
+de un dado y una moneda trucados, cuya función de masa de probabilidad
+se indica de nuevo: \[
+X_2 \\X_1 \begin{array}{c|c|c|c}
+p_{X_1X_2}(x_{1_i}, x_{2_j}) & 0 & 1 & p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+\hline
+1 & \frac{1}{24} & 0 & \frac{1}{24}\\
+\hline
+2 & \frac{2}{24} & \frac{3}{24} & \frac{5}{24}\\
+\hline
+3 & \frac{1}{24} & \frac{4}{24} & \frac{5}{24}\\
+\hline
+4 & \frac{2}{24} & \frac{1}{24} & \frac{3}{24}\\
+\hline
+5 & \frac{1}{24} & \frac{3}{24} & \frac{4}{24}\\
+\hline
+6 & \frac{4}{24} & \frac{2}{24} & \frac{6}{24}\\
+\hline
+p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) & \frac{11}{24} & \frac{13}{24} & 1
+\end{array}
+\]
+
+    \begin{itemize}
+\tightlist
+\item
+  Variable aleatoria \(X_1\) (dado)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\eta_{X_1}=E(X_1)=1\frac{1}{24}+2\frac{5}{24}+3\frac{5}{24}+4\frac{3}{24}+5\frac{4}{24}+6\frac{6}{24}=\frac{94}{24}\approx3.917\)
+  \item
+    \(E(X_1^2)=1^2\frac{1}{24}+2^2\frac{5}{24}+3^2\frac{5}{24}+4^2\frac{3}{24}+5^2\frac{4}{24}+6^2\frac{6}{24}=\frac{430}{24}\approx 17.917\)
+  \item
+    \(Var(X_1)=E(X_1^2) -\eta_X^2= \frac{430}{24}-(\frac{94}{24})^2 \approx 2.576\)
+  \item
+    \(\sigma_{X_1} \approx 1.605\)
+  \end{itemize}
+\item
+  Variable aleatoria \(X_2\) (moneda)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\eta_{X_2}=E(X_2)= 0\frac{11}{24}+1\frac{13}{24}=\frac{13}{24}\approx 0.542\)
+  \item
+    \(E(X_2^2)= 0^2\frac{11}{24}+1^2\frac{13}{24}=\frac{13}{24}\approx 0.542\)
+  \item
+    \(Var(X_2)=E(X_2^2) -\eta_{X_2}^2= \frac{13}{24}-(\frac{13}{24})^2=\frac{13}{24}\frac{11}{24} \approx 0.248\)
+  \item
+    \(\sigma_{X_2} \approx 0.498\)
+  \item
+    Momentos conjuntos
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Correlación:
+      \(R_{XY} = 2\frac{3}{24}+3\frac{4}{24}+4\frac{1}{24}+5\frac{3}{24}+6\frac{2}{24}=\frac{49}{24} \approx 2.042\)
+    \item
+      Covarianza:
+      \(C_{XY}=R_{XY}-\eta_X\eta_Y= \frac{49}{24}-\frac{94}{24}\frac{13}{24}\approx -0.80\)
+    \item
+      Coeficiente de correlación: \(r\_\{XY\} =
+      \frac{1}{\sigma_X\sigma_Y}C\_\{XY\} \approx -0.1 \)
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+    Con \(p_{X_1 | X_2}(x_1, x_2)\) pueden calcularse los momentos de los
+resultados del dado para cada resultado del lanzamiento de la moneda.
+Por ejemplo, la media:
+
+\[
+X_2 \\X_1 \begin{array}{c|c|c}
+p_{X_1 | X_2}(x_{1_i} | x_{2_j}) & 0 & 1\\
+\hline
+1 & \frac{1}{11} & 0\\
+\hline
+2 & \frac{2}{11} & \frac{3}{13}\\
+\hline
+3 & \frac{1}{11} & \frac{4}{13}\\
+\hline
+4 & \frac{2}{11} & \frac{1}{13}\\
+\hline
+5 & \frac{1}{11} & \frac{3}{13}\\
+\hline
+6 & \frac{4}{11} & \frac{2}{13}\\
+\hline
+E(X_1 | x_{2_j}) & 
+1\frac{1}{11}+2\frac{2}{11}+3\frac{1}{11}+4\frac{2}{11}+5\frac{1}{11}+6\frac{4}{11}=\frac{45}{11}
+& 0+2\frac{3}{13}+3\frac{4}{13}+4\frac{1}{13}+5\frac{3}{13}+6\frac{2}{13}=\frac{49}{13}
+\end{array}
+\]
+
+Por supuesto,
+\(E(X_1)=E(X_1/0)p_{X_2}(0)+E(X_1/1)p_{X_2}(1) = \frac{45}{11}\frac{11}{24}+\frac{49}{13}\frac{13}{24}=\frac{94}{24}\).
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+
+    
+    \end{document}
