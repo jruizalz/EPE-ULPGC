@@ -13450,8 +13450,8 @@ $$<p>Como puede verse, <strong>la distribución exponencial no tiene memoria</st
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="La-Variable-Aleatoria-Gaussiana">La Variable Aleatoria Gaussiana<a class="anchor-link" href="#La-Variable-Aleatoria-Gaussiana">&#182;</a></h2><h3 id="Distribuci&#243;n-Normal-Est&#225;ndar">Distribuci&#243;n Normal Est&#225;ndar<a class="anchor-link" href="#Distribuci&#243;n-Normal-Est&#225;ndar">&#182;</a></h3><p>Consideremos la función $\varphi(x)$, definida como sigue:</p>
-$$\varphi_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}$$<p>Puede advertirse que se trata de una función de densidad de probabilidad, pues:</p>
+<h2 id="La-Variable-Aleatoria-Gaussiana">La Variable Aleatoria Gaussiana<a class="anchor-link" href="#La-Variable-Aleatoria-Gaussiana">&#182;</a></h2><h3 id="Distribuci&#243;n-Normal-Est&#225;ndar">Distribuci&#243;n Normal Est&#225;ndar<a class="anchor-link" href="#Distribuci&#243;n-Normal-Est&#225;ndar">&#182;</a></h3><p>Consideremos la función <strong>Normal Estándar</strong> $\varphi(x)$, definida como sigue:</p>
+$$\varphi_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}$$<p>Puede advertirse que se trata de una <strong>función de densidad de probabilidad</strong> (VA X), pues:</p>
 $$\varphi(x) &gt;0 \quad \forall x \in \mathbb{R}\\
 \int_{-\infty}^\infty \varphi(x)dx = 1$$
 </div>
@@ -13460,13 +13460,11 @@ $$\varphi(x) &gt;0 \quad \forall x \in \mathbb{R}\\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Analicemos la función $\varphi_X(x)$, que denominamos <strong>Normal Estándar</strong>:</p>
-<ul>
-<li>Es una función par pues $\varphi_X(x) = \varphi_X(-x)$</li>
-<li>$\varphi'_X(x) = -x\varphi_X(x) \implies \varphi'_X(0) = 0$</li>
-<li>$\varphi''_X(x) = (x^2-1)\varphi_X(x) \implies \varphi''_X(-1) = \varphi''_X(1) = 0$</li>
-<li>Máximo: $\varphi_X(0) = \frac{1}{\sqrt{2\pi}}\approx 0.399$. Puntos de inflexión: $\varphi_X(-1) = \varphi_X(1) =\frac{1}{\sqrt{2\pi e}}\approx 0.242$</li>
-</ul>
+<p>Es una función par pues $\varphi_X(x) = \varphi_X(-x)$
+$$\varphi'_X(x) = -x\varphi_X(x) \implies \varphi'_X(0) = 0$$ 
+Máximo: $\varphi_X(0) = \frac{1}{\sqrt{2\pi}}\approx 0.399$
+$$\varphi''_X(x) = (x^2-1)\varphi_X(x) \implies \varphi''_X(-1) = \varphi''_X(1) = 0$$
+Puntos de inflexión: $\varphi_X(-1) = \varphi_X(1) =\frac{1}{\sqrt{2\pi e}}\approx 0.242$</p>
 
 </div>
 </div>
@@ -13496,10 +13494,10 @@ $$\varphi(x) &gt;0 \quad \forall x \in \mathbb{R}\\
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La <strong>función de distribución normal estándar</strong> es:</p>
-$$\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x  e^{-\frac{u^2}{2}} du = 
+$$\Phi(x) = P(X\leq x)= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x  e^{-\frac{u^2}{2}} du = 
 \frac{1}{2} + \frac{1}{\sqrt{2\pi}} \int_{0}^x  e^{-\frac{u^2}{2}} du
 $$<p>En <em>Teoría de la Comunicación</em> suele utilizarse la función $Q(x)$, que es el complemento a 1 de $\Phi(x)$:</p>
-$$Q(x) = 1-\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_x^{\infty}  e^{-\frac{u^2}{2}} du$$
+$$Q(x) = P(X&gt;x) =1-\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_x^{\infty}  e^{-\frac{u^2}{2}} du$$
 </div>
 </div>
 </div></section><section>
@@ -13507,24 +13505,8 @@ $$Q(x) = 1-\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_x^{\infty}  e^{-\frac{u^2}{2}} d
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En ingeniería y ciencias es habitual utilizar la <strong>función error</strong>, $erf(x)$:</p>
-$$erf(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-u^2}du = \frac{1}{\sqrt{\pi}}\int_{-x}^x e^{-u^2}du= \frac{1}{\sqrt{2\pi}}\int_{-\sqrt{2}x}^{\sqrt{2}x} e^{-\frac{u^2}{2}}du$$<p>que satisface:</p>
-<ul>
-<li>Función impar: $erf(x)=-erf(-x)$</li>
-<li>$erf(\infty)=1$</li>
-<li>$erf(1) \approx 0.8427$</li>
-</ul>
-<p>Su complemento a 1 es la <strong>función error complementaria</strong>:</p>
+$$erf(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-u^2}du = \frac{1}{\sqrt{\pi}}\int_{-x}^x e^{-u^2}du= \frac{1}{\sqrt{2\pi}}\int_{-\sqrt{2}x}^{\sqrt{2}x} e^{-\frac{u^2}{2}}du$$$$erf(\frac{x}{\sqrt{2}}) = \frac{1}{\sqrt{2\pi}}\int_{-x}^{x} e^{-\frac{u^2}{2}}du \iff \frac{1}{2}erf(\frac{x}{\sqrt{2}}) = \frac{1}{\sqrt{2\pi}}\int_{0}^{x} e^{-\frac{u^2}{2}}du$$<p>Adviértase que es <strong>impar</strong>, $erf(x)=-erf(-x)$, y que $erf(\infty)=1$. Su complemento a 1 es la <strong>función error complementaria</strong>:</p>
 $$erfc(x) = 1-erf(x) = \frac{2}{\sqrt{\pi}}\int_x^\infty e^{-u^2} du = \frac{2}{\sqrt{2\pi}}\int_{\sqrt{2}x}^\infty e^{-\frac{u^2}{2}}du$$
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Pueden encontrarse fácilmente relaciones entre las funciones anteriores:</p>
-$$\Phi(x) = \frac{1}{2}\left[1 + \frac{2}{\sqrt{2\pi}} \int_{0}^x  e^{-\frac{u^2}{2}}du \right] = \frac{1}{2}\left[1 + erf(\frac{x}{\sqrt{2}}) \right]$$$$Q(x) = 1 - \Phi(x) = \frac{1}{2}\left[1 - erf(\frac{x}{\sqrt{2}}) \right] = \frac{1}{2}erfc(\frac{x}{\sqrt{2}})$$<p>Y puede calcularse la probabilidad de los intervalos:</p>
-$$P(x_1&lt;X\leq x_2) = \Phi(x_2)-\Phi(x_1) = \frac{1}{2}erf(\frac{x_2}{\sqrt{2}}) - \frac{1}{2}erf(\frac{x_1}{\sqrt{2}})$$<p>En el caso que el intervalo esté centrado en el origen $x_1 = -x_2$:</p>
-$$P(-x_2&lt;X\leq x_2) = \Phi(x_2)-\Phi(x_1) = erf(\frac{x_2}{\sqrt{2}})$$
 </div>
 </div>
 </div></section><section>
@@ -13552,6 +13534,16 @@ $$P(-x_2&lt;X\leq x_2) = \Phi(x_2)-\Phi(x_1) = erf(\frac{x_2}{\sqrt{2}})$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Pueden encontrarse fácilmente relaciones entre las funciones anteriores:</p>
+$$\Phi(x) = \frac{1}{2}\left[1 + \frac{2}{\sqrt{2\pi}} \int_{0}^x  e^{-\frac{u^2}{2}}du \right] = \frac{1}{2}\left[1 + erf(\frac{x}{\sqrt{2}}) \right]$$$$Q(x) = 1 - \Phi(x) = \frac{1}{2}\left[1 - erf(\frac{x}{\sqrt{2}}) \right] = \frac{1}{2}erfc(\frac{x}{\sqrt{2}})$$<p>Y puede calcularse la probabilidad de los intervalos:</p>
+$$P(x_1&lt;X\leq x_2) = \Phi(x_2)-\Phi(x_1) = \frac{1}{2}erf(\frac{x_2}{\sqrt{2}}) - \frac{1}{2}erf(\frac{x_1}{\sqrt{2}})$$<p>En el caso que el intervalo esté centrado en el origen $x_1 = -x_2$:</p>
+$$P(-x_2&lt;X\leq x_2) = \Phi(x_2)-\Phi(x_1) = erf(\frac{x_2}{\sqrt{2}})$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Puede calcularse fácilmente la concentración de masa de probabilidad en torno al origen:</p>
 <ul>
 <li>$P(|X|\leq 1) = erf(\frac{1}{\sqrt2}) \approx 0.682689492137086$</li>
@@ -13574,7 +13566,7 @@ $$P(-x_2&lt;X\leq x_2) = \Phi(x_2)-\Phi(x_1) = erf(\frac{x_2}{\sqrt{2}})$$
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Distribuci&#243;n-Gaussiana-o-Normal">Distribuci&#243;n Gaussiana o Normal<a class="anchor-link" href="#Distribuci&#243;n-Gaussiana-o-Normal">&#182;</a></h3><p>Si la variable aleatoria $X$ tiene una distribución Normal Estándar $\varphi(x)$ (media nula y varianza unidad), podemos generar una nueva variable aleatoria con media $\eta_Y$ y varianza $\sigma_Y^2$ sin más que aplicar la transformación lineal:</p>
 $$Y = \sigma_Y X + \eta_Y$$<p>Puede demostrarse que la variable aleatoria $Y$ tiene la siguiente distribución:</p>
-$$F_Y(y)= \Phi(\frac{y-\eta_Y}{\sigma_Y})$$$$f_Y(y) =\frac{dF_Y(y)}{dy} = \frac{1}{\sigma_Y}\varphi(\frac{y}{\sigma_Y})$$
+$$F_Y(y)= \Phi(\frac{y-\eta_Y}{\sigma_Y})$$$$f_Y(y) =\frac{dF_Y(y)}{dy} = \frac{1}{\sigma_Y}\varphi(\frac{y-\eta_Y}{\sigma_Y})$$
 </div>
 </div>
 </div></section><section>
@@ -13671,8 +13663,8 @@ $$
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Propiedades-asint&#243;ticas">Propiedades asint&#243;ticas<a class="anchor-link" href="#Propiedades-asint&#243;ticas">&#182;</a></h3><h4 id="Aproximaci&#243;n-de-la-Distribuci&#243;n-Binomial">Aproximaci&#243;n de la Distribuci&#243;n Binomial<a class="anchor-link" href="#Aproximaci&#243;n-de-la-Distribuci&#243;n-Binomial">&#182;</a></h4><p>Conforme al <strong>Teorema de Moivre-Laplace</strong> la distribución Binomial $B(n,p)$ puede aproximarse por la distribución Normal $N(np, \sqrt(np(1-p)))$ cuando $n$ es grande y $p$ no está cerca de $0$ ni de $1$. El Teorema prueba la convergencia en el límite. En la práctica, se adopta la aproximación cuando $n &gt;20$ y $p \approx 0.5$. Cuanto mayor sea $n$ más puede apartarse $p$ del valor $0.5$, aunque nunca debe aproximarse a $0$ ni $1$.</p>
-$$B(n,p) \approx N(np, \sqrt(np(1-p)))$$<h4 id="Aproximaci&#243;n-de-la-Distribuci&#243;n-de-Poisson">Aproximaci&#243;n de la Distribuci&#243;n de Poisson<a class="anchor-link" href="#Aproximaci&#243;n-de-la-Distribuci&#243;n-de-Poisson">&#182;</a></h4><p>La distribución de Poisson $Pois(\lambda)$ puede aproximarse por la distribución Normal $N(\lambda, \lambda)$ cuando $\lambda$ es grande</p>
-$$Pois(\lambda) \approx N(\lambda, \lambda)$$
+$$B(n,p) \approx N(np, \sqrt{np(1-p)})$$<h4 id="Aproximaci&#243;n-de-la-Distribuci&#243;n-de-Poisson">Aproximaci&#243;n de la Distribuci&#243;n de Poisson<a class="anchor-link" href="#Aproximaci&#243;n-de-la-Distribuci&#243;n-de-Poisson">&#182;</a></h4><p>La distribución de Poisson $Pois(\lambda)$ puede aproximarse por la distribución Normal $N(\lambda, \lambda)$ cuando $\lambda$ es grande</p>
+$$Pois(\lambda) \approx N(\lambda, \sqrt{\lambda})$$
 </div>
 </div>
 </div></section></section><section><section>
