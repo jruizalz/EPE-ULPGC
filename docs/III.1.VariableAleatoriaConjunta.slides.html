@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +8,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+
 <title>III.1.VariableAleatoriaConjunta slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,19 +24,19 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -255,7 +255,6 @@ th {
   *:before,
   *:after {
     background: transparent !important;
-    color: #000 !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -6800,15 +6799,15 @@ button.close {
 *
 */
 /*!
- *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.2.0');
-  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../components/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../components/font-awesome/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../components/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../components/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -6865,6 +6864,19 @@ button.close {
   border: solid 0.08em #eee;
   border-radius: .1em;
 }
+.fa-pull-left {
+  float: left;
+}
+.fa-pull-right {
+  float: right;
+}
+.fa.fa-pull-left {
+  margin-right: .3em;
+}
+.fa.fa-pull-right {
+  margin-left: .3em;
+}
+/* Deprecated as of 4.4.0 */
 .pull-right {
   float: right;
 }
@@ -6880,6 +6892,10 @@ button.close {
 .fa-spin {
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
+}
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8);
 }
 @-webkit-keyframes fa-spin {
   0% {
@@ -6902,31 +6918,31 @@ button.close {
   }
 }
 .fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 .fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 .fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
@@ -7411,6 +7427,7 @@ button.close {
 .fa-twitter:before {
   content: "\f099";
 }
+.fa-facebook-f:before,
 .fa-facebook:before {
   content: "\f09a";
 }
@@ -7423,6 +7440,7 @@ button.close {
 .fa-credit-card:before {
   content: "\f09d";
 }
+.fa-feed:before,
 .fa-rss:before {
   content: "\f09e";
 }
@@ -8060,7 +8078,8 @@ button.close {
 .fa-male:before {
   content: "\f183";
 }
-.fa-gittip:before {
+.fa-gittip:before,
+.fa-gratipay:before {
   content: "\f184";
 }
 .fa-sun-o:before {
@@ -8164,7 +8183,7 @@ button.close {
 .fa-digg:before {
   content: "\f1a6";
 }
-.fa-pied-piper:before {
+.fa-pied-piper-pp:before {
   content: "\f1a7";
 }
 .fa-pied-piper-alt:before {
@@ -8290,6 +8309,7 @@ button.close {
   content: "\f1ce";
 }
 .fa-ra:before,
+.fa-resistance:before,
 .fa-rebel:before {
   content: "\f1d0";
 }
@@ -8303,6 +8323,8 @@ button.close {
 .fa-git:before {
   content: "\f1d3";
 }
+.fa-y-combinator-square:before,
+.fa-yc-square:before,
 .fa-hacker-news:before {
   content: "\f1d4";
 }
@@ -8470,6 +8492,657 @@ button.close {
 }
 .fa-meanpath:before {
   content: "\f20c";
+}
+.fa-buysellads:before {
+  content: "\f20d";
+}
+.fa-connectdevelop:before {
+  content: "\f20e";
+}
+.fa-dashcube:before {
+  content: "\f210";
+}
+.fa-forumbee:before {
+  content: "\f211";
+}
+.fa-leanpub:before {
+  content: "\f212";
+}
+.fa-sellsy:before {
+  content: "\f213";
+}
+.fa-shirtsinbulk:before {
+  content: "\f214";
+}
+.fa-simplybuilt:before {
+  content: "\f215";
+}
+.fa-skyatlas:before {
+  content: "\f216";
+}
+.fa-cart-plus:before {
+  content: "\f217";
+}
+.fa-cart-arrow-down:before {
+  content: "\f218";
+}
+.fa-diamond:before {
+  content: "\f219";
+}
+.fa-ship:before {
+  content: "\f21a";
+}
+.fa-user-secret:before {
+  content: "\f21b";
+}
+.fa-motorcycle:before {
+  content: "\f21c";
+}
+.fa-street-view:before {
+  content: "\f21d";
+}
+.fa-heartbeat:before {
+  content: "\f21e";
+}
+.fa-venus:before {
+  content: "\f221";
+}
+.fa-mars:before {
+  content: "\f222";
+}
+.fa-mercury:before {
+  content: "\f223";
+}
+.fa-intersex:before,
+.fa-transgender:before {
+  content: "\f224";
+}
+.fa-transgender-alt:before {
+  content: "\f225";
+}
+.fa-venus-double:before {
+  content: "\f226";
+}
+.fa-mars-double:before {
+  content: "\f227";
+}
+.fa-venus-mars:before {
+  content: "\f228";
+}
+.fa-mars-stroke:before {
+  content: "\f229";
+}
+.fa-mars-stroke-v:before {
+  content: "\f22a";
+}
+.fa-mars-stroke-h:before {
+  content: "\f22b";
+}
+.fa-neuter:before {
+  content: "\f22c";
+}
+.fa-genderless:before {
+  content: "\f22d";
+}
+.fa-facebook-official:before {
+  content: "\f230";
+}
+.fa-pinterest-p:before {
+  content: "\f231";
+}
+.fa-whatsapp:before {
+  content: "\f232";
+}
+.fa-server:before {
+  content: "\f233";
+}
+.fa-user-plus:before {
+  content: "\f234";
+}
+.fa-user-times:before {
+  content: "\f235";
+}
+.fa-hotel:before,
+.fa-bed:before {
+  content: "\f236";
+}
+.fa-viacoin:before {
+  content: "\f237";
+}
+.fa-train:before {
+  content: "\f238";
+}
+.fa-subway:before {
+  content: "\f239";
+}
+.fa-medium:before {
+  content: "\f23a";
+}
+.fa-yc:before,
+.fa-y-combinator:before {
+  content: "\f23b";
+}
+.fa-optin-monster:before {
+  content: "\f23c";
+}
+.fa-opencart:before {
+  content: "\f23d";
+}
+.fa-expeditedssl:before {
+  content: "\f23e";
+}
+.fa-battery-4:before,
+.fa-battery:before,
+.fa-battery-full:before {
+  content: "\f240";
+}
+.fa-battery-3:before,
+.fa-battery-three-quarters:before {
+  content: "\f241";
+}
+.fa-battery-2:before,
+.fa-battery-half:before {
+  content: "\f242";
+}
+.fa-battery-1:before,
+.fa-battery-quarter:before {
+  content: "\f243";
+}
+.fa-battery-0:before,
+.fa-battery-empty:before {
+  content: "\f244";
+}
+.fa-mouse-pointer:before {
+  content: "\f245";
+}
+.fa-i-cursor:before {
+  content: "\f246";
+}
+.fa-object-group:before {
+  content: "\f247";
+}
+.fa-object-ungroup:before {
+  content: "\f248";
+}
+.fa-sticky-note:before {
+  content: "\f249";
+}
+.fa-sticky-note-o:before {
+  content: "\f24a";
+}
+.fa-cc-jcb:before {
+  content: "\f24b";
+}
+.fa-cc-diners-club:before {
+  content: "\f24c";
+}
+.fa-clone:before {
+  content: "\f24d";
+}
+.fa-balance-scale:before {
+  content: "\f24e";
+}
+.fa-hourglass-o:before {
+  content: "\f250";
+}
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
+  content: "\f251";
+}
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
+  content: "\f252";
+}
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
+  content: "\f253";
+}
+.fa-hourglass:before {
+  content: "\f254";
+}
+.fa-hand-grab-o:before,
+.fa-hand-rock-o:before {
+  content: "\f255";
+}
+.fa-hand-stop-o:before,
+.fa-hand-paper-o:before {
+  content: "\f256";
+}
+.fa-hand-scissors-o:before {
+  content: "\f257";
+}
+.fa-hand-lizard-o:before {
+  content: "\f258";
+}
+.fa-hand-spock-o:before {
+  content: "\f259";
+}
+.fa-hand-pointer-o:before {
+  content: "\f25a";
+}
+.fa-hand-peace-o:before {
+  content: "\f25b";
+}
+.fa-trademark:before {
+  content: "\f25c";
+}
+.fa-registered:before {
+  content: "\f25d";
+}
+.fa-creative-commons:before {
+  content: "\f25e";
+}
+.fa-gg:before {
+  content: "\f260";
+}
+.fa-gg-circle:before {
+  content: "\f261";
+}
+.fa-tripadvisor:before {
+  content: "\f262";
+}
+.fa-odnoklassniki:before {
+  content: "\f263";
+}
+.fa-odnoklassniki-square:before {
+  content: "\f264";
+}
+.fa-get-pocket:before {
+  content: "\f265";
+}
+.fa-wikipedia-w:before {
+  content: "\f266";
+}
+.fa-safari:before {
+  content: "\f267";
+}
+.fa-chrome:before {
+  content: "\f268";
+}
+.fa-firefox:before {
+  content: "\f269";
+}
+.fa-opera:before {
+  content: "\f26a";
+}
+.fa-internet-explorer:before {
+  content: "\f26b";
+}
+.fa-tv:before,
+.fa-television:before {
+  content: "\f26c";
+}
+.fa-contao:before {
+  content: "\f26d";
+}
+.fa-500px:before {
+  content: "\f26e";
+}
+.fa-amazon:before {
+  content: "\f270";
+}
+.fa-calendar-plus-o:before {
+  content: "\f271";
+}
+.fa-calendar-minus-o:before {
+  content: "\f272";
+}
+.fa-calendar-times-o:before {
+  content: "\f273";
+}
+.fa-calendar-check-o:before {
+  content: "\f274";
+}
+.fa-industry:before {
+  content: "\f275";
+}
+.fa-map-pin:before {
+  content: "\f276";
+}
+.fa-map-signs:before {
+  content: "\f277";
+}
+.fa-map-o:before {
+  content: "\f278";
+}
+.fa-map:before {
+  content: "\f279";
+}
+.fa-commenting:before {
+  content: "\f27a";
+}
+.fa-commenting-o:before {
+  content: "\f27b";
+}
+.fa-houzz:before {
+  content: "\f27c";
+}
+.fa-vimeo:before {
+  content: "\f27d";
+}
+.fa-black-tie:before {
+  content: "\f27e";
+}
+.fa-fonticons:before {
+  content: "\f280";
+}
+.fa-reddit-alien:before {
+  content: "\f281";
+}
+.fa-edge:before {
+  content: "\f282";
+}
+.fa-credit-card-alt:before {
+  content: "\f283";
+}
+.fa-codiepie:before {
+  content: "\f284";
+}
+.fa-modx:before {
+  content: "\f285";
+}
+.fa-fort-awesome:before {
+  content: "\f286";
+}
+.fa-usb:before {
+  content: "\f287";
+}
+.fa-product-hunt:before {
+  content: "\f288";
+}
+.fa-mixcloud:before {
+  content: "\f289";
+}
+.fa-scribd:before {
+  content: "\f28a";
+}
+.fa-pause-circle:before {
+  content: "\f28b";
+}
+.fa-pause-circle-o:before {
+  content: "\f28c";
+}
+.fa-stop-circle:before {
+  content: "\f28d";
+}
+.fa-stop-circle-o:before {
+  content: "\f28e";
+}
+.fa-shopping-bag:before {
+  content: "\f290";
+}
+.fa-shopping-basket:before {
+  content: "\f291";
+}
+.fa-hashtag:before {
+  content: "\f292";
+}
+.fa-bluetooth:before {
+  content: "\f293";
+}
+.fa-bluetooth-b:before {
+  content: "\f294";
+}
+.fa-percent:before {
+  content: "\f295";
+}
+.fa-gitlab:before {
+  content: "\f296";
+}
+.fa-wpbeginner:before {
+  content: "\f297";
+}
+.fa-wpforms:before {
+  content: "\f298";
+}
+.fa-envira:before {
+  content: "\f299";
+}
+.fa-universal-access:before {
+  content: "\f29a";
+}
+.fa-wheelchair-alt:before {
+  content: "\f29b";
+}
+.fa-question-circle-o:before {
+  content: "\f29c";
+}
+.fa-blind:before {
+  content: "\f29d";
+}
+.fa-audio-description:before {
+  content: "\f29e";
+}
+.fa-volume-control-phone:before {
+  content: "\f2a0";
+}
+.fa-braille:before {
+  content: "\f2a1";
+}
+.fa-assistive-listening-systems:before {
+  content: "\f2a2";
+}
+.fa-asl-interpreting:before,
+.fa-american-sign-language-interpreting:before {
+  content: "\f2a3";
+}
+.fa-deafness:before,
+.fa-hard-of-hearing:before,
+.fa-deaf:before {
+  content: "\f2a4";
+}
+.fa-glide:before {
+  content: "\f2a5";
+}
+.fa-glide-g:before {
+  content: "\f2a6";
+}
+.fa-signing:before,
+.fa-sign-language:before {
+  content: "\f2a7";
+}
+.fa-low-vision:before {
+  content: "\f2a8";
+}
+.fa-viadeo:before {
+  content: "\f2a9";
+}
+.fa-viadeo-square:before {
+  content: "\f2aa";
+}
+.fa-snapchat:before {
+  content: "\f2ab";
+}
+.fa-snapchat-ghost:before {
+  content: "\f2ac";
+}
+.fa-snapchat-square:before {
+  content: "\f2ad";
+}
+.fa-pied-piper:before {
+  content: "\f2ae";
+}
+.fa-first-order:before {
+  content: "\f2b0";
+}
+.fa-yoast:before {
+  content: "\f2b1";
+}
+.fa-themeisle:before {
+  content: "\f2b2";
+}
+.fa-google-plus-circle:before,
+.fa-google-plus-official:before {
+  content: "\f2b3";
+}
+.fa-fa:before,
+.fa-font-awesome:before {
+  content: "\f2b4";
+}
+.fa-handshake-o:before {
+  content: "\f2b5";
+}
+.fa-envelope-open:before {
+  content: "\f2b6";
+}
+.fa-envelope-open-o:before {
+  content: "\f2b7";
+}
+.fa-linode:before {
+  content: "\f2b8";
+}
+.fa-address-book:before {
+  content: "\f2b9";
+}
+.fa-address-book-o:before {
+  content: "\f2ba";
+}
+.fa-vcard:before,
+.fa-address-card:before {
+  content: "\f2bb";
+}
+.fa-vcard-o:before,
+.fa-address-card-o:before {
+  content: "\f2bc";
+}
+.fa-user-circle:before {
+  content: "\f2bd";
+}
+.fa-user-circle-o:before {
+  content: "\f2be";
+}
+.fa-user-o:before {
+  content: "\f2c0";
+}
+.fa-id-badge:before {
+  content: "\f2c1";
+}
+.fa-drivers-license:before,
+.fa-id-card:before {
+  content: "\f2c2";
+}
+.fa-drivers-license-o:before,
+.fa-id-card-o:before {
+  content: "\f2c3";
+}
+.fa-quora:before {
+  content: "\f2c4";
+}
+.fa-free-code-camp:before {
+  content: "\f2c5";
+}
+.fa-telegram:before {
+  content: "\f2c6";
+}
+.fa-thermometer-4:before,
+.fa-thermometer:before,
+.fa-thermometer-full:before {
+  content: "\f2c7";
+}
+.fa-thermometer-3:before,
+.fa-thermometer-three-quarters:before {
+  content: "\f2c8";
+}
+.fa-thermometer-2:before,
+.fa-thermometer-half:before {
+  content: "\f2c9";
+}
+.fa-thermometer-1:before,
+.fa-thermometer-quarter:before {
+  content: "\f2ca";
+}
+.fa-thermometer-0:before,
+.fa-thermometer-empty:before {
+  content: "\f2cb";
+}
+.fa-shower:before {
+  content: "\f2cc";
+}
+.fa-bathtub:before,
+.fa-s15:before,
+.fa-bath:before {
+  content: "\f2cd";
+}
+.fa-podcast:before {
+  content: "\f2ce";
+}
+.fa-window-maximize:before {
+  content: "\f2d0";
+}
+.fa-window-minimize:before {
+  content: "\f2d1";
+}
+.fa-window-restore:before {
+  content: "\f2d2";
+}
+.fa-times-rectangle:before,
+.fa-window-close:before {
+  content: "\f2d3";
+}
+.fa-times-rectangle-o:before,
+.fa-window-close-o:before {
+  content: "\f2d4";
+}
+.fa-bandcamp:before {
+  content: "\f2d5";
+}
+.fa-grav:before {
+  content: "\f2d6";
+}
+.fa-etsy:before {
+  content: "\f2d7";
+}
+.fa-imdb:before {
+  content: "\f2d8";
+}
+.fa-ravelry:before {
+  content: "\f2d9";
+}
+.fa-eercast:before {
+  content: "\f2da";
+}
+.fa-microchip:before {
+  content: "\f2db";
+}
+.fa-snowflake-o:before {
+  content: "\f2dc";
+}
+.fa-superpowers:before {
+  content: "\f2dd";
+}
+.fa-wpexplorer:before {
+  content: "\f2de";
+}
+.fa-meetup:before {
+  content: "\f2e0";
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
 }
 /*!
 *
@@ -8750,6 +9423,10 @@ div.traceback-wrapper {
   max-width: 800px;
   margin: auto;
 }
+div.traceback-wrapper pre.traceback {
+  max-height: 600px;
+  overflow: auto;
+}
 /**
  * Primary styles
  *
@@ -8775,6 +9452,10 @@ body > #header {
   z-index: 100;
 }
 body > #header #header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
   padding-bottom: 5px;
   padding-top: 5px;
   box-sizing: border-box;
@@ -8806,13 +9487,16 @@ body > #header .header-bar {
   padding-top: 1px;
   padding-bottom: 1px;
 }
-@media (max-width: 991px) {
-  #ipython_notebook {
-    margin-left: 10px;
-  }
-}
 [dir="rtl"] #ipython_notebook {
+  margin-right: 10px;
+  margin-left: 0;
+}
+[dir="rtl"] #ipython_notebook.pull-left {
   float: right !important;
+  float: right;
+}
+.flex-spacer {
+  flex: 1;
 }
 #noscript {
   width: auto;
@@ -8847,8 +9531,14 @@ body > #header .header-bar {
 input.ui-button {
   padding: 0.3em 0.9em;
 }
+span#kernel_logo_widget {
+  margin: 0 10px;
+}
 span#login_widget {
   float: right;
+}
+[dir="rtl"] span#login_widget {
+  float: left;
 }
 span#login_widget > .button,
 #logout {
@@ -8964,6 +9654,9 @@ span#login_widget > .button .badge,
   overflow: auto;
   flex: 1;
 }
+.modal-header {
+  cursor: move;
+}
 @media (min-width: 768px) {
   .modal .modal-dialog {
     width: 700px;
@@ -8984,6 +9677,19 @@ span#login_widget > .button .badge,
   display: inline-block;
   margin-bottom: -4px;
 }
+[dir="rtl"] .center-nav form.pull-left {
+  float: right !important;
+  float: right;
+}
+[dir="rtl"] .center-nav .navbar-text {
+  float: right;
+}
+[dir="rtl"] .navbar-inner {
+  text-align: right;
+}
+[dir="rtl"] div.text-left {
+  text-align: right;
+}
 /*!
 *
 * IPython tree view
@@ -9000,34 +9706,42 @@ span#login_widget > .button .badge,
   margin: 0;
 }
 .alternate_upload input.fileinput {
-  text-align: center;
-  vertical-align: middle;
-  display: inline;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
   opacity: 0;
   z-index: 2;
-  width: 12ex;
-  margin-right: -12ex;
+}
+.alternate_upload .btn-xs > input.fileinput {
+  margin: -1px -5px;
 }
 .alternate_upload .btn-upload {
+  position: relative;
   height: 22px;
+}
+::-webkit-file-upload-button {
+  cursor: pointer;
 }
 /**
  * Primary styles
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
   padding-bottom: 4px;
+}
+[dir="rtl"] ul#tabs.nav-tabs > li {
+  float: right;
+}
+[dir="rtl"] ul#tabs.nav.nav-tabs {
+  padding-right: 0;
 }
 ul.breadcrumb a:focus,
 ul.breadcrumb a:hover {
@@ -9047,15 +9761,13 @@ ul.breadcrumb span {
 .list_toolbar .tree-buttons {
   padding-top: 1px;
 }
-[dir="rtl"] .list_toolbar .tree-buttons {
+[dir="rtl"] .list_toolbar .tree-buttons .pull-right {
   float: left !important;
+  float: left;
 }
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
+[dir="rtl"] .list_toolbar .col-sm-4,
+[dir="rtl"] .list_toolbar .col-sm-8 {
+  float: right;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9111,7 +9823,7 @@ ul.breadcrumb span {
 .list_item > div input {
   margin-right: 7px;
   margin-left: 14px;
-  vertical-align: baseline;
+  vertical-align: text-bottom;
   line-height: 22px;
   position: relative;
   top: -1px;
@@ -9121,6 +9833,9 @@ ul.breadcrumb span {
   margin-left: -1px;
   vertical-align: baseline;
   line-height: 22px;
+}
+[dir="rtl"] .list_item > div input {
+  margin-right: 0;
 }
 .new-file input[type=checkbox] {
   visibility: hidden;
@@ -9136,6 +9851,14 @@ ul.breadcrumb span {
   margin-left: 7px;
   line-height: 22px;
   vertical-align: baseline;
+}
+.item_modified {
+  margin-right: 7px;
+  margin-left: 7px;
+}
+[dir="rtl"] .item_modified.pull-right {
+  float: left !important;
+  float: left;
 }
 .item_buttons {
   line-height: 1em;
@@ -9164,6 +9887,14 @@ ul.breadcrumb span {
   margin-right: 7px;
   float: left;
 }
+[dir="rtl"] .item_buttons.pull-right {
+  float: left !important;
+  float: left;
+}
+[dir="rtl"] .item_buttons .kernel-name {
+  margin-left: 7px;
+  float: right;
+}
 .toolbar_info {
   height: 24px;
   line-height: 24px;
@@ -9189,18 +9920,32 @@ ul.breadcrumb span {
   background-color: transparent;
   font-weight: bold;
 }
+.sort_button {
+  display: inline-block;
+  padding-left: 7px;
+}
+[dir="rtl"] .sort_button.pull-right {
+  float: left !important;
+  float: left;
+}
 #tree-selector {
   padding-right: 0px;
-}
-[dir="rtl"] #tree-selector a {
-  float: right;
 }
 #button-select-all {
   min-width: 50px;
 }
+[dir="rtl"] #button-select-all.btn {
+  float: right ;
+}
 #select-all {
   margin-left: 7px;
   margin-right: 2px;
+  margin-top: 2px;
+  height: 16px;
+}
+[dir="rtl"] #select-all.pull-left {
+  float: right !important;
+  float: right;
 }
 .menu_icon {
   margin-right: 2px;
@@ -9218,6 +9963,12 @@ ul.breadcrumb span {
   -moz-osx-font-smoothing: grayscale;
   content: "\f114";
 }
+.folder_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.folder_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .folder_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -9234,6 +9985,12 @@ ul.breadcrumb span {
   content: "\f02d";
   position: relative;
   top: -1px;
+}
+.notebook_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.notebook_icon:before.fa-pull-right {
+  margin-left: .3em;
 }
 .notebook_icon:before.pull-left {
   margin-right: .3em;
@@ -9253,6 +10010,12 @@ ul.breadcrumb span {
   top: -1px;
   color: #5cb85c;
 }
+.running_notebook_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.running_notebook_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .running_notebook_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -9270,6 +10033,12 @@ ul.breadcrumb span {
   position: relative;
   top: -2px;
 }
+.file_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.file_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .file_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -9284,8 +10053,11 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
+#new-menu .dropdown-header {
+  font-size: 10px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 0 3px;
+  margin: -3px 20px 0;
 }
 .kernel-menu-icon {
   padding-right: 12px;
@@ -9332,9 +10104,6 @@ ul#new-menu {
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
 }
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
-}
 .delete-button {
   display: none;
 }
@@ -9342,6 +10111,12 @@ ul#new-menu {
   display: none;
 }
 .rename-button {
+  display: none;
+}
+.move-button {
+  display: none;
+}
+.download-button {
   display: none;
 }
 .shutdown-button {
@@ -9384,6 +10159,12 @@ ul#new-menu {
   -moz-osx-font-smoothing: grayscale;
   width: 20px;
 }
+.dirty-indicator.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator.fa-pull-right {
+  margin-left: .3em;
+}
 .dirty-indicator.pull-left {
   margin-right: .3em;
 }
@@ -9398,6 +10179,12 @@ ul#new-menu {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 20px;
+}
+.dirty-indicator-dirty.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator-dirty.fa-pull-right {
+  margin-left: .3em;
 }
 .dirty-indicator-dirty.pull-left {
   margin-right: .3em;
@@ -9414,6 +10201,12 @@ ul#new-menu {
   -moz-osx-font-smoothing: grayscale;
   width: 20px;
 }
+.dirty-indicator-clean.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator-clean.fa-pull-right {
+  margin-left: .3em;
+}
 .dirty-indicator-clean.pull-left {
   margin-right: .3em;
 }
@@ -9428,6 +10221,12 @@ ul#new-menu {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f00c";
+}
+.dirty-indicator-clean:before.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator-clean:before.fa-pull-right {
+  margin-left: .3em;
 }
 .dirty-indicator-clean:before.pull-left {
   margin-right: .3em;
@@ -9473,14 +10272,132 @@ ul#new-menu {
     box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   }
 }
+.CodeMirror-dialog {
+  background-color: #fff;
+}
 /*!
 *
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -9559,12 +10476,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -9577,27 +10502,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -9793,7 +10730,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -9803,11 +10742,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -10061,6 +11013,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -10099,7 +11054,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -10259,39 +11214,35 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 .rendered_html ul {
   list-style: disc;
-  margin: 0em 2em;
-  padding-left: 0px;
 }
 .rendered_html ul ul {
   list-style: square;
-  margin: 0em 2em;
+  margin-top: 0;
 }
 .rendered_html ul ul ul {
   list-style: circle;
-  margin: 0em 2em;
 }
 .rendered_html ol {
   list-style: decimal;
-  margin: 0em 2em;
-  padding-left: 0px;
 }
 .rendered_html ol ol {
   list-style: upper-alpha;
-  margin: 0em 2em;
+  margin-top: 0;
 }
 .rendered_html ol ol ol {
   list-style: lower-alpha;
-  margin: 0em 2em;
 }
 .rendered_html ol ol ol ol {
   list-style: lower-roman;
-  margin: 0em 2em;
 }
 .rendered_html ol ol ol ol ol {
   list-style: decimal;
-  margin: 0em 2em;
 }
 .rendered_html * + ul {
   margin-top: 1em;
@@ -10305,14 +11256,23 @@ div.output_unrecognized a:hover {
 }
 .rendered_html pre {
   margin: 1em 2em;
+  padding: 0px;
+  background-color: #fff;
+}
+.rendered_html code {
+  background-color: #eff0f1;
+}
+.rendered_html p code {
+  padding: 1px 5px;
+}
+.rendered_html pre code {
+  background-color: #fff;
 }
 .rendered_html pre,
 .rendered_html code {
   border: 0;
-  background-color: #fff;
   color: #000;
   font-size: 100%;
-  padding: 0px;
 }
 .rendered_html blockquote {
   margin: 1em 2em;
@@ -10320,24 +11280,36 @@ div.output_unrecognized a:hover {
 .rendered_html table {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid black;
+  border: none;
   border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
 }
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  margin: 1em 2em;
-}
-.rendered_html td,
-.rendered_html th {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
-  padding: 4px;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
 }
 .rendered_html th {
   font-weight: bold;
+}
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
 }
 .rendered_html * + table {
   margin-top: 1em;
@@ -10364,6 +11336,15 @@ div.output_unrecognized a:hover {
 .rendered_html img.unconfined,
 .rendered_html svg.unconfined {
   max-width: none;
+}
+.rendered_html .alert {
+  margin-bottom: initial;
+}
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] .rendered_html p {
+  text-align: right;
 }
 div.text_cell {
   /* Old browsers */
@@ -10418,8 +11399,17 @@ h6:hover .anchor-link {
   overflow-x: auto;
   overflow-y: hidden;
 }
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered .rendered_html td {
+  max-width: none;
+}
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -10556,6 +11546,28 @@ kbd {
   padding-top: 1px;
   padding-bottom: 1px;
 }
+.jupyter-keybindings {
+  padding: 1px;
+  line-height: 24px;
+  border-bottom: 1px solid gray;
+}
+.jupyter-keybindings input {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.jupyter-keybindings i {
+  padding: 6px;
+}
+.well code {
+  background-color: #ffffff;
+  border-color: #ababab;
+  border-width: 1px;
+  border-style: solid;
+  padding: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
 /* CSS for the cell toolbar */
 .celltoolbar {
   border: thin solid #CFCFCF;
@@ -10688,6 +11700,152 @@ select[multiple].celltoolbar select {
   margin-left: 5px;
   margin-right: 5px;
 }
+.tags_button_container {
+  width: 100%;
+  display: flex;
+}
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+}
+.tag-container > * {
+  margin: 0 4px;
+}
+.remove-tag-btn {
+  margin-left: 4px;
+}
+.tags-input {
+  display: flex;
+}
+.cell-tag:last-child:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  /* Fade to background color of cell toolbar */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), #EEE);
+}
+.tags-input > * {
+  margin-left: 4px;
+}
+.cell-tag,
+.tags-input input,
+.tags-input button {
+  display: block;
+  width: 100%;
+  height: 32px;
+  padding: 6px 12px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 1px;
+  box-shadow: none;
+  width: inherit;
+  font-size: inherit;
+  height: 22px;
+  line-height: 22px;
+  padding: 0px 4px;
+  display: inline-block;
+}
+.cell-tag:focus,
+.tags-input input:focus,
+.tags-input button:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.cell-tag::-moz-placeholder,
+.tags-input input::-moz-placeholder,
+.tags-input button::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.cell-tag:-ms-input-placeholder,
+.tags-input input:-ms-input-placeholder,
+.tags-input button:-ms-input-placeholder {
+  color: #999;
+}
+.cell-tag::-webkit-input-placeholder,
+.tags-input input::-webkit-input-placeholder,
+.tags-input button::-webkit-input-placeholder {
+  color: #999;
+}
+.cell-tag::-ms-expand,
+.tags-input input::-ms-expand,
+.tags-input button::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+.cell-tag[disabled],
+.tags-input input[disabled],
+.tags-input button[disabled],
+.cell-tag[readonly],
+.tags-input input[readonly],
+.tags-input button[readonly],
+fieldset[disabled] .cell-tag,
+fieldset[disabled] .tags-input input,
+fieldset[disabled] .tags-input button {
+  background-color: #eeeeee;
+  opacity: 1;
+}
+.cell-tag[disabled],
+.tags-input input[disabled],
+.tags-input button[disabled],
+fieldset[disabled] .cell-tag,
+fieldset[disabled] .tags-input input,
+fieldset[disabled] .tags-input button {
+  cursor: not-allowed;
+}
+textarea.cell-tag,
+textarea.tags-input input,
+textarea.tags-input button {
+  height: auto;
+}
+select.cell-tag,
+select.tags-input input,
+select.tags-input button {
+  height: 30px;
+  line-height: 30px;
+}
+textarea.cell-tag,
+textarea.tags-input input,
+textarea.tags-input button,
+select[multiple].cell-tag,
+select[multiple].tags-input input,
+select[multiple].tags-input button {
+  height: auto;
+}
+.cell-tag,
+.tags-input button {
+  padding: 0px 4px;
+}
+.cell-tag {
+  background-color: #fff;
+  white-space: nowrap;
+}
+.tags-input input[type=text]:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ccc;
+}
 .completions {
   position: absolute;
   z-index: 110;
@@ -10713,16 +11871,28 @@ select[multiple].celltoolbar select {
 .completions select option.context {
   color: #286090;
 }
-#kernel_logo_widget {
-  float: right !important;
-  float: right;
-}
 #kernel_logo_widget .current_kernel_logo {
   display: none;
   margin-top: -1px;
   margin-bottom: -1px;
   width: 32px;
   height: 32px;
+}
+[dir="rtl"] #kernel_logo_widget {
+  float: left !important;
+  float: left;
+}
+.modal .modal-body .move-path {
+  display: flex;
+  flex-direction: row;
+  justify-content: space;
+  align-items: center;
+}
+.modal .modal-body .move-path .server-root {
+  padding-right: 20px;
+}
+.modal .modal-body .move-path .path-input {
+  flex: 1;
 }
 #menubar {
   box-sizing: border-box;
@@ -10744,11 +11914,41 @@ select[multiple].celltoolbar select {
 #menubar .navbar-collapse {
   clear: left;
 }
+[dir="rtl"] #menubar .navbar-toggle {
+  float: right;
+}
+[dir="rtl"] #menubar .navbar-collapse {
+  clear: right;
+}
+[dir="rtl"] #menubar .navbar-nav {
+  float: right;
+}
+[dir="rtl"] #menubar .nav {
+  padding-right: 0px;
+}
+[dir="rtl"] #menubar .navbar-nav > li {
+  float: right;
+}
+[dir="rtl"] #menubar .navbar-right {
+  float: left !important;
+}
+[dir="rtl"] ul.dropdown-menu {
+  text-align: right;
+  left: auto;
+}
+[dir="rtl"] ul#new-menu.dropdown-menu {
+  right: auto;
+  left: 0;
+}
 .nav-wrapper {
   border-bottom: 1px solid #e7e7e7;
 }
 i.menu-icon {
   padding-top: 4px;
+}
+[dir="rtl"] i.menu-icon.pull-right {
+  float: left !important;
+  float: left;
 }
 ul#help_menu li a {
   overflow: hidden;
@@ -10756,6 +11956,17 @@ ul#help_menu li a {
 }
 ul#help_menu li a i {
   margin-right: -1.2em;
+}
+[dir="rtl"] ul#help_menu li a {
+  padding-left: 2.2em;
+}
+[dir="rtl"] ul#help_menu li a i {
+  margin-right: 0;
+  margin-left: -1.2em;
+}
+[dir="rtl"] ul#help_menu li a i.pull-right {
+  float: left !important;
+  float: left;
 }
 .dropdown-submenu {
   position: relative;
@@ -10765,6 +11976,10 @@ ul#help_menu li a i {
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
+}
+[dir="rtl"] .dropdown-submenu > .dropdown-menu {
+  right: 100%;
+  margin-right: -1px;
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -10783,11 +11998,23 @@ ul#help_menu li a i {
   margin-top: 2px;
   margin-right: -10px;
 }
+.dropdown-submenu > a:after.fa-pull-left {
+  margin-right: .3em;
+}
+.dropdown-submenu > a:after.fa-pull-right {
+  margin-left: .3em;
+}
 .dropdown-submenu > a:after.pull-left {
   margin-right: .3em;
 }
 .dropdown-submenu > a:after.pull-right {
   margin-left: .3em;
+}
+[dir="rtl"] .dropdown-submenu > a:after {
+  float: left;
+  content: "\f0d9";
+  margin-right: 0;
+  margin-left: -10px;
 }
 .dropdown-submenu:hover > a:after {
   color: #262626;
@@ -10804,6 +12031,10 @@ ul#help_menu li a i {
   float: right;
   z-index: 10;
 }
+[dir="rtl"] #notification_area {
+  float: left !important;
+  float: left;
+}
 .indicator_area {
   float: right !important;
   float: right;
@@ -10814,6 +12045,10 @@ ul#help_menu li a i {
   z-index: 10;
   text-align: center;
   width: auto;
+}
+[dir="rtl"] .indicator_area {
+  float: left !important;
+  float: left;
 }
 #kernel_indicator {
   float: right !important;
@@ -10831,6 +12066,12 @@ ul#help_menu li a i {
   padding-left: 5px;
   padding-right: 5px;
 }
+[dir="rtl"] #kernel_indicator {
+  float: left !important;
+  float: left;
+  border-left: 0;
+  border-right: 1px solid;
+}
 #modal_indicator {
   float: right !important;
   float: right;
@@ -10841,6 +12082,10 @@ ul#help_menu li a i {
   z-index: 10;
   text-align: center;
   width: auto;
+}
+[dir="rtl"] #modal_indicator {
+  float: left !important;
+  float: left;
 }
 #readonly-indicator {
   float: right !important;
@@ -10871,6 +12116,12 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   content: "\f040";
 }
+.edit_mode .modal_indicator:before.fa-pull-left {
+  margin-right: .3em;
+}
+.edit_mode .modal_indicator:before.fa-pull-right {
+  margin-left: .3em;
+}
 .edit_mode .modal_indicator:before.pull-left {
   margin-right: .3em;
 }
@@ -10885,6 +12136,12 @@ ul#help_menu li a i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: ' ';
+}
+.command_mode .modal_indicator:before.fa-pull-left {
+  margin-right: .3em;
+}
+.command_mode .modal_indicator:before.fa-pull-right {
+  margin-left: .3em;
 }
 .command_mode .modal_indicator:before.pull-left {
   margin-right: .3em;
@@ -10901,6 +12158,12 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   content: "\f10c";
 }
+.kernel_idle_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_idle_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .kernel_idle_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -10915,6 +12178,12 @@ ul#help_menu li a i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f111";
+}
+.kernel_busy_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_busy_icon:before.fa-pull-right {
+  margin-left: .3em;
 }
 .kernel_busy_icon:before.pull-left {
   margin-right: .3em;
@@ -10931,6 +12200,12 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   content: "\f1e2";
 }
+.kernel_dead_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_dead_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .kernel_dead_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -10945,6 +12220,12 @@ ul#help_menu li a i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f127";
+}
+.kernel_disconnected_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_disconnected_icon:before.fa-pull-right {
+  margin-left: .3em;
 }
 .kernel_disconnected_icon:before.pull-left {
   margin-right: .3em;
@@ -11335,27 +12616,46 @@ div#pager .ui-resizable-handle::after {
   flex: 1;
 }
 span.save_widget {
-  margin-top: 6px;
+  height: 30px;
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  width: 50%;
+  flex: 1;
 }
 span.save_widget span.filename {
-  height: 1em;
+  height: 100%;
   line-height: 1em;
-  padding: 3px;
   margin-left: 16px;
   border: none;
   font-size: 146.5%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   border-radius: 2px;
 }
 span.save_widget span.filename:hover {
   background-color: #e6e6e6;
 }
+[dir="rtl"] span.save_widget.pull-left {
+  float: right !important;
+  float: right;
+}
+[dir="rtl"] span.save_widget span.filename {
+  margin-left: 0;
+  margin-right: 16px;
+}
 span.checkpoint_status,
 span.autosave_status {
   font-size: small;
+  white-space: nowrap;
+  padding: 0 5px;
 }
 @media (max-width: 767px) {
   span.save_widget {
     font-size: small;
+    padding: 0 0 0 5px;
   }
   span.checkpoint_status,
   span.autosave_status {
@@ -11399,6 +12699,9 @@ span.autosave_status {
   margin-top: 0px;
   margin-left: 5px;
 }
+.toolbar-btn-label {
+  margin-left: 6px;
+}
 #maintoolbar {
   margin-bottom: -3px;
   margin-top: -8px;
@@ -11418,6 +12721,10 @@ span.autosave_status {
 }
 .select-xs {
   height: 24px;
+}
+[dir="rtl"] .btn-group > .btn,
+.btn-group-vertical > .btn {
+  float: right;
 }
 .pulse,
 .dropdown-menu > li > a.pulse,
@@ -11568,6 +12875,10 @@ ul.typeahead-list i {
   margin-left: -10px;
   width: 18px;
 }
+[dir="rtl"] ul.typeahead-list i {
+  margin-left: 0;
+  margin-right: -10px;
+}
 ul.typeahead-list {
   max-height: 80vh;
   overflow: auto;
@@ -11576,6 +12887,13 @@ ul.typeahead-list > li > a {
   /** Firefox bug **/
   /* see https://github.com/jupyter/notebook/issues/559 */
   white-space: normal;
+}
+ul.typeahead-list  > li > a.pull-right {
+  float: left !important;
+  float: left;
+}
+[dir="rtl"] .typeahead-list {
+  text-align: right;
 }
 .cmd-palette .modal-body {
   padding: 7px;
@@ -11587,10 +12905,19 @@ ul.typeahead-list > li > a {
   outline: none;
 }
 .no-shortcut {
-  display: none;
+  min-width: 20px;
+  color: transparent;
+}
+[dir="rtl"] .no-shortcut.pull-right {
+  float: left !important;
+  float: left;
+}
+[dir="rtl"] .command-shortcut.pull-right {
+  float: left !important;
+  float: left;
 }
 .command-shortcut:before {
-  content: "(command)";
+  content: "(command mode)";
   padding-right: 3px;
   color: #777777;
 }
@@ -11599,6 +12926,10 @@ ul.typeahead-list > li > a {
   padding-right: 3px;
   color: #777777;
 }
+[dir="rtl"] .edit-shortcut.pull-right {
+  float: left !important;
+  float: left;
+}
 #find-and-replace #replace-preview .match,
 #find-and-replace #replace-preview .insert {
   background-color: #BBDEFB;
@@ -11606,6 +12937,12 @@ ul.typeahead-list > li > a {
   border-style: solid;
   border-width: 1px;
   border-radius: 0px;
+}
+[dir="ltr"] #find-and-replace .input-group-btn + .form-control {
+  border-left: none;
+}
+[dir="rtl"] #find-and-replace .input-group-btn + .form-control {
+  border-right: none;
 }
 #find-and-replace #replace-preview .replace .match {
   background-color: #FFCDD2;
@@ -11730,45 +13067,6 @@ ul.typeahead-list > li > a {
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
-    </style>
-<style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
     </style>
 
 
@@ -11902,16 +13200,14 @@ a.anchor-link {
 <div class="slides">
 <section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="III.1-Variable-Aleatoria-Conjunta">III.1 Variable Aleatoria Conjunta<a class="anchor-link" href="#III.1-Variable-Aleatoria-Conjunta">&#182;</a></h1><h2 id="Introducci&#243;n">Introducci&#243;n<a class="anchor-link" href="#Introducci&#243;n">&#182;</a></h2><p>Consideremos el <strong>espacio de probabilidad</strong> $\mathscr{E}(\Omega, \mathscr{F}, P)$. Sobre él podemos definir no solo una, como ya hemos hecho, sino varias <strong>variables aleatorias</strong> $X_1, X_2, \ldots X_N$:</p>
-<p>$$\begin{align*}
+$$\begin{align*}
 X_n:  \mathscr{\Omega} &amp; \longmapsto \mathbb{R}\\
    \alpha &amp; \longmapsto X_i(\alpha)
    \end{align*}
-   $$</p>
-<p>Cada una de estas variables aleatorias puede ser discreta, continua o mixta. Al estar definidas sobre el mismo espacio de probabilidad, los distintos sucesos descritos por cada una de las variables aleatorias tendrán, en general una dependencia probabilística entre sí, y los valores de estas variables tendrán entre sí relaciones no deterministas. Caben dos casos extremos:</p>
+   $$<p>Cada una de estas variables aleatorias puede ser discreta, continua o mixta. Al estar definidas sobre el mismo espacio de probabilidad, los distintos sucesos descritos por cada una de las variables aleatorias tendrán, en general una dependencia probabilística entre sí, y los valores de estas variables tendrán entre sí relaciones no deterministas. Caben dos casos extremos:</p>
 <ul>
 <li><strong>Dependencia funcional</strong>: en cuyo caso las variables aleatorias satisfacen una ecuación sin componente aleatoria alguna</li>
 <li><strong>Independencia</strong>: si por cómo están construidas las variables aleatorias los sucesos que se representan con cada una de ellas son independientes dos a dos con los de todas las demás. En tal caso, <strong>los valores de unas variables aleatorias no ofrecen información alguna sobre las restantes</strong>.</li>
@@ -11921,25 +13217,20 @@ X_n:  \mathscr{\Omega} &amp; \longmapsto \mathbb{R}\\
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>El espacio aleatorio sobre el que se definen las variables aleatorias puede corresponder a un experimento compuesto (recordar lo visto en el Bloque I), de forma que cada una de las variables aleatorias se define sobre cada uno de los espacios que lo componen.</p>
-<p>$$\mathscr{E}(\Omega, \mathscr{F}, P) = \mathscr{E}_1(\Omega_1, \mathscr{F}_1, P_1) \times \ldots \times \mathscr{E}_N(\Omega_N, \mathscr{F}_N, P_N)$$</p>
-<p>$$\begin{align*}
+<p>El espacio aleatorio sobre el que se definen las variables aleatorias puede corresponder a un experimento compuesto (recordar lo visto en el tema de Probabilidad), de forma que cada una de las variables aleatorias se define sobre cada uno de los espacios que lo componen.</p>
+$$\mathscr{E}(\Omega, \mathscr{F}, P) = \mathscr{E}_1(\Omega_1, \mathscr{F}_1, P_1) \times \ldots \times \mathscr{E}_N(\Omega_N, \mathscr{F}_N, P_N)$$$$\begin{align*}
 X_n:  \mathscr{\Omega_n} &amp; \longmapsto \mathbb{R}\\
    \alpha &amp; \longmapsto X_n(\alpha)
    \end{align*}
-   $$</p>
-<p>Por supuesto, si los experimentos marginales (componentes del experimento compuesto) son independientes, también lo serán las variables aleatorias definidas sobre cada uno de ellos.</p>
-<p>Adviértase, no obstante, que <u>no es necesario definir varias variables aleatorias sobre experimentos compuestos</u>.</p>
+   $$<p>Por supuesto, si los experimentos marginales (componentes del experimento compuesto) son independientes, también lo serán las variables aleatorias definidas sobre cada uno de ellos. Adviértase, no obstante, que <u>no es necesario definir varias variables aleatorias sobre experimentos compuestos</u>.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Consideremos algunos ejemplos:</p>
 <ul>
@@ -11962,14 +13253,12 @@ X_n:  \mathscr{\Omega_n} &amp; \longmapsto \mathbb{R}\\
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Vectores-aleatorios">Vectores aleatorios<a class="anchor-link" href="#Vectores-aleatorios">&#182;</a></h3><p>Es habitual reunir todas las variables aleatorias como componentes de un vector aleatorio <em>n-dimensional</em>.</p>
-<p>$$\mathbf X = (X_1, \ldots X_N)^t$$</p>
-<p>Cada una de las variables aleatorias $X_n$, componentes del vector aleatorio $\mathbf X$, tiene una <strong>caracterización probabilística marginal</strong>, es decir, una a una por separado, descrita como se ha visto en los temas de variable aleatoria:</p>
+$$\mathbf X = (X_1, \ldots X_N)^\mathrm{T}$$<p>Cada una de las variables aleatorias $X_n$, componentes del vector aleatorio $\mathbf X$, tiene una <strong>caracterización probabilística marginal</strong>, es decir, una a una por separado, descrita como se ha visto en los temas de variable aleatoria:</p>
 <ul>
-<li>Funciones de distribución de probabilidad $F_{X_n}(x)$, que pueden expresarse como tablas con las funciones acumuladaa de probabilidad en el caso discreto, $F_{X_n}(x_i)$</li>
+<li>Funciones de distribución de probabilidad $F_{X_n}(x)$, que pueden expresarse como tablas con las funciones de probabilidad acumulada en el caso discreto, $F_{X_n}(x_i)$</li>
 <li>Funciones de densidad de probabilidad $f_{X_n}(x)$, que pueden expresarse mediante funciones de masa de probabilidad $f_{X_n}(x_i)$ en el caso discreto</li>
 <li>Momentos de orden $k$ no centrados, $E(X_n^k)$, y centrados en la media, $E((X_n-\eta_{X_n})^k)$. En particular:<ul>
 <li>Media: $\eta_{X_n}=E(X_n)$</li>
@@ -11984,90 +13273,72 @@ X_n:  \mathscr{\Omega_n} &amp; \longmapsto \mathbb{R}\\
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Secuencias-aleatorias-y-procesos-estoc&#225;sticos">Secuencias aleatorias y procesos estoc&#225;sticos<a class="anchor-link" href="#Secuencias-aleatorias-y-procesos-estoc&#225;sticos">&#182;</a></h3><p>Un caso interesante es cuando el número de variables aleatorias crece de forma indefinida y ya no es posible representarlo mediante un vector de dimensión finito, dando lugar a una <strong>secuencia aleatoria</strong>, $X[n]$. Se trata de una secuencia indefinida, en general sin comienzo y sin final, de muestras aleatorias, cada una de ellas representable mediante una variable aleatoria.</p>
 <p>Si en vez de una secuencia de muestras aleatorias consideramos una función que toma valores aleatorios, no sobre un índice discreto sino sobre todo el eje real (por ejemplo, un eje de tiempo), estamos ante un <strong>proceso estocástico</strong>, $X(t)$, en el que el valor que toma la función en cada instante es una variable aleatoria. Estrictamente, un proceso estocástico asigna a cada resultado de un experimento aleatorio una función real de variable real del conjunto $\mathcal{F}(\mathbb{R}, \mathbb{R})$:</p>
-<p>$$\begin{align*}
+$$\begin{align*}
 X:  \mathscr{\Omega} &amp; \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
    \alpha &amp; \longmapsto X(t, \alpha)
    \end{align*}
-   $$</p>
-<p>Adviértase que, si se fija el resultado $\alpha$ estamos ante una función determinista mientras que, si se fija el instante $t$ estamos ante una variable aleatoria.</p>
+   $$<p>Adviértase que, si se fija el resultado $\alpha$ estamos ante una función determinista mientras que, si se fija el instante $t$ estamos ante una variable aleatoria.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Para cada índice de la muestra o instante de tiempo puede hacerse una <strong>caracterización marginal de la secuencia o proceso</strong>:</p>
-<p>$$F_X(x; n) \quad f_X(x; n) \quad\qquad F_X(x; t) \quad f_X(x; t)$$</p>
-<p>Igualmente con los <strong>momentos</strong>. Por ejemplo:</p>
-<p>$$\eta_X[n] = E(X[n]) \qquad \sigma_X^2[n]=Var(X[n]) = E(X^2[n]) - \eta_X^2[n]$$</p>
-<p>$$\eta_X(t) = E(X(t)) \qquad \sigma_X^2(t)=Var(X(t)) = E(X^2(t)) - \eta_X^2(t)$$</p>
-
+$$F_X(x; n) \quad f_X(x; n) \quad\qquad F_X(x; t) \quad f_X(x; t)$$<p>Igualmente con los <strong>momentos</strong>. Por ejemplo:</p>
+$$\eta_X[n] = E(X[n]) \qquad \sigma_X^2[n]=Var(X[n]) = E(X^2[n]) - \eta_X^2[n]$$$$\eta_X(t) = E(X(t)) \qquad \sigma_X^2(t)=Var(X(t)) = E(X^2(t)) - \eta_X^2(t)$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Secuencias-y-procesos-estacionarios">Secuencias y procesos estacionarios<a class="anchor-link" href="#Secuencias-y-procesos-estacionarios">&#182;</a></h4><p>Si la caracterización probabilística de la secuencia o proceso es <strong>temporalmente invariante</strong>, esto es, si tal caracterización no depende de cuándo se establece el origen de tiempos o, altenativamente, de desplazar temporalmente la secuencia o el proceso, estamos ante una <strong>secuencia o proceso estacionario en sentido estricto</strong>. Dicho de otra manera, las caracterizaciones probabilísticas de $X(t)$ y de $X(t+t_0)$ son idénticas para cualquier $t_0 \in \mathbb{R}$. Igualmente pasa con $X[n]$ y $X[n+n_0]$ para cualquier $n_0 \in \mathbb{Z}$.</p>
 <p>Lógicamente la estacionariedad en sentido estricto conlleva que las funciones de distribución de probabilidad, las funciones de densidad de probabilidad y, en el caso discreto, las funciones de masa de probabilidad, así como todos los momentos, no varían a lo largo del tiempo o el índice de la muestra</p>
-<p>$$F_X(x; n)\equiv F_X(x) \quad f_X(x; n)\equiv f_X(x) \quad\qquad F_X(x; t)\equiv F_X(x) \quad f_X(x; t)\equiv f_X(x)$$</p>
-<p>$$ \eta_X[n] \equiv \eta_X \quad \sigma_X^2[n] \equiv \sigma_X^2 \quad\qquad \eta_X(t) \equiv \eta_X \quad \sigma_X^2(t) \equiv \sigma_X^2$$</p>
-
+$$F_X(x; n)\equiv F_X(x) \quad f_X(x; n)\equiv f_X(x) \quad\qquad F_X(x; t)\equiv F_X(x) \quad f_X(x; t)\equiv f_X(x)$$$$ \eta_X[n] \equiv \eta_X \quad \sigma_X^2[n] \equiv \sigma_X^2 \quad\qquad \eta_X(t) \equiv \eta_X \quad \sigma_X^2(t) \equiv \sigma_X^2$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Secuencias-y-procesos-erg&#243;dicos">Secuencias y procesos erg&#243;dicos<a class="anchor-link" href="#Secuencias-y-procesos-erg&#243;dicos">&#182;</a></h4><p>En principio, la estimación de parámetros estadísticos de secuencias y procesos aleatorios requiere promediar en los resultados del espacio probabilístico suyacente. Por ejemplo, si $N$ es el número de realizaciones, la media de un proceso $X(t)$ será:</p>
-<p>$$\eta_X(t) = \lim\limits_{N \to \infty} \frac{1}{N}\sum_{\alpha_i \in\Omega} X(t, \alpha_i)$$</p>
-<p>Frecuentemente esto no resulta práctico, pues no es posible repetir muchas veces el experimento para obtener cada una de las funciones y promediarlas.</p>
+$$\eta_X(t) = \lim\limits_{N \to \infty} \frac{1}{N}\sum_{\alpha_i \in\Omega} X(t, \alpha_i)$$<p>Frecuentemente esto no resulta práctico, pues no es posible repetir muchas veces el experimento para obtener cada una de las funciones y promediarlas.</p>
 <p>Sin embargo, <strong>para muchas secuencias o procesos estacionarios</strong> es posible estimar los parámetros estadísticos a partir de una única realización. En tal caso la secuencia o proceso es <strong>ergódica</strong>.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La idea es que es posible (no siempre) obtener tales estimaciones promediando a lo largo del tiempo o índice, en vez de hacerlo a lo largo de las distintas realizaciones. La ergodicidad es una propiedad muy útil que vincula la estadística con las secuencias y procesos estacionarios. Pero es también matemáticamente compleja, y no vamos a profundizar en ella.</p>
 <p>Por ejemplo, la media de un proceso estacionario y ergódico podría calcularse:</p>
-<p>$$\eta_X = \lim\limits_{T \to \infty} \frac{1}{2T}\int_{-T}^T X(t) dt \qquad \eta_X = \lim\limits_{N \to \infty} \frac{1}{2N+1}\sum_{-N}^N X[n]$$</p>
-<p>En términos prácticos, <u>si la secuencia o proceso es ergódico, podemos muestrearlo temporalmente para estimar sus parámetros estadísticos</u>.</p>
+$$\eta_X = \lim\limits_{T \to \infty} \frac{1}{2T}\int_{-T}^T X(t) dt \qquad \eta_X = \lim\limits_{N \to \infty} \frac{1}{2N+1}\sum_{-N}^N X[n]$$<p>En términos prácticos, <u>si la secuencia o proceso es ergódico, podemos muestrearlo temporalmente para estimar sus parámetros estadísticos</u>.</p>
 
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Se&#241;ales-aleatorias-y-ruido">Se&#241;ales aleatorias y ruido<a class="anchor-link" href="#Se&#241;ales-aleatorias-y-ruido">&#182;</a></h4><p>Cuando todas las variables aleatorias correspondientes tanto a las muestras de la secuencia aleatoria como a los instantes del proceso estocástico son <strong>independientes</strong> entre sí, decimos que la secuencia o el proceso es <strong>blanco</strong>. Una señal o secuencia aleatoria e indeseada suele denominarse <strong>ruido</strong>. El <strong>ruido blanco</strong> es una secuencia aleatoria, $N[n]$, o proceso estocástico, $N(t)$, en el que todas las variables aleatorias de las muestras o instantes son independientes entre sí.</p>
 <p>En ingeniería de telecomunicación y electrónica, así como en otras áreas de la ciencia y la técnica, es muy habitual considerar procesos estocásticos que modelan <strong>señales en ruido</strong>, donde $S(t)$ puede ser determinista desconocida o aleatoria, según sea el modelo que se aplique, respectivamente, clásico (basado en la <em>verosimilitud</em>) o bayesiano. El ruido es, por definición, siempre aleatorio:</p>
-<p>$$X(t) = S(t) + N(t)$$</p>
-<p>Al muestrear tales procesos, con $X[n] = S(n\Delta T_s)$, siendo $T_s$ el periodo de muestreo, obtenemos secuencias aleatorias de señal en ruido:</p>
-<p>$$X[n] = S[n] + N[n]$$</p>
-
+$$X(t) = S(t) + N(t)$$<p>Al muestrear tales procesos, con $X[n] = S(n\Delta T_s)$, siendo $T_s$ el periodo de muestreo, obtenemos secuencias aleatorias de señal en ruido:</p>
+$$X[n] = S[n] + N[n]$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Es también habitual trabajar sólo con las muestras correspondientes a un intervalo, no con toda la secuencia. En tales casos, se trabaja con un número finito y predeterminado de muestras que se ordenan en vectores aleatorios de dimensión $N$ (no confundir con el ruido), resultando el siguiente modelo:</p>
-<p>$$\mathbf X = \mathbf S + \mathbf N$$</p>
-<p>Los problemas más habituales ante los que nos encontramos son los siguientes:</p>
+$$\mathbf X = \mathbf S + \mathbf N$$<p>Los problemas más habituales ante los que nos encontramos son los siguientes:</p>
 <ul>
 <li><strong>Filtrado</strong> consiste en estimar la señal $S$ a pertir de las medidas ruidosas $X$. </li>
 <li><strong>Clasificación</strong> consiste en identificar la señal $S_i$ entre un conjunto finito de señales posibles a partir de medidas ruidosas.</li>
@@ -12080,18 +13351,36 @@ X:  \mathscr{\Omega} &amp; \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dos-variables-aleatorias-o-vector-aleatorio-bidimensional">Dos variables aleatorias o vector aleatorio bidimensional<a class="anchor-link" href="#Dos-variables-aleatorias-o-vector-aleatorio-bidimensional">&#182;</a></h2><p>Ya hemos visto la <strong>caracterización marginal</strong> de vectores y secuencias aleatorias y de procesos estocásticos. Sin embargo esto solo muestra vistas parciales de los mismos, una por cada variable aleatoria que podemos extraer. Hemos de añadir el conocimiento de la dependencia probabilística entre las variables aleatorias que los componen, lo que nos lleva a la <strong>caracterización conjunta de vectores y secuencias aleatorias y de procesos estocásticos</strong>. Es ilustrativo para ello estudiar en detalle el caso de dos variables aleatoria o vector aleatorio bidimensional, $\mathbf V = (X, Y)^t$, que tiene una fácil representación gráfica en el plano mediante un <strong>diagrama de dispersión</strong> de sus realizaciones.</p>
-<p>REPRESENTAR DIAGRAMAS DE DISPERSIÖN</p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing code_cell rendered celltag_remove_input">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
 </div>
-<div class="inner_cell">
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ya sabemos que las variables aleatorias, $X$ e $Y$ las definimos sobre un espacio de probabilidad subyacente $\mathscr{E}(\Omega, \mathscr{F}, P)$. Podemos definir sobre el plano $X \times Y$ conjuntos que serán sucesos de $\mathscr{F}$. Por ejemplo:</p>
 <ul>
@@ -12105,8 +13394,7 @@ X:  \mathscr{\Omega} &amp; \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Funci&#243;n-de-Distribuci&#243;n-Conjunta-de-Probabilidad">Funci&#243;n de Distribuci&#243;n Conjunta de Probabilidad<a class="anchor-link" href="#Funci&#243;n-de-Distribuci&#243;n-Conjunta-de-Probabilidad">&#182;</a></h3><p>Considérese un vector aleatorio $(X, Y)$ o, equivalentemente, dos variables aleatorias, $X$ e $Y$. Sus <strong>funciones de distribución marginales</strong> son:</p>
 <ul>
@@ -12114,21 +13402,19 @@ X:  \mathscr{\Omega} &amp; \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
 <li>$F_Y(y) = P(\{Y\leq y\}) \quad -\infty \leq y \leq \infty$</li>
 </ul>
 <p>El conocimiento de $F_X$ y $F_Y$ no es, en general, suficiente para poder obtener las probabilidades de sucesos del tipo $\{X\leq x, Y\leq y\}$. Necesitamos para ello conocer una función diferente, la <strong>función de distribución conjunta de probabilidad</strong>, $F_{XY}(x,y)$ del vector aleatorio $(X, Y)$ es:</p>
-<p>$$F_{XY}(x,y) = P\left(\{X\leq x, Y\leq y\}\right)$$</p>
-<p>Podemos considerar que  $F_{XY}(x,y)$ proporciona la <strong>masa de probabilidad acumulada en el cuadrante</strong> que queda a la izquierda de la línea vertical $X = x$ y por debajo de la línea horizontal $Y = y$</p>
+$$F_{XY}(x,y) = P\left(\{X\leq x, Y\leq y\}\right)$$<p>Podemos considerar que  $F_{XY}(x,y)$ proporciona la <strong>masa de probabilidad acumulada en el cuadrante</strong> que queda a la izquierda de la línea vertical $X = x$ y por debajo de la línea horizontal $Y = y$</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Las principales propiedades de $F_{XY}(x,y)$ son las siguientes, y se entienden intuitivamente sin más que considerar cómo se distribuye la masa de probabilidad en el plano:</p>
 <ul>
 <li>$F_{XY}(-\infty, y) = F_{XY}(x, -\infty) = 0 \quad \forall x,y \in \mathbb{R}$, pues no hay masa de probabilidad acumulada </li>
 <li>$F_{XY}(\infty, \infty) = 1$, pues corresponde a la totalidad de la masa de probabilidad</li>
-<li>$F_{XY}(x,y)$ es <strong>no decreciente</strong> tanto en $x$ como $y$. EN los puntos donde se localicen masas discretas de probabilidad $F_{XY}$ muestra discontinuidades de salto. En el resto, es continua. </li>
+<li>$F_{XY}(x,y)$ es <strong>no decreciente</strong> tanto en $x$ como $y$. En los puntos donde se localicen masas discretas de probabilidad $F_{XY}$ muestra discontinuidades de salto. En el resto, es continua. </li>
 <li>El suceso $\{x_1 &lt; X \leq x_2, Y \leq y\}$ es una franja vertical limitada por $X=x_1$ (sin incluir) y $X=x_2$ (incluido) cuya masa de probabilidad es $F_{XY}(x_2,y)-F_{XY}(x_1,y)$</li>
 <li>El suceso $\{X \leq x, y_1 &lt; Y \leq y_2\}$ es una franja horizontal limitada por $Y=y_1$ (sin incluir) e $Y=y_2$ (incluido) cuya masa de probabilidad es $F_{XY}(x,y_2)-F_{XY}(x,y_1)$</li>
 <li>El suceso $\{x_1 &lt;X\leq x_2 , \leq x, y_1 &lt; Y \leq y_2\}$ es un rectángulo limitado por $X=x_1$ (sin incluir, $X=x_2$ (incluido), $Y=y_1$ (sin incluir) e $Y=y_2$ (incluido), cuya masa de probabilidad es $F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)+F_{XY}(x_1,y_1)$</li>
@@ -12139,8 +13425,7 @@ X:  \mathscr{\Omega} &amp; \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Relaci&#243;n-entre-las-funciones-de-distribuci&#243;n-marginales-y-la-conjunta">Relaci&#243;n entre las funciones de distribuci&#243;n marginales y la conjunta<a class="anchor-link" href="#Relaci&#243;n-entre-las-funciones-de-distribuci&#243;n-marginales-y-la-conjunta">&#182;</a></h4><p><strong>Es inmediato obtener las funciones de distribución marginales a partir de la conjunta</strong>, sin más que entender que la ausencia de una variable aleatoria significa que puede darse cualquiera de ellos y, por tanto, debe cubrirse por completo el eje correspondiente:</p>
 <ul>
@@ -12148,81 +13433,65 @@ X:  \mathscr{\Omega} &amp; \longmapsto \mathcal{F}(\mathbb{R}, \mathbb{R})\\
 <li>$F_Y(y) = F_{XY}(\infty , y)$</li>
 </ul>
 <p>Sin embargo, como ya se ha dicho, <strong>no es posible, en general, obtener la distribución conjunta a partir de las marginales</strong>. La excepción es cuando <strong>ambas variables aleatorias son independientes</strong> pues, en tal caso:</p>
-<p>$$F_{XY}(x,y) = P\left(\{X \leq x\} \bigcap \{Y \leq y\}\right)=P(\{X \leq x\})P(\{Y \leq y\})= F_X(x)F_Y(y)$$</p>
-<p>Por tanto, si $X$ e $Y$ son <strong>variables aleatorias independientes</strong>: $F_{XY}(x,y) = F_X(x)F_Y(y) \quad \forall x,y \in \mathbb{R}$.</p>
+$$F_{XY}(x,y) = P\left(\{X \leq x\} \bigcap \{Y \leq y\}\right)=P(\{X \leq x\})P(\{Y \leq y\})= F_X(x)F_Y(y)$$<p>Por tanto, si $X$ e $Y$ son <strong>variables aleatorias independientes</strong>: $F_{XY}(x,y) = F_X(x)F_Y(y) \quad \forall x,y \in \mathbb{R}$.</p>
 
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Funci&#243;n-de-masa-de-probabilidad-conjunta">Funci&#243;n de masa de probabilidad conjunta<a class="anchor-link" href="#Funci&#243;n-de-masa-de-probabilidad-conjunta">&#182;</a></h3><p>Concentrémonos ahora en el caso en que tanto $X$ como $Y$ son discretas. Ya hemos visto que la función de distribución conjunta podemos expresarla mediante una tabla de probabilidades acumuladas indexada por las posiciones donde se localizan las masa de probabilidad. Es conveniente repasar la forma de hacerlo con una sola variable aleatoria.</p>
-<p>$$F_{XY}(x_i,y_j) \quad i,j \in \mathbb{Z}$$</p>
-<p>Podemos fácilmente obtener las masa de probabilidad en cada localización, e introducir con ello la <strong>función de masa de probabilidad conjunta</strong> del vector aleatorio $(X,Y)$ o de ambas variables aleatorias $X$ e $Y$:</p>
-<p>$$p_{XY}(x_i, y_j) \equiv P(X=x, Y=y) = F_{XY}(x_i, y_j) - F_{XY}(x_{i-1}, y_j) -  F_{XY}(x_i, y_{j-1}) + F_{XY}(x_{i-1}, y_{j-1})$$</p>
-
+$$F_{XY}(x_i,y_j) \quad i,j \in \mathbb{Z}$$<p>Podemos fácilmente obtener las masa de probabilidad en cada localización, e introducir con ello la <strong>función de masa de probabilidad conjunta</strong> del vector aleatorio $(X,Y)$ o de ambas variables aleatorias $X$ e $Y$:</p>
+$$p_{XY}(x_i, y_j) \equiv P(X=x, Y=y) = F_{XY}(x_i, y_j) - F_{XY}(x_{i-1}, y_j) -  F_{XY}(x_i, y_{j-1}) + F_{XY}(x_{i-1}, y_{j-1})$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La <strong>tabla de probabilidades acumuladas</strong> correspondiente a la función de distribución conjunta se obtiene a partir de la función de masa de probabilidad conjunta:</p>
-<p>$$F_{XY}(x_i, y_j) = \sum_{m=-\infty}^i\sum_{n=-\infty}^j p_{XY}(x_m, y_n)$$</p>
-<p>Es posible obtener una expresión recursiva para $F_{XY}(x_i,y_j)$ sin más que despejar:</p>
-<p>$$F_{XY}(x_i, y_j) = \left( F_{XY}(x_{i-1}, y_j) +  F_{XY}(x_i, y_{j-1}) - F_{XY}(x_{i-1}, y_{j-1})\right) + p_{XY}(x_i, y_j) $$</p>
-<p>Adviértase que, por tratarse de probabilidades, $p_{XY}(x_i, y_j) \geq 0$ y, también:</p>
-<p>$$F_{XY}(\infty, \infty) = 1 \implies \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty p_{XY}(x_i, y_j) = 1$$</p>
-
+$$F_{XY}(x_i, y_j) = \sum_{m=-\infty}^i\sum_{n=-\infty}^j p_{XY}(x_m, y_n)$$<p>Es posible obtener una expresión recursiva para $F_{XY}(x_i,y_j)$ sin más que despejar:</p>
+$$F_{XY}(x_i, y_j) = \left( F_{XY}(x_{i-1}, y_j) +  F_{XY}(x_i, y_{j-1}) - F_{XY}(x_{i-1}, y_{j-1})\right) + p_{XY}(x_i, y_j) $$<p>Adviértase que, por tratarse de probabilidades, $p_{XY}(x_i, y_j) \geq 0$ y, también:</p>
+$$F_{XY}(\infty, \infty) = 1 \implies \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty p_{XY}(x_i, y_j) = 1$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Relaci&#243;n-entre-las-funciones-de-masa-de-probabilidad-marginales-y-la-conjunta">Relaci&#243;n entre las funciones de masa de probabilidad marginales y la conjunta<a class="anchor-link" href="#Relaci&#243;n-entre-las-funciones-de-masa-de-probabilidad-marginales-y-la-conjunta">&#182;</a></h4><p>Considerando que $F_X(x_i)=F_{XY}(x_i,\infty)$ y que $p_X(x_i) = F_X(x_i)-F_X(x_{i-1})$, pueden obtenerse las funciones de masa de probabilidad marginales a partir de la conjunta:</p>
-<p>$$p_X(x_i) = \sum_{m=-\infty}^i\sum_{n=-\infty}^\infty p_{XY}(x_m, y_n) - \sum_{m=-\infty}^{i-1}\sum_{n=-\infty}^\infty p_{XY}(x_m, y_n) = \sum_{j=-\infty}^\infty p_{XY}(x_i, y_j)$$</p>
-<p>Igualmente,</p>
-<p>$$p_Y(y_j) = \sum_{i=-\infty}^\infty p_{XY}(x_i, y_j)$$</p>
-<p>En general, <strong>la función de masa de probabilidad conjunta no puede obtenerse a partir de las funciones marginales</strong>. Sin embargo, <strong>si ambas variables son independientes</strong>:</p>
-<p>$$p_{XY}(x_i, y_j) = P(X=x_i, Y=y_j) = p_X(x_i)p_Y(y_j) $$</p>
-
+$$p_X(x_i) = \sum_{m=-\infty}^i\sum_{n=-\infty}^\infty p_{XY}(x_m, y_n) - \sum_{m=-\infty}^{i-1}\sum_{n=-\infty}^\infty p_{XY}(x_m, y_n) = \sum_{j=-\infty}^\infty p_{XY}(x_i, y_j)$$<p>Igualmente,</p>
+$$p_Y(y_j) = \sum_{i=-\infty}^\infty p_{XY}(x_i, y_j)$$<p>En general, <strong>la función de masa de probabilidad conjunta no puede obtenerse a partir de las funciones marginales</strong>. Sin embargo, <strong>si ambas variables son independientes</strong>:</p>
+$$p_{XY}(x_i, y_j) = P(X=x_i, Y=y_j) = p_X(x_i)p_Y(y_j) $$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Ejemplo:-caracterizaci&#243;n-conjunta-de-dos-variables-aleatorias-discretas-independientes">Ejemplo: caracterizaci&#243;n conjunta de dos variables aleatorias discretas independientes<a class="anchor-link" href="#Ejemplo:-caracterizaci&#243;n-conjunta-de-dos-variables-aleatorias-discretas-independientes">&#182;</a></h4><p>Considérese el lanzamiento simultáneo de un dado trucado y de una moneda trucada. Representamos con la variable aleatoria $X_1$ los resultados del dado y con $X_2$ los de la moneda ($0$ es cara y $1$ es cruz). Las funciones de masa de probabilidad marginales son como sigue:</p>
-<p>$$
+$$
 X_1 \begin{array}{c|cccccc|c}
   x_{1_i} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp;  \\ 
   \hline
     p_{X_1}(x_i) &amp; \frac{1}{24} &amp; \frac{5}{24} &amp; \frac{5}{24} &amp; \frac{3}{24} &amp; \frac{4}{24} &amp; \frac{6}{24} &amp; \sum_i p_X(x_i)=1
  \end{array}
-$$</p>
-<p>$$
+$$$$
 X_2 \begin{array}{c|cc|c}
 x_{2_i} &amp; 0 &amp; 1\\
 \hline
 p_{X_2}(x_{2_i}) &amp; \frac{11}{24} &amp; \frac{13}{24} &amp; \sum_i p_X(x_i) = 1
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Considerando que ambos lanzamientos son independientes, resulta la siguiente función de masa de probabilidad conjunta. Téngase en cuenta que, <u>para cualesquiera otrso valores de las variables aleatorias no presentes en la tabla, la masa de probbailidad es cero</u>.</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
 p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
 \hline
@@ -12240,20 +13509,16 @@ p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{
 \hline
 p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) &amp; \frac{11}{24} &amp; \frac{13}{24} &amp; 1
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La tabla con la función acumulada de probabilidad se obtiene de forma inmediata con la expresión recursiva ya vista:</p>
-<p>$$F_{X_1X_2}(x_{1_i}x_{2_j})= \left(F_{X_1X_2}(x_{1_{i-1}}x_{2_{j}})+F_{X_1X_2}(x_{1_{i}}x_{2_{j-1}})- F_{X_1X_2}(x_{1_{i-1}}x_{2_{j-1}})\right) + p_{X_1X_2}(x_{1_i}x_{2_j})$$</p>
-<p>Aunque, por supuesto, también podemos simplemente acumular probabilidades:</p>
-<p>$$F_{X_1X_2}(x_{1_i}, x_{2_j}) = \sum_{x_1=1}^{x_{1_i}}\sum_{x_2=0}^{x_{2_j}} p_{X_1X_2}(x_1, x_2)$$</p>
-<p>Adviértase también que las funciones de distribución marginales se obtienen también de la tabla:</p>
+$$F_{X_1X_2}(x_{1_i}x_{2_j})= \left(F_{X_1X_2}(x_{1_{i-1}}x_{2_{j}})+F_{X_1X_2}(x_{1_{i}}x_{2_{j-1}})- F_{X_1X_2}(x_{1_{i-1}}x_{2_{j-1}})\right) + p_{X_1X_2}(x_{1_i}x_{2_j})$$<p>Aunque, por supuesto, también podemos simplemente acumular probabilidades:</p>
+$$F_{X_1X_2}(x_{1_i}, x_{2_j}) = \sum_{m=-\infty}^{i}\sum_{n=-\infty}^{j} p_{X_1X_2}(x_{1_m}, x_{2_n})$$<p>Adviértase también que las funciones de distribución marginales se obtienen también de la tabla:</p>
 <ul>
 <li>$F_{X_1}(x_{1_i}) = F_{X_1X_2}(x_{1_i}, \infty) = F_{X_1X_2}(x_{1_i}, 1) = F_{X_1X_2}(x_{1_i}, 2)\ldots$</li>
 <li>$F_{X_2}(x_{2_j}) = F_{X_1X_2}(\infty, x_{2_j}) = F_{X_1X_2}(6, x_{2_j}) = F_{X_1X_2}(7, x_{2_j})\ldots$</li>
@@ -12263,10 +13528,9 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c|c}
 F_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; -1 &amp; 0 &amp; 1 &amp; 2\\
 \hline
@@ -12286,17 +13550,15 @@ F_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; -1 &amp; 0 &amp; 1 &amp; 2\\
 \hline
 7 &amp; 0 &amp; \frac{264}{24^2} = \frac{11}{24} &amp; \frac{576}{24^2} = \frac{24}{24}= 1 &amp; 1
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Caracterizaci&#243;n-conjunta-de-dos-variables-aleatorias-discretas-(caso-general)">Caracterizaci&#243;n conjunta de dos variables aleatorias discretas (caso general)<a class="anchor-link" href="#Caracterizaci&#243;n-conjunta-de-dos-variables-aleatorias-discretas-(caso-general)">&#182;</a></h4><p>Consideremos ahora que lanzamos un dado y una moneda, trucados de tal manera que hay dependencia entre sus resultados. En este caso nos tienen que dar tal dependencia en forma de una tabla con la función de masa de probabilidad conjunta, a partir de la cual podemos obtener las marginales (pero no al revés):</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
 p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
 \hline
@@ -12314,18 +13576,16 @@ p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{
 \hline
 p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) &amp; \frac{11}{24} &amp; \frac{13}{24} &amp; 1
 \end{array}
-$$</p>
-<p>Adviértase que se ha mantenido para el ejemplo las mismas funciones de masa de probabilidad marginales que en el ejemplo anterior, si bien la función de masa de probabilidad conjunta es diferente.</p>
+$$<p>Adviértase que se ha mantenido para el ejemplo las mismas funciones de masa de probabilidad marginales que en el ejemplo anterior, si bien la función de masa de probabilidad conjunta es diferente.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La función de masa de probabilidad acumulada es ahora:</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
 F_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; F_{X_1}(x_{1_i}) = F_{X_1X_2}(x_{1_i}, \infty)\\
 \hline
@@ -12343,106 +13603,86 @@ F_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; F_{X_1}(x_{1_i}) = F_{X_1X_2}
 \hline
 F_{X_2}(x_{2_j}) = F_{X_1X_2}(\infty, x_{2_j}) &amp; \frac{11}{24} &amp; 1 &amp; 
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Funci&#243;n-de-densidad-de-probabilidad-conjunta">Funci&#243;n de densidad de probabilidad conjunta<a class="anchor-link" href="#Funci&#243;n-de-densidad-de-probabilidad-conjunta">&#182;</a></h3><p>Consideremos ahora que las variables aleatorias $X$ e $Y$ son continuas.Por igual razón que en el caso de una única variable aleatoria, en general, la masa de probabilidad en un punto es nula, $P(X=x, Y=y)=0$. Ello hace necesario recurrir a densidades de probabilidad, generalizanzdo lo visto en el caso de una variable aleatoria. La función de densidad de probabilidad conjunta del vector aleatorio $(X, Y)$, o de ambas variables aleatorias $X$ e $Y$, se define como sigue a partir de la función de distribución de probabilidad conjunta $F_{XY}(x,y)$:</p>
-<p>$$
+$$
 f_{XY}(x, y)=\frac{\partial^{2} F_{XY}(x, y)}{\partial x \partial y }\geq 0
-$$</p>
-<p>que es positiva o nula por ser $F_{XY}(x,y)$ no decreciente. Además:</p>
-<p>$$
+$$<p>que es positiva o nula por ser $F_{XY}(x,y)$ no decreciente. Además:</p>
+$$
 F_{XY}(x, y)=\int_{-\infty}^{x} \int_{-\infty}^{y} f_{XY}(u, v) du dv
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Si se ponen la derivadas parciales como límites, de forma semejante a como se hizo con una sola variable aleatoria:</p>
-<p>$$
+$$
 f_{XY}(x, y)=\frac{\partial^{2} F_{XY}(x, y)}{\partial x \partial y } = \lim \limits_{\Delta x \Delta y \to 0} \frac{F_{XY}(x+\Delta x/2, y+\Delta y/2)-F_{XY}(x-\Delta x/2, y+\Delta y/2)-F_{XY}(x+\Delta x/2, y-\Delta y/2)+F_{XY}(x-\Delta x/2, y-\Delta y/2)}{\Delta x \Delta y}= \\ 
 \lim \limits_{\Delta x \Delta y \to 0} \frac{P\left(\{(x-\Delta x/2) &lt; x \leq (x+\Delta x/2)\} \bigcap \{(y-\Delta y/2) &lt; y \leq (y+\Delta y/2)\} \right)}{\Delta x \Delta y} 
-$$</p>
-<p>Donde se hace uso de un suceso rectangular infinitesimal centrado en $X=x$, $Y=y$. Por tanto:</p>
-<p>$$
+$$<p>Donde se hace uso de un suceso rectangular infinitesimal centrado en $X=x$, $Y=y$. Por tanto:</p>
+$$
 P\left(\{(x-\Delta x/2) &lt; x \leq (x+\Delta x/2)\} \bigcap \{(y-\Delta y/2) &lt; y \leq (y+\Delta y/2)\} \right) \approx f_{XY}(x, y) \Delta x \Delta y
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Puede asimismo calcularse la masa de probabilidad continua en un dominio $D$ arbitrario:</p>
-<p>$$
+$$
 P\{(x, y) \in D\}=\int \int_{D} f_{XY}(x, y) dx dy
-$$</p>
-<p>De la definición, se obtienen fácilmente las <strong>funciones de densidad marginales</strong>:</p>
-<p>$$
+$$<p>De la definición, se obtienen fácilmente las <strong>funciones de densidad marginales</strong>:</p>
+$$
 f_{X}(x)=\frac{\partial F_{XY}(x, \infty)}{\partial x} = \int_{-\infty}^{\infty} f_{XY}(x, y) dy
-$$</p>
-<p>$$
+$$$$
 f_{Y}(y)=\frac{\partial F_{XY}(\infty , y)}{\partial y} = \int_{-\infty}^{\infty} f_{XY}(x, y) dx
-$$</p>
-<p>Además, como siempre, la masa total de probabilidad es la unidad:</p>
-<p>$$
+$$<p>Además, como siempre, la masa total de probabilidad es la unidad:</p>
+$$
  F_{XY}(\infty , \infty) = 1 \implies \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{XY}(x, y) d x d y=1
-$$</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Distribuciones-condicionadas">Distribuciones condicionadas<a class="anchor-link" href="#Distribuciones-condicionadas">&#182;</a></h3><p>La función de distribución conjunta puede resultar condicionada por un suceso $M$, sin más que extender lo visto para una variable aleatoria:</p>
-<p>$$
+$$
 F_{XY}(x, y | M)=P(\{X \leq x, Y \leq y\} \ | \ M)= \frac{P(\{X \leq x, Y \leq y\} \bigcap M)}{P(M)}
-$$</p>
-<p>Si las variables aleatorias $X$ e $Y$ son discretas, la función de masa de probabilidad conjunta condicionada por $M$ es:</p>
-<p>$$p_{XY}(x_i,y_j | M) = \frac{P(\{X=x_i,Y=y_j\}\bigcap M)}{P(M)} $$</p>
-<p>Adviértase que $\sum_i\sum_j p_{XY}(x_i,y_j | M) =1$</p>
+$$<p>Si las variables aleatorias $X$ e $Y$ son discretas, la función de masa de probabilidad conjunta condicionada por $M$ es:</p>
+$$p_{XY}(x_i,y_j | M) = \frac{P(\{X=x_i,Y=y_j\}\bigcap M)}{P(M)} $$<p>Adviértase que $\sum_i\sum_j p_{XY}(x_i,y_j | M) =1$</p>
 <p>Y en caso de que las variables aleatorias fueran continuas, la función de densidad de probabilidad conjunta condicionada es:</p>
-<p>$$
+$$
 f_{XY}(x, y | M)=\frac{\partial^{2} F_{XY}(x, y | M)}{\partial x \partial y }
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Podemos también definir la probabilidad de un suceso $M$ condicionada por un valor arbitrario $(x_i,y_j)$ del vector aleatorio $(X,Y)$. Para ello no hay más que advertir que $\{(X=x_i, Y=y_j)\}$ es un suceso del espacio muestral:</p>
-<p>$$P(M \ | \ \{X=x_i,Y=y_j\})= \frac{P(M \bigcap \{X=x_i, Y=y_j\})}{P(\{X=x_i, Y=y_j\})}=\frac{P(M \bigcap \{X=x_i,Y=y_j\})}{p_{XY}(x_i,y_j)}$$</p>
-<p>Mantendremos el habitual abuso de notación $P(M | x_i,y_j)\equiv P(M | X=x_i,Y=y_j)$. Adviértase que $P(M | x_i,y_j) \neq p_{XY}(x_i,y_j | M)$, como resulta del Teorema de Bayes.</p>
+$$P(M \ | \ \{X=x_i,Y=y_j\})= \frac{P(M \bigcap \{X=x_i, Y=y_j\})}{P(\{X=x_i, Y=y_j\})}=\frac{P(M \bigcap \{X=x_i,Y=y_j\})}{p_{XY}(x_i,y_j)}$$<p>Mantendremos el habitual abuso de notación $P(M | x_i,y_j)\equiv P(M | X=x_i,Y=y_j)$. Adviértase que $P(M | x_i,y_j) \neq p_{XY}(x_i,y_j | M)$, como resulta del Teorema de Bayes.</p>
 <p>En el caso de variables aleatorias continuas, cuando el suceso condicionante es del tipo $\{X=x, Y=y\}$ es necesario considerar un suceso rectangular infinitesimal centrado en dicho punto, pues la masa de probabilidad puntual es nula. Las expresiones resultan semejantes a las del caso discreto, pero utilizando funciones de densidad en vez de funciones de masa de probabilidad.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En particular, es posible obtener las masas de probabilidad de una variable aleatoria discreta condicionada por la otra:</p>
-<p>$$p_{X | Y}(x_i | y_j)=\frac{p_{XY}(x_i,y_j)}{p_Y(y_j)}$$</p>
-<p>$$p_{Y|X}(y_j | x_j)=\frac{p_{XY}(x_i,y_j)}{p_X(x_i)}$$</p>
-<p>Adviértase que las probabilidades condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
+$$p_{X | Y}(x_i | y_j)=\frac{p_{XY}(x_i,y_j)}{p_Y(y_j)}$$<p></p>
+$$p_{Y|X}(y_j | x_j)=\frac{p_{XY}(x_i,y_j)}{p_X(x_i)}$$<p>Adviértase que las probabilidades condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
 <ul>
 <li>Si la variable cuyos valores se observan es $X$ la verosimiltud de los valores de $Y$ es $L(y_j)=p_{X | Y}(x_i | y_j)$</li>
 <li>Si la variable cuyos valores se observan es $Y$ la verosimiltud de los valores de $X$ es $L(x_i)=p_{Y | X}(y_j | x_i)$</li>
@@ -12453,13 +13693,11 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>De forma semejante, si las variables aleatorias son continuas, las funciones de densidad de probabilidad condcionadas resultan:</p>
-<p>$$f_{X | Y}(x | y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$</p>
-<p>$$f_{Y | X}(y | x)=\frac{f_{XY}(x,y)}{f_X(x)}$$</p>
-<p>Igual que antes, las funciones de probabilidad condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
+$$f_{X | Y}(x | y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$<p></p>
+$$f_{Y | X}(y | x)=\frac{f_{XY}(x,y)}{f_X(x)}$$<p>Igual que antes, las funciones de probabilidad condicionadas proporcionan verosimilitudes dadas las observaciones. En particular:</p>
 <ul>
 <li>Si la variable cuyos valores se observan es $X$ la verosimiltud de los valores de $Y$ es $L(y)=p_{X | Y}(x | y)$</li>
 <li>Si la variable cuyos valores se observan es $Y$ la verosimiltud de los valores de $X$ es $L(x)=p_{Y | X}(y | x)$</li>
@@ -12470,13 +13708,12 @@ $$</p>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Tomando las $p_{X_1X_2}(x_i,y_j)$ y $p_{X_1}(x_{1_i})$ del ejemplo anterior obtenemos $p_{X_2 | X_1}(x_{2_j} | x_{1_i})$:</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
-p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
+p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_2 | X_1}(x_{2_j} | x_{1_i})\\
 \hline
 1 &amp; \frac{\frac{1}{24}}{\frac{1}{24}}=1 &amp; \frac{0}{\frac{1}{24}}=0 &amp; 1\\
 \hline
@@ -12490,17 +13727,15 @@ p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}
 \hline
 6 &amp; \frac{\frac{4}{24}}{\frac{6}{24}}=\frac{4}{6} &amp; \frac{\frac{2}{24}}{\frac{6}{24}}=\frac{2}{6} &amp; 1\\
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Igualmente obtenemos $p_{X_1 | X_2}(x_{1_i} | x_{2_j})$ a partir de $p_{X_1X_2}(x_i,y_j)$ y $p_{X_2}(x_{2_j})$:</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c}
 p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
@@ -12518,129 +13753,100 @@ p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 \sum_i p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 1 &amp; 1 
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Teorema-de-la-Probabilidad-Total">Teorema de la Probabilidad Total<a class="anchor-link" href="#Teorema-de-la-Probabilidad-Total">&#182;</a></h3><p>Es una extensión inmediata del visto para una única variable aleatoria. Consideremos una partición del espacio muestral y que conocemos las probabilidades <em>a priori</em> de los sucesos de la misma, $P(M_p)$:</p>
-<p>$$
+$$
 M_p \in \mathscr{P}(\Omega) \, p=1\ldots N\iff  \begin{matrix}
   \bigcup_{p=1}^N M_p = \Omega &amp;  \\
   M_p \cap M_q = \emptyset &amp; p\neq q  
  \end{matrix}
-$$</p>
-<p>Si conocemos las funciones de de distribución de probabilidad condicionada conjunta de un vector aleatorio $(X,Y)$  condicionadas por todos los sucesos de dicha partición $F_{XY}(x,y/M_p)$, es fácil obtener la función de distribución total (sin condicionar):</p>
-<p>$$F_{XY}(x,y) = \sum_{p=1}^N F_{XY}(x,y | M_p)P(M_p)$$</p>
-
+$$<p>Si conocemos las funciones de de distribución de probabilidad condicionada conjunta de un vector aleatorio $(X,Y)$  condicionadas por todos los sucesos de dicha partición $F_{XY}(x,y/M_p)$, es fácil obtener la función de distribución total (sin condicionar):</p>
+$$F_{XY}(x,y) = \sum_{p=1}^N F_{XY}(x,y | M_p)P(M_p)$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Para el <strong>caso discreto</strong>, el Teorema de la Probabilidad Total puede expresarse a partir de las funciones de masa de probabilidad $p_{XY}(x_i,y_j | M_p)$, de modo que la función de masa de probabilidad total (sin condicionar) conjunta del vector aleatorio $(X,Y)$ resulta:</p>
-<p>$$p_{XY}(x_i,y_j) = \sum_{p=1}^N p_{XY}(x_i,y_j | M_p)P(M_p)$$</p>
-<p>En el <strong>caso continuo</strong>, si conocemos las funciones de densidad de probabilidad condicionadas, $f_{XY}(x,y | M_p)$, la función de densidad de probabilidad total (sin condicionar) conjunta del vector aleatorio $(X,Y)$ es</p>
-<p>$$f_{XY}(x,y) = \sum_{p=1}^N f_{XY}(x,y | M_p)P(M_p)$$.</p>
+$$p_{XY}(x_i,y_j) = \sum_{p=1}^N p_{XY}(x_i,y_j | M_p)P(M_p)$$<p>En el <strong>caso continuo</strong>, si conocemos las funciones de densidad de probabilidad condicionadas, $f_{XY}(x,y | M_p)$, la función de densidad de probabilidad total (sin condicionar) conjunta del vector aleatorio $(X,Y)$ es</p>
+$$f_{XY}(x,y) = \sum_{p=1}^N f_{XY}(x,y | M_p)P(M_p)$$<p>.</p>
 <p>El Teorema de la Probabilidad Total permite obtener <strong>mezclas (mixture) de distribuciones</strong>. consistentes en la superposición ponderada de varias distribuciones, algo muy útil en la práctica.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La probabilidad total también puede aplicarse de forma alternativa, si lo que se conocen son las probabilidades un suceso arbitrario $M$ condicionadas por cada uno de los valores posibles del vector aleatorio $(X,Y)$, esto es, si se conocen $P(M | x_i,y_j)\equiv P(M | \ \{X=x_i,Y=y_j\})$, en el caso discreto, y $P(M | x,y)\equiv P(M | \ \{X=x,Y=y\})$, en el caso continuo.</p>
 <p>En tal caso, la probabilidad total del suceso $M$ (sin condicionar) es, para el caso discreto,</p>
-<p>$$P(M) = \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)$$</p>
-<p>Y, para el caso continuo,</p>
-<p>$$P(M) = \int_{-\infty}^\infty\int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y) dx dy$$</p>
-
+$$P(M) = \sum_{i=-\infty}^\infty\sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)$$<p>Y, para el caso continuo,</p>
+$$P(M) = \int_{-\infty}^\infty\int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y) dx dy$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En el caso del vector aleatorio discreto, si disponemos de la verosimilitud o función de masa de probabilidad condicionada de una variable (observación) respecto de la otra (condicionante) y de la función de masa de probabilidad marginal <em>apriori</em> de la variable condicionante, resulta la función de masa de probabilidad total marginal de las observaciones:</p>
-<p>$$p_{X}(x_i) = \sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)$$</p>
-<p>$$p_{Y}(y_i) = \sum_i p_{Y | X}(y_j | x_i)p_{X}(x_i)$$</p>
-<p>Y si el vector aleatorio es continuo:</p>
-<p>$$f_{X}(x) = \int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y) dy$$</p>
-<p>$$f_{Y}(y) = \int_{-\infty}^\infty f_{Y | X}(y | x)f_{X}(x) dx$$</p>
-
+$$p_{X}(x_i) = \sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)$$$$p_{Y}(y_i) = \sum_i p_{Y | X}(y_j | x_i)p_{X}(x_i)$$<p>Y si el vector aleatorio es continuo:</p>
+$$f_{X}(x) = \int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y) dy$$$$f_{Y}(y) = \int_{-\infty}^\infty f_{Y | X}(y | x)f_{X}(x) dx$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Teorema-de-Bayes">Teorema de Bayes<a class="anchor-link" href="#Teorema-de-Bayes">&#182;</a></h3><p>El Teorema de Bayes puede obtenerse en distinta formas, para lo cual es necesario recordar su definición y, si el suceso condicionante es un valor de una variable aleatoria continua y, por ello, tiene una masa de probabilidad infinitesimal, hay que considerar un rectángulo infinitesimal.</p>
 <p>Veamos una primera forma, que hace uso de la función e distribución conjunta y de un suceso arbitario $M$:</p>
-<p>$$P(M | \ \{X \leq x, Y \leq y\}) = \frac{F_{XY}(x,y | M)P(M)}{F_{XY}(x,y)}$$</p>
-<p>$$F_{XY}(x,y | M) = \frac{P(M | \ \{X \leq x, Y \leq y\} )F_{XY}(x,y)}{P(M)}$$</p>
-
+$$P(M | \ \{X \leq x, Y \leq y\}) = \frac{F_{XY}(x,y | M)P(M)}{F_{XY}(x,y)}$$$$F_{XY}(x,y | M) = \frac{P(M | \ \{X \leq x, Y \leq y\} )F_{XY}(x,y)}{P(M)}$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En el <strong>caso discreto</strong>, es inmediato obtener el <strong>Teorema de Bayes</strong> a partir de la definición de función de masa de probablidad conjunta condicionada (recordar que $P(M | x_i,y_j)\equiv P(M \ \ \{X=x_i,Y=y_j\})$):</p>
-<p>$$p_{XY}(x_i,y_j | M) = \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{P(M)} \iff P(M |x_i,y_j) = \frac{p_{XY}(x_i,y_j/M)P(M)}{p_{XY}(x_i,y_j)}$$</p>
-<p>Con frecuencia, los denominadores de las expresiones anteriores se obtienen mediante el <em>Teorema de la Probabilidad Total</em>, pues tan sólo se conocen las probabilidades condicionadas:</p>
-<p>$$
+$$p_{XY}(x_i,y_j | M) = \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{P(M)} \iff P(M |x_i,y_j) = \frac{p_{XY}(x_i,y_j/M)P(M)}{p_{XY}(x_i,y_j)}$$<p>Con frecuencia, los denominadores de las expresiones anteriores se obtienen mediante el <em>Teorema de la Probabilidad Total</em>, pues tan sólo se conocen las probabilidades condicionadas:</p>
+$$
 \begin{align*}
 p_{XY}(x_i,y_j | M) &amp;= \frac{P(M | x_i,y_j)p_{XY}(x_i,y_j)}{\sum_{i=-\infty}^\infty \sum_{j=-\infty}^\infty P(M | x_i,y_j) p_{XY}(x_i,y_j)} \\ 
 P(M | x_i,y_j) &amp;= \frac{p_{XY}(x_i,y_j | M)P(M)}{p_{XY}(x_i,y_j | M)P(M)+p_{XY}(x_i,y_j | \overline M)(1-P(M))}
 \end{align*}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En el caso del vector aleatorio, si disponemos de la verosimilitud o función de masa de probabilidad condicionada de una variable (observación) respecto de la otra (condicionante) y de la función de masa de probabilidad marginal <em>a priori</em> de la variable condicionante, el Teorema de Bayes permite obtener la probabilidad <em>a posteriori</em> de la variable condicionante, dadas las observaciones:</p>
-<p>$$p_{X | Y}(x_i | y_j) = \frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{p_Y(y_j)}=\frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{\sum_i p_{Y | X}(y_j |x_i)p_{X}(x_i)}$$</p>
-<p>$$p_{Y | X}(y_j | x_i) = \frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{p_X(x_i)}=\frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{\sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)}$$</p>
-
+$$p_{X | Y}(x_i | y_j) = \frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{p_Y(y_j)}=\frac{p_{Y | X}(y_j | x_i)p_X(x_i)}{\sum_i p_{Y | X}(y_j |x_i)p_{X}(x_i)}$$$$p_{Y | X}(y_j | x_i) = \frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{p_X(x_i)}=\frac{p_{X | Y}(x_i | y_j)p_Y(y_j)}{\sum_j p_{X | Y}(x_i | y_j)p_{Y}(y_j)}$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Para el <strong>caso continuo</strong> las expresiones anteriores se adaptan sustituyendo funciones de masa de probabilidad por funciones de densidad y sumatorios por integrales:</p>
-<p>$$f_{XY}(x,y | M) = \frac{P(M | x,y)p_{XY}(x,y)}{P(M)} \iff P(M |x,y) = \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y)}$$</p>
-<p>$$
+$$f_{XY}(x,y | M) = \frac{P(M | x,y)p_{XY}(x,y)}{P(M)} \iff P(M |x,y) = \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y)}$$$$
 \begin{align*}
 f_{XY}(x,y | M) &amp;= \frac{P(M | x,y)f_{XY}(x,y)}{\int_{-\infty}^\infty \int_{-\infty}^\infty P(M | x,y) f_{XY}(x,y)dxdy} \\ 
 P(M | x,y) &amp;= \frac{f_{XY}(x,y | M)P(M)}{f_{XY}(x,y | M)P(M)+f_{XY}(x,y | \overline M)(1-P(M))}
 \end{align*}
-$$</p>
-<p>$$f_{X | Y}(x | y) = \frac{f_{Y | X}(y | x)f_X(x)}{f_Y(y)}=\frac{f_{Y | X}(y | x)f_X(x)}{\int_{-\infty}^\infty f_{Y |f X}(y |x)f_{X}(x)dx}$$</p>
-<p>$$f_{Y | X}(y | x) = \frac{f_{X | Y}(x | y)f_Y(y)}{f_X(x)}=\frac{f_{X | Y}(x | y)f_Y(y)}{\int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y)dy}$$</p>
-
+$$$$f_{X | Y}(x | y) = \frac{f_{Y | X}(y | x)f_X(x)}{f_Y(y)}=\frac{f_{Y | X}(y | x)f_X(x)}{\int_{-\infty}^\infty f_{Y |f X}(y |x)f_{X}(x)dx}$$$$f_{Y | X}(y | x) = \frac{f_{X | Y}(x | y)f_Y(y)}{f_X(x)}=\frac{f_{X | Y}(x | y)f_Y(y)}{\int_{-\infty}^\infty f_{X | Y}(x | y)f_{Y}(y)dy}$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Consideremos en el ejemplo del lanzamiento del dado y moneda trucados y dependientes entre sí que las observaciones son las caras del dado $X_1$ y queremos hacer inferencia sobre el lado de la moneda $X_2$</p>
 <ul>
@@ -12653,11 +13859,10 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Verosimilitudes</strong>: si sale 1, 4 ó 6 seleccionamos cara (0), y cruz (1) en los restantes casos:</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c}
 L(x_{2_j}) = p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
@@ -12675,18 +13880,16 @@ L(x_{2_j}) = p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 \sum_i p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 1 &amp; 1 
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Probabilidades <em>a priori</em> de los lados de la moneda</strong>: $p_{X_2}(0)= \frac{11}{24} \quad p_{X_2}(1)= \frac{13}{24}$.</p>
 <p><strong>Probabilidades totales de las observaciones del dado</strong>: $p_{X_1}(x_{1_i}) = \sum_j p_{X_1 | X_2}(x_{1_i} | x_{2_j})p_{X_2}(x_{2_j})$</p>
-<p>$$
+$$
 \begin{array}{c|c}
 x_{1_i}&amp; p_{X_1}(x_{1_i}) \\
 \hline
@@ -12704,17 +13907,15 @@ x_{1_i}&amp; p_{X_1}(x_{1_i}) \\
 \hline
 \sum_i p_{X_1}(x_{1_i}) &amp; 1 
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Probabilidades <em>a posteriori</em> de los lados de la moneda, dadas las observaciones del dado</strong>: De nuevo seleccionamos cara (0) si sale 1, 4 ó 6 y cruz (1) en los restantes casos. Aunque en este ejemplo coinciden las elecciones utilizando los criterios <strong>ML</strong> (máxima verosimilitud) y <strong>MAP</strong> (máximo a posteriori), en general no tiene por qué ser así:</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
 p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
 \hline
@@ -12730,58 +13931,50 @@ p_{X_2 | X_1}(x_{2_j} | x_{1_i}) &amp; 0 &amp; 1 &amp; \sum_j p_{X_1X_2}(x_{1_i}
 \hline
 6 &amp; \frac{4}{6} &amp; \frac{2}{6} &amp; 1\\
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Probabilidades de acierto y de error</strong>: para cada observación, el criterio <strong>MAP</strong> da la probabilidad de acertar, que es máxima. Por tanto, su complementario a 1 da la probabilidad de error, que es mínima:</p>
-<p>$$
+$$
 Acierto \begin{array}{c|cccccc|c}
   x_{1_i} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp;  \\ 
   \hline
     P(A | x_{1_i}) &amp; 1 &amp; \frac{3}{5} &amp; \frac{4}{5} &amp; \frac{2}{3} &amp; \frac{3}{4} &amp; \frac{4}{6} &amp; \sum_i p_X(x_i)=1
  \end{array}
-$$</p>
-<p>La probabilidad total de acierto es:</p>
-<p>$$P(A) = \sum_i P(A | x_{1_i}) p_{x_{1_i}} =  
-1\frac{1}{24} + \frac{3}{5}\frac{5}{24} + \frac{4}{5}\frac{5}{24} + \frac{2}{3}\frac{3}{24} + \frac{3}{4}\frac{4}{24} + \frac{4}{6}\frac{6}{24} =\frac{17}{24}$$</p>
-
+$$<p>La probabilidad total de acierto es:</p>
+$$P(A) = \sum_i P(A | x_{1_i}) p_{x_{1_i}} =  
+1\frac{1}{24} + \frac{3}{5}\frac{5}{24} + \frac{4}{5}\frac{5}{24} + \frac{2}{3}\frac{3}{24} + \frac{3}{4}\frac{4}{24} + \frac{4}{6}\frac{6}{24} =\frac{17}{24}$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>$$
+$$
 Error \begin{array}{c|cccccc|c}
   x_{1_i} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp;  \\ 
   \hline
     P(E | x_{1_i}) &amp; 0 &amp; \frac{2}{5} &amp; \frac{1}{5} &amp; \frac{1}{3} &amp; \frac{1}{4} &amp; \frac{2}{6} &amp; \sum_i p_X(x_i)=1
  \end{array}
-$$</p>
-<p>La probabilidad total de error es:</p>
-<p>$$P(E) = \sum_i P(E | x_{1_i}) p_{x_{1_i}} =  
-0\frac{1}{24} + \frac{2}{5}\frac{5}{24} + \frac{1}{5}\frac{5}{24} + \frac{1}{3}\frac{3}{24} + \frac{1}{4}\frac{4}{24} + \frac{2}{6}\frac{6}{24} =\frac{7}{24}$$</p>
-
+$$<p>La probabilidad total de error es:</p>
+$$P(E) = \sum_i P(E | x_{1_i}) p_{x_{1_i}} =  
+0\frac{1}{24} + \frac{2}{5}\frac{5}{24} + \frac{1}{5}\frac{5}{24} + \frac{1}{3}\frac{3}{24} + \frac{1}{4}\frac{4}{24} + \frac{2}{6}\frac{6}{24} =\frac{7}{24}$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La probabilidad conjunta nos proporciona toda la información precedente muy fácilmente:</p>
 <ul>
 <li>Regla de decisión (ver tabla): (1, cara), (4, cara), (6, cara) (2, cruz), (3, cruz), (5, cruz)</li>
 <li>$P(A) = p_{X_1X_2}(1,0)+p_{X_1X_2}(4,0)+p_{X_1X_2}(6,0)+p_{X_1X_2}(2,1)+p_{X_1X_2}(3,1)+p_{X_1X_2}(5,x)=\frac{17}{24}$:</li>
 </ul>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c|c}
 p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
 \hline
@@ -12799,14 +13992,12 @@ p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{
 \hline
 p_{X_2}(x_{2_j}) = \sum_i p_{X_1X_2}(x_{1_i}x_{2_j}) &amp; \frac{11}{24} &amp; \frac{13}{24} &amp; 1
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Representaci&#243;n-matricial">Representaci&#243;n matricial<a class="anchor-link" href="#Representaci&#243;n-matricial">&#182;</a></h3><p>El manejo de las tablas anteriores puede facilitarse haciendo uso de vectores y matrices de probabilidades. Considerando que la variable aleatoria $X$ puede tomar $M$ valores y que la $Y$ puede tomar $N$:</p>
 <ul>
@@ -12834,8 +14025,7 @@ p_{Y | X}(y_1 | x_N) &amp; \ldots &amp; p_{Y | X}(y_M | x_N) &amp;
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Teorema de la Probabilidad Total: se hace uso del producto de matrices para multiplicar un vector fila por una matriz de probabilidades condicionadas y obtener otro vector fila:<ul>
@@ -12858,48 +14048,41 @@ p_{XY}(x_1,y_N) &amp; \ldots &amp; p_{XY}(x_M,y_N) &amp;
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Funci&#243;n-de-dos-variables-aleatorias">Funci&#243;n de dos variables aleatorias<a class="anchor-link" href="#Funci&#243;n-de-dos-variables-aleatorias">&#182;</a></h3><p>Consideremos un vector aleatorio discreto $(X,Y)$. Podemos aplicar sobre sus componentes una función $g$ que devolverá valores aleatorios, al serlo también sus variables independientes. Lo representamos como sigue:</p>
-<p>$$Z = g(X,Y)$$</p>
-<p>Cada par $(x_i, y_j)$ de $(X, Y)$ se transformará por la función en un nuevo valor $z_k$ de $Z$. Adviértase que valores distintos $(x_i,y_j) \neq (x_m, y_n)$ pueden dar lugar a valores iguales $z_k = y_j$ con tal que $g(x_i,y_j)=g(x_m,y_n)$. Por tanto, definimos la función de masa de probabilidad de $Z$ como sigue:</p>
-<p>$$p_Z(z_k) = \sum_{\substack{i,j \\ g(x_i.y_j) = z_k}}p_{XY}(x_i, y_j)$$</p>
-<p>Adviértase que tal y como está expuesto no podemos invertir la trasformación, pues al tratarse de una función de dos variables necesitaríamos una segunda función. No vamos a profundizar en la formulación matemática, y vamos a desarrollar la intuición con un ejemplo.</p>
+$$Z = g(X,Y)$$<p>Cada par $(x_i, y_j)$ de $(X, Y)$ se transformará por la función en un nuevo valor $z_k$ de $Z$. Adviértase que valores distintos $(x_i,y_j) \neq (x_m, y_n)$ pueden dar lugar a valores iguales $z_k = y_j$ con tal que $g(x_i,y_j)=g(x_m,y_n)$. Por tanto, definimos la función de masa de probabilidad de $Z$ como sigue:</p>
+$$p_Z(z_k) = \sum_{\substack{i,j \\ g(x_i.y_j) = z_k}}p_{XY}(x_i, y_j)$$<p>Adviértase que tal y como está expuesto no podemos invertir la trasformación, pues al tratarse de una función de dos variables necesitaríamos una segunda función. No vamos a profundizar en la formulación matemática, y vamos a desarrollar la intuición con un ejemplo.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Ejemplo</strong></p>
 <p>Supongamos el lanzamiento de sucesivo e independiente de dos monedas, cutos resultados modelamos con las variables aleatorias $X$ e $y$. En cada caso, cero significa cara y uno significa cruz. La funciones de masa de probabilidad marginales son las siguientes:</p>
-<p>$$
+$$
 \begin{array}{c|cc|c}
 X &amp; 0 &amp; 1 \\
 \hline
 p_X(x_i) &amp; \frac{1}{3} &amp; \frac{2}{3}  &amp; \sum_i p_X(x_i) = 1
 \end{array}
-$$</p>
-<p>$$
+$$$$
 \begin{array}{c|cc|c}
 Y &amp; 0 &amp; 1 \\
 \hline
 p_Y(x_j) &amp; \frac{5}{6} &amp; \frac{1}{6}  &amp; \sum_i p_Y(y_j) = 1
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Al ser ambas variaples aleatorias independientes puede obtenerse la distribución conjunta a partir de las marginales: $p_{XY}(x_i,y_j)=p_X(x_i)p_Y(y_j)$</p>
-<p>$$
+$$
 Y \\X \begin{array}{c|c|c|c}
 p_{XY}(x_{i}, y_{j}) &amp; 0 &amp; 1 &amp; p_{X}(x_{i}) = \sum_j p_{XY}(x_{i}y_{j})\\
 \hline
@@ -12909,79 +14092,62 @@ p_{XY}(x_{i}, y_{j}) &amp; 0 &amp; 1 &amp; p_{X}(x_{i}) = \sum_j p_{XY}(x_{i}y_{
 \hline
 p_{Y}(y_{j}) = \sum_i p_{XY}(x_{i}y_{j}) &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; 1
 \end{array}
-$$</p>
-<p>La función de masa de probabilidad de la suma de ambas variables aleatorias es:</p>
-<p>$$
+$$<p>La función de masa de probabilidad de la suma de ambas variables aleatorias es:</p>
+$$
 \begin{array}{c|c|c|c|c}
 Z = X+Y &amp; 0 &amp; 1 &amp; 2\\
 \hline
 p_Z(z_k) &amp; \frac{5}{8} &amp; \frac{1}{18} +\frac{10}{18} = \frac{11}{18} &amp;\frac{2}{18}  &amp; \sum_i p_Y(y_j) = 1
 \end{array}
-$$</p>
-
+$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Una propiedad muy importante de la <strong>suma de dos variables aleatorias discretas independientes</strong> permite obtener la función de masa de probabilidad de la variable aleatoria suma a partir de las de las dos sumandos:</p>
 <blockquote><p>La función de masa de probabilidad de la suma de dos variables aleatorias discretas <strong>independientes</strong>, $Z = X+Y$, se obtiene mediante la <strong>convolución</strong> discreta de las funciones de masa de probabilidad de de cada uno de los sumandos:</p>
 </blockquote>
-<p>$$p_Z(z_i)= p_X(x_i)*p_Y(y_i)=\sum_{k=-\infty}^\infty p_X(x_k)p_Y(y_{i-k})=\sum_{k=-\infty}^\infty p_Y(y_k)p_X(x_{i-k}) $$</p>
-<p>La convolución es una operación matemática que se realiza entre dos secuencias o señales y que se verá en la asignatura de Señales y Sistemas. No vamos a profundizar aquí en su cálculo.</p>
+$$p_Z(z_i)= p_X(x_i)*p_Y(y_i)=\sum_{k=-\infty}^\infty p_X(x_k)p_Y(y_{i-k})=\sum_{k=-\infty}^\infty p_Y(y_k)p_X(x_{i-k}) $$<p>La convolución es una operación matemática que se realiza entre dos secuencias o señales y que se verá en la asignatura de Señales y Sistemas. No vamos a profundizar aquí en su cálculo.</p>
 
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">Esperanza Matem&#225;tica y Valor Medio. Momentos<a class="anchor-link" href="#Esperanza-Matem&#225;tica-y-Valor-Medio.-Momentos">&#182;</a></h3><p>Se define la esperanza matemática de una función $g(X, Y)$ de dos variables aleatorias discretas como sigue:</p>
-<p>$$E\left(g(X, Y)\right)=\sum_i\sum_j g(x_i,y_j)p_{XY}(x_i,y_j)$$</p>
-<p>Si las variables aleatorias son continuas:</p>
-<p>$$E\left(g(X, Y)\right)=\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f_{XY}(x,y)dxdy$$</p>
-
+$$E\left(g(X, Y)\right)=\sum_i\sum_j g(x_i,y_j)p_{XY}(x_i,y_j)$$<p>Si las variables aleatorias son continuas:</p>
+$$E\left(g(X, Y)\right)=\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f_{XY}(x,y)dxdy$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Como ya se vio en el caso unidimensional, es fácil advertir que el operador $E(·)$ es <strong>lineal</strong>:</p>
-<p>$$E(a_1g_1(X,Y)+a_2g_2(X,Y))=a_1E(g_1(X,Y)) + a_2E(g_2(X,Y))$$</p>
-<p>donde $a_1$ y $a_2$ son coeficiente constantes arbitrarios y $g_1$ y $g_2$ son dos funciones. También es evidente que, si $k$ es una constante arbitraria</p>
-<p>$$E(k) = k$$</p>
-<p>De la linealidad se concluye inmediatamente:</p>
-<p>$$E(X+Y) = E(X) + E(Y)$$</p>
-<p>$$E(kX) = kE(X)$$</p>
-
+$$E(a_1g_1(X,Y)+a_2g_2(X,Y))=a_1E(g_1(X,Y)) + a_2E(g_2(X,Y))$$<p>donde $a_1$ y $a_2$ son coeficiente constantes arbitrarios y $g_1$ y $g_2$ son dos funciones. También es evidente que, si $k$ es una constante arbitraria</p>
+$$E(k) = k$$<p>De la linealidad se concluye inmediatamente:</p>
+$$E(X+Y) = E(X) + E(Y)$$$$E(kX) = kE(X)$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Veamos como obtener las esperanzas marginales en el caso discreto. En el caso continuo sería igual, sin más que cambiar funciones de masa de probabilidad por densidades y sumas por integrales.</p>
 <p>Si $g(X,Y)=X$ se obtiene el valor medio de $X$:</p>
-<p>$$\eta_X=E(X)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_i x_i \sum_j p_{XY}(x_i,y_j) = \sum_i x_i p_X(x_i)$$</p>
-<p>Y si $g(X,Y)=Y$ se obtiene el valor medio de $Y$:</p>
-<p>$$\eta_Y=E(Y)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_j y_j \sum_i p_{XY}(x_i,y_j) = \sum_j y_j p_Y(y_j)$$</p>
-
+$$\eta_X=E(X)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_i x_i \sum_j p_{XY}(x_i,y_j) = \sum_i x_i p_X(x_i)$$<p>Y si $g(X,Y)=Y$ se obtiene el valor medio de $Y$:</p>
+$$\eta_Y=E(Y)=\sum_i\sum_j x_i p_{XY}(x_i,y_j)=\sum_j y_j \sum_i p_{XY}(x_i,y_j) = \sum_j y_j p_Y(y_j)$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Valor-Cuadr&#225;tico-Medio-y-Correlaci&#243;n">Valor Cuadr&#225;tico Medio y Correlaci&#243;n<a class="anchor-link" href="#Valor-Cuadr&#225;tico-Medio-y-Correlaci&#243;n">&#182;</a></h4><p>Considérese ahora que $g(X,Y)=(X+Y)^2$, esto es, calculamos el valor cuadrático medio de la suma de $X$ e $Y$. Desarrollando el cuadrado y aplicando linealidad:</p>
-<p>$$E((X+Y)^2)= E(X^2)+E(Y^2)+2E(XY)$$</p>
-<p>El término $R_{XY}=E(XY)$ se denomina <strong>correlación</strong>, y es un indicador de la dependencia probabilística de ambas variales aleatorias, $X$ e $Y$.</p>
+$$E((X+Y)^2)= E(X^2)+E(Y^2)+2E(XY)$$<p>El término $R_{XY}=E(XY)$ se denomina <strong>correlación</strong>, y es un indicador de la dependencia probabilística de ambas variales aleatorias, $X$ e $Y$.</p>
 <ul>
 <li>$X$ e $Y$ son <strong>ortogonales</strong> si $R_{XY}=E(XY)=0$. Ello indica que no podemos pensar que ambas variables guarden una relación de proporcionalidad $Y \not \approx kX$ pues ello supondría que $E(X^2) \approx 0$.</li>
 <li>En general, $E(XY) \neq E(X)E(Y)$. Como veremos, si $E(XY)=E(X)E(Y)$ ambas variables aleatorias están <strong>incorreladas</strong>.</li>
@@ -12992,28 +14158,24 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Es habitual utilizar una formulación matricial, haciendo uso de la <strong>matriz de correlación</strong>:</p>
-<p>$$\mathbf R_{XY} = E(\begin{pmatrix} X\\Y\end{pmatrix} (X, Y))= 
+$$\mathbf R_{XY} = E(\begin{pmatrix} X\\Y\end{pmatrix} (X, Y))= 
 \begin{pmatrix}
 E(X^2) &amp; E(XY)\\
 E(XY) &amp; E(Y^2)
-\end{pmatrix}$$</p>
-<p>Como se ve, la matriz de correlación es una matriz simétrica, cuyos elementos sobre la diagonal corresponden a los valores cuadrático medio, $E(X^2)$ y $E(Y^2)$ y fuera de la misma está la correlación entre $X$ e $Y$, $E(XY)$.</p>
+\end{pmatrix}$$<p>Como se ve, la matriz de correlación es una matriz simétrica, cuyos elementos sobre la diagonal corresponden a los valores cuadrático medio, $E(X^2)$ y $E(Y^2)$ y fuera de la misma está la correlación entre $X$ e $Y$, $E(XY)$.</p>
 <p>Si ambas variables fueran ortogonales, la matriz de correlación sería diagonal.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Covarianza">Covarianza<a class="anchor-link" href="#Covarianza">&#182;</a></h4><p>Considérese ahora que centramos el vector aleatorio $(X,Y)$ en el centro de masa probabilístico $(\eta_X, \eta_Y)$ y que $g(X,Y)=\left( (X-\eta_X)+(Y-\eta_Y) \right)^2$</p>
-<p>$$E\left(((X-\eta_X)+(Y-\eta_Y))^2\right)= \sigma_X^2+\sigma_Y^2+2E((X-\eta_X)(Y-\eta_Y)$$</p>
-<p>El término $C_{XY}=E((X-\eta_X)(Y-\eta_Y))$ se denomina <strong>covarianza</strong>, y es también un indicador de la dependencia probabilística de ambas variales aleatorias, $X$ e $Y$.</p>
+$$E\left(((X-\eta_X)+(Y-\eta_Y))^2\right)= \sigma_X^2+\sigma_Y^2+2E((X-\eta_X)(Y-\eta_Y)$$<p>El término $C_{XY}=E((X-\eta_X)(Y-\eta_Y))$ se denomina <strong>covarianza</strong>, y es también un indicador de la dependencia probabilística de ambas variales aleatorias, $X$ e $Y$.</p>
 <ul>
 <li>La covarianza se relaciona con la correlación sin más que operar y aplicar linealidad: $C_{XY}=R_{XY}-\eta_X\eta_Y$</li>
 <li>$X$ e $Y$ son incorreladas si $C_{XY}=0$. Decir que $X$ e $Y$ están incorreladas es equivalente a afirmar que $X-\eta_X$ e $Y-\eta_Y$ son ortogonales.</li>
@@ -13025,11 +14187,10 @@ E(XY) &amp; E(Y^2)
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Es habitual utilizar una formulación matricial, haciendo uso de la <strong>matriz de covarianza</strong>:</p>
-<p>$$\mathbf{C_{XY}} = E\left(\begin{pmatrix} X-\eta_X\\Y-\eta_Y\end{pmatrix} (X-\eta_X, Y-\eta_Y)\right)=\\
+$$\mathbf{C_{XY}} = E\left(\begin{pmatrix} X-\eta_X\\Y-\eta_Y\end{pmatrix} (X-\eta_X, Y-\eta_Y)\right)=\\
 \begin{pmatrix}
 E((X-\eta_X)^2) &amp; E((X-\eta_X)(Y-\eta_Y))\\
 E((X-\eta_X)(Y-\eta_Y)) &amp; E((Y-\eta_Y)^2)
@@ -13038,20 +14199,17 @@ E((X-\eta_X)(Y-\eta_Y)) &amp; E((Y-\eta_Y)^2)
 \sigma_X^2 &amp; C_{XY}\\
 C_{XY} &amp; \sigma_Y^2
 \end{pmatrix}
-$$</p>
-<p>Como se ve, la matriz de covarianza es una matriz simétrica, cuyos elementos sobre la diagonal corresponden a las varianzas, $\sigma_X^2$ y $\sigma_Y^2$ y fuera de la misma está la covarianza entre $X$ e $Y$, $C_{XY}$.</p>
+$$<p>Como se ve, la matriz de covarianza es una matriz simétrica, cuyos elementos sobre la diagonal corresponden a las varianzas, $\sigma_X^2$ y $\sigma_Y^2$ y fuera de la misma está la covarianza entre $X$ e $Y$, $C_{XY}$.</p>
 <p>Si ambas variables fueran incorreladas, la matriz de covarianza sería diagonal.</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Coeficiente-de-correlaci&#243;n">Coeficiente de correlaci&#243;n<a class="anchor-link" href="#Coeficiente-de-correlaci&#243;n">&#182;</a></h4><p>Si ahora trabajamos con las variables aletorias tipificadas, $\hat X = \frac{X-\eta_X}{\sigma_X}$ e $\hat Y = \frac{Y-\eta_Y}{\sigma_Y}$ podemos definir el <strong>coeficiente de correlación</strong> (recuérdese que las variables tipificadas tienen, por construcción, valor medio nulo y desviación típica unidad):</p>
-<p>$$r_{XY}=E(\frac{X-\eta_X}{\sigma_X} \frac{Y-\eta_Y}{\sigma_Y})=\frac{1}{\sigma_X\sigma_Y}C_{XY}  \qquad -1 \leq r_{XY} \leq 1$$</p>
-<p>El coeficiente de correlación $r_{XY}$:</p>
+$$r_{XY}=E(\frac{X-\eta_X}{\sigma_X} \frac{Y-\eta_Y}{\sigma_Y})=\frac{1}{\sigma_X\sigma_Y}C_{XY}  \qquad -1 \leq r_{XY} \leq 1$$<p>El coeficiente de correlación $r_{XY}$:</p>
 <ul>
 <li>Tiene valor nulo si hay ausencia de relación lineal entre $X$ e $Y$</li>
 <li>Tiene valor 1 si $Y = aX +b$ con $a&gt;0$</li>
@@ -13063,49 +14221,41 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Esperanza-matem&#225;tica-condicionada">Esperanza matem&#225;tica condicionada<a class="anchor-link" href="#Esperanza-matem&#225;tica-condicionada">&#182;</a></h4><p>Podemos definir la esperanza matemática de una función $g$ de las variables aleatorias $(X,Y)$ condicionada por el suceso $M$ como sigue, si son discretas:</p>
-<p>$$E(g(X,Y) | M)=\sum_i g(x_i,y_j)p_{XY}(x_i,y_j | M)$$</p>
-<p>Si las variables aleatorias son continuas:</p>
-<p>$$E(g(X,Y) | M)=\int_{-\infty}^\infty g(x,y)f_{XY}(x,y | M)$$</p>
-
+$$E(g(X,Y) | M)=\sum_i g(x_i,y_j)p_{XY}(x_i,y_j | M)$$<p>Si las variables aleatorias son continuas:</p>
+$$E(g(X,Y) | M)=\int_{-\infty}^\infty g(x,y)f_{XY}(x,y | M)$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Podemos extender con la esperanza condicionada las propiedades y definiciones vistas anteriormente. Lo ilustraremos para el caso de variables aleatorias discretas, si bien es igual para continuas, sin más que utilizar funciones de densidad e integrales en vez de funciones de masa de probabilidad y sumatorios. Por ejemplo:</p>
-<p>$$\begin{align*}
+$$\begin{align*}
 \eta_{X | M}=E(X | M)&amp;=\sum_i \sum_j x_ip_{XY}(x_i,y_j | M)= \sum_i x_i p_X(x_i | M)\\
 E(X^2 | M)&amp;=\sum_i \sum_j x_i^2p_{XY}(x_i,y_j | M)=\sum_i x_i^2 p_X(x_i | M)\\
 \sigma_{X | M}^2 = Var(X | M) &amp;= E(X^2 | M)-\eta_{X | M}^2
-\end{align*}$$</p>
-
+\end{align*}$$
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>En particular, podemos considerar los momentos de $X$ condicionados por $Y=y_j$, donde utilizamos el abuso de notación $E(\bullet \ | \ \{Y=y_j\}) \equiv E(\bullet \ | y_j)$:</p>
-<p>$$\begin{align*}
+$$\begin{align*}
 \eta_{X/+ | y_j}=E(X | y_j)&amp;= \sum_i x_i p_{X | Y}(x_i | y_j)\\
 E(X^2 | y_j)&amp;=\sum_i x_i^2 p_X(x_i | y_j)\\
 \sigma_{X | y_j}^2 = Var(X | y_j) &amp;= E(X^2 | y_j)-\eta_{X | y_j}^2
-\end{align*}$$</p>
-<p>Adviértase que $E(X) = \sum_j E(X | y_j) p_Y(y_j)$, sin más que sustituir $E(X | y_j)$ por su definición y utilizar el Teorema de la Probabilidad Total.</p>
+\end{align*}$$<p>Adviértase que $E(X) = \sum_j E(X | y_j) p_Y(y_j)$, sin más que sustituir $E(X | y_j)$ por su definición y utilizar el Teorema de la Probabilidad Total.</p>
 
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Ejemplo">Ejemplo<a class="anchor-link" href="#Ejemplo">&#182;</a></h4><p>Consideramos el ejemplo ya visto de lanzamiento mutuamente dependiente de un dado y una moneda trucados, cuya función de masa de probabilidad se indica de nuevo:
 $$
@@ -13132,8 +14282,7 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Variable aleatoria $X_1$ (dado)<ul>
@@ -13162,11 +14311,10 @@ $$</p>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Con $p_{X_1 | X_2}(x_1, x_2)$ pueden calcularse los momentos de los resultados del dado para cada resultado del lanzamiento de la moneda. Por ejemplo, la media:</p>
-<p>$$
+$$
 X_2 \\X_1 \begin{array}{c|c|c}
 p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
@@ -13186,8 +14334,7 @@ E(X_1 | x_{2_j}) &amp;
 1\frac{1}{11}+2\frac{2}{11}+3\frac{1}{11}+4\frac{2}{11}+5\frac{1}{11}+6\frac{4}{11}=\frac{45}{11}
 &amp; 0+2\frac{3}{13}+3\frac{4}{13}+4\frac{1}{13}+5\frac{3}{13}+6\frac{2}{13}=\frac{49}{13}
 \end{array}
-$$</p>
-<p>Por supuesto, $E(X_1)=E(X_1/0)p_{X_2}(0)+E(X_1/1)p_{X_2}(1) = \frac{45}{11}\frac{11}{24}+\frac{49}{13}\frac{13}{24}=\frac{94}{24}$.</p>
+$$<p>Por supuesto, $E(X_1)=E(X_1/0)p_{X_2}(0)+E(X_1/1)p_{X_2}(1) = \frac{45}{11}\frac{11}{24}+\frac{49}{13}\frac{13}{24}=\frac{94}{24}$.</p>
 
 </div>
 </div>
@@ -13204,8 +14351,8 @@ require(
       waitSeconds: 15
     },
     [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -13220,9 +14367,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
