@@ -13415,9 +13415,6 @@ $$F_{XY}(x,y) = P\left(\{X\leq x, Y\leq y\}\right)$$<p>Podemos considerar que  $
 <li>$F_{XY}(-\infty, y) = F_{XY}(x, -\infty) = 0 \quad \forall x,y \in \mathbb{R}$, pues no hay masa de probabilidad acumulada </li>
 <li>$F_{XY}(\infty, \infty) = 1$, pues corresponde a la totalidad de la masa de probabilidad</li>
 <li>$F_{XY}(x,y)$ es <strong>no decreciente</strong> tanto en $x$ como $y$. En los puntos donde se localicen masas discretas de probabilidad $F_{XY}$ muestra discontinuidades de salto. En el resto, es continua. </li>
-<li>El suceso $\{x_1 &lt; X \leq x_2, Y \leq y\}$ es una franja vertical limitada por $X=x_1$ (sin incluir) y $X=x_2$ (incluido) cuya masa de probabilidad es $F_{XY}(x_2,y)-F_{XY}(x_1,y)$</li>
-<li>El suceso $\{X \leq x, y_1 &lt; Y \leq y_2\}$ es una franja horizontal limitada por $Y=y_1$ (sin incluir) e $Y=y_2$ (incluido) cuya masa de probabilidad es $F_{XY}(x,y_2)-F_{XY}(x,y_1)$</li>
-<li>El suceso $\{x_1 &lt;X\leq x_2 , \leq x, y_1 &lt; Y \leq y_2\}$ es un rectángulo limitado por $X=x_1$ (sin incluir, $X=x_2$ (incluido), $Y=y_1$ (sin incluir) e $Y=y_2$ (incluido), cuya masa de probabilidad es $F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)+F_{XY}(x_1,y_1)$</li>
 </ul>
 <p>Si $X$ e $Y$ son variables aleatorias discretas, puede trabajarse con una tabla con la función de probabilidad acumulada: $F_{XY}(x_i, y_j) \quad i,j \in \mathbb{Z}$</p>
 
@@ -13434,6 +13431,34 @@ $$F_{XY}(x,y) = P\left(\{X\leq x, Y\leq y\}\right)$$<p>Podemos considerar que  $
 </ul>
 <p>Sin embargo, como ya se ha dicho, <strong>no es posible, en general, obtener la distribución conjunta a partir de las marginales</strong>. La excepción es cuando <strong>ambas variables aleatorias son independientes</strong> pues, en tal caso:</p>
 $$F_{XY}(x,y) = P\left(\{X \leq x\} \bigcap \{Y \leq y\}\right)=P(\{X \leq x\})P(\{Y \leq y\})= F_X(x)F_Y(y)$$<p>Por tanto, si $X$ e $Y$ son <strong>variables aleatorias independientes</strong>: $F_{XY}(x,y) = F_X(x)F_Y(y) \quad \forall x,y \in \mathbb{R}$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Otros-dominios-de-inter&#233;s-en-el-plano">Otros dominios de inter&#233;s en el plano<a class="anchor-link" href="#Otros-dominios-de-inter&#233;s-en-el-plano">&#182;</a></h4><p><strong>Franja vertical y horizontal</strong></p>
+<ul>
+<li>El suceso $\{x_1 &lt; X \leq x_2\}$ es una franja vertical limitada a la izquierda por $X=x_1$ (sin incluir), a la derecha por $X=x_2$ (incluido) e indefinida arriba y abajo, cuya masa de probabilidad es $F_{XY}(x_2,\infty)-F_{XY}(x_1,\infty)=F_{X}(x_2)-F_{X}(x_1)$</li>
+<li>El suceso $\{y_1 &lt; Y \leq y_2\}$ es una franja horizontal limitada por debajo por $Y=y_1$ (sin incluir), por encima por $Y=y_2$ (incluido), e indefinida a derecha e izquierda, cuya masa de probabilidad es $F_{XY}(\infty,y_2)-F_{XY}(\infty,y_1)=F_Y(y_2)-F_Y(y_1)$</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Semifranjas vertical y horizontal</strong></p>
+<ul>
+<li>El suceso $\{x_1 &lt; X \leq x_2, Y \leq y\}$ es una semifranja vertical limitada a la izquierda por $X=x_1$ (sin incluir), a la derecha por $X=x_2$ (incluido), por encima por $Y=y$ e indefinida por debajo, cuya masa de probabilidad es $F_{XY}(x_2,y)-F_{XY}(x_1,y)$</li>
+<li>El suceso $\{X \leq x, y_1 &lt; Y \leq y_2\}$ es una semifranja horizontal limitada por debajo por $Y=y_1$ (sin incluir), por encima por $Y=y_2$ (incluido), a la derecha por $X=x$ e indefinida a la izquierda, cuya masa de probabilidad es $F_{XY}(x,y_2)-F_{XY}(x,y_1)$</li>
+</ul>
+<p><strong>Rectángulo</strong></p>
+<ul>
+<li>El suceso $\{x_1 &lt;X\leq x_2 , \leq x, y_1 &lt; Y \leq y_2\}$ es un rectángulo limitado por $X=x_1$ (sin incluir, $X=x_2$ (incluido), $Y=y_1$ (sin incluir) e $Y=y_2$ (incluido), cuya masa de probabilidad es $F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)+F_{XY}(x_1,y_1)$</li>
+</ul>
 
 </div>
 </div>
@@ -13490,7 +13515,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Considerando que ambos lanzamientos son independientes, resulta la siguiente función de masa de probabilidad conjunta. Téngase en cuenta que, <u>para cualesquiera otrso valores de las variables aleatorias no presentes en la tabla, la masa de probbailidad es cero</u>.</p>
+<p>Considerando que ambos lanzamientos son independientes, resulta la siguiente función de masa de probabilidad conjunta. Téngase en cuenta que, <u>para cualesquiera otros valores de las variables aleatorias no presentes en la tabla, la masa de probbailidad es cero</u>.</p>
 $$
 X_2 \\X_1 \begin{array}{c|c|c|c}
 p_{X_1X_2}(x_{1_i}, x_{2_j}) &amp; 0 &amp; 1 &amp; p_{X_1}(x_{1_i}) = \sum_j p_{X_1X_2}(x_{1_i}x_{2_j})\\
@@ -14097,7 +14122,7 @@ $$
 \begin{array}{c|c|c|c|c}
 Z = X+Y &amp; 0 &amp; 1 &amp; 2\\
 \hline
-p_Z(z_k) &amp; \frac{5}{8} &amp; \frac{1}{18} +\frac{10}{18} = \frac{11}{18} &amp;\frac{2}{18}  &amp; \sum_i p_Y(y_j) = 1
+p_Z(z_k) &amp; \frac{5}{18} &amp; \frac{1}{18} +\frac{10}{18} = \frac{11}{18} &amp;\frac{2}{18}  &amp; \sum_i p_Y(y_j) = 1
 \end{array}
 $$
 </div>
@@ -14180,7 +14205,7 @@ $$E\left(((X-\eta_X)+(Y-\eta_Y))^2\right)= \sigma_X^2+\sigma_Y^2+2E((X-\eta_X)(Y
 <li>La covarianza se relaciona con la correlación sin más que operar y aplicar linealidad: $C_{XY}=R_{XY}-\eta_X\eta_Y$</li>
 <li>$X$ e $Y$ son incorreladas si $C_{XY}=0$. Decir que $X$ e $Y$ están incorreladas es equivalente a afirmar que $X-\eta_X$ e $Y-\eta_Y$ son ortogonales.</li>
 <li>Es fácil demostrar que $C_{XY}= 0 \iff R_{XY}=\eta_X\eta_Y$.</li>
-<li>La <u>incorrelación supone ausencia de relación lineal</u> entre $X$ e $Y$, esto es, $Y \not \approx aX + b$.</li>
+<li>La <u>incorrelación supone ausencia de relación lineal</u> entre $X$ e $Y$, esto es, $Y \not \approx aX + b$. Adviértase que si $Y = aX + b$, entonces $\eta_Y = a\eta_X + b$ y, por tanto, $C_{XY}=a\sigma_X^2\neq 0$</li>
 </ul>
 
 </div>
@@ -14285,24 +14310,32 @@ $$</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Variable aleatoria $X_1$ (dado)<ul>
-<li>$\eta_{X_1}=E(X_1)=1\frac{1}{24}+2\frac{5}{24}+3\frac{5}{24}+4\frac{3}{24}+5\frac{4}{24}+6\frac{6}{24}=\frac{94}{24}\approx3.917$</li>
-<li>$E(X_1^2)=1^2\frac{1}{24}+2^2\frac{5}{24}+3^2\frac{5}{24}+4^2\frac{3}{24}+5^2\frac{4}{24}+6^2\frac{6}{24}=\frac{430}{24}\approx 17.917$</li>
-<li>$Var(X_1)=E(X_1^2) -\eta_X^2= \frac{430}{24}-(\frac{94}{24})^2 \approx 2.576$</li>
-<li>$\sigma_{X_1} \approx 1.605$</li>
+<li>Variable aleatoria $X_1$ (dado)
+$$\eta_{X_1}=E(X_1)=1\frac{1}{24}+2\frac{5}{24}+3\frac{5}{24}+4\frac{3}{24}+5\frac{4}{24}+6\frac{6}{24}=\frac{94}{24}\approx3.917$$
+$$E(X_1^2)=1^2\frac{1}{24}+2^2\frac{5}{24}+3^2\frac{5}{24}+4^2\frac{3}{24}+5^2\frac{4}{24}+6^2\frac{6}{24}=\frac{430}{24}\approx 17.917$$
+$$Var(X_1)=E(X_1^2) -\eta_X^2= \frac{430}{24}-(\frac{94}{24})^2 \approx 2.576$$
+$$\sigma_{X_1} \approx 1.605$$</li>
+<li>Variable aleatoria $X_2$ (moneda)
+$$\eta_{X_2}=E(X_2)= 0\frac{11}{24}+1\frac{13}{24}=\frac{13}{24}\approx 0.542$$
+$$E(X_2^2)= 0^2\frac{11}{24}+1^2\frac{13}{24}=\frac{13}{24}\approx 0.542$$
+$$Var(X_2)=E(X_2^2) -\eta_{X_2}^2= \frac{13}{24}-(\frac{13}{24})^2=\frac{13}{24}\frac{11}{24} \approx 0.248$$
+$$\sigma_{X_2} \approx 0.498$$  </li>
 </ul>
-</li>
-<li>Variable aleatoria $X_2$ (moneda)<ul>
-<li>$\eta_{X_2}=E(X_2)= 0\frac{11}{24}+1\frac{13}{24}=\frac{13}{24}\approx 0.542$</li>
-<li>$E(X_2^2)= 0^2\frac{11}{24}+1^2\frac{13}{24}=\frac{13}{24}\approx 0.542$</li>
-<li>$Var(X_2)=E(X_2^2) -\eta_{X_2}^2= \frac{13}{24}-(\frac{13}{24})^2=\frac{13}{24}\frac{11}{24} \approx 0.248$</li>
-<li>$\sigma_{X_2} \approx 0.498$</li>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li>Momentos conjuntos <ul>
-<li>Correlación: $R_{XY} = 2\frac{3}{24}+3\frac{4}{24}+4\frac{1}{24}+5\frac{3}{24}+6\frac{2}{24}=\frac{49}{24} \approx 2.042$</li>
-<li>Covarianza: $C_{XY}=R_{XY}-\eta_X\eta_Y= \frac{49}{24}-\frac{94}{24}\frac{13}{24}\approx -0.80$</li>
-<li>Coeficiente de correlación: $r_{XY} = \frac{1}{\sigma_X\sigma_Y}C_{XY} \approx -0.1 $ </li>
-</ul>
-</li>
+<li>Correlación: 
+$$R_{XY} = 2\frac{3}{24}+3\frac{4}{24}+4\frac{1}{24}+5\frac{3}{24}+6\frac{2}{24}=\frac{49}{24} \approx 2.042$$</li>
+<li>Covarianza: 
+$$C_{XY}=R_{XY}-\eta_X\eta_Y= \frac{49}{24}-\frac{94}{24}\frac{13}{24}\approx -0.80$$</li>
+<li>Coeficiente de correlación: 
+$$r_{XY} = \frac{1}{\sigma_X\sigma_Y}C_{XY} \approx -0.1$$ </li>
 </ul>
 </li>
 </ul>
