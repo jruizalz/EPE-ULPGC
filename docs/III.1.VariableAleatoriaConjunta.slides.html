@@ -14363,11 +14363,17 @@ p_{X_1 | X_2}(x_{1_i} | x_{2_j}) &amp; 0 &amp; 1\\
 \hline
 6 &amp; \frac{4}{11} &amp; \frac{2}{13}\\
 \hline
-E(X_1 | x_{2_j}) &amp; 
-1\frac{1}{11}+2\frac{2}{11}+3\frac{1}{11}+4\frac{2}{11}+5\frac{1}{11}+6\frac{4}{11}=\frac{45}{11}
-&amp; 0+2\frac{3}{13}+3\frac{4}{13}+4\frac{1}{13}+5\frac{3}{13}+6\frac{2}{13}=\frac{49}{13}
+E(X_1 | x_{2_j}) &amp; E(X_1 | X_2=0) &amp; E(X_1 | X_2=1)
 \end{array}
-$$<p>Por supuesto, $E(X_1)=E(X_1/0)p_{X_2}(0)+E(X_1/1)p_{X_2}(1) = \frac{45}{11}\frac{11}{24}+\frac{49}{13}\frac{13}{24}=\frac{94}{24}$.</p>
+$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$E(X_1 | X_2=0) = 1\frac{1}{11}+2\frac{2}{11}+3\frac{1}{11}+4\frac{2}{11}+5\frac{1}{11}+6\frac{4}{11}=\frac{45}{11}$$$$E(X_1 | X_2=1)  = 1 \times0+2\frac{3}{13}+3\frac{4}{13}+4\frac{1}{13}+5\frac{3}{13}+6\frac{2}{13}=\frac{49}{13}$$<p>Aplicando el Teorema de la Probabilidad Total:
+$$E(X_1)=E(X_1/0)p_{X_2}(0)+E(X_1/1)p_{X_2}(1) = \frac{45}{11}\frac{11}{24}+\frac{49}{13}\frac{13}{24}=\frac{94}{24}$$</p>
 
 </div>
 </div>
